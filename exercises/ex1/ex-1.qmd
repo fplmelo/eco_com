@@ -31,19 +31,16 @@ Neste primeiro módulo prático, utilizaremos blocos de LEGO como um **modelo an
 
 ### Passo a Passo do Sorteio Peça a Peça (Individual-based Sampling)
 
-```
-+-----------------------------------------------------------------------+
-|                 PROTOCOLO DE SORTEIO PEÇA A PEÇA                      |
-+-----------------------------------------------------------------------+
-|  1. MISTURA: Agite suavemente o saco opaco antes de cada sorteio.    |
-|  2. RETIRADA: Sem olhar, retire 1 peça por vez (1 indivíduo).        |
-|  3. REGISTRO SEQUENCIAL: Anote a cor da peça na ordem exata de        |
-|     amostragem (Sorteio nº 1, 2, 3, ..., 100).                        |
-|  4. SEM REPOSIÇÃO: Mantenha a peça fora do saco após o registro.      |
-|  5. TABULAÇÃO FINAL: Conte o total de peças por cor e ordene da       |
-|     cor mais abundante para a menos abundante.                       |
-+-----------------------------------------------------------------------+
-```
+::: {.callout-note icon=false appearance="simple"}
+## 🧩 PROTOCOLO DE SORTEIO PEÇA A PEÇA
+
+1. **MISTURA:** Agite suavemente o saco opaco antes de cada sorteio.
+2. **RETIRADA:** Sem olhar, retire 1 peça por vez (1 indivíduo).
+3. **REGISTRO SEQUENCIAL:** Anote a cor da peça na ordem exata de amostragem (Sorteio nº 1, 2, 3, ..., 100).
+4. **SEM REPOSIÇÃO:** Mantenha a peça fora do saco após o registro.
+5. **TABULAÇÃO FINAL:** Conte o total de peças por cor e ordene da cor mais abundante para a menos abundante.
+:::
+
 
 1. **Amostragem Sequencial:** O sorteio peça a peça simula a caminhada no campo e o encontro sucessivo com indivíduos biológicos em um inventário.
 2. **Construção da Curva Amostral do Grupo:** Ao registrar a sequência exata de aparecimento de novas cores (novas espécies), o grupo constrói manualmente a sua **Curva de Acúmulo de Espécies por Indivíduo**.

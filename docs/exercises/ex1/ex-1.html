@@ -337,17 +337,25 @@ window.Quarto = {
 </section>
 <section id="passo-a-passo-do-sorteio-peça-a-peça-individual-based-sampling" class="level3" data-number="2.0.2">
 <h3 data-number="2.0.2" class="anchored" data-anchor-id="passo-a-passo-do-sorteio-peça-a-peça-individual-based-sampling"><span class="header-section-number">2.0.2</span> Passo a Passo do Sorteio Peça a Peça (Individual-based Sampling)</h3>
-<pre><code>+-----------------------------------------------------------------------+
-|                 PROTOCOLO DE SORTEIO PEÇA A PEÇA                      |
-+-----------------------------------------------------------------------+
-|  1. MISTURA: Agite suavemente o saco opaco antes de cada sorteio.    |
-|  2. RETIRADA: Sem olhar, retire 1 peça por vez (1 indivíduo).        |
-|  3. REGISTRO SEQUENCIAL: Anote a cor da peça na ordem exata de        |
-|     amostragem (Sorteio nº 1, 2, 3, ..., 100).                        |
-|  4. SEM REPOSIÇÃO: Mantenha a peça fora do saco após o registro.      |
-|  5. TABULAÇÃO FINAL: Conte o total de peças por cor e ordene da       |
-|     cor mais abundante para a menos abundante.                       |
-+-----------------------------------------------------------------------+</code></pre>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🧩 PROTOCOLO DE SORTEIO PEÇA A PEÇA
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>MISTURA:</strong> Agite suavemente o saco opaco antes de cada sorteio.</li>
+<li><strong>RETIRADA:</strong> Sem olhar, retire 1 peça por vez (1 indivíduo).</li>
+<li><strong>REGISTRO SEQUENCIAL:</strong> Anote a cor da peça na ordem exata de amostragem (Sorteio nº 1, 2, 3, …, 100).</li>
+<li><strong>SEM REPOSIÇÃO:</strong> Mantenha a peça fora do saco após o registro.</li>
+<li><strong>TABULAÇÃO FINAL:</strong> Conte o total de peças por cor e ordene da cor mais abundante para a menos abundante.</li>
+</ol>
+</div>
+</div>
 <ol type="1">
 <li><strong>Amostragem Sequencial:</strong> O sorteio peça a peça simula a caminhada no campo e o encontro sucessivo com indivíduos biológicos em um inventário.</li>
 <li><strong>Construção da Curva Amostral do Grupo:</strong> Ao registrar a sequência exata de aparecimento de novas cores (novas espécies), o grupo constrói manualmente a sua <strong>Curva de Acúmulo de Espécies por Indivíduo</strong>.</li>
@@ -367,14 +375,14 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar pacotes necessários</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuração de semente para reprodutibilidade</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar pacotes necessários</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuração de semente para reprodutibilidade</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <section id="criação-e-visualização-dos-dados-dos-4-sacos" class="level2" data-number="3.1">
@@ -382,27 +390,27 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando os 4 sacos (100 peças por saco) com vetores de abundância por cor</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># As colunas representam espécies (Cores) e as linhas os Sacos (Comunidades)</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>comunidades_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_A =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">70</span>, <span class="at">Amarelo =</span> <span class="dv">12</span>, <span class="at">Azul =</span> <span class="dv">8</span>, <span class="at">Verde =</span> <span class="dv">5</span>, <span class="at">Preto =</span> <span class="dv">3</span>, <span class="at">Branco =</span> <span class="dv">2</span>),</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_B =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">35</span>, <span class="at">Amarelo =</span> <span class="dv">22</span>, <span class="at">Azul =</span> <span class="dv">15</span>, <span class="at">Verde =</span> <span class="dv">10</span>, <span class="at">Preto =</span> <span class="dv">8</span>, <span class="at">Branco =</span> <span class="dv">5</span>, <span class="at">Laranja =</span> <span class="dv">3</span>, <span class="at">Roxo =</span> <span class="dv">2</span>),</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_C =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">11</span>, <span class="at">Amarelo =</span> <span class="dv">10</span>, <span class="at">Azul =</span> <span class="dv">10</span>, <span class="at">Verde =</span> <span class="dv">10</span>, <span class="at">Preto =</span> <span class="dv">10</span>, <span class="at">Branco =</span> <span class="dv">10</span>, <span class="at">Laranja =</span> <span class="dv">10</span>, <span class="at">Roxo =</span> <span class="dv">10</span>, <span class="at">Rosa =</span> <span class="dv">10</span>, <span class="at">Cinza =</span> <span class="dv">9</span>),</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_D =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">18</span>, <span class="at">Amarelo =</span> <span class="dv">12</span>, <span class="at">Azul =</span> <span class="dv">10</span>, <span class="at">Verde =</span> <span class="dv">8</span>, <span class="at">Preto =</span> <span class="dv">6</span>, <span class="at">Branco =</span> <span class="dv">5</span>, <span class="at">Laranja =</span> <span class="dv">4</span>, <span class="at">Roxo =</span> <span class="dv">4</span>, <span class="at">Rosa =</span> <span class="dv">3</span>, <span class="at">Cinza =</span> <span class="dv">3</span>, </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">Marrom =</span> <span class="dv">2</span>, <span class="at">Ciano =</span> <span class="dv">2</span>, <span class="at">Magenta =</span> <span class="dv">2</span>, <span class="at">Lima =</span> <span class="dv">2</span>, <span class="at">Oliva =</span> <span class="dv">2</span>, <span class="at">Turquesa =</span> <span class="dv">1</span>, <span class="at">Violeta =</span> <span class="dv">1</span>, <span class="at">Bege =</span> <span class="dv">1</span>, <span class="at">Ocre =</span> <span class="dv">1</span>, <span class="at">Coral =</span> <span class="dv">1</span>, <span class="at">Prata =</span> <span class="dv">1</span>, <span class="at">Ouro =</span> <span class="dv">1</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Converter lista para data frame matriz comunidade (sites x species)</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>matriz_lego <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(comunidades_list) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Comunidade =</span> <span class="fu">names</span>(comunidades_list)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Comunidade, <span class="fu">everything</span>())</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Substituir NAs por 0 (ausência da cor no saco)</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>matriz_lego[<span class="fu">is.na</span>(matriz_lego)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibir a matriz de abundâncias</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz_lego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando os 4 sacos (100 peças por saco) com vetores de abundância por cor</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># As colunas representam espécies (Cores) e as linhas os Sacos (Comunidades)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>comunidades_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_A =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">70</span>, <span class="at">Amarelo =</span> <span class="dv">12</span>, <span class="at">Azul =</span> <span class="dv">8</span>, <span class="at">Verde =</span> <span class="dv">5</span>, <span class="at">Preto =</span> <span class="dv">3</span>, <span class="at">Branco =</span> <span class="dv">2</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_B =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">35</span>, <span class="at">Amarelo =</span> <span class="dv">22</span>, <span class="at">Azul =</span> <span class="dv">15</span>, <span class="at">Verde =</span> <span class="dv">10</span>, <span class="at">Preto =</span> <span class="dv">8</span>, <span class="at">Branco =</span> <span class="dv">5</span>, <span class="at">Laranja =</span> <span class="dv">3</span>, <span class="at">Roxo =</span> <span class="dv">2</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_C =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">11</span>, <span class="at">Amarelo =</span> <span class="dv">10</span>, <span class="at">Azul =</span> <span class="dv">10</span>, <span class="at">Verde =</span> <span class="dv">10</span>, <span class="at">Preto =</span> <span class="dv">10</span>, <span class="at">Branco =</span> <span class="dv">10</span>, <span class="at">Laranja =</span> <span class="dv">10</span>, <span class="at">Roxo =</span> <span class="dv">10</span>, <span class="at">Rosa =</span> <span class="dv">10</span>, <span class="at">Cinza =</span> <span class="dv">9</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_D =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">18</span>, <span class="at">Amarelo =</span> <span class="dv">12</span>, <span class="at">Azul =</span> <span class="dv">10</span>, <span class="at">Verde =</span> <span class="dv">8</span>, <span class="at">Preto =</span> <span class="dv">6</span>, <span class="at">Branco =</span> <span class="dv">5</span>, <span class="at">Laranja =</span> <span class="dv">4</span>, <span class="at">Roxo =</span> <span class="dv">4</span>, <span class="at">Rosa =</span> <span class="dv">3</span>, <span class="at">Cinza =</span> <span class="dv">3</span>, </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">Marrom =</span> <span class="dv">2</span>, <span class="at">Ciano =</span> <span class="dv">2</span>, <span class="at">Magenta =</span> <span class="dv">2</span>, <span class="at">Lima =</span> <span class="dv">2</span>, <span class="at">Oliva =</span> <span class="dv">2</span>, <span class="at">Turquesa =</span> <span class="dv">1</span>, <span class="at">Violeta =</span> <span class="dv">1</span>, <span class="at">Bege =</span> <span class="dv">1</span>, <span class="at">Ocre =</span> <span class="dv">1</span>, <span class="at">Coral =</span> <span class="dv">1</span>, <span class="at">Prata =</span> <span class="dv">1</span>, <span class="at">Ouro =</span> <span class="dv">1</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Converter lista para data frame matriz comunidade (sites x species)</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>matriz_lego <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(comunidades_list) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Comunidade =</span> <span class="fu">names</span>(comunidades_list)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Comunidade, <span class="fu">everything</span>())</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Substituir NAs por 0 (ausência da cor no saco)</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>matriz_lego[<span class="fu">is.na</span>(matriz_lego)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibir a matriz de abundâncias</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz_lego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 23
@@ -424,23 +432,23 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extrair apenas a matriz numérica</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mat_num <span class="ot">&lt;-</span> matriz_lego <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>Comunidade)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(mat_num) <span class="ot">&lt;-</span> matriz_lego<span class="sc">$</span>Comunidade</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extrair apenas a matriz numérica</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mat_num <span class="ot">&lt;-</span> matriz_lego <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>Comunidade)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(mat_num) <span class="ot">&lt;-</span> matriz_lego<span class="sc">$</span>Comunidade</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Setting row names on a tibble is deprecated.</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular N (Abundância Total) e S (Riqueza Observada)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>resumo_comunidades <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Comunidade =</span> <span class="fu">rownames</span>(mat_num),</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">N_Individuos =</span> <span class="fu">rowSums</span>(mat_num),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Riqueza_S =</span> <span class="fu">specnumber</span>(mat_num)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resumo_comunidades)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular N (Abundância Total) e S (Riqueza Observada)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>resumo_comunidades <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Comunidade =</span> <span class="fu">rownames</span>(mat_num),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">N_Individuos =</span> <span class="fu">rowSums</span>(mat_num),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Riqueza_S =</span> <span class="fu">specnumber</span>(mat_num)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resumo_comunidades)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       Comunidade N_Individuos Riqueza_S
@@ -460,31 +468,31 @@ Saco_D     Saco_D           90        22</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preparar dados para o ggplot2</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>rad_df <span class="ot">&lt;-</span> matriz_lego <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>Comunidade, <span class="at">names_to =</span> <span class="st">"Especie_Cor"</span>, <span class="at">values_to =</span> <span class="st">"Abundancia"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Abundancia <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Comunidade) <span class="sc">%&gt;%</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Abundancia)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rank =</span> <span class="fu">row_number</span>(),</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Abundancia_Relativa =</span> Abundancia <span class="sc">/</span> <span class="fu">sum</span>(Abundancia)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de Rank-Abundância</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rad_df, <span class="fu">aes</span>(<span class="at">x =</span> Rank, <span class="at">y =</span> Abundancia_Relativa, <span class="at">color =</span> Comunidade, <span class="at">group =</span> Comunidade)) <span class="sc">+</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="fl">0.1</span>)) <span class="sc">+</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Curvas de Rank-Abundância (Whittaker Plots) — Sacos de LEGO"</span>,</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Comparação dos perfis de dominância e equitabilidade em escala logarítmica"</span>,</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Rank da Espécie (da mais para a menos abundante)"</span>,</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Abundância Relativa (Escala Log10)"</span>,</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Saco / Comunidade"</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preparar dados para o ggplot2</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>rad_df <span class="ot">&lt;-</span> matriz_lego <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>Comunidade, <span class="at">names_to =</span> <span class="st">"Especie_Cor"</span>, <span class="at">values_to =</span> <span class="st">"Abundancia"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Abundancia <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Comunidade) <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Abundancia)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rank =</span> <span class="fu">row_number</span>(),</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Abundancia_Relativa =</span> Abundancia <span class="sc">/</span> <span class="fu">sum</span>(Abundancia)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de Rank-Abundância</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rad_df, <span class="fu">aes</span>(<span class="at">x =</span> Rank, <span class="at">y =</span> Abundancia_Relativa, <span class="at">color =</span> Comunidade, <span class="at">group =</span> Comunidade)) <span class="sc">+</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Curvas de Rank-Abundância (Whittaker Plots) — Sacos de LEGO"</span>,</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Comparação dos perfis de dominância e equitabilidade em escala logarítmica"</span>,</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Rank da Espécie (da mais para a menos abundante)"</span>,</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Abundância Relativa (Escala Log10)"</span>,</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Saco / Comunidade"</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -504,17 +512,17 @@ Saco_D     Saco_D           90        22</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cores para o gráfico</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green3"</span>, <span class="st">"purple"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Curvas de Rarefação para os 4 Sacos</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rarecurve</span>(mat_num, <span class="at">step =</span> <span class="dv">1</span>, <span class="at">sample =</span> <span class="dv">50</span>, <span class="at">col =</span> cores, <span class="at">lwd =</span> <span class="fl">2.5</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Número de Indivíduos Amostrados (Peças de LEGO)"</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab =</span> <span class="st">"Riqueza de Espécies Esperada (E[S])"</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Curvas de Rarefação Baseadas em Indivíduos (Sacos A, B, C e D)"</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">rownames</span>(mat_num), <span class="at">col =</span> cores, <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="fl">2.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cores para o gráfico</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green3"</span>, <span class="st">"purple"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Curvas de Rarefação para os 4 Sacos</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rarecurve</span>(mat_num, <span class="at">step =</span> <span class="dv">1</span>, <span class="at">sample =</span> <span class="dv">50</span>, <span class="at">col =</span> cores, <span class="at">lwd =</span> <span class="fl">2.5</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Número de Indivíduos Amostrados (Peças de LEGO)"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab =</span> <span class="st">"Riqueza de Espécies Esperada (E[S])"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Curvas de Rarefação Baseadas em Indivíduos (Sacos A, B, C e D)"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">rownames</span>(mat_num), <span class="at">col =</span> cores, <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="fl">2.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -530,18 +538,18 @@ Saco_D     Saco_D           90        22</code></pre>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Padronizando para N = 50 e N = 20 peças</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>S_rare_50 <span class="ot">&lt;-</span> <span class="fu">rarefy</span>(mat_num, <span class="at">sample =</span> <span class="dv">50</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>S_rare_20 <span class="ot">&lt;-</span> <span class="fu">rarefy</span>(mat_num, <span class="at">sample =</span> <span class="dv">20</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>comparativo_rarefacao <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Comunidade =</span> <span class="fu">rownames</span>(mat_num),</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">S_Observado_100 =</span> <span class="fu">specnumber</span>(mat_num),</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">S_Rarefeito_50 =</span> <span class="fu">round</span>(S_rare_50, <span class="dv">2</span>),</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">S_Rarefeito_20 =</span> <span class="fu">round</span>(S_rare_20, <span class="dv">2</span>)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(comparativo_rarefacao)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Padronizando para N = 50 e N = 20 peças</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>S_rare_50 <span class="ot">&lt;-</span> <span class="fu">rarefy</span>(mat_num, <span class="at">sample =</span> <span class="dv">50</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>S_rare_20 <span class="ot">&lt;-</span> <span class="fu">rarefy</span>(mat_num, <span class="at">sample =</span> <span class="dv">20</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>comparativo_rarefacao <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Comunidade =</span> <span class="fu">rownames</span>(mat_num),</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">S_Observado_100 =</span> <span class="fu">specnumber</span>(mat_num),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">S_Rarefeito_50 =</span> <span class="fu">round</span>(S_rare_50, <span class="dv">2</span>),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">S_Rarefeito_20 =</span> <span class="fu">round</span>(S_rare_20, <span class="dv">2</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(comparativo_rarefacao)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       Comunidade S_Observado_100 S_Rarefeito_50 S_Rarefeito_20
