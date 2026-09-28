@@ -2,7 +2,7 @@
 title: "Ecologia de Comunidades"
 #title-block-banner: "#9e043d"
 subtitle: "Biodiversidade e seus descritores"
-details: "BO414 <br> 2026.1 <br> Centro de Biociências <br> Universidade Federal de Pernambuco"
+details: "BO414 <br> Centro de Biociências <br> Universidade Federal de Pernambuco"
 sidebar: false
 toc: false
 page-layout: article

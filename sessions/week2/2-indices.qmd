@@ -1,5 +1,5 @@
 ---
-title: "Medidas clássicas de diversidade local em comunidades"
+title: "Semana 02: Medidas clássicas de diversidade local em comunidades"
 subtitle: "Módulo 2 — Ecologia de Comunidades"
 author: "Felipe Melo"
 format:
@@ -17,6 +17,8 @@ Tela cheia [CLIQUE AQUI](https://fplmelo.github.io/eco_com/slides/2-slides-indic
 <iframe class="slide-deck" src="https://fplmelo.github.io/eco_com/slides/2-slides-indices.html#/title-slide" width="700px" height="500px"></iframe>
 
 # Introdução ao problema da mensuração da diversidade
+
+![ìndices clássicos de Diversidade Biológica](/img/div-index.png)
 
 A mensuração da biodiversidade em nível local é uma das tarefas centrais da ecologia quantitativa. Embora a riqueza de espécies (o número total de espécies presentes em uma área) seja a métrica mais intuitiva, ela falha em capturar a estrutura interna da comunidade. Duas comunidades podem apresentar exatamente a mesma riqueza de dez espécies, mas possuir estruturas completamente distintas: em uma delas, uma única espécie pode representar 91% de todos os indivíduos, enquanto na outra as dez espécies dividem a abundância de maneira uniforme.
 

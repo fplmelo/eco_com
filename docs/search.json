@@ -102,7 +102,7 @@
     "href": "index.html",
     "title": "\n            Ecologia de Comunidades\n        ",
     "section": "",
-    "text": "Biodiversidade e seus descritores\n        \n        \n            BO414  2026.1  Centro de Biociências  Universidade Federal de Pernambuco"
+    "text": "Biodiversidade e seus descritores\n        \n        \n            BO414  Centro de Biociências  Universidade Federal de Pernambuco"
   },
   {
     "objectID": "index.html#bem-vind",
@@ -501,7 +501,7 @@
     "href": "sessions/index.html",
     "title": "Conteúdo",
     "section": "",
-    "text": "Medidas clássicas de diversidade local em comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 01: Origens e Conceitos de Escala\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\nNo matching items"
+    "text": "Semana 01: Origens e Conceitos de Escala\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 02: Medidas clássicas de diversidade local em comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "slides/2-slides-indices.html#a-dimensão-dupla-da-biodiversidade-local",
@@ -870,70 +870,70 @@
   {
     "objectID": "sessions/week2/2-indices.html",
     "href": "sessions/week2/2-indices.html",
-    "title": "Medidas clássicas de diversidade local em comunidades",
+    "title": "Semana 02: Medidas clássicas de diversidade local em comunidades",
     "section": "",
     "text": "Tela cheia CLIQUE AQUI e depois pressione ‘f’"
   },
   {
     "objectID": "sessions/week2/2-indices.html#slides-desta-aula",
     "href": "sessions/week2/2-indices.html#slides-desta-aula",
-    "title": "Medidas clássicas de diversidade local em comunidades",
+    "title": "Semana 02: Medidas clássicas de diversidade local em comunidades",
     "section": "",
     "text": "Tela cheia CLIQUE AQUI e depois pressione ‘f’"
   },
   {
     "objectID": "sessions/week2/2-indices.html#origem-e-fundamentação-matemática",
     "href": "sessions/week2/2-indices.html#origem-e-fundamentação-matemática",
-    "title": "Medidas clássicas de diversidade local em comunidades",
+    "title": "Semana 02: Medidas clássicas de diversidade local em comunidades",
     "section": "2.1 Origem e fundamentação matemática",
     "text": "2.1 Origem e fundamentação matemática\nO índice de Shannon-Wiener (frequentemente chamado apenas de índice de Shannon, \\(H'\\)) foi originalmente desenvolvido pelo matemático Claude Shannon em 1948 no contexto da Teoria da Informação para medir a incerteza contida em uma mensagem codificada. Foi introduzido na ecologia por Robert MacArthur e Edward O. Wilson nos anos 1950.\nA fórmula do índice de Shannon é expressa por:\n\\[H' = - \\sum_{i=1}^{S} p_i \\ln(p_i)\\]\nOnde \\(S\\) é a riqueza total de espécies na comunidade, \\(p_i\\) é a proporção de indivíduos pertencentes à \\(i\\)-ésima espécie (\\(p_i = n_i / N\\)), e \\(\\ln\\) é o logaritmo natural (embora logaritmos na base 2 ou base 10 também possam ser utilizados, exigindo padronização da unidade)."
   },
   {
     "objectID": "sessions/week2/2-indices.html#interpretação-ecológica-e-incerteza-de-amostragem",
     "href": "sessions/week2/2-indices.html#interpretação-ecológica-e-incerteza-de-amostragem",
-    "title": "Medidas clássicas de diversidade local em comunidades",
+    "title": "Semana 02: Medidas clássicas de diversidade local em comunidades",
     "section": "2.2 Interpretação ecológica e incerteza de amostragem",
     "text": "2.2 Interpretação ecológica e incerteza de amostragem\nEm termos ecológicos, o índice de Shannon mede o grau de incerteza em prever a qual espécie pertencerá um indivíduo retirado aleatoriamente da comunidade:\n\nSe a comunidade for dominada por uma única espécie, a incerteza é muito baixa: quase todos os indivíduos sorteados serão dessa espécie dominante, resultando em um valor de \\(H'\\) próximo de zero.\nSe a comunidade contiver muitas espécies com abundâncias muito semelhantes, a incerteza é máxima, elevando o valor de \\(H'\\).\n\nPor incluir a função logarítmica \\(\\ln(p_i)\\), o índice de Shannon atribui um peso moderado às espécies raras. Como o logaritmo de valores pequenos cresce rapidamente em módulo, espécies com baixa abundância relativa contribuem proporcionalmente mais para o valor final de \\(H'\\) do que fariam em métricas baseadas puramente em abundâncias quadráticas."
   },
   {
     "objectID": "sessions/week2/2-indices.html#origem-e-formulação-matemática",
     "href": "sessions/week2/2-indices.html#origem-e-formulação-matemática",
-    "title": "Medidas clássicas de diversidade local em comunidades",
+    "title": "Semana 02: Medidas clássicas de diversidade local em comunidades",
     "section": "3.1 Origem e formulação matemática",
     "text": "3.1 Origem e formulação matemática\nProposto pelo estatístico Edward H. Simpson em 1949, o índice de Simpson (\\(D\\)) adota uma abordagem probabilística direta baseada na teoria de amostragem sem reposição (ou com reposição em grandes populações).\nA fórmula do índice de dominância de Simpson é dada por:\n\\[D = \\sum_{i=1}^{S} p_i^2\\]\nOnde \\(p_i\\) representa a proporção de indivíduos da espécie \\(i\\)."
   },
   {
     "objectID": "sessions/week2/2-indices.html#formas-derivadas-do-índice-de-simpson",
     "href": "sessions/week2/2-indices.html#formas-derivadas-do-índice-de-simpson",
-    "title": "Medidas clássicas de diversidade local em comunidades",
+    "title": "Semana 02: Medidas clássicas de diversidade local em comunidades",
     "section": "3.2 Formas derivadas do índice de Simpson",
     "text": "3.2 Formas derivadas do índice de Simpson\nComo o valor bruto de \\(D\\) aumenta quando a comunidade é dominada por poucas espécies (variando de \\(1/S\\) até 1), os ecólogos utilizam duas transformações para que o índice meça diversidade em vez de dominância:\n\nÍndice de Diversidade de Simpson (\\(1 - D\\)): \\[1 - D = 1 - \\sum_{i=1}^{S} p_i^2\\] Representa a probabilidade de que dois indivíduos retirados aleatoriamente da comunidade pertençam a espécies diferentes. Varia de 0 (monocultura) até um valor próximo de 1 (alta diversidade).\nInverso de Simpson (\\(1 / D\\)): \\[\\text{Inverso} = \\frac{1}{\\sum_{i=1}^{S} p_i^2}\\] Representa o número de espécies muito abundantes e dominantes na comunidade. Varia de 1 até \\(S\\)."
   },
   {
     "objectID": "sessions/week2/2-indices.html#sensibilidade-a-espécies-dominantes",
     "href": "sessions/week2/2-indices.html#sensibilidade-a-espécies-dominantes",
-    "title": "Medidas clássicas de diversidade local em comunidades",
+    "title": "Semana 02: Medidas clássicas de diversidade local em comunidades",
     "section": "3.3 Sensibilidade a espécies dominantes",
     "text": "3.3 Sensibilidade a espécies dominantes\nAo elevar a proporção de cada espécie ao quadrado (\\(p_i^2\\)), o índice de Simpson dá um peso desproporcionalmente maior às espécies abundantes. Espécies raras (onde \\(p_i\\) é pequeno, por exemplo 0,01) passam a ter contribuição irrisória após a elevação ao quadrado (\\(0,01^2 = 0,0001\\)). Por essa razão, o índice de Simpson é extremamente robusto a variações na amostragem de espécies raras e foca na estrutura das espécies dominantes do ecossistema."
   },
   {
     "objectID": "sessions/week2/2-indices.html#o-conceito-de-diversidade-máxima",
     "href": "sessions/week2/2-indices.html#o-conceito-de-diversidade-máxima",
-    "title": "Medidas clássicas de diversidade local em comunidades",
+    "title": "Semana 02: Medidas clássicas de diversidade local em comunidades",
     "section": "4.1 O conceito de diversidade máxima",
     "text": "4.1 O conceito de diversidade máxima\nPara qualquer valor fixo de riqueza (\\(S\\)), a diversidade máxima possível ocorre quando todas as espécies possuem exatamente a mesma abundância relativa (\\(p_i = 1/S\\)). Nesse cenário de equitabilidade perfeita:\n\\[H'_{\\text{máx}} = - \\sum_{i=1}^{S} \\left(\\frac{1}{S}\\right) \\ln\\left(\\frac{1}{S}\\right) = \\ln(S)\\]"
   },
   {
     "objectID": "sessions/week2/2-indices.html#cálculo-e-interpretação-do-índice-de-pielou-j",
     "href": "sessions/week2/2-indices.html#cálculo-e-interpretação-do-índice-de-pielou-j",
-    "title": "Medidas clássicas de diversidade local em comunidades",
+    "title": "Semana 02: Medidas clássicas de diversidade local em comunidades",
     "section": "4.2 Cálculo e interpretação do índice de Pielou (\\(J'\\))",
     "text": "4.2 Cálculo e interpretação do índice de Pielou (\\(J'\\))\nProposto por E. C. Pielou em 1966, o índice de equitabilidade de Pielou (\\(J'\\)) quantifica o quão próxima a distribuição real da comunidade está da distribuição teórica perfeitamente uniforme:\n\\[J' = \\frac{H'}{H'_{\\text{máx}}} = \\frac{H'}{\\ln(S)}\\]\nO índice de Pielou varia estritamente no intervalo entre 0 e 1:\n\n\\(J' \\to 0\\): a comunidade apresenta altíssima dominância, com quase todos os indivíduos concentrados em uma única espécie.\n\\(J' = 1\\): a comunidade possui distribuição perfeitamente uniforme de abundâncias.\n\nO índice de Pielou é fundamental porque permite isolar o efeito da equitabilidade do efeito da riqueza pura, ajudando a responder se a variação na diversidade entre duas áreas é fruto do surgimento de novas espécies ou da alteração no balanço de dominância."
   },
   {
     "objectID": "sessions/week2/2-indices.html#as-limitações-matemáticas-e-ecológicas-dos-índices-clássicos",
     "href": "sessions/week2/2-indices.html#as-limitações-matemáticas-e-ecológicas-dos-índices-clássicos",
-    "title": "Medidas clássicas de diversidade local em comunidades",
+    "title": "Semana 02: Medidas clássicas de diversidade local em comunidades",
     "section": "5.1 As limitações matemáticas e ecológicas dos índices clássicos",
     "text": "5.1 As limitações matemáticas e ecológicas dos índices clássicos\nApesar de sua ampla utilização na literatura científica ao longo das últimas seis décadas, os índices clássicos de diversidade possuem limitações estatísticas e conceituais:\n\nNão-linearidade e unidades não intuitivas: O índice de Shannon expressa diversidade em unidades de entropia (nats ou bits), enquanto o índice de Simpson expressa probabilidades. Nenhum dos dois está em unidades de espécies. Isso significa que uma comunidade com \\(H' = 3,0\\) não é duas vezes mais diversa do que uma comunidade com \\(H' = 1,5\\).\nDependência do esforço de amostragem: Como a riqueza observada \\(S\\) cresce com o tamanho da amostra, o valor de \\(H'_{\\text{máx}} = \\ln(S)\\) altera-se com o esforço amostral, afetando diretamente a comparação da equitabilidade de Pielou (\\(J'\\)) entre áreas com tamanhos de amostra desiguais.\nNecessidade de conversão para Números Efetivos: Essas limitações levaram à reformulação da mensuração de diversidade proposta por Lou Jost em 2006 (família de Números de Hill / Diversidade Verdadeira), tópico que será aprofundado nos módulos seguintes."
   },
