@@ -1,0 +1,305 @@
+---
+title: "Medidas clássicas de diversidade em ecologia"
+subtitle: "Módulo 2: Índices de Diversidade Clássicos"
+author: "Felipe Melo"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: slide
+    embed-resources: true
+---
+
+## A dimensão dupla da biodiversidade local
+
+:::: {.columns}
+::: {.column width="50%"}
+- A diversidade biológica local não se resume à contagem de espécies.
+- **Riqueza ($S$):** número total de espécies presentes.
+- **Equitabilidade ($J'$):** grau de uniformidade da abundância entre espécies.
+- Duas comunidades com a mesma riqueza podem ter estruturas opostas.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 4
+library(ggplot2)
+df <- data.frame(
+  Especie = paste("Esp", 1:5),
+  Comunidade_A = c(90, 3, 3, 2, 2),
+  Comunidade_B = c(20, 20, 20, 20, 20)
+)
+df_long <- tidyr::pivot_longer(df, cols = c("Comunidade_A", "Comunidade_B"), names_to = "Comunidade", values_to = "Abundancia")
+ggplot(df_long, aes(x = Especie, y = Abundancia, fill = Comunidade)) +
+  geom_col(position = "dodge") +
+  scale_fill_manual(values = c("#d95f02", "#1b9e77")) +
+  theme_minimal() +
+  labs(title = "Riqueza igual (S=5), estruturas diferentes", y = "Indivíduos")
+```
+:::
+::::
+
+
+## O conceito de diversidade alfa
+
+:::: {.columns}
+::: {.column width="50%"}
+- Escala local delimitada.
+- Reflete os processos de nicho, amostragem e interações locais.
+- Serve de base para os cálculos de diversidade beta e gama.
+- Necessita de índices sintéticos.
+:::
+
+::: {.column width="50%"}
+![](https://i1.wp.com/xp-song.github.io/posts/biodivercity/assets/alpha-beta-gamma.png?zoom=1.25&w=578&ssl=1){width=150%}
+:::
+::::
+
+## Por que a riqueza isolada é insuficiente?
+
+:::: {.columns}
+::: {.column width="50%"}
+- A riqueza $S$ ignora abundâncias.
+- É altamente sensível ao tamanho da amostra.
+- Omitir a abundância oculta processos de dominância ecológica.
+:::
+
+::: {.column width="50%"}
+![](/img/com_comp.png)
+:::
+::::
+
+
+## Origem do índice de Shannon-Wiener
+
+:::: {.columns}
+::: {.column width="50%"}
+- Mede a incerteza contida em uma sequência de símbolos.
+- Adaptado para ecologia por MacArthur e Wilson nos anos 1950.
+- Avalia a incerteza em prever a espécie de um indivíduo sorteado.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 8
+p <- seq(0.01, 0.99, length.out = 100)
+entropy <- - (p * log(p) + (1-p) * log(1-p))
+df_ent <- data.frame(p = p, Incerteza = entropy)
+ggplot(df_ent, aes(x = p, y = Incerteza)) +
+  geom_line(color = "#2b579a", size = 1.2) +
+  theme_minimal() +
+  labs(title = "Incerteza Máxima em p = 0.5", x = "Proporção de uma espécie (p)", y = "Incerteza (Shannon H')")+
+  theme(axis.text=element_text(size=20),
+        axis.title=element_text(size=20,face="bold"))
+```
+:::
+::::
+
+---
+
+## A equação de Shannon-Wiener
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- $p_i$: proporção da espécie $i$ na comunidade.
+- Usa logaritmo natural ($\ln$)
+- O sinal negativo ajusta o resultado para valores positivos.
+:::
+
+::: {.column width="50%"}
+- Equação formal:
+  $$H' = - \sum_{i=1}^{S} p_i \ln(p_i)$$
+:::
+::::
+
+## Interpretação prática de Shannon
+
+![](https://www.davidzeleny.net/anadat-r/lib/exe/fetch.php/obrazky:bubbles-sad-3in1.png)
+
+## O índice de Simpson e a probabilidade de encontro
+
+:::: {.columns}
+::: {.column width="50%"}
+- Formulado por Edward Simpson em 1949.
+- Mede a probabilidade de dois indivíduos sorteados ao acaso pertencerem à mesma espécie.
+
+:::
+
+::: {.column width="50%"}
+- Fórmula básica de dominância:
+  $$D = \sum_{i=1}^{S} p_i^2$$
+- $D$ varia de $1/S$ até 1 (onde 1 é dominância absoluta).
+:::
+::::
+
+## As formas derivadas de Simpson
+
+:::: {.columns}
+::: {.column width="50%"}
+- **Diversidade ($1 - D$):**
+  $$1 - D = 1 - \sum p_i^2$$
+   Probabilidade de dois indivíduos serem de espécies diferentes.
+ 
+:::
+
+::: {.column width="50%"}
+- **Inverso de Simpson ($1 / D$):**
+  $$\text{Inverso} = \frac{1}{\sum p_i^2}$$
+  Número de espécies muito abundantes.
+:::
+::::
+
+
+
+## Comparação visual: Shannon vs Simpson
+
+![](https://www.davidzeleny.net/anadat-r/lib/exe/fetch.php/obrazky:bubbles-sad-3in1.png)
+
+## Sensibilidade a espécies raras vs dominantes
+
+
+- A escolha do índice define o foco da análise ecológica.
+- Se o objetivo for detectar espécies raras, prefira Shannon ou riqueza.
+- Se o objetivo for avaliar espécies dominantes e estrutura de biomassa, prefira Simpson.
+
+## Conceito de diversidade máxima
+
+:::: {.columns}
+::: {.column width="50%"}
+- Para qualquer riqueza $S$, existe um valor máximo teórico de diversidade.
+- Ocorre quando todas as $S$ espécies têm exatamente a mesma abundância ($p_i = 1/S$).
+- Fórmula do Shannon máximo:
+  $$H'_{\text{máx}} = \ln(S)$$
+- Serve de referência para o cálculo de equitabilidade.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 4
+s_vec <- 1:30
+h_max <- log(s_vec)
+df_hmax <- data.frame(S = s_vec, Hmax = h_max)
+ggplot(df_hmax, aes(x = S, y = Hmax)) +
+  geom_line(color = "#1b9e77", size = 1.2) +
+  theme_minimal() +
+  labs(title = "Crescimento Logarítmico do H' máximo", x = "Riqueza (S)", y = "H' máximo = ln(S)")
+```
+:::
+::::
+
+---
+
+## A equitabilidade de Pielou
+
+:::: {.columns}
+::: {.column width="50%"}
+- Proposta por E. C. Pielou em 1966.
+- Razão entre a diversidade observada e a diversidade máxima possível:
+  $$J' = \frac{H'}{H'_{\text{máx}}} = \frac{H'}{\ln(S)}$$
+- Varia estritamente de 0 (dominância total) a 1 (uniformidade perfeita).
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 4
+j_vals <- data.frame(
+  Comunidade = c("Alta Dominância", "Dominância Média", "Alta Uniformidade"),
+  J = c(0.25, 0.65, 0.95)
+)
+ggplot(j_vals, aes(x = Comunidade, y = J, fill = Comunidade)) +
+  geom_col() +
+  ylim(0, 1) +
+  theme_minimal() +
+  labs(title = "Equitabilidade de Pielou (J')", y = "J' (0 a 1)") +
+  theme(legend.position = "none")
+```
+:::
+::::
+
+---
+
+## Interpretação de Pielou na prática
+
+:::: {.columns}
+::: {.column width="50%"}
+- Permite isolar o efeito da uniformidade do efeito da riqueza.
+- Ajuda a comparar áreas com contagens de espécies diferentes.
+- $J' > 0.8$: comunidade com distribuição de abundâncias muito homogênea.
+- $J' < 0.5$: presença marcante de uma ou poucas espécies hiperdominantes.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 4
+df_pie <- data.frame(
+  Especie = paste("Esp", 1:10),
+  Alta_Equitabilidade = rep(10, 10),
+  Baixa_Equitabilidade = c(82, rep(2, 9))
+)
+df_pie_long <- tidyr::pivot_longer(df_pie, cols = c("Alta_Equitabilidade", "Baixa_Equitabilidade"))
+ggplot(df_pie_long, aes(x = Especie, y = value, fill = name)) +
+  geom_col(position = "dodge") +
+  theme_minimal() +
+  labs(title = "Padrões de Abundância x Pielou", y = "Indivíduos") +
+  theme(axis.text.x = element_blank())
+```
+:::
+::::
+
+---
+
+## Limitações dos índices clássicos
+
+
+- Unidades não intuitivas (nats, probabilidade).
+- Falta de proporcionalidade linear (ex.: $H'=2.0$ não é o dobro de $H'=1.0$).
+- Dependência do tamanho da amostra e do esforço de amostragem.
+- Dificuldade de comunicação.
+
+## Por que entropia não é diversidade?
+
+:::: {.columns}
+::: {.column width="50%"}
+- Shannon ($H'$) mede entropia e incerteza.
+- Dobrar o número de espécies não dobra o valor de $H'$.
+- É necessário converter para números efetivos.
+- Lou Jost (2006) formalizou a transição para Números de Hill.
+:::
+
+::: {.column width="50%"}
+![](https://www.davidzeleny.net/anadat-r/lib/exe/fetch.php/obrazky:diversity-profile-even-mod-high.png)
+:::
+::::
+
+---
+
+## Transição conceitual para números efetivos
+
+:::: {.columns}
+::: {.column width="50%"}
+- A conversão transforma índices clássicos em unidades de espécies.
+- **Exponencial de Shannon:** $q1 = \exp(H')$.
+- **Inverso de Simpson:** $q2 = 1 / D$.
+- Permite comparações percentuais intuitivas e interpretação direta.
+:::
+
+::: {.column width="50%"}
+![](https://www.davidzeleny.net/anadat-r/lib/exe/fetch.php/obrazky:diversity-indices-hill-numbers.jpg)
+:::
+::::
+
+
+## Síntese e conclusões do módulo
+
+
+- A diversidade alfa integra riqueza de espécies e equitabilidade.
+- Shannon ($H'$) mede incerteza e dá peso intermediário a espécies raras.
+- Simpson ($1-D$) mede probabilidade de encontro e foca em dominantes.
+- Pielou ($J'$) isola a uniformidade da riqueza.
+- Na próxima etapa: unificação com os Números de Hill!

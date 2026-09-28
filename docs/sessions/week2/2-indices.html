@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Felipe Melo">
+
+<title>Medidas clássicas de diversidade local em comunidades</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ee3acdd36c54509ec1093f55d866e97f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../img/logo_branco_ufpe.png" alt="UFPE logo" class="navbar-logo light-content">
+    <img src="../../img/logo_branco_ufpe.png" alt="UFPE logo" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Início</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html"> 
+<span class="menu-text">Objetivos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../schedule.html"> 
+<span class="menu-text">Cronograma</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-intro" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">R Intro</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-r-intro">    
+        <li>
+    <a class="dropdown-item" href="../../get-started/1-install.html"><i class="bi bi-emoji-sunglasses-fill" role="img">
+</i> 
+ <span class="dropdown-text">1 - Instalar R &amp; Rstudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/2-basic-intro.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">2 - Introdução Básica ao R e Rstudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/3-syntax.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">3 - Sintaxe &amp; Estrutura de Dados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/4-functions.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">4 - Funções e Comandos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/5-data.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">5 - Dados em R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../workbook/workbook.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">6 - Seu próprio site</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../sessions/index.html"> 
+<span class="menu-text">Todas as Aulas</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../exercises/index.html"> 
+<span class="menu-text">Exercícios</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources/index.html"> 
+<span class="menu-text">Recursos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../assessment.html"> 
+<span class="menu-text">Tipo de Avaliação</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://twitter.com/quarto_pub" title="Quarto Twitter" class="quarto-navigation-tool px-1" aria-label="Quarto Twitter"><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/quarto-dev/quarto-cli" title="Quarto GitHub" class="quarto-navigation-tool px-1" aria-label="Quarto GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://quarto.org/docs/blog/index.xml" title="Quarto Blog RSS" class="quarto-navigation-tool px-1" aria-label="Quarto Blog RSS"><i class="bi bi-rss"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#slides-desta-aula" id="toc-slides-desta-aula" class="nav-link active" data-scroll-target="#slides-desta-aula"><span class="header-section-number">0.1</span> Slides desta aula</a></li>
+  <li><a href="#introdução-ao-problema-da-mensuração-da-diversidade" id="toc-introdução-ao-problema-da-mensuração-da-diversidade" class="nav-link" data-scroll-target="#introdução-ao-problema-da-mensuração-da-diversidade"><span class="header-section-number">1</span> Introdução ao problema da mensuração da diversidade</a></li>
+  <li><a href="#o-índice-de-shannon-wiener-e-a-teoria-da-informação" id="toc-o-índice-de-shannon-wiener-e-a-teoria-da-informação" class="nav-link" data-scroll-target="#o-índice-de-shannon-wiener-e-a-teoria-da-informação"><span class="header-section-number">2</span> O índice de Shannon-Wiener e a teoria da informação</a>
+  <ul class="collapse">
+  <li><a href="#origem-e-fundamentação-matemática" id="toc-origem-e-fundamentação-matemática" class="nav-link" data-scroll-target="#origem-e-fundamentação-matemática"><span class="header-section-number">2.1</span> Origem e fundamentação matemática</a></li>
+  <li><a href="#interpretação-ecológica-e-incerteza-de-amostragem" id="toc-interpretação-ecológica-e-incerteza-de-amostragem" class="nav-link" data-scroll-target="#interpretação-ecológica-e-incerteza-de-amostragem"><span class="header-section-number">2.2</span> Interpretação ecológica e incerteza de amostragem</a></li>
+  </ul></li>
+  <li><a href="#o-índice-de-simpson-e-a-probabilidade-de-intersubjetividade" id="toc-o-índice-de-simpson-e-a-probabilidade-de-intersubjetividade" class="nav-link" data-scroll-target="#o-índice-de-simpson-e-a-probabilidade-de-intersubjetividade"><span class="header-section-number">3</span> O índice de Simpson e a probabilidade de intersubjetividade</a>
+  <ul class="collapse">
+  <li><a href="#origem-e-formulação-matemática" id="toc-origem-e-formulação-matemática" class="nav-link" data-scroll-target="#origem-e-formulação-matemática"><span class="header-section-number">3.1</span> Origem e formulação matemática</a></li>
+  <li><a href="#formas-derivadas-do-índice-de-simpson" id="toc-formas-derivadas-do-índice-de-simpson" class="nav-link" data-scroll-target="#formas-derivadas-do-índice-de-simpson"><span class="header-section-number">3.2</span> Formas derivadas do índice de Simpson</a></li>
+  <li><a href="#sensibilidade-a-espécies-dominantes" id="toc-sensibilidade-a-espécies-dominantes" class="nav-link" data-scroll-target="#sensibilidade-a-espécies-dominantes"><span class="header-section-number">3.3</span> Sensibilidade a espécies dominantes</a></li>
+  </ul></li>
+  <li><a href="#equitabilidade-e-o-índice-de-pielou" id="toc-equitabilidade-e-o-índice-de-pielou" class="nav-link" data-scroll-target="#equitabilidade-e-o-índice-de-pielou"><span class="header-section-number">4</span> Equitabilidade e o índice de Pielou</a>
+  <ul class="collapse">
+  <li><a href="#o-conceito-de-diversidade-máxima" id="toc-o-conceito-de-diversidade-máxima" class="nav-link" data-scroll-target="#o-conceito-de-diversidade-máxima"><span class="header-section-number">4.1</span> O conceito de diversidade máxima</a></li>
+  <li><a href="#cálculo-e-interpretação-do-índice-de-pielou-j" id="toc-cálculo-e-interpretação-do-índice-de-pielou-j" class="nav-link" data-scroll-target="#cálculo-e-interpretação-do-índice-de-pielou-j"><span class="header-section-number">4.2</span> Cálculo e interpretação do índice de Pielou (<span class="math inline">\(J'\)</span>)</a></li>
+  </ul></li>
+  <li><a href="#comparação-sistemática-da-sensibilidade-dos-índices" id="toc-comparação-sistemática-da-sensibilidade-dos-índices" class="nav-link" data-scroll-target="#comparação-sistemática-da-sensibilidade-dos-índices"><span class="header-section-number">5</span> Comparação sistemática da sensibilidade dos índices</a>
+  <ul class="collapse">
+  <li><a href="#as-limitações-matemáticas-e-ecológicas-dos-índices-clássicos" id="toc-as-limitações-matemáticas-e-ecológicas-dos-índices-clássicos" class="nav-link" data-scroll-target="#as-limitações-matemáticas-e-ecológicas-dos-índices-clássicos"><span class="header-section-number">5.1</span> As limitações matemáticas e ecológicas dos índices clássicos</a></li>
+  </ul></li>
+  <li><a href="#conexão-com-a-prática-em-r-e-amostragem-com-lego" id="toc-conexão-com-a-prática-em-r-e-amostragem-com-lego" class="nav-link" data-scroll-target="#conexão-com-a-prática-em-r-e-amostragem-com-lego"><span class="header-section-number">6</span> Conexão com a prática em R e amostragem com LEGO</a></li>
+  <li><a href="#referências-bibliográficas" id="toc-referências-bibliográficas" class="nav-link" data-scroll-target="#referências-bibliográficas"><span class="header-section-number">7</span> Referências bibliográficas</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Medidas clássicas de diversidade local em comunidades</h1>
+<p class="subtitle lead">Módulo 2 — Ecologia de Comunidades</p>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Felipe Melo </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="slides-desta-aula" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="slides-desta-aula"><span class="header-section-number">0.1</span> Slides desta aula</h2>
+<p>Tela cheia <a href="https://fplmelo.github.io/eco_com/slides/2-slides-indices.html#/title-slide">CLIQUE AQUI</a> e depois pressione ‘f’</p>
+<iframe class="slide-deck" src="https://fplmelo.github.io/eco_com/slides/2-slides-indices.html#/title-slide" width="700px" height="500px">
+</iframe>
+</section>
+<section id="introdução-ao-problema-da-mensuração-da-diversidade" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introdução ao problema da mensuração da diversidade</h1>
+<p>A mensuração da biodiversidade em nível local é uma das tarefas centrais da ecologia quantitativa. Embora a riqueza de espécies (o número total de espécies presentes em uma área) seja a métrica mais intuitiva, ela falha em capturar a estrutura interna da comunidade. Duas comunidades podem apresentar exatamente a mesma riqueza de dez espécies, mas possuir estruturas completamente distintas: em uma delas, uma única espécie pode representar 91% de todos os indivíduos, enquanto na outra as dez espécies dividem a abundância de maneira uniforme.</p>
+<p>Para capturar essa complexidade, a ecologia de comunidades desenvolveu índices sintéticos de diversidade alfa (<span class="math inline">\(\alpha\)</span>), que combinam dois componentes fundamentais:</p>
+<ol type="1">
+<li>Riqueza de espécies (<span class="math inline">\(S\)</span>): a dimensão quantitativa do número de táxons.</li>
+<li>Equitabilidade ou uniformidade (<em>evenness</em>): a distribuição relativa dos indivíduos entre essas espécies.</li>
+</ol>
+<p>Neste resumo expandido, exploramos as bases matemáticas, a interpretação biológica, a sensibilidade relativa e as limitações dos três índices clássicos mais utilizados na literatura: o índice de Shannon-Wiener, o índice de Simpson e a equitabilidade de Pielou.</p>
+<hr>
+</section>
+<section id="o-índice-de-shannon-wiener-e-a-teoria-da-informação" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> O índice de Shannon-Wiener e a teoria da informação</h1>
+<section id="origem-e-fundamentação-matemática" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="origem-e-fundamentação-matemática"><span class="header-section-number">2.1</span> Origem e fundamentação matemática</h2>
+<p>O índice de Shannon-Wiener (frequentemente chamado apenas de índice de Shannon, <span class="math inline">\(H'\)</span>) foi originalmente desenvolvido pelo matemático Claude Shannon em 1948 no contexto da Teoria da Informação para medir a incerteza contida em uma mensagem codificada. Foi introduzido na ecologia por Robert MacArthur e Edward O. Wilson nos anos 1950.</p>
+<p>A fórmula do índice de Shannon é expressa por:</p>
+<p><span class="math display">\[H' = - \sum_{i=1}^{S} p_i \ln(p_i)\]</span></p>
+<p>Onde <span class="math inline">\(S\)</span> é a riqueza total de espécies na comunidade, <span class="math inline">\(p_i\)</span> é a proporção de indivíduos pertencentes à <span class="math inline">\(i\)</span>-ésima espécie (<span class="math inline">\(p_i = n_i / N\)</span>), e <span class="math inline">\(\ln\)</span> é o logaritmo natural (embora logaritmos na base 2 ou base 10 também possam ser utilizados, exigindo padronização da unidade).</p>
+</section>
+<section id="interpretação-ecológica-e-incerteza-de-amostragem" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="interpretação-ecológica-e-incerteza-de-amostragem"><span class="header-section-number">2.2</span> Interpretação ecológica e incerteza de amostragem</h2>
+<p>Em termos ecológicos, o índice de Shannon mede o grau de incerteza em prever a qual espécie pertencerá um indivíduo retirado aleatoriamente da comunidade:</p>
+<ul>
+<li>Se a comunidade for dominada por uma única espécie, a incerteza é muito baixa: quase todos os indivíduos sorteados serão dessa espécie dominante, resultando em um valor de <span class="math inline">\(H'\)</span> próximo de zero.</li>
+<li>Se a comunidade contiver muitas espécies com abundâncias muito semelhantes, a incerteza é máxima, elevando o valor de <span class="math inline">\(H'\)</span>.</li>
+</ul>
+<p>Por incluir a função logarítmica <span class="math inline">\(\ln(p_i)\)</span>, o índice de Shannon atribui um peso moderado às espécies raras. Como o logaritmo de valores pequenos cresce rapidamente em módulo, espécies com baixa abundância relativa contribuem proporcionalmente mais para o valor final de <span class="math inline">\(H'\)</span> do que fariam em métricas baseadas puramente em abundâncias quadráticas.</p>
+<hr>
+</section>
+</section>
+<section id="o-índice-de-simpson-e-a-probabilidade-de-intersubjetividade" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> O índice de Simpson e a probabilidade de intersubjetividade</h1>
+<section id="origem-e-formulação-matemática" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="origem-e-formulação-matemática"><span class="header-section-number">3.1</span> Origem e formulação matemática</h2>
+<p>Proposto pelo estatístico Edward H. Simpson em 1949, o índice de Simpson (<span class="math inline">\(D\)</span>) adota uma abordagem probabilística direta baseada na teoria de amostragem sem reposição (ou com reposição em grandes populações).</p>
+<p>A fórmula do índice de dominância de Simpson é dada por:</p>
+<p><span class="math display">\[D = \sum_{i=1}^{S} p_i^2\]</span></p>
+<p>Onde <span class="math inline">\(p_i\)</span> representa a proporção de indivíduos da espécie <span class="math inline">\(i\)</span>.</p>
+</section>
+<section id="formas-derivadas-do-índice-de-simpson" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="formas-derivadas-do-índice-de-simpson"><span class="header-section-number">3.2</span> Formas derivadas do índice de Simpson</h2>
+<p>Como o valor bruto de <span class="math inline">\(D\)</span> aumenta quando a comunidade é dominada por poucas espécies (variando de <span class="math inline">\(1/S\)</span> até 1), os ecólogos utilizam duas transformações para que o índice meça diversidade em vez de dominância:</p>
+<ol type="1">
+<li><p>Índice de Diversidade de Simpson (<span class="math inline">\(1 - D\)</span>): <span class="math display">\[1 - D = 1 - \sum_{i=1}^{S} p_i^2\]</span> Representa a probabilidade de que dois indivíduos retirados aleatoriamente da comunidade pertençam a espécies diferentes. Varia de 0 (monocultura) até um valor próximo de 1 (alta diversidade).</p></li>
+<li><p>Inverso de Simpson (<span class="math inline">\(1 / D\)</span>): <span class="math display">\[\text{Inverso} = \frac{1}{\sum_{i=1}^{S} p_i^2}\]</span> Representa o número de espécies muito abundantes e dominantes na comunidade. Varia de 1 até <span class="math inline">\(S\)</span>.</p></li>
+</ol>
+</section>
+<section id="sensibilidade-a-espécies-dominantes" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sensibilidade-a-espécies-dominantes"><span class="header-section-number">3.3</span> Sensibilidade a espécies dominantes</h2>
+<p>Ao elevar a proporção de cada espécie ao quadrado (<span class="math inline">\(p_i^2\)</span>), o índice de Simpson dá um peso desproporcionalmente maior às espécies abundantes. Espécies raras (onde <span class="math inline">\(p_i\)</span> é pequeno, por exemplo 0,01) passam a ter contribuição irrisória após a elevação ao quadrado (<span class="math inline">\(0,01^2 = 0,0001\)</span>). Por essa razão, o índice de Simpson é extremamente robusto a variações na amostragem de espécies raras e foca na estrutura das espécies dominantes do ecossistema.</p>
+<hr>
+</section>
+</section>
+<section id="equitabilidade-e-o-índice-de-pielou" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Equitabilidade e o índice de Pielou</h1>
+<section id="o-conceito-de-diversidade-máxima" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="o-conceito-de-diversidade-máxima"><span class="header-section-number">4.1</span> O conceito de diversidade máxima</h2>
+<p>Para qualquer valor fixo de riqueza (<span class="math inline">\(S\)</span>), a diversidade máxima possível ocorre quando todas as espécies possuem exatamente a mesma abundância relativa (<span class="math inline">\(p_i = 1/S\)</span>). Nesse cenário de equitabilidade perfeita:</p>
+<p><span class="math display">\[H'_{\text{máx}} = - \sum_{i=1}^{S} \left(\frac{1}{S}\right) \ln\left(\frac{1}{S}\right) = \ln(S)\]</span></p>
+</section>
+<section id="cálculo-e-interpretação-do-índice-de-pielou-j" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="cálculo-e-interpretação-do-índice-de-pielou-j"><span class="header-section-number">4.2</span> Cálculo e interpretação do índice de Pielou (<span class="math inline">\(J'\)</span>)</h2>
+<p>Proposto por E. C. Pielou em 1966, o índice de equitabilidade de Pielou (<span class="math inline">\(J'\)</span>) quantifica o quão próxima a distribuição real da comunidade está da distribuição teórica perfeitamente uniforme:</p>
+<p><span class="math display">\[J' = \frac{H'}{H'_{\text{máx}}} = \frac{H'}{\ln(S)}\]</span></p>
+<p>O índice de Pielou varia estritamente no intervalo entre 0 e 1:</p>
+<ul>
+<li><span class="math inline">\(J' \to 0\)</span>: a comunidade apresenta altíssima dominância, com quase todos os indivíduos concentrados em uma única espécie.</li>
+<li><span class="math inline">\(J' = 1\)</span>: a comunidade possui distribuição perfeitamente uniforme de abundâncias.</li>
+</ul>
+<p>O índice de Pielou é fundamental porque permite isolar o efeito da equitabilidade do efeito da riqueza pura, ajudando a responder se a variação na diversidade entre duas áreas é fruto do surgimento de novas espécies ou da alteração no balanço de dominância.</p>
+<hr>
+</section>
+</section>
+<section id="comparação-sistemática-da-sensibilidade-dos-índices" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Comparação sistemática da sensibilidade dos índices</h1>
+<p>A tabela a seguir sintetiza as propriedades comportamentais dos três índices clássicos diante de variações na estrutura da comunidade:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Métrica</th>
+<th style="text-align: left;">Expressão matemática</th>
+<th style="text-align: left;">Intervalo de variação</th>
+<th style="text-align: left;">Sensibilidade principal</th>
+<th style="text-align: left;">Reação a espécies raras</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Shannon (<span class="math inline">\(H'\)</span>)</td>
+<td style="text-align: left;"><span class="math inline">\(-\sum p_i \ln(p_i)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(0 \le H' \le \ln(S)\)</span></td>
+<td style="text-align: left;">Inerte / Intermediária</td>
+<td style="text-align: left;">Sensível a adições de espécies raras</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Simpson (<span class="math inline">\(1-D\)</span>)</td>
+<td style="text-align: left;"><span class="math inline">\(1 - \sum p_i^2\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(0 \le 1-D \le 1 - 1/S\)</span></td>
+<td style="text-align: left;">Dominância</td>
+<td style="text-align: left;">Insensível a espécies raras</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pielou (<span class="math inline">\(J'\)</span>)</td>
+<td style="text-align: left;"><span class="math inline">\(H' / \ln(S)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(0 \le J' \le 1\)</span></td>
+<td style="text-align: left;">Uniformidade pura</td>
+<td style="text-align: left;">Depende fortemente de <span class="math inline">\(S\)</span> preciso</td>
+</tr>
+</tbody>
+</table>
+<section id="as-limitações-matemáticas-e-ecológicas-dos-índices-clássicos" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="as-limitações-matemáticas-e-ecológicas-dos-índices-clássicos"><span class="header-section-number">5.1</span> As limitações matemáticas e ecológicas dos índices clássicos</h2>
+<p>Apesar de sua ampla utilização na literatura científica ao longo das últimas seis décadas, os índices clássicos de diversidade possuem limitações estatísticas e conceituais:</p>
+<ol type="1">
+<li>Não-linearidade e unidades não intuitivas: O índice de Shannon expressa diversidade em unidades de entropia (nats ou bits), enquanto o índice de Simpson expressa probabilidades. Nenhum dos dois está em unidades de espécies. Isso significa que uma comunidade com <span class="math inline">\(H' = 3,0\)</span> não é duas vezes mais diversa do que uma comunidade com <span class="math inline">\(H' = 1,5\)</span>.</li>
+<li>Dependência do esforço de amostragem: Como a riqueza observada <span class="math inline">\(S\)</span> cresce com o tamanho da amostra, o valor de <span class="math inline">\(H'_{\text{máx}} = \ln(S)\)</span> altera-se com o esforço amostral, afetando diretamente a comparação da equitabilidade de Pielou (<span class="math inline">\(J'\)</span>) entre áreas com tamanhos de amostra desiguais.</li>
+<li>Necessidade de conversão para Números Efetivos: Essas limitações levaram à reformulação da mensuração de diversidade proposta por Lou Jost em 2006 (família de Números de Hill / Diversidade Verdadeira), tópico que será aprofundado nos módulos seguintes.</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="conexão-com-a-prática-em-r-e-amostragem-com-lego" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Conexão com a prática em R e amostragem com LEGO</h1>
+<p>No modelo tátil de amostragem com peças de LEGO (onde cada cor representa uma espécie e o saco de 100 peças representa a comunidade), o comportamento desses índices pode ser visualizado e validado experimentalmente:</p>
+<ul>
+<li>Saco com hiperdominância (Saco A): Apresenta valores baixos de <span class="math inline">\(H'\)</span>, <span class="math inline">\(1-D\)</span> e <span class="math inline">\(J'\)</span>, pois poucas cores concentram a maior parte dos blocos.</li>
+<li>Saco uniforme (Saco C): Apresenta valores máximos de <span class="math inline">\(J'\)</span> próximos de 1,0 e <span class="math inline">\(H'\)</span> muito próximo de <span class="math inline">\(\ln(S)\)</span>.</li>
+<li>Saco com muitas espécies raras (Saco D): Demonstra a divergência entre Shannon e Simpson: o valor de <span class="math inline">\(H'\)</span> sobe significativamente devido ao grande número de cores com apenas 1 ou 2 peças, enquanto o valor de <span class="math inline">\(1-D\)</span> permanece estável, controlado pelas poucas cores moderadamente abundantes.</li>
+</ul>
+<hr>
+</section>
+<section id="referências-bibliográficas" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Referências bibliográficas</h1>
+<ol type="1">
+<li>Begon, M.; Townsend, C. R.; Harper, J. L. <em>Ecologia: de Indivíduos a Ecossistemas</em>. 4ª ed.&nbsp;Porto Alegre: Artmed, 2007.</li>
+<li>Da Silva, F. R.; Gonçalves-Souza, T.; Paterno, G. B.; Provete, D. B.; Vancine, M. H. <em>Análises Ecológicas no R</em>. Recife: Nupeea, 2022.</li>
+<li>Jost, L. <em>Entropy and diversity</em>. Oikos, v. 113, n.&nbsp;2, p.&nbsp;363-375, 2006.</li>
+<li>Keddy, P. A.; Laughlin, D. C. <em>A Framework for Community Ecology: Species Pools, Filters and Traits</em>. Cambridge University Press, 2021.</li>
+<li>Pielou, E. C. <em>The measurement of diversity in different types of biological collections</em>. Journal of Theoretical Biology, v. 13, p.&nbsp;131-144, 1966.</li>
+<li>Ricklefs, R. E.; Relyea, R. <em>A Economia da Natureza</em>. 7ª ed.&nbsp;Rio de Janeiro: Guanabara Koogan, 2016.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2026 by <a href="https://ecoaplic.org/">felipe Melo</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/fplmelo/eco_com">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
