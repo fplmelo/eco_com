@@ -1,76 +1,204 @@
 ---
-title: "Exercício 1: O Mosaico no Lance de Vista"
-subtitle: "Semana 1: Fundamentos de Ecologia de Paisagem"
-author: "Felipe Melo"
-date: last-modified
-format: 
+title: "Módulo 1: Descrição de Comunidades Biológicas — Protocolo LEGO & Análises no R"
+subtitle: "Ecologia de Comunidades: Riqueza, Abundância Relativa, Rank-Abundância e Rarefação"
+author: "Disciplina de Ecologia de Comunidades"
+date: "2026"
+format:
   html:
     toc: true
-lang: pt-br
+    toc-depth: 3
+    number-sections: true
+    # theme: default
+    code-fold: true
 ---
 
-## Objetivo do Exercício
+# INTRODUÇÃO E CONTEXTO PEDAGÓGICO
 
-Este exercício visa aplicar os conceitos fundamentais de **heterogeneidade espacial**, **escala (extensão e grão)** e **percepção do observador** de forma analógica. O objetivo é treinar o olhar ecológico para identificar a estrutura da paisagem sem o auxílio de ferramentas computacionais 
+Neste primeiro módulo prático, utilizaremos blocos de LEGO como um **modelo análogo e tátil de uma comunidade biológica**. Cada comunidade é representada por um saco opaco contendo **100 peças de LEGO**.
 
----
-
-## Materiais Necessários
-
-*   Papel A4 ou caderno de campo.
-*   Lápis, borracha e canetas coloridas (opcional).
-*   Uma régua.
-*   Sua própria percepção e imaginação.
-
----
-
-## Parte 1: Delimitação e Descrição (A Paisagem Humana)
-
-A paisagem pode ser definida como o espaço de terreno que se abrange em um "lance de vista" 
-
-1.  **Ponto de Observação:** Escolha um local com vista ampla (janela, topo de morro ou varanda) 
-
-2.  **Desenho da Extensão:** Em sua folha, desenhe um retângulo que delimite o horizonte visível. Este limite representa a sua **extensão espacial** 
-
-3.  **Mapeamento Estrutural (Modelo PCM):** Identifique e desenhe os elementos presentes no mosaico utilizando as definições clássicas:
-
-   *   **Matriz:** Identifique o elemento dominante que controla a dinâmica da área (ex: pastagem ou área urbana) 
-   
-   *   **Manchas (Patches):** Desenhe as unidades não-lineares que se distinguem do entorno (ex: capões de mata ou afloramentos rochosos)
-    
-   *   **Corredores:** Identifique faixas lineares que conectam as manchas (ex: matas ciliares ou cercas vivas) 
+### Regra de Definição de Espécie (Módulo 1)
+* **Espécie = Cor da Peça.** (Exemplo: Peça Vermelha = *Espécie A*, Peça Amarela = *Espécie B*, Peça Azul = *Espécie C*, etc.).
+* **Indivíduo = Cada peça física de LEGO.**
+* **Forma e tamanho:** Serão **ignorados** neste módulo (serão utilizados como traços funcionais no Módulo 3).
 
 ---
 
-## Parte 2: Escala, Granulação e Transmutação
+# PROTOCOLO PRÁTICO DE SALA (HANDS-ON)
 
-A descrição de um sistema ecológico muda conforme a escala escolhida 
+### Materiais por Grupo (4 Alunos)
+1. **1 Saco Opaco** contendo 100 peças de LEGO com uma estrutura de comunidade pré-configurada.
+2. **Ficha de Campo** (Planilha de Amostragem Sequencial Indivíduo a Indivíduo).
 
-1.  **Definição do Grão:** No seu desenho, identifique o menor elemento que você consegue distinguir claramente (ex: uma única árvore ou uma casa). Este é o seu **grão (resolução)** de observação 
-2.  **Exercício de Transmutação:** 
-    *   Escolha um quadrante do seu desenho (5x5 cm).
-    *   Divida esse quadrante em pequenos quadrados de 1 cm.
-    *   Dentro de cada quadrado de 1 cm, force a "homogeneização": se houver mais floresta que campo, pinte o quadrado todo de verde.
-    *   **Reflexão:** Observe como o aumento do grão faz com que elementos pequenos (manchas menores) desapareçam da sua análise 
+### Passo a Passo do Sorteio Peça a Peça (Individual-based Sampling)
+
+```
++-----------------------------------------------------------------------+
+|                 PROTOCOLO DE SORTEIO PEÇA A PEÇA                      |
++-----------------------------------------------------------------------+
+|  1. MISTURA: Agite suavemente o saco opaco antes de cada sorteio.    |
+|  2. RETIRADA: Sem olhar, retire 1 peça por vez (1 indivíduo).        |
+|  3. REGISTRO SEQUENCIAL: Anote a cor da peça na ordem exata de        |
+|     amostragem (Sorteio nº 1, 2, 3, ..., 100).                        |
+|  4. SEM REPOSIÇÃO: Mantenha a peça fora do saco após o registro.      |
+|  5. TABULAÇÃO FINAL: Conte o total de peças por cor e ordene da       |
+|     cor mais abundante para a menos abundante.                       |
++-----------------------------------------------------------------------+
+```
+
+1. **Amostragem Sequencial:** O sorteio peça a peça simula a caminhada no campo e o encontro sucessivo com indivíduos biológicos em um inventário.
+2. **Construção da Curva Amostral do Grupo:** Ao registrar a sequência exata de aparecimento de novas cores (novas espécies), o grupo constrói manualmente a sua **Curva de Acúmulo de Espécies por Indivíduo**.
 
 ---
 
-## Parte 3: A "Lente Biológica" (Escala de Percepção)
+# EXERCÍCIO APLICADO EM R (`vegan`)
 
-A paisagem não é absoluta; ela existe "segundo um observador"
+Nesta etapa computacional, simularemos **4 Sacos (Comunidades A, B, C e D)** contendo 100 peças cada, porém com **perfis de dominância e equitabilidade contrastantes**:
 
-1.  **Troca de Escala:** Imagine a paisagem sob a ótica de uma espécie focal (ex: uma águia ou uma borboleta) 
-2.  **Redesenho Funcional:** 
-    *   Se você fosse um **gafanhoto**, sua paisagem total teria cerca de 4 $m^2$  
-    *   Escolha um detalhe minúsculo da sua vista original (ex: uma moita de capim) e redesenhe-o ocupando a folha inteira. 
-    *   Nesta nova escala, o que antes era uma "mancha" insignificante agora é o seu mosaico complexo de habitats?
+* **Saco A (Comunidade A - Hiperdominante):** Dominada por uma única cor abundante (70% das peças) e poucas espécies raras.
+* **Saco B (Comunidade B - Dominância Moderada / Log-Normal):** Padrão comum na natureza, com poucas espécies muito abundantes, várias intermediárias e algumas raras.
+* **Saco C (Comunidade C - Alta Equitabilidade / Uniforme):** Todas as espécies presentes possuem abundâncias muito similares (~10% cada).
+* **Saco D (Comunidade D - Alta Riqueza com Muitas Raras / Singletons):** Elevada riqueza total, com presença expressiva de espécies com apenas 1 ou 2 indivíduos (*singletons* e *doubletons*).
+
+```{r setup, message=FALSE, warning=FALSE}
+# Carregar pacotes necessários
+library(vegan)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+# Configuração de semente para reprodutibilidade
+set.seed(42)
+```
+
+## 1. Criação e Visualização dos Dados dos 4 Sacos
+
+```{r dados-sacos}
+# Criando os 4 sacos (100 peças por saco) com vetores de abundância por cor
+# As colunas representam espécies (Cores) e as linhas os Sacos (Comunidades)
+
+comunidades_list <- list(
+  Saco_A = c(Vermelho = 70, Amarelo = 12, Azul = 8, Verde = 5, Preto = 3, Branco = 2),
+  Saco_B = c(Vermelho = 35, Amarelo = 22, Azul = 15, Verde = 10, Preto = 8, Branco = 5, Laranja = 3, Roxo = 2),
+  Saco_C = c(Vermelho = 11, Amarelo = 10, Azul = 10, Verde = 10, Preto = 10, Branco = 10, Laranja = 10, Roxo = 10, Rosa = 10, Cinza = 9),
+  Saco_D = c(Vermelho = 18, Amarelo = 12, Azul = 10, Verde = 8, Preto = 6, Branco = 5, Laranja = 4, Roxo = 4, Rosa = 3, Cinza = 3, 
+             Marrom = 2, Ciano = 2, Magenta = 2, Lima = 2, Oliva = 2, Turquesa = 1, Violeta = 1, Bege = 1, Ocre = 1, Coral = 1, Prata = 1, Ouro = 1)
+)
+
+# Converter lista para data frame matriz comunidade (sites x species)
+matriz_lego <- bind_rows(comunidades_list) %>% 
+  mutate(Comunidade = names(comunidades_list)) %>%
+  select(Comunidade, everything())
+
+# Substituir NAs por 0 (ausência da cor no saco)
+matriz_lego[is.na(matriz_lego)] <- 0
+
+# Exibir a matriz de abundâncias
+print(matriz_lego)
+```
 
 ---
 
-## Questões para Discussão
+## 2. Riqueza Observada ($S$) e Abundância Total ($N$)
 
-Após finalizar os desenhos, responda brevemente:
+```{r riqueza-abundancia}
+# Extrair apenas a matriz numérica
+mat_num <- matriz_lego %>% select(-Comunidade)
+rownames(mat_num) <- matriz_lego$Comunidade
 
-1.  Ao aumentar o tamanho do **grão** (Parte 2), você perdeu informações que seriam vitais para a conservação de alguma espécie específica? 
-2.  Como a **conectividade funcional** mudou entre a sua visão humana e a visão do "gafanhoto"? Elementos que eram barreiras continuam sendo? 
-3.  Você consegue identificar algum **distúrbio** (natural ou antrópico) que foi o responsável por criar essa heterogeneidade que você desenhou? 
+# Calcular N (Abundância Total) e S (Riqueza Observada)
+resumo_comunidades <- data.frame(
+  Comunidade = rownames(mat_num),
+  N_Individuos = rowSums(mat_num),
+  Riqueza_S = specnumber(mat_num)
+)
+
+print(resumo_comunidades)
+```
+
+---
+
+## 3. Análise Detalhada das Curvas de Rank-Abundância (RADs / Whittaker Plots)
+
+As **Curvas de Rank-Abundância (RADs)** ou **Gráficos de Whittaker** ordenam as espécies da mais abundante (Rank 1) para a menos abundante (Rank $S$), plotando a abundância relativa em escala logarítmica ($\log_{10}$).
+
+### Construção Gráfica das RADs
+
+```{r grafico-rad, fig.width=9, fig.height=6}
+# Preparar dados para o ggplot2
+rad_df <- matriz_lego %>%
+  pivot_longer(-Comunidade, names_to = "Especie_Cor", values_to = "Abundancia") %>%
+  filter(Abundancia > 0) %>%
+  group_by(Comunidade) %>%
+  arrange(desc(Abundancia)) %>%
+  mutate(
+    Rank = row_number(),
+    Abundancia_Relativa = Abundancia / sum(Abundancia)
+  )
+
+# Gráfico de Rank-Abundância
+ggplot(rad_df, aes(x = Rank, y = Abundancia_Relativa, color = Comunidade, group = Comunidade)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 3) +
+  scale_y_log10(labels = scales::percent_format(accuracy = 0.1)) +
+  labs(
+    title = "Curvas de Rank-Abundância (Whittaker Plots) — Sacos de LEGO",
+    subtitle = "Comparação dos perfis de dominância e equitabilidade em escala logarítmica",
+    x = "Rank da Espécie (da mais para a menos abundante)",
+    y = "Abundância Relativa (Escala Log10)",
+    color = "Saco / Comunidade"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "top")
+```
+
+
+## 4. Curvas de Rarefação Baseadas em Indivíduos (*Individual-based Rarefaction*)
+
+A **rarefação baseada em indivíduos** padroniza o esforço amostral, permitindo responder: *"Qual seria a riqueza de espécies esperada se tivéssemos amostrado exatamente $N$ indivíduos em cada saco?"*
+
+### A) Cálculo e Gráfico de Rarefação (`rarecurve`)
+
+```{r rarefacao-grafico, fig.width=9, fig.height=6}
+# Cores para o gráfico
+cores <- c("red", "blue", "green3", "purple")
+
+# Curvas de Rarefação para os 4 Sacos
+rarecurve(mat_num, step = 1, sample = 50, col = cores, lwd = 2.5,
+          xlab = "Número de Indivíduos Amostrados (Peças de LEGO)",
+          ylab = "Riqueza de Espécies Esperada (E[S])",
+          main = "Curvas de Rarefação Baseadas em Indivíduos (Sacos A, B, C e D)")
+
+grid()
+legend("bottomright", legend = rownames(mat_num), col = cores, lty = 1, lwd = 2.5)
+```
+
+### B) Riqueza Rarefeita Padronizada ($N = 50$ e $N = 20$ indivíduos)
+
+```{r riqueza-rarefeita}
+# Padronizando para N = 50 e N = 20 peças
+S_rare_50 <- rarefy(mat_num, sample = 50)
+S_rare_20 <- rarefy(mat_num, sample = 20)
+
+comparativo_rarefacao <- data.frame(
+  Comunidade = rownames(mat_num),
+  S_Observado_100 = specnumber(mat_num),
+  S_Rarefeito_50 = round(S_rare_50, 2),
+  S_Rarefeito_20 = round(S_rare_20, 2)
+)
+
+print(comparativo_rarefacao)
+```
+
+---
+
+# QUESTÕES DE INTERPRETAÇÃO ECOLÓGICA E ESTATÍSTICA
+
+Responda às seguintes perguntas com base nos resultados obtidos no R e na experiência do sorteio em sala:
+
+1. **Efeito da Equitabilidade na Curva de Acúmulo:** Compare o formato das curvas de rarefação do **Saco A** (hiperdominante) e do **Saco C** (uniforme). Por que o Saco C atinge a assíntota rapidamente com poucos indivíduos, enquanto o Saco A demora mais para acumular novas espécies, mesmo tendo riqueza similar?
+
+2. **Rank-Abundância e Dominância:** Na curva de Rank-Abundância (Whittaker Plot), o que a **inclinação (slope)** da reta representa biologicamente? Qual dos quatro sacos apresentou a maior inclinação e o que isso indica sobre a distribuição de recursos na comunidade?
+
+4. **Padronização do Esforço Amostral:** Se um pesquisador amostrasse apenas **20 indivíduos** no Saco A e no Saco D, qual seria a riqueza observada em cada um? Por que a comparação direta de riqueza sem rarefação pode levar a conclusões errôneas quando o esforço ou a abundância variam?
+
+5. **Conservação e Espécies Raras:** O **Saco D** apresenta muitas espécies com apenas 1 ou 2 peças (*singletons* e *doubletons*). Em um ecossistema real sob perturbação ambiental, por que comunidades com o perfil do Saco D são consideradas mais vulneráveis à perda acelerada de biodiversidade?

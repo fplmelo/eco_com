@@ -2151,9 +2151,9 @@
   {
     "objectID": "exercises/ex1/ex-1.html",
     "href": "exercises/ex1/ex-1.html",
-    "title": "Exercício 1: O Mosaico no Lance de Vista",
+    "title": "Módulo 1: Descrição de Comunidades Biológicas — Protocolo LEGO & Análises no R",
     "section": "",
-    "text": "Este exercício visa aplicar os conceitos fundamentais de heterogeneidade espacial, escala (extensão e grão) e percepção do observador de forma analógica. O objetivo é treinar o olhar ecológico para identificar a estrutura da paisagem sem o auxílio de ferramentas computacionais"
+    "text": "Neste primeiro módulo prático, utilizaremos blocos de LEGO como um modelo análogo e tátil de uma comunidade biológica. Cada comunidade é representada por um saco opaco contendo 100 peças de LEGO.\n\n\n\nEspécie = Cor da Peça. (Exemplo: Peça Vermelha = Espécie A, Peça Amarela = Espécie B, Peça Azul = Espécie C, etc.).\nIndivíduo = Cada peça física de LEGO.\nForma e tamanho: Serão ignorados neste módulo (serão utilizados como traços funcionais no Módulo 3)."
   },
   {
     "objectID": "exercises/ex1/ex-1.html#objetivo-do-exercício",
@@ -2588,5 +2588,33 @@
     "title": "Bases Teóricas para o estudo de Comunidades Ecológicas",
     "section": "Fim",
     "text": "Fim"
+  },
+  {
+    "objectID": "exercises/ex1/ex-1.html#criação-e-visualização-dos-dados-dos-4-sacos",
+    "href": "exercises/ex1/ex-1.html#criação-e-visualização-dos-dados-dos-4-sacos",
+    "title": "Módulo 1: Descrição de Comunidades Biológicas — Protocolo LEGO & Análises no R",
+    "section": "3.1 1. Criação e Visualização dos Dados dos 4 Sacos",
+    "text": "3.1 1. Criação e Visualização dos Dados dos 4 Sacos\n\n\nCode\n# Criando os 4 sacos (100 peças por saco) com vetores de abundância por cor\n# As colunas representam espécies (Cores) e as linhas os Sacos (Comunidades)\n\ncomunidades_list &lt;- list(\n  Saco_A = c(Vermelho = 70, Amarelo = 12, Azul = 8, Verde = 5, Preto = 3, Branco = 2),\n  Saco_B = c(Vermelho = 35, Amarelo = 22, Azul = 15, Verde = 10, Preto = 8, Branco = 5, Laranja = 3, Roxo = 2),\n  Saco_C = c(Vermelho = 11, Amarelo = 10, Azul = 10, Verde = 10, Preto = 10, Branco = 10, Laranja = 10, Roxo = 10, Rosa = 10, Cinza = 9),\n  Saco_D = c(Vermelho = 18, Amarelo = 12, Azul = 10, Verde = 8, Preto = 6, Branco = 5, Laranja = 4, Roxo = 4, Rosa = 3, Cinza = 3, \n             Marrom = 2, Ciano = 2, Magenta = 2, Lima = 2, Oliva = 2, Turquesa = 1, Violeta = 1, Bege = 1, Ocre = 1, Coral = 1, Prata = 1, Ouro = 1)\n)\n\n# Converter lista para data frame matriz comunidade (sites x species)\nmatriz_lego &lt;- bind_rows(comunidades_list) %&gt;% \n  mutate(Comunidade = names(comunidades_list)) %&gt;%\n  select(Comunidade, everything())\n\n# Substituir NAs por 0 (ausência da cor no saco)\nmatriz_lego[is.na(matriz_lego)] &lt;- 0\n\n# Exibir a matriz de abundâncias\nprint(matriz_lego)\n\n\n# A tibble: 4 × 23\n  Comunidade Vermelho Amarelo  Azul Verde Preto Branco Laranja  Roxo  Rosa Cinza\n  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 Saco_A           70      12     8     5     3      2       0     0     0     0\n2 Saco_B           35      22    15    10     8      5       3     2     0     0\n3 Saco_C           11      10    10    10    10     10      10    10    10     9\n4 Saco_D           18      12    10     8     6      5       4     4     3     3\n# ℹ 12 more variables: Marrom &lt;dbl&gt;, Ciano &lt;dbl&gt;, Magenta &lt;dbl&gt;, Lima &lt;dbl&gt;,\n#   Oliva &lt;dbl&gt;, Turquesa &lt;dbl&gt;, Violeta &lt;dbl&gt;, Bege &lt;dbl&gt;, Ocre &lt;dbl&gt;,\n#   Coral &lt;dbl&gt;, Prata &lt;dbl&gt;, Ouro &lt;dbl&gt;"
+  },
+  {
+    "objectID": "exercises/ex1/ex-1.html#riqueza-observada-s-e-abundância-total-n",
+    "href": "exercises/ex1/ex-1.html#riqueza-observada-s-e-abundância-total-n",
+    "title": "Módulo 1: Descrição de Comunidades Biológicas — Protocolo LEGO & Análises no R",
+    "section": "3.2 2. Riqueza Observada (\\(S\\)) e Abundância Total (\\(N\\))",
+    "text": "3.2 2. Riqueza Observada (\\(S\\)) e Abundância Total (\\(N\\))\n\n\nCode\n# Extrair apenas a matriz numérica\nmat_num &lt;- matriz_lego %&gt;% select(-Comunidade)\nrownames(mat_num) &lt;- matriz_lego$Comunidade\n\n\nWarning: Setting row names on a tibble is deprecated.\n\n\nCode\n# Calcular N (Abundância Total) e S (Riqueza Observada)\nresumo_comunidades &lt;- data.frame(\n  Comunidade = rownames(mat_num),\n  N_Individuos = rowSums(mat_num),\n  Riqueza_S = specnumber(mat_num)\n)\n\nprint(resumo_comunidades)\n\n\n       Comunidade N_Individuos Riqueza_S\nSaco_A     Saco_A          100         6\nSaco_B     Saco_B          100         8\nSaco_C     Saco_C          100        10\nSaco_D     Saco_D           90        22"
+  },
+  {
+    "objectID": "exercises/ex1/ex-1.html#análise-detalhada-das-curvas-de-rank-abundância-rads-whittaker-plots",
+    "href": "exercises/ex1/ex-1.html#análise-detalhada-das-curvas-de-rank-abundância-rads-whittaker-plots",
+    "title": "Módulo 1: Descrição de Comunidades Biológicas — Protocolo LEGO & Análises no R",
+    "section": "3.3 3. Análise Detalhada das Curvas de Rank-Abundância (RADs / Whittaker Plots)",
+    "text": "3.3 3. Análise Detalhada das Curvas de Rank-Abundância (RADs / Whittaker Plots)\nAs Curvas de Rank-Abundância (RADs) ou Gráficos de Whittaker ordenam as espécies da mais abundante (Rank 1) para a menos abundante (Rank \\(S\\)), plotando a abundância relativa em escala logarítmica (\\(\\log_{10}\\)).\n\n3.3.1 Construção Gráfica das RADs\n\n\nCode\n# Preparar dados para o ggplot2\nrad_df &lt;- matriz_lego %&gt;%\n  pivot_longer(-Comunidade, names_to = \"Especie_Cor\", values_to = \"Abundancia\") %&gt;%\n  filter(Abundancia &gt; 0) %&gt;%\n  group_by(Comunidade) %&gt;%\n  arrange(desc(Abundancia)) %&gt;%\n  mutate(\n    Rank = row_number(),\n    Abundancia_Relativa = Abundancia / sum(Abundancia)\n  )\n\n# Gráfico de Rank-Abundância\nggplot(rad_df, aes(x = Rank, y = Abundancia_Relativa, color = Comunidade, group = Comunidade)) +\n  geom_line(linewidth = 1.2) +\n  geom_point(size = 3) +\n  scale_y_log10(labels = scales::percent_format(accuracy = 0.1)) +\n  labs(\n    title = \"Curvas de Rank-Abundância (Whittaker Plots) — Sacos de LEGO\",\n    subtitle = \"Comparação dos perfis de dominância e equitabilidade em escala logarítmica\",\n    x = \"Rank da Espécie (da mais para a menos abundante)\",\n    y = \"Abundância Relativa (Escala Log10)\",\n    color = \"Saco / Comunidade\"\n  ) +\n  theme_minimal(base_size = 14) +\n  theme(legend.position = \"top\")"
+  },
+  {
+    "objectID": "exercises/ex1/ex-1.html#curvas-de-rarefação-baseadas-em-indivíduos-individual-based-rarefaction",
+    "href": "exercises/ex1/ex-1.html#curvas-de-rarefação-baseadas-em-indivíduos-individual-based-rarefaction",
+    "title": "Módulo 1: Descrição de Comunidades Biológicas — Protocolo LEGO & Análises no R",
+    "section": "3.4 4. Curvas de Rarefação Baseadas em Indivíduos (Individual-based Rarefaction)",
+    "text": "3.4 4. Curvas de Rarefação Baseadas em Indivíduos (Individual-based Rarefaction)\nA rarefação baseada em indivíduos padroniza o esforço amostral, permitindo responder: “Qual seria a riqueza de espécies esperada se tivéssemos amostrado exatamente \\(N\\) indivíduos em cada saco?”\n\n3.4.1 A) Cálculo e Gráfico de Rarefação (rarecurve)\n\n\nCode\n# Cores para o gráfico\ncores &lt;- c(\"red\", \"blue\", \"green3\", \"purple\")\n\n# Curvas de Rarefação para os 4 Sacos\nrarecurve(mat_num, step = 1, sample = 50, col = cores, lwd = 2.5,\n          xlab = \"Número de Indivíduos Amostrados (Peças de LEGO)\",\n          ylab = \"Riqueza de Espécies Esperada (E[S])\",\n          main = \"Curvas de Rarefação Baseadas em Indivíduos (Sacos A, B, C e D)\")\n\ngrid()\nlegend(\"bottomright\", legend = rownames(mat_num), col = cores, lty = 1, lwd = 2.5)\n\n\n\n\n\n\n\n\n\n\n\n3.4.2 B) Riqueza Rarefeita Padronizada (\\(N = 50\\) e \\(N = 20\\) indivíduos)\n\n\nCode\n# Padronizando para N = 50 e N = 20 peças\nS_rare_50 &lt;- rarefy(mat_num, sample = 50)\nS_rare_20 &lt;- rarefy(mat_num, sample = 20)\n\ncomparativo_rarefacao &lt;- data.frame(\n  Comunidade = rownames(mat_num),\n  S_Observado_100 = specnumber(mat_num),\n  S_Rarefeito_50 = round(S_rare_50, 2),\n  S_Rarefeito_20 = round(S_rare_20, 2)\n)\n\nprint(comparativo_rarefacao)\n\n\n       Comunidade S_Observado_100 S_Rarefeito_50 S_Rarefeito_20\nSaco_A     Saco_A               6           5.60           4.32\nSaco_B     Saco_B               8           7.60           6.25\nSaco_C     Saco_C              10           9.99           9.04\nSaco_D     Saco_D              22          17.65          11.17"
   }
 ]
