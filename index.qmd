@@ -1,8 +1,8 @@
 ---
-title: "Ecologia de Paisagens"
+title: "Ecologia de Comunidades"
 #title-block-banner: "#9e043d"
-subtitle: "Biodiversidade, pessoas e processos no espaço"
-details: "BO-304 <br> 2026.1 <br> Centro de Biociências <br> Universidade Federal de Pernambuco"
+subtitle: "Biodiversidade e seus descritores"
+details: "BO414 <br> 2026.1 <br> Centro de Biociências <br> Universidade Federal de Pernambuco"
 sidebar: false
 toc: false
 page-layout: article
@@ -29,14 +29,14 @@ course-logo: img/logo_curso.png
 
 -   {{< fa calendar >}} {{< var course.days >}}
 -   {{< fa calendar-alt >}} {{< var course.dates >}}
--   {{< fa clock >}} {{< var course.time >}}
+<!-- -   {{< fa clock >}} {{< var course.time >}} -->
 -   {{< fa location-dot >}} {{< var course.location >}}
 :::
 
 ::: {.g-col-12 .g-col-md-4 .contact-policy}
 ### Recursos on-line
 
-Este curso se baseia em duas principais ferramentas: 1) Este Site e; 2) [Google Sala de Aula](https://classroom.google.com/c/NzkzMjczNzA0MDMz?cjc=womqndmt) onde as tarefas devem ser submetidas.
+Este curso se baseia em duas principais ferramentas: 1) Este Site e; 2) [Google Sala de Aula](https://classroom.google.com/c/Nzk2NTY2OTI3NTE3?cjc=2asmrqgd) onde as tarefas devem ser submetidas.
 
 :::
 ::::::

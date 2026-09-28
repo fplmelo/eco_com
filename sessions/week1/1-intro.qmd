@@ -19,58 +19,168 @@ Foto: Paisagem fragmentada na Usina Serra Grande, Ibateguara, Alagoas.
 
 ## Slides desta aula
 
-Tela cheia [CLIQUE AQUI](https://fplmelo.github.io/ecologia_paisagem/slides/aula1_apresentacao.html#/title-slide) e depois pressione 'f'
+Tela cheia [CLIQUE AQUI](https://fplmelo.github.io/eco_com/slides/1_intro_com.html#/title-slide) e depois pressione 'f'
 
-<iframe class="slide-deck" src="https://fplmelo.github.io/ecologia_paisagem/slides/aula1_apresentacao.html#/title-slide" width="700px" height="500px"></iframe>
+<iframe class="slide-deck" src="https://fplmelo.github.io/eco_com/slides/1_intro_com.html#/title-slide" width="700px" height="500px"></iframe>
 
 
 
-## Introdução às Origens da Ecologia da Paisagem
+# RESUMO EXPANDIDO: SÍNTESE CONCEITUAL EM ECOLOGIA DE COMUNIDADES — POR UMA TEORIA UNIFICADA DA ECOLOGIA
 
-A ecologia da paisagem surgiu como uma disciplina interdisciplinar que combina a **abordagem espacial da geografia com o estudo funcional da ecologia** [[1]](#ref1). O termo foi cunhado em 1939 pelo biogeógrafo alemão **Carl Troll**, que se inspirou no potencial da análise de fotografias aéreas para entender as inter-relações entre o ambiente e os seres vivos [[2]](#ref2), [[3]](#ref3).
-
-Historicamente, a disciplina consolidou-se através de duas frentes principais:
-1.  **Abordagem Geográfica:** Focada no "espaço vivido pelo homem", priorizando o planejamento territorial e a gestão de paisagens culturais [[4]](#ref4).
-2.  **Abordagem Ecológica:** Enfatiza o efeito da estrutura espacial sobre os processos biológicos e a conservação da biodiversidade [[4]](#ref4).
-
-A paisagem é definida como um **mosaico heterogêneo** formado por unidades interativas, onde a heterogeneidade existe para pelo menos um fator, segundo um observador e em uma escala específica [[1]](#ref1).
-
-## O Paradigma Padrão-Processo
-
-O núcleo pedagógico desta disciplina se baseia no paradigma **"padrão-processo"**, que afirma que o arranjo espacial dos elementos de uma paisagem dita significativamente os processos ecológicos que nela ocorrem [[7]](#ref7). 
-
-## O Conceito de Escala: Grão e Extensão
-
-Para quantificar padrões espaciais, é vital distinguir os componentes da escala [[5]](#ref5):
-
-*   **Grão (ou Resolução):** Refere-se à menor unidade de representação espacial (ex: o tamanho do pixel de 10m do satélite Sentinel-2) [[11]](#ref11).
-*   **Extensão:** Indica as dimensões totais da área de estudo ou a "janela" de observação [[11]](#ref11).
-
-À medida que o grão aumenta, detalhes finos da paisagem são perdidos, o que pode causar o **"efeito de transmutação"**, onde as propriedades do sistema mudam conforme a escala de análise [[11]](#ref11).
-
-## Escala de Percepção: A Lente Biológica
-
-A paisagem não é definida apenas por critérios humanos. Cada espécie possui sua própria **"escala de percepção"**, baseada em suas características ecológicas, como tamanho do território e capacidade de locomoção. 
-
-> **Exemplo Prático:** 
-> Enquanto um pequeno inseto percebe a heterogeneidade em manchas de gramíneas em poucos metros quadrados, uma onça-parda (*Puma concolor*) percebe a paisagem em escalas geográficas amplas de quilômetros quadrados [[5]](#ref5), [[6]](#ref6).
-
-Identificar a **"escala de efeito"** — o ponto onde a relação entre a biodiversidade e a paisagem é mais forte — é crucial para modelos precisos de conservação [[13]](#ref13).
+**Disciplina:** Ecologia de Comunidades  
+**Tópico Teórico:** Semana 1 (Aulas 01 e 02)  
+**Nível:** Graduação em Ciências Biológicas, Ecologia e Ciências Ambientais  
 
 ---
 
-## Referências Bibliográficas
+## INTRODUÇÃO E CONTEXTUALIZAÇÃO PEDAGÓGICA
 
-<a name="ref1"></a>[1] [Metzger, J. P. (2001). O que é ecologia de paisagens? *Biota Neotropica*.](https://www.scielo.br/j/bn/a/Jbchd6rjY35PGkY5BHPz63S/?format=html&lang=pt)
+A **Ecologia de Comunidades** ocupa um papel central na hierarquia dos sistemas biológicos, atuando como o elo integrador entre a dinâmica evolutiva de populações individuais e o funcionamento biogeoquímico dos ecossistemas. Entender o que determina a presença, a ausência, a abundância relativa e a coexistência de múltiplas espécies em um determinado local e tempo é um dos maiores desafios da ciência ecológica contemporânea.
 
-<a name="ref2"></a>[2] [Rocha, C. H., et al. (1997). Ecologia da paisagem e manejo sustentável dos recursos naturais. *Geografia*.](https://www.periodicos.rc.biblioteca.unesp.br/index.php/ageteo/article/view/14887/11526)
+A Primeira Semana de aula da disciplina dedica-se à **Fundamentação Teórica e Síntese Conceitual**, fornecendo a base de todo o enfque quantitativo e analítico (desenvolvido ao longo do semestre) que será construído. 
 
-<a name="ref3"></a>[3] [Troll, C. (1971). Landscape ecology (geo-ecology) and biogeocenology: a terminological study. *Geoforum*.](https://doi.org/10.1016/0016-7185(71)90029-7)
+Este resumo expandido sintetiza os três pilares conceituais do tópico:
 
-<a name="ref4"></a>[4] [Rossi, L. C., et al. (2020). Structural Vegetation Index (SVI) as a proxy for habitat complexity. *Remote Sensing in Ecology and Conservation*.](https://doi.org/10.1002/rse2.130)
+1. **O conceito de comunidade ecológica e o debate histórico** entre a visão holística/organísmica de Frederic Clements e a visão individualista/continua de Henry Gleason, consolidada pela análise de gradientes de Robert Whittaker.
 
-<a name="ref7"></a>[7] [Turner, M. G., & Gardner, R. H. (2015). *Landscape Ecology in Theory and Practice*. Springer.](https://doi.org/10.1007/978-1-4939-2794-4); [link alternativo](https://www.andreasaltelli.eu/file/repository/Landscape_Ecology_in_Theory_and_Practice_.pdf)
+2. **A estrutura conceitual moderna de regras de montagem (*community assembly*)** com base nos conceitos de *Species Pools* (reservatórios de espécies), Filtros Ambientais, Filtros Bióticos e Traços Funcionais.
 
-<a name="ref11"></a>[11] [Bissonette, J. A. (1997). Scale-sensitive ecological properties. In: *Wildlife and Landscape Ecology*. Springer.](https://doi.org/10.1007/978-1-4612-1918-7_1)
+3. **O contraste teórico entre a Montagem baseada no Nicho (*Niche-Assembly*)**, discutindo as tentativas de síntese e unificação da ecologia moderna.
 
-<a name="ref13"></a>[13] [Fletcher, R. J., et al. (2023). Addressing the problem of scale that emerges with habitat fragmentation. *Global Ecology and Biogeography*.](https://doi.org/10.1111/geb.13658)
+---
+
+## 1. O CONCEITO DE COMUNIDADE ECOLÓGICA E O DEBATE HISTÓRICO
+
+### 1.1. Definição e Delimitação da Comunidade Ecológica
+Uma **comunidade ecológica** é formalmente definida como o conjunto de populações de diferentes espécies que coexistem e interagem direta ou indiretamente em uma determinada área e intervalo de tempo. Enquanto o estudo no nível do indivíduo foca nas adaptações morfológicas e fisiológicas, e no nível populacional analisa as variações na densidade e estrutura etária, a abordagem de comunidade enfatiza os padrões de **riqueza**, **composição taxonômica** e **abundância relativa** das espécies interativas.
+
+![](https://www.researchgate.net/profile/Mark-Vellend-2/publication/44689600/figure/fig4/AS:306063602667545@1449982657700/The-Theory-of-Community-Ecology-Selection-drift-speciation-and-dispersal-interact-to_W640.jpg)
+
+Na prática científica, delimitar as fronteiras espaciais de uma comunidade é um desafio contínuo. Algumas comunidades possuem limites físicos nítidos e abruptos — denominados **ecótonos** —, gerados por transições geológicas (como afloramentos de solo serpentínico tétrico) ou descontinuidades hídricas (como a borda de um lago). Contudo, a imensa maioria das comunidades terrestres e aquáticas apresenta transições graduais ao longo de gradientes ambientais contínuos (temperatura, umidade, altitude, pH), o que exige que o ecólogo defina espacialmente a escala de seu objeto de estudo.
+
+
+### 1.2. O Paradigma Clementsiano: A Comunidade como Superorganismo
+No início do século XX, o ecólogo vegetal **Frederic Clements** (1916) propôs que as comunidades funcionavam como comunidades **interdependentes**, operando de forma análoga a um **superorganismo**. Segundo a metáfora clementsiana:
+* As diferentes espécies em uma comunidade seriam equivalentes aos órgãos ou partes do corpo de um indivíduo, onde a sobrevivência de cada parte depende do funcionamento harmonioso do todo.
+* As comunidades evoluiriam de forma integrada através de estágios sucessionais previsíveis e determinísticos, culminando em uma comunidade "clímax" estável e bem definida pelo clima regional.
+* Esse modelo previa que a paisagem seria composta por unidades comunitárias **discretas e coesas**, separadas por zonas de transição estreitas e bem demarcadas.
+
+### 1.3. O Paradigma Gleasoniano: A Visão Individualista e o *Continuum*
+Em oposição frontal a Clements, o ecólogo **Henry Gleason** (1926) rejeitou a metáfora do superorganismo e formulou o **conceito individualista de distribuição das espécies**. Gleason argumentava que:
+* As comunidades não são entidades biológicas integradas, mas agrupamentos de espécies cujos limites coincidem temporariamente devido a similaridades em suas exigências fisiológicas e de habitat.
+* A presença ou ausência de uma espécie em determinado local é resultado de sua capacidade individual de dispersão e colonização estocástica (*initial floristic composition*), somada à sua tolerância individual às condições abióticas locais.
+* Consequentemente, a variação da vegetação na paisagem é contínua e fluida, sem fronteiras naturais rígidas entre os agrupamentos taxonômicos.
+
+![](https://bookdown.org/rogerdavidcousens/_book/Fig.9.3.jpg)
+
+### 1.4. A Análise de Gradientes de Robert Whittaker: O Teste Empírico
+O debate entre Clements e Gleason permaneceu essencialmente ideológico por décadas até a realização dos estudos empíricos clássicos de **Robert Whittaker** (1956, 1967) nas *Great Smoky Mountains* (Tennessee/Carolina do Norte) e nas *Santa Catalina Mountains* (Arizona).
+
+Whittaker quantificou a abundância de espécies vegetais ao longo de transectos contínuos que amostravam gradientes de umidade do solo e altitude. Se o paradigma de Clements estivesse correto, os gráficos de abundância revelariam grupos de espécies surgindo e desaparecendo simuntaneamente ao longo do gradiente, delimitando comunidades distintas. No entanto, os dados empíricos de Whittaker demonstraram conclusivamente que:
+1. As espécies aparecem, atingem seu pico de abundância máxima e desaparecem de forma **individual e independente** ao longo dos gradientes ambientais.
+2. Não há limites abruptos coincidindo entre espécies, exceto onde ocorrem descontinuidades físicas severas no substrato abiótico.
+3. O trabalho de Whittaker forneceu a base empírica para rejeitar a hipótese das comunidades interdependentes organísmicas, estabelecendo o conceito de **análise de gradientes** e a visão do *continuum* ecológico como a regra geral na natureza.
+
+![](https://cdn.serc.carleton.edu/images/eslabs/weather/whittaker_biome_classification.webp)
+
+
+---
+
+## 2. ESTRUTURA CONCEITUAL MODERNA: REGRAS DE MONTAGEM (*COMMUNITY ASSEMBLY*)
+
+Com a superação da dicotomia Clements-Gleason, a Ecologia de Comunidades moderna buscou construir um arcabouço preditivo capaz de responder: *Dado um conjunto regional de espécies disponíveis, por que apenas um subconjunto específico consegue colonizar e persistir em um habitat local?*
+
+Para responder a essa pergunta, **Paul Keddy** e **Daniel Laughlin** (2021) consolidaram o modelo causal centrado em **Species Pools, Filtros e Traços Funcionais**.
+
+![](https://www.researchgate.net/profile/Thomas-Galland/publication/347511485/figure/fig4/AS:970825897373700@1608474339801/Graphical-representation-of-community-assembly-rules-based-on-the-filtering-concept-The_W640.jpg)
+
+### 2.1. O Reservatório de Espécies (*Species Pool*)
+O **Pool de Espécies** representa a lista total de peças taxonômicas potencialmente disponíveis para integrar uma comunidade. O tamanho do pool regional ($\gamma$-diversidade) é determinado por processos macroevolutivos e biogeográficos de longa escala temporal, como taxas de especiação, extinção de linhagens e dispersão histórica. O pool regional é a matéria-prima sobre a qual atuarão as regras de montagem.
+
+### 2.2. Filtros Ambientais e Abióticos 
+Nem todas as espécies do pool regional possuem fisiologia adequada para sobreviver às condições abióticas de um habitat específico. Os **filtros ambientais** atuam como barreiras seletivas que eliminam espécies do pool com base nos seus **traços funcionais** (*functional traits*) morfológicos, fisiológicos ou fenológicos.
+* **Exemplos de Filtros Abióticos Severos:** Seca extrema, congelamento/geada, anoxia/hipoxia do solo em áreas úmidas, salinidade, e regime de incêndios.
+* **Convergência Funcional (*Trait Underdispersion*):** Quando um filtro abiótico é dominante e severo (ex.: inundações prolongadas), ele seleciona um conjunto restrito de traços adaptativos (ex.: tecidos parenquimáticos de aênquima para condução de \\(O_2\\)), fazendo com que as espécies coexistentes apresentem alta similaridade funcional.
+
+### 2.3. Filtros Bióticos e Interações
+Uma vez que as espécies superam os filtros abióticos locais, elas enfrentam as interações biológicas:
+* **Competição Interespecífica:** A competição por recursos limitantes força o processo de **limitação de similaridade** (*limiting similarity*). Espécies funcionalmente idênticas competem mais intensamente, levando à exclusão competitiva ou à segregação de nicho.
+* **Divergência Funcional (*Trait Overdispersion*):** Ao contrário dos filtros abióticos (que forçam a convergência de traços), a competição tende a selecionar espécies que diferem em seus traços funcionais para permitir a partição de recursos, gerando hiperdispersão de traços na comunidade local.
+* **Predação, Herbivoria e Patógenos:** Podem atuar reduzindo a densidade dos competidores dominantes e impedindo a exclusão competitiva (conforme a Hipótese de Janzen-Connell).
+
+### 2.4. A Matriz Local / Vetor Comunitário (\\(C\\))
+A **Comunidade Local (\\(C\\))** é a lista resultante (ou vetor de abundâncias \\(C = [p_1, p_2, \dots, p_S]\\)) das espécies que chegaram ao local, sobreviveram aos filtros abióticos, superaram as barreiras bióticas e conseguiram manter populações viáveis (\\(S \ll Q\\), onde \\(S\\) é a riqueza local e \\(Q\\) a riqueza do pool).
+
+### 2.5. As Proposições Teóricas do Poder dos Filtros
+No arcabouço de Keddy e Laughlin, o poder seletivo dos filtros ecológicos é formalizado por meio de **Proposições Teóricas**:
+
+1. **Proposição 1 (Medida de Poder do Filtro):** *Em qualquer habitat, a força/poder de um filtro (\\(P_{filtro}\\)) é medida quantitativamente pela proporção de espécies que ele remove do pool regional (\\(Q\\))*:
+   $$P_{filtro} = 1 - \left( \frac{S}{Q} \right)$$
+   Filtros fracos possuem valores próximos de 0; filtros severos possuem valores próximos de 1.
+
+2. **Proposição 2 (Hierarquia de Filtros):** *Em qualquer habitat, apenas um pequeno número de filtros ambientais dominantes (geralmente de 1 a 3 fatores estruturantes) é responsável por determinar a maioria da composição e riqueza da comunidade*.
+
+3. **Proposição 3 (Generalidade dos Filtros):** *Em uma mesma região biogeográfica, um grande número de espécies é controlado e filtrado simultaneamente pelos mesmos fatores causais abióticos (ex.: hidrologia e geada)*.
+
+4. **Proposição 4 (Relação Traço-Ambiente):** *A força de um filtro através de múltiplos habitats pode ser quantificada pela inclinação da relação estatística entre os traços funcionais das espécies e o gradiente ambiental (CWM — Média Ponderada da Comunidade)*.
+
+5. **Proposição 5 (Montagem Funcional):** *Uma comunidade está funcionalmente montada quando existe pelo menos uma espécie representando cada tipo funcional adaptado ao habitat*.
+
+6. **Proposição 6 (Montagem Completa):** *Uma comunidade está totalmente montada quando cada grupo funcional atinge o número máximo de espécies que podem coexistir em equilíbrio de colonização-extinção local*.
+
+---
+
+## 3. MONTAGEM POR NICHO *VS.* TEORIA NEUTRA DA BIODIVERSIDADE (HUBBELL)
+
+Um dos maiores debates contemporâneos na ecologia de comunidades opõe o determinismo baseado na diferenciação de nicho às dinâmicas estocásticas de neutralidade.
+
+
+
+### 3.1. A Teoria da Montagem por Nicho (*Niche-Assembly Theory*)
+A **Teoria de Montagem por Nicho** assume que as comunidades ecológicas são montagens determinísticas e em equilíbrio de espécies ecologicamente diferenciadas.
+* **Premissa Central:** Cada espécie possui um nicho fundamental único definido por suas tolerâncias abióticas e capacidade competitiva. A coexistência estável de muitas espécies exige partição de recursos (*resource partitioning*) ou diferenciação de micro-habitats.
+* **Processos Estabilizadores:** Mecanismos como a dependência de densidade negativa (NDD — *Negative Density Dependence*), promovida por herbívoros especialistas ou patógenos específicos (Efeito Janzen-Connell), reduzem o sucesso reprodutivo das espécies quando elas se tornam muito abundantes, favorecendo a raridade e mantendo a diversidade.
+
+![](https://media.springernature.com/full/springer-static/image/art%3A10.1007%2Fs11229-023-04278-0/MediaObjects/11229_2023_4278_Fig1_HTML.png)
+
+### 3.2. A Teoria Neutra Unificada da Biodiversidade e Biogeografia (*Dispersal-Assembly*)
+Formulada por **Stephen Hubbell** (2001, 2008), a **Teoria Neutra Unificada** desafiou o dogma do nicho ao propor um modelo puramente estocástico para explicar os padrões de abundância relativa e diversidade de espécies, especialmente em ecossistemas altamente diversos como florestas tropicais.
+
+![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-023-06161-x/MediaObjects/41586_2023_6161_Fig1_HTML.png?as=webp)
+
+#### A) A Premissa da Equivalência Funcional (Simetria *per capita*)
+A hipótese mais radical de Hubbell é que todas as espécies em um mesmo nível trófico em uma metacomunidade são **ecologicamente equivalentes e neutras** em suas taxas *per capita* de nascimento, morte, especiação e dispersão.
+* A neutralidade não afirma que as espécies não diferem morfológica ou geneticamente, mas sim que essas diferenças não resultam em assimetrias ou vantagens de aptidão (*fitness*) médias a longo prazo.
+
+#### B) Deriva Ecológica e Limitação de Dispersão
+Na ausência de vantagens de nicho, a composição local de uma comunidade flutua aleatoriamente através da **Deriva Ecológica** (*ecological drift*). Quando um indivíduo morre na comunidade, sua vaga é aberta para substituição. A probabilidade de uma espécie ocupar essa vaga é estritamente proporcional à sua abundância relativa local e à taxa de imigração de dispersantes vindos da metacomunidade regional.
+
+#### C) Distribuições de Abundância Relativa de Espécies (SADs)
+A Teoria Neutra resolveu uma longa controvérsia matemática sobre Distribuições de Abundâncias de Espécies (SADs):
+1. **Log-série de Fisher:** Ocorre no nível da **metacomunidade regional**, onde a especiação estocástica equilibra a extinção global.
+2. **Distribuição Multinomial Neutra:** Na **comunidade local**, devido à **limitação de dispersão** (as sementes caem predominantemente perto dos pais), o modelo neutro prevê uma curva com modo interno contendo espécies raras de imigrantes, ajustando-se com precisão aos dados empíricos de grandes parcelas permanentes (como a parcela de 50 ha de *Barro Colorado Island* no Panamá e Pasoh na Malásia).
+
+### 3.3. Reconciliação: Mecanismos Igualadores *vs.* Estabilizadores
+A comunidade científica atualmente reconhece que a Teoria Neutra atua como um excelente **modelo nulo**. Conforme formalizado por **Peter Chesson** (2000), a manutenção da biodiversidade resulta da interação de dois tipos de processos:
+
+1. **Mecanismos Igualadores (*Equalizing Mechanisms*):** Processos que minimizam as diferenças de aptidão (*fitness*) média entre espécies (ex.: similaridade em taxas de crescimento). Eles desaceleram a exclusão competitiva e amplificam o papel das dinâmicas neutras e da deriva estocástica.
+2. **Mecanismos Estabilizadores (*Stabilizing Mechanisms*):** Processos baseados em diferenças de nicho que conferem vantagem às espécies quando estão em baixas abundâncias (ex.: dependência de densidade negativa, particionamento de recursos). Eles garantem resiliência contra a extinção estocástica.
+
+Consequentemente, a montagem das comunidades na natureza situa-se ao longo de um gradiente: em ambientes sob estresse abiótico severo ou com forte diferenciação de micro-habitats, as **regras de nicho e filtros funcionais** predominam; em comunidades hiperdiversas e homogêneas com alta limitação de dispersão, as dinâmicas de **deriva e neutralidade** têm papel relevante na estruturação local.
+
+---
+
+## REFERÊNCIAS CITADAS NO TEXTO (GROUNDED IN SOURCES)
+
+1. **Begon, M.; Townsend, C. R.; Harper, J. L.** *Ecologia: de Indivíduos a Ecossistemas*. 4ª ed. Artmed, 2007.
+2. **Chave, J.** *Neutral theory and community ecology*. Ecology Letters, 2004 / In: *Tropical Forest Community Ecology*, Wiley-Blackwell, 2002.
+3. **Chesson, P.** *Mechanisms of maintenance of species diversity*. Annual Review of Ecology and Systematics, 2000.
+4. **Gleason, H. A.** *The individualistic concept of the plant association*. Bulletin of the Torrey Botanical Club, 1926.
+5. **Hubbell, S. P.** *The Unified Neutral Theory of Biodiversity and Biogeography*. Princeton University Press, 2001.
+6. **Hubbell, S. P.** *Approaching ecological complexity from the perspective of symmetric neutral theory*. In: *Tropical Forest Community Ecology*, 2008.
+7. **Jost, L.** *Entropy and diversity*. Oikos, 2006.
+8. **Keddy, P. A.; Laughlin, D. C.** *A Framework for Community Ecology: Species Pools, Filters and Traits*. Cambridge University Press, 2021.
+9. **Ricklefs, R. E.; Relyea, R.** *A Economia da Natureza*. 7ª ed. Guanabara Koogan, 2016.
+10. **Whittaker, R. H.** *Gradient analysis of vegetation*. Biological Reviews, 1967.
+
+---

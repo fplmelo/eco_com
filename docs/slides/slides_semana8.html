@@ -6,11 +6,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.36">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Prof.&nbsp;Felipe Melo">
-  <meta name="dcterms.date" content="2026-05-22">
+  <meta name="dcterms.date" content="2026-09-28">
   <title>Fluxos de Energia e Ciclagem de Nutrientes no Nível de Paisagem</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -21,10 +21,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -204,7 +207,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Prof.&nbsp;Felipe Melo 
+Prof.&nbsp;Felipe Melo
 </div>
         <p class="quarto-title-affiliation">
             Departamento de Botânica · UFPE
@@ -212,7 +215,7 @@ Prof.&nbsp;Felipe Melo
     </div>
 </div>
 
-  <p class="date">2026-05-22</p>
+  <p class="date">2026-09-28</p>
 </section>
 <section id="da-estrutura-para-a-função" class="slide level2">
 <h2>Da estrutura para a função</h2>
@@ -325,12 +328,12 @@ Prof.&nbsp;Felipe Melo
 <section id="medindo-no-r-métricas-de-borda-e-fluxo" class="slide level2">
 <h2>Medindo no R: métricas de borda e fluxo</h2>
 <p><strong>Métricas relevantes para fluxos biogeoquímicos:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">calculate_lsm</span>(paisagem, <span class="at">what =</span> <span class="fu">c</span>(</span>
-<span id="cb1-2"><a></a>  <span class="st">"lsm_l_ed"</span>,    <span class="co"># densidade de borda total</span></span>
-<span id="cb1-3"><a></a>  <span class="st">"lsm_l_shdi"</span>,  <span class="co"># diversidade (heterogeneidade)</span></span>
-<span id="cb1-4"><a></a>  <span class="st">"lsm_c_pland"</span>, <span class="co"># % área por classe (composição)</span></span>
-<span id="cb1-5"><a></a>  <span class="st">"lsm_c_ed"</span>     <span class="co"># borda por classe</span></span>
-<span id="cb1-6"><a></a>))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">calculate_lsm</span>(paisagem, <span class="at">what =</span> <span class="fu">c</span>(</span>
+<span id="cb1-2"><a aria-label="2"></a>  <span class="st">"lsm_l_ed"</span>,    <span class="co"># densidade de borda total</span></span>
+<span id="cb1-3"><a aria-label="3"></a>  <span class="st">"lsm_l_shdi"</span>,  <span class="co"># diversidade (heterogeneidade)</span></span>
+<span id="cb1-4"><a aria-label="4"></a>  <span class="st">"lsm_c_pland"</span>, <span class="co"># % área por classe (composição)</span></span>
+<span id="cb1-5"><a aria-label="5"></a>  <span class="st">"lsm_c_ed"</span>     <span class="co"># borda por classe</span></span>
+<span id="cb1-6"><a aria-label="6"></a>))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Interpretação biogeoquímica:</strong></p>
 <ul>
 <li><code>ed</code> alta em classe agrícola → <strong>↑ interface agrícola-floresta → ↑ risco de exportação de N</strong></li>

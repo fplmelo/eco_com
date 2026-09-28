@@ -6,11 +6,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.36">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Prof.&nbsp;Felipe Melo">
-  <meta name="dcterms.date" content="2026-05-22">
+  <meta name="dcterms.date" content="2026-09-28">
   <title>Metapopulações e Dinâmica de Extinção-Colonização</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -21,10 +21,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -205,7 +208,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Prof.&nbsp;Felipe Melo 
+Prof.&nbsp;Felipe Melo
 </div>
         <p class="quarto-title-affiliation">
             Departamento de Botânica · UFPE
@@ -213,7 +216,7 @@ Prof.&nbsp;Felipe Melo
     </div>
 </div>
 
-  <p class="date">2026-05-22</p>
+  <p class="date">2026-09-28</p>
 </section>
 <section id="section" class="slide level2" data-background-color="#173404">
 <h2></h2>
@@ -502,18 +505,18 @@ Prof.&nbsp;Felipe Melo
 <div class="columns">
 <div class="column" style="width:48%;">
 <p><strong>Simulação numérica do modelo:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>levins <span class="ot">&lt;-</span> <span class="cf">function</span>(p0, c, e, <span class="at">t_max=</span><span class="dv">100</span>) {</span>
-<span id="cb1-2"><a></a>  p <span class="ot">&lt;-</span> p0; dt <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
-<span id="cb1-3"><a></a>  traj <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">t=</span><span class="dv">0</span>, <span class="at">p=</span>p0)</span>
-<span id="cb1-4"><a></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(t_max<span class="sc">/</span>dt)) {</span>
-<span id="cb1-5"><a></a>    dp <span class="ot">&lt;-</span> (c<span class="sc">*</span>p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p) <span class="sc">-</span> e<span class="sc">*</span>p)<span class="sc">*</span>dt</span>
-<span id="cb1-6"><a></a>    p  <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="dv">0</span>, <span class="fu">min</span>(<span class="dv">1</span>, p<span class="sc">+</span>dp))</span>
-<span id="cb1-7"><a></a>    <span class="cf">if</span>(i<span class="sc">%%</span><span class="dv">10</span><span class="sc">==</span><span class="dv">0</span>)</span>
-<span id="cb1-8"><a></a>      traj <span class="ot">&lt;-</span> <span class="fu">rbind</span>(traj,</span>
-<span id="cb1-9"><a></a>        <span class="fu">data.frame</span>(<span class="at">t=</span>i<span class="sc">*</span>dt, <span class="at">p=</span>p))</span>
-<span id="cb1-10"><a></a>  }</span>
-<span id="cb1-11"><a></a>  traj</span>
-<span id="cb1-12"><a></a>}</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a>levins <span class="ot">&lt;-</span> <span class="cf">function</span>(p0, c, e, <span class="at">t_max=</span><span class="dv">100</span>) {</span>
+<span id="cb1-2"><a aria-label="2"></a>  p <span class="ot">&lt;-</span> p0; dt <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
+<span id="cb1-3"><a aria-label="3"></a>  traj <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">t=</span><span class="dv">0</span>, <span class="at">p=</span>p0)</span>
+<span id="cb1-4"><a aria-label="4"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(t_max<span class="sc">/</span>dt)) {</span>
+<span id="cb1-5"><a aria-label="5"></a>    dp <span class="ot">&lt;-</span> (c<span class="sc">*</span>p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p) <span class="sc">-</span> e<span class="sc">*</span>p)<span class="sc">*</span>dt</span>
+<span id="cb1-6"><a aria-label="6"></a>    p  <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="dv">0</span>, <span class="fu">min</span>(<span class="dv">1</span>, p<span class="sc">+</span>dp))</span>
+<span id="cb1-7"><a aria-label="7"></a>    <span class="cf">if</span>(i<span class="sc">%%</span><span class="dv">10</span><span class="sc">==</span><span class="dv">0</span>)</span>
+<span id="cb1-8"><a aria-label="8"></a>      traj <span class="ot">&lt;-</span> <span class="fu">rbind</span>(traj,</span>
+<span id="cb1-9"><a aria-label="9"></a>        <span class="fu">data.frame</span>(<span class="at">t=</span>i<span class="sc">*</span>dt, <span class="at">p=</span>p))</span>
+<span id="cb1-10"><a aria-label="10"></a>  }</span>
+<span id="cb1-11"><a aria-label="11"></a>  traj</span>
+<span id="cb1-12"><a aria-label="12"></a>}</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Três cenários:</strong></p>
 <table class="caption-top">
 <thead>

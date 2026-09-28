@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -40,10 +43,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-70cd855b5bafc2a2bba797fc541c2438.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ee3acdd36c54509ec1093f55d866e97f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/alpine-3.12/buttons.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
@@ -75,6 +78,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -185,11 +217,32 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#slides-desta-aula" id="toc-slides-desta-aula" class="nav-link active" data-scroll-target="#slides-desta-aula">Slides desta aula</a></li>
-  <li><a href="#introdução-às-origens-da-ecologia-da-paisagem" id="toc-introdução-às-origens-da-ecologia-da-paisagem" class="nav-link" data-scroll-target="#introdução-às-origens-da-ecologia-da-paisagem">Introdução às Origens da Ecologia da Paisagem</a></li>
-  <li><a href="#o-paradigma-padrão-processo" id="toc-o-paradigma-padrão-processo" class="nav-link" data-scroll-target="#o-paradigma-padrão-processo">O Paradigma Padrão-Processo</a></li>
-  <li><a href="#o-conceito-de-escala-grão-e-extensão" id="toc-o-conceito-de-escala-grão-e-extensão" class="nav-link" data-scroll-target="#o-conceito-de-escala-grão-e-extensão">O Conceito de Escala: Grão e Extensão</a></li>
-  <li><a href="#escala-de-percepção-a-lente-biológica" id="toc-escala-de-percepção-a-lente-biológica" class="nav-link" data-scroll-target="#escala-de-percepção-a-lente-biológica">Escala de Percepção: A Lente Biológica</a></li>
-  <li><a href="#referências-bibliográficas" id="toc-referências-bibliográficas" class="nav-link" data-scroll-target="#referências-bibliográficas">Referências Bibliográficas</a></li>
+  <li><a href="#resumo-expandido-síntese-conceitual-em-ecologia-de-comunidades-por-uma-teoria-unificada-da-ecologia" id="toc-resumo-expandido-síntese-conceitual-em-ecologia-de-comunidades-por-uma-teoria-unificada-da-ecologia" class="nav-link" data-scroll-target="#resumo-expandido-síntese-conceitual-em-ecologia-de-comunidades-por-uma-teoria-unificada-da-ecologia">RESUMO EXPANDIDO: SÍNTESE CONCEITUAL EM ECOLOGIA DE COMUNIDADES — POR UMA TEORIA UNIFICADA DA ECOLOGIA</a>
+  <ul class="collapse">
+  <li><a href="#introdução-e-contextualização-pedagógica" id="toc-introdução-e-contextualização-pedagógica" class="nav-link" data-scroll-target="#introdução-e-contextualização-pedagógica">INTRODUÇÃO E CONTEXTUALIZAÇÃO PEDAGÓGICA</a></li>
+  <li><a href="#o-conceito-de-comunidade-ecológica-e-o-debate-histórico" id="toc-o-conceito-de-comunidade-ecológica-e-o-debate-histórico" class="nav-link" data-scroll-target="#o-conceito-de-comunidade-ecológica-e-o-debate-histórico">1. O CONCEITO DE COMUNIDADE ECOLÓGICA E O DEBATE HISTÓRICO</a>
+  <ul class="collapse">
+  <li><a href="#definição-e-delimitação-da-comunidade-ecológica" id="toc-definição-e-delimitação-da-comunidade-ecológica" class="nav-link" data-scroll-target="#definição-e-delimitação-da-comunidade-ecológica">1.1. Definição e Delimitação da Comunidade Ecológica</a></li>
+  <li><a href="#o-paradigma-clementsiano-a-comunidade-como-superorganismo" id="toc-o-paradigma-clementsiano-a-comunidade-como-superorganismo" class="nav-link" data-scroll-target="#o-paradigma-clementsiano-a-comunidade-como-superorganismo">1.2. O Paradigma Clementsiano: A Comunidade como Superorganismo</a></li>
+  <li><a href="#o-paradigma-gleasoniano-a-visão-individualista-e-o-continuum" id="toc-o-paradigma-gleasoniano-a-visão-individualista-e-o-continuum" class="nav-link" data-scroll-target="#o-paradigma-gleasoniano-a-visão-individualista-e-o-continuum">1.3. O Paradigma Gleasoniano: A Visão Individualista e o <em>Continuum</em></a></li>
+  <li><a href="#a-análise-de-gradientes-de-robert-whittaker-o-teste-empírico" id="toc-a-análise-de-gradientes-de-robert-whittaker-o-teste-empírico" class="nav-link" data-scroll-target="#a-análise-de-gradientes-de-robert-whittaker-o-teste-empírico">1.4. A Análise de Gradientes de Robert Whittaker: O Teste Empírico</a></li>
+  </ul></li>
+  <li><a href="#estrutura-conceitual-moderna-regras-de-montagem-community-assembly" id="toc-estrutura-conceitual-moderna-regras-de-montagem-community-assembly" class="nav-link" data-scroll-target="#estrutura-conceitual-moderna-regras-de-montagem-community-assembly">2. ESTRUTURA CONCEITUAL MODERNA: REGRAS DE MONTAGEM (<em>COMMUNITY ASSEMBLY</em>)</a>
+  <ul class="collapse">
+  <li><a href="#o-reservatório-de-espécies-species-pool" id="toc-o-reservatório-de-espécies-species-pool" class="nav-link" data-scroll-target="#o-reservatório-de-espécies-species-pool">2.1. O Reservatório de Espécies (<em>Species Pool</em>)</a></li>
+  <li><a href="#filtros-ambientais-e-abióticos" id="toc-filtros-ambientais-e-abióticos" class="nav-link" data-scroll-target="#filtros-ambientais-e-abióticos">2.2. Filtros Ambientais e Abióticos</a></li>
+  <li><a href="#filtros-bióticos-e-interações" id="toc-filtros-bióticos-e-interações" class="nav-link" data-scroll-target="#filtros-bióticos-e-interações">2.3. Filtros Bióticos e Interações</a></li>
+  <li><a href="#a-matriz-local-vetor-comunitário-c" id="toc-a-matriz-local-vetor-comunitário-c" class="nav-link" data-scroll-target="#a-matriz-local-vetor-comunitário-c">2.4. A Matriz Local / Vetor Comunitário (\(C\))</a></li>
+  <li><a href="#as-proposições-teóricas-do-poder-dos-filtros" id="toc-as-proposições-teóricas-do-poder-dos-filtros" class="nav-link" data-scroll-target="#as-proposições-teóricas-do-poder-dos-filtros">2.5. As Proposições Teóricas do Poder dos Filtros</a></li>
+  </ul></li>
+  <li><a href="#montagem-por-nicho-vs.-teoria-neutra-da-biodiversidade-hubbell" id="toc-montagem-por-nicho-vs.-teoria-neutra-da-biodiversidade-hubbell" class="nav-link" data-scroll-target="#montagem-por-nicho-vs.-teoria-neutra-da-biodiversidade-hubbell">3. MONTAGEM POR NICHO <em>VS.</em> TEORIA NEUTRA DA BIODIVERSIDADE (HUBBELL)</a>
+  <ul class="collapse">
+  <li><a href="#a-teoria-da-montagem-por-nicho-niche-assembly-theory" id="toc-a-teoria-da-montagem-por-nicho-niche-assembly-theory" class="nav-link" data-scroll-target="#a-teoria-da-montagem-por-nicho-niche-assembly-theory">3.1. A Teoria da Montagem por Nicho (<em>Niche-Assembly Theory</em>)</a></li>
+  <li><a href="#a-teoria-neutra-unificada-da-biodiversidade-e-biogeografia-dispersal-assembly" id="toc-a-teoria-neutra-unificada-da-biodiversidade-e-biogeografia-dispersal-assembly" class="nav-link" data-scroll-target="#a-teoria-neutra-unificada-da-biodiversidade-e-biogeografia-dispersal-assembly">3.2. A Teoria Neutra Unificada da Biodiversidade e Biogeografia (<em>Dispersal-Assembly</em>)</a></li>
+  <li><a href="#reconciliação-mecanismos-igualadores-vs.-estabilizadores" id="toc-reconciliação-mecanismos-igualadores-vs.-estabilizadores" class="nav-link" data-scroll-target="#reconciliação-mecanismos-igualadores-vs.-estabilizadores">3.3. Reconciliação: Mecanismos Igualadores <em>vs.</em> Estabilizadores</a></li>
+  </ul></li>
+  <li><a href="#referências-citadas-no-texto-grounded-in-sources" id="toc-referências-citadas-no-texto-grounded-in-sources" class="nav-link" data-scroll-target="#referências-citadas-no-texto-grounded-in-sources">REFERÊNCIAS CITADAS NO TEXTO (GROUNDED IN SOURCES)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -226,49 +279,142 @@ ul.task-list li input[type="checkbox"] {
 <p>Foto: Paisagem fragmentada na Usina Serra Grande, Ibateguara, Alagoas.</p>
 <section id="slides-desta-aula" class="level2">
 <h2 class="anchored" data-anchor-id="slides-desta-aula">Slides desta aula</h2>
-<p>Tela cheia <a href="https://fplmelo.github.io/ecologia_paisagem/slides/aula1_apresentacao.html#/title-slide">CLIQUE AQUI</a> e depois pressione ‘f’</p>
-<iframe class="slide-deck" src="https://fplmelo.github.io/ecologia_paisagem/slides/aula1_apresentacao.html#/title-slide" width="700px" height="500px">
+<p>Tela cheia <a href="https://fplmelo.github.io/eco_com/slides/1_intro_com.html#/title-slide">CLIQUE AQUI</a> e depois pressione ‘f’</p>
+<iframe class="slide-deck" src="https://fplmelo.github.io/eco_com/slides/1_intro_com.html#/title-slide" width="700px" height="500px">
 </iframe>
 </section>
-<section id="introdução-às-origens-da-ecologia-da-paisagem" class="level2">
-<h2 class="anchored" data-anchor-id="introdução-às-origens-da-ecologia-da-paisagem">Introdução às Origens da Ecologia da Paisagem</h2>
-<p>A ecologia da paisagem surgiu como uma disciplina interdisciplinar que combina a <strong>abordagem espacial da geografia com o estudo funcional da ecologia</strong> <a href="#ref1">[1]</a>. O termo foi cunhado em 1939 pelo biogeógrafo alemão <strong>Carl Troll</strong>, que se inspirou no potencial da análise de fotografias aéreas para entender as inter-relações entre o ambiente e os seres vivos <a href="#ref2">[2]</a>, <a href="#ref3">[3]</a>.</p>
-<p>Historicamente, a disciplina consolidou-se através de duas frentes principais: 1. <strong>Abordagem Geográfica:</strong> Focada no “espaço vivido pelo homem”, priorizando o planejamento territorial e a gestão de paisagens culturais <a href="#ref4">[4]</a>. 2. <strong>Abordagem Ecológica:</strong> Enfatiza o efeito da estrutura espacial sobre os processos biológicos e a conservação da biodiversidade <a href="#ref4">[4]</a>.</p>
-<p>A paisagem é definida como um <strong>mosaico heterogêneo</strong> formado por unidades interativas, onde a heterogeneidade existe para pelo menos um fator, segundo um observador e em uma escala específica <a href="#ref1">[1]</a>.</p>
-</section>
-<section id="o-paradigma-padrão-processo" class="level2">
-<h2 class="anchored" data-anchor-id="o-paradigma-padrão-processo">O Paradigma Padrão-Processo</h2>
-<p>O núcleo pedagógico desta disciplina se baseia no paradigma <strong>“padrão-processo”</strong>, que afirma que o arranjo espacial dos elementos de uma paisagem dita significativamente os processos ecológicos que nela ocorrem <a href="#ref7">[7]</a>.</p>
-</section>
-<section id="o-conceito-de-escala-grão-e-extensão" class="level2">
-<h2 class="anchored" data-anchor-id="o-conceito-de-escala-grão-e-extensão">O Conceito de Escala: Grão e Extensão</h2>
-<p>Para quantificar padrões espaciais, é vital distinguir os componentes da escala <a href="#ref5">[5]</a>:</p>
-<ul>
-<li><strong>Grão (ou Resolução):</strong> Refere-se à menor unidade de representação espacial (ex: o tamanho do pixel de 10m do satélite Sentinel-2) <a href="#ref11">[11]</a>.</li>
-<li><strong>Extensão:</strong> Indica as dimensões totais da área de estudo ou a “janela” de observação <a href="#ref11">[11]</a>.</li>
-</ul>
-<p>À medida que o grão aumenta, detalhes finos da paisagem são perdidos, o que pode causar o <strong>“efeito de transmutação”</strong>, onde as propriedades do sistema mudam conforme a escala de análise <a href="#ref11">[11]</a>.</p>
-</section>
-<section id="escala-de-percepção-a-lente-biológica" class="level2">
-<h2 class="anchored" data-anchor-id="escala-de-percepção-a-lente-biológica">Escala de Percepção: A Lente Biológica</h2>
-<p>A paisagem não é definida apenas por critérios humanos. Cada espécie possui sua própria <strong>“escala de percepção”</strong>, baseada em suas características ecológicas, como tamanho do território e capacidade de locomoção.</p>
-<blockquote class="blockquote">
-<p><strong>Exemplo Prático:</strong> Enquanto um pequeno inseto percebe a heterogeneidade em manchas de gramíneas em poucos metros quadrados, uma onça-parda (<em>Puma concolor</em>) percebe a paisagem em escalas geográficas amplas de quilômetros quadrados <a href="#ref5">[5]</a>, <a href="#ref6">[6]</a>.</p>
-</blockquote>
-<p>Identificar a <strong>“escala de efeito”</strong> — o ponto onde a relação entre a biodiversidade e a paisagem é mais forte — é crucial para modelos precisos de conservação <a href="#ref13">[13]</a>.</p>
+<section id="resumo-expandido-síntese-conceitual-em-ecologia-de-comunidades-por-uma-teoria-unificada-da-ecologia" class="level1">
+<h1>RESUMO EXPANDIDO: SÍNTESE CONCEITUAL EM ECOLOGIA DE COMUNIDADES — POR UMA TEORIA UNIFICADA DA ECOLOGIA</h1>
+<p><strong>Disciplina:</strong> Ecologia de Comunidades<br>
+<strong>Tópico Teórico:</strong> Semana 1 (Aulas 01 e 02)<br>
+<strong>Nível:</strong> Graduação em Ciências Biológicas, Ecologia e Ciências Ambientais</p>
+<hr>
+<section id="introdução-e-contextualização-pedagógica" class="level2">
+<h2 class="anchored" data-anchor-id="introdução-e-contextualização-pedagógica">INTRODUÇÃO E CONTEXTUALIZAÇÃO PEDAGÓGICA</h2>
+<p>A <strong>Ecologia de Comunidades</strong> ocupa um papel central na hierarquia dos sistemas biológicos, atuando como o elo integrador entre a dinâmica evolutiva de populações individuais e o funcionamento biogeoquímico dos ecossistemas. Entender o que determina a presença, a ausência, a abundância relativa e a coexistência de múltiplas espécies em um determinado local e tempo é um dos maiores desafios da ciência ecológica contemporânea.</p>
+<p>A Primeira Semana de aula da disciplina dedica-se à <strong>Fundamentação Teórica e Síntese Conceitual</strong>, fornecendo a base de todo o enfque quantitativo e analítico (desenvolvido ao longo do semestre) que será construído.</p>
+<p>Este resumo expandido sintetiza os três pilares conceituais do tópico:</p>
+<ol type="1">
+<li><p><strong>O conceito de comunidade ecológica e o debate histórico</strong> entre a visão holística/organísmica de Frederic Clements e a visão individualista/continua de Henry Gleason, consolidada pela análise de gradientes de Robert Whittaker.</p></li>
+<li><p><strong>A estrutura conceitual moderna de regras de montagem (<em>community assembly</em>)</strong> com base nos conceitos de <em>Species Pools</em> (reservatórios de espécies), Filtros Ambientais, Filtros Bióticos e Traços Funcionais.</p></li>
+<li><p><strong>O contraste teórico entre a Montagem baseada no Nicho (<em>Niche-Assembly</em>)</strong>, discutindo as tentativas de síntese e unificação da ecologia moderna.</p></li>
+</ol>
 <hr>
 </section>
-<section id="referências-bibliográficas" class="level2">
-<h2 class="anchored" data-anchor-id="referências-bibliográficas">Referências Bibliográficas</h2>
-<p><a name="ref1"></a>[1] <a href="https://www.scielo.br/j/bn/a/Jbchd6rjY35PGkY5BHPz63S/?format=html&amp;lang=pt">Metzger, J. P. (2001). O que é ecologia de paisagens? <em>Biota Neotropica</em>.</a></p>
-<p><a name="ref2"></a>[2] <a href="https://www.periodicos.rc.biblioteca.unesp.br/index.php/ageteo/article/view/14887/11526">Rocha, C. H., et al.&nbsp;(1997). Ecologia da paisagem e manejo sustentável dos recursos naturais. <em>Geografia</em>.</a></p>
-<p><a name="ref3"></a>[3] <a href="https://doi.org/10.1016/0016-7185(71)90029-7">Troll, C. (1971). Landscape ecology (geo-ecology) and biogeocenology: a terminological study. <em>Geoforum</em>.</a></p>
-<p><a name="ref4"></a>[4] <a href="https://doi.org/10.1002/rse2.130">Rossi, L. C., et al.&nbsp;(2020). Structural Vegetation Index (SVI) as a proxy for habitat complexity. <em>Remote Sensing in Ecology and Conservation</em>.</a></p>
-<p><a name="ref7"></a>[7] <a href="https://doi.org/10.1007/978-1-4939-2794-4">Turner, M. G., &amp; Gardner, R. H. (2015). <em>Landscape Ecology in Theory and Practice</em>. Springer.</a>; <a href="https://www.andreasaltelli.eu/file/repository/Landscape_Ecology_in_Theory_and_Practice_.pdf">link alternativo</a></p>
-<p><a name="ref11"></a>[11] <a href="https://doi.org/10.1007/978-1-4612-1918-7_1">Bissonette, J. A. (1997). Scale-sensitive ecological properties. In: <em>Wildlife and Landscape Ecology</em>. Springer.</a></p>
-<p><a name="ref13"></a>[13] <a href="https://doi.org/10.1111/geb.13658">Fletcher, R. J., et al.&nbsp;(2023). Addressing the problem of scale that emerges with habitat fragmentation. <em>Global Ecology and Biogeography</em>.</a></p>
+<section id="o-conceito-de-comunidade-ecológica-e-o-debate-histórico" class="level2">
+<h2 class="anchored" data-anchor-id="o-conceito-de-comunidade-ecológica-e-o-debate-histórico">1. O CONCEITO DE COMUNIDADE ECOLÓGICA E O DEBATE HISTÓRICO</h2>
+<section id="definição-e-delimitação-da-comunidade-ecológica" class="level3">
+<h3 class="anchored" data-anchor-id="definição-e-delimitação-da-comunidade-ecológica">1.1. Definição e Delimitação da Comunidade Ecológica</h3>
+<p>Uma <strong>comunidade ecológica</strong> é formalmente definida como o conjunto de populações de diferentes espécies que coexistem e interagem direta ou indiretamente em uma determinada área e intervalo de tempo. Enquanto o estudo no nível do indivíduo foca nas adaptações morfológicas e fisiológicas, e no nível populacional analisa as variações na densidade e estrutura etária, a abordagem de comunidade enfatiza os padrões de <strong>riqueza</strong>, <strong>composição taxonômica</strong> e <strong>abundância relativa</strong> das espécies interativas.</p>
+<p><img src="https://www.researchgate.net/profile/Mark-Vellend-2/publication/44689600/figure/fig4/AS:306063602667545@1449982657700/The-Theory-of-Community-Ecology-Selection-drift-speciation-and-dispersal-interact-to_W640.jpg" class="img-fluid"></p>
+<p>Na prática científica, delimitar as fronteiras espaciais de uma comunidade é um desafio contínuo. Algumas comunidades possuem limites físicos nítidos e abruptos — denominados <strong>ecótonos</strong> —, gerados por transições geológicas (como afloramentos de solo serpentínico tétrico) ou descontinuidades hídricas (como a borda de um lago). Contudo, a imensa maioria das comunidades terrestres e aquáticas apresenta transições graduais ao longo de gradientes ambientais contínuos (temperatura, umidade, altitude, pH), o que exige que o ecólogo defina espacialmente a escala de seu objeto de estudo.</p>
+</section>
+<section id="o-paradigma-clementsiano-a-comunidade-como-superorganismo" class="level3">
+<h3 class="anchored" data-anchor-id="o-paradigma-clementsiano-a-comunidade-como-superorganismo">1.2. O Paradigma Clementsiano: A Comunidade como Superorganismo</h3>
+<p>No início do século XX, o ecólogo vegetal <strong>Frederic Clements</strong> (1916) propôs que as comunidades funcionavam como comunidades <strong>interdependentes</strong>, operando de forma análoga a um <strong>superorganismo</strong>. Segundo a metáfora clementsiana: * As diferentes espécies em uma comunidade seriam equivalentes aos órgãos ou partes do corpo de um indivíduo, onde a sobrevivência de cada parte depende do funcionamento harmonioso do todo. * As comunidades evoluiriam de forma integrada através de estágios sucessionais previsíveis e determinísticos, culminando em uma comunidade “clímax” estável e bem definida pelo clima regional. * Esse modelo previa que a paisagem seria composta por unidades comunitárias <strong>discretas e coesas</strong>, separadas por zonas de transição estreitas e bem demarcadas.</p>
+</section>
+<section id="o-paradigma-gleasoniano-a-visão-individualista-e-o-continuum" class="level3">
+<h3 class="anchored" data-anchor-id="o-paradigma-gleasoniano-a-visão-individualista-e-o-continuum">1.3. O Paradigma Gleasoniano: A Visão Individualista e o <em>Continuum</em></h3>
+<p>Em oposição frontal a Clements, o ecólogo <strong>Henry Gleason</strong> (1926) rejeitou a metáfora do superorganismo e formulou o <strong>conceito individualista de distribuição das espécies</strong>. Gleason argumentava que: * As comunidades não são entidades biológicas integradas, mas agrupamentos de espécies cujos limites coincidem temporariamente devido a similaridades em suas exigências fisiológicas e de habitat. * A presença ou ausência de uma espécie em determinado local é resultado de sua capacidade individual de dispersão e colonização estocástica (<em>initial floristic composition</em>), somada à sua tolerância individual às condições abióticas locais. * Consequentemente, a variação da vegetação na paisagem é contínua e fluida, sem fronteiras naturais rígidas entre os agrupamentos taxonômicos.</p>
+<p><img src="https://bookdown.org/rogerdavidcousens/_book/Fig.9.3.jpg" class="img-fluid"></p>
+</section>
+<section id="a-análise-de-gradientes-de-robert-whittaker-o-teste-empírico" class="level3">
+<h3 class="anchored" data-anchor-id="a-análise-de-gradientes-de-robert-whittaker-o-teste-empírico">1.4. A Análise de Gradientes de Robert Whittaker: O Teste Empírico</h3>
+<p>O debate entre Clements e Gleason permaneceu essencialmente ideológico por décadas até a realização dos estudos empíricos clássicos de <strong>Robert Whittaker</strong> (1956, 1967) nas <em>Great Smoky Mountains</em> (Tennessee/Carolina do Norte) e nas <em>Santa Catalina Mountains</em> (Arizona).</p>
+<p>Whittaker quantificou a abundância de espécies vegetais ao longo de transectos contínuos que amostravam gradientes de umidade do solo e altitude. Se o paradigma de Clements estivesse correto, os gráficos de abundância revelariam grupos de espécies surgindo e desaparecendo simuntaneamente ao longo do gradiente, delimitando comunidades distintas. No entanto, os dados empíricos de Whittaker demonstraram conclusivamente que: 1. As espécies aparecem, atingem seu pico de abundância máxima e desaparecem de forma <strong>individual e independente</strong> ao longo dos gradientes ambientais. 2. Não há limites abruptos coincidindo entre espécies, exceto onde ocorrem descontinuidades físicas severas no substrato abiótico. 3. O trabalho de Whittaker forneceu a base empírica para rejeitar a hipótese das comunidades interdependentes organísmicas, estabelecendo o conceito de <strong>análise de gradientes</strong> e a visão do <em>continuum</em> ecológico como a regra geral na natureza.</p>
+<p><img src="https://cdn.serc.carleton.edu/images/eslabs/weather/whittaker_biome_classification.webp" class="img-fluid"></p>
+<hr>
+</section>
+</section>
+<section id="estrutura-conceitual-moderna-regras-de-montagem-community-assembly" class="level2">
+<h2 class="anchored" data-anchor-id="estrutura-conceitual-moderna-regras-de-montagem-community-assembly">2. ESTRUTURA CONCEITUAL MODERNA: REGRAS DE MONTAGEM (<em>COMMUNITY ASSEMBLY</em>)</h2>
+<p>Com a superação da dicotomia Clements-Gleason, a Ecologia de Comunidades moderna buscou construir um arcabouço preditivo capaz de responder: <em>Dado um conjunto regional de espécies disponíveis, por que apenas um subconjunto específico consegue colonizar e persistir em um habitat local?</em></p>
+<p>Para responder a essa pergunta, <strong>Paul Keddy</strong> e <strong>Daniel Laughlin</strong> (2021) consolidaram o modelo causal centrado em <strong>Species Pools, Filtros e Traços Funcionais</strong>.</p>
+<p><img src="https://www.researchgate.net/profile/Thomas-Galland/publication/347511485/figure/fig4/AS:970825897373700@1608474339801/Graphical-representation-of-community-assembly-rules-based-on-the-filtering-concept-The_W640.jpg" class="img-fluid"></p>
+<section id="o-reservatório-de-espécies-species-pool" class="level3">
+<h3 class="anchored" data-anchor-id="o-reservatório-de-espécies-species-pool">2.1. O Reservatório de Espécies (<em>Species Pool</em>)</h3>
+<p>O <strong>Pool de Espécies</strong> representa a lista total de peças taxonômicas potencialmente disponíveis para integrar uma comunidade. O tamanho do pool regional (<span class="math inline">\(\gamma\)</span>-diversidade) é determinado por processos macroevolutivos e biogeográficos de longa escala temporal, como taxas de especiação, extinção de linhagens e dispersão histórica. O pool regional é a matéria-prima sobre a qual atuarão as regras de montagem.</p>
+</section>
+<section id="filtros-ambientais-e-abióticos" class="level3">
+<h3 class="anchored" data-anchor-id="filtros-ambientais-e-abióticos">2.2. Filtros Ambientais e Abióticos</h3>
+<p>Nem todas as espécies do pool regional possuem fisiologia adequada para sobreviver às condições abióticas de um habitat específico. Os <strong>filtros ambientais</strong> atuam como barreiras seletivas que eliminam espécies do pool com base nos seus <strong>traços funcionais</strong> (<em>functional traits</em>) morfológicos, fisiológicos ou fenológicos. * <strong>Exemplos de Filtros Abióticos Severos:</strong> Seca extrema, congelamento/geada, anoxia/hipoxia do solo em áreas úmidas, salinidade, e regime de incêndios. * <strong>Convergência Funcional (<em>Trait Underdispersion</em>):</strong> Quando um filtro abiótico é dominante e severo (ex.: inundações prolongadas), ele seleciona um conjunto restrito de traços adaptativos (ex.: tecidos parenquimáticos de aênquima para condução de \(O_2\)), fazendo com que as espécies coexistentes apresentem alta similaridade funcional.</p>
+</section>
+<section id="filtros-bióticos-e-interações" class="level3">
+<h3 class="anchored" data-anchor-id="filtros-bióticos-e-interações">2.3. Filtros Bióticos e Interações</h3>
+<p>Uma vez que as espécies superam os filtros abióticos locais, elas enfrentam as interações biológicas: * <strong>Competição Interespecífica:</strong> A competição por recursos limitantes força o processo de <strong>limitação de similaridade</strong> (<em>limiting similarity</em>). Espécies funcionalmente idênticas competem mais intensamente, levando à exclusão competitiva ou à segregação de nicho. * <strong>Divergência Funcional (<em>Trait Overdispersion</em>):</strong> Ao contrário dos filtros abióticos (que forçam a convergência de traços), a competição tende a selecionar espécies que diferem em seus traços funcionais para permitir a partição de recursos, gerando hiperdispersão de traços na comunidade local. * <strong>Predação, Herbivoria e Patógenos:</strong> Podem atuar reduzindo a densidade dos competidores dominantes e impedindo a exclusão competitiva (conforme a Hipótese de Janzen-Connell).</p>
+</section>
+<section id="a-matriz-local-vetor-comunitário-c" class="level3">
+<h3 class="anchored" data-anchor-id="a-matriz-local-vetor-comunitário-c">2.4. A Matriz Local / Vetor Comunitário (\(C\))</h3>
+<p>A <strong>Comunidade Local (\(C\))</strong> é a lista resultante (ou vetor de abundâncias \(C = [p_1, p_2, , p_S]\)) das espécies que chegaram ao local, sobreviveram aos filtros abióticos, superaram as barreiras bióticas e conseguiram manter populações viáveis (\(S Q\), onde \(S\) é a riqueza local e \(Q\) a riqueza do pool).</p>
+</section>
+<section id="as-proposições-teóricas-do-poder-dos-filtros" class="level3">
+<h3 class="anchored" data-anchor-id="as-proposições-teóricas-do-poder-dos-filtros">2.5. As Proposições Teóricas do Poder dos Filtros</h3>
+<p>No arcabouço de Keddy e Laughlin, o poder seletivo dos filtros ecológicos é formalizado por meio de <strong>Proposições Teóricas</strong>:</p>
+<ol type="1">
+<li><p><strong>Proposição 1 (Medida de Poder do Filtro):</strong> <em>Em qualquer habitat, a força/poder de um filtro (\(P_{filtro}\)) é medida quantitativamente pela proporção de espécies que ele remove do pool regional (\(Q\))</em>: <span class="math display">\[P_{filtro} = 1 - \left( \frac{S}{Q} \right)\]</span> Filtros fracos possuem valores próximos de 0; filtros severos possuem valores próximos de 1.</p></li>
+<li><p><strong>Proposição 2 (Hierarquia de Filtros):</strong> <em>Em qualquer habitat, apenas um pequeno número de filtros ambientais dominantes (geralmente de 1 a 3 fatores estruturantes) é responsável por determinar a maioria da composição e riqueza da comunidade</em>.</p></li>
+<li><p><strong>Proposição 3 (Generalidade dos Filtros):</strong> <em>Em uma mesma região biogeográfica, um grande número de espécies é controlado e filtrado simultaneamente pelos mesmos fatores causais abióticos (ex.: hidrologia e geada)</em>.</p></li>
+<li><p><strong>Proposição 4 (Relação Traço-Ambiente):</strong> <em>A força de um filtro através de múltiplos habitats pode ser quantificada pela inclinação da relação estatística entre os traços funcionais das espécies e o gradiente ambiental (CWM — Média Ponderada da Comunidade)</em>.</p></li>
+<li><p><strong>Proposição 5 (Montagem Funcional):</strong> <em>Uma comunidade está funcionalmente montada quando existe pelo menos uma espécie representando cada tipo funcional adaptado ao habitat</em>.</p></li>
+<li><p><strong>Proposição 6 (Montagem Completa):</strong> <em>Uma comunidade está totalmente montada quando cada grupo funcional atinge o número máximo de espécies que podem coexistir em equilíbrio de colonização-extinção local</em>.</p></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="montagem-por-nicho-vs.-teoria-neutra-da-biodiversidade-hubbell" class="level2">
+<h2 class="anchored" data-anchor-id="montagem-por-nicho-vs.-teoria-neutra-da-biodiversidade-hubbell">3. MONTAGEM POR NICHO <em>VS.</em> TEORIA NEUTRA DA BIODIVERSIDADE (HUBBELL)</h2>
+<p>Um dos maiores debates contemporâneos na ecologia de comunidades opõe o determinismo baseado na diferenciação de nicho às dinâmicas estocásticas de neutralidade.</p>
+<section id="a-teoria-da-montagem-por-nicho-niche-assembly-theory" class="level3">
+<h3 class="anchored" data-anchor-id="a-teoria-da-montagem-por-nicho-niche-assembly-theory">3.1. A Teoria da Montagem por Nicho (<em>Niche-Assembly Theory</em>)</h3>
+<p>A <strong>Teoria de Montagem por Nicho</strong> assume que as comunidades ecológicas são montagens determinísticas e em equilíbrio de espécies ecologicamente diferenciadas. * <strong>Premissa Central:</strong> Cada espécie possui um nicho fundamental único definido por suas tolerâncias abióticas e capacidade competitiva. A coexistência estável de muitas espécies exige partição de recursos (<em>resource partitioning</em>) ou diferenciação de micro-habitats. * <strong>Processos Estabilizadores:</strong> Mecanismos como a dependência de densidade negativa (NDD — <em>Negative Density Dependence</em>), promovida por herbívoros especialistas ou patógenos específicos (Efeito Janzen-Connell), reduzem o sucesso reprodutivo das espécies quando elas se tornam muito abundantes, favorecendo a raridade e mantendo a diversidade.</p>
+<p><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1007%2Fs11229-023-04278-0/MediaObjects/11229_2023_4278_Fig1_HTML.png" class="img-fluid"></p>
+</section>
+<section id="a-teoria-neutra-unificada-da-biodiversidade-e-biogeografia-dispersal-assembly" class="level3">
+<h3 class="anchored" data-anchor-id="a-teoria-neutra-unificada-da-biodiversidade-e-biogeografia-dispersal-assembly">3.2. A Teoria Neutra Unificada da Biodiversidade e Biogeografia (<em>Dispersal-Assembly</em>)</h3>
+<p>Formulada por <strong>Stephen Hubbell</strong> (2001, 2008), a <strong>Teoria Neutra Unificada</strong> desafiou o dogma do nicho ao propor um modelo puramente estocástico para explicar os padrões de abundância relativa e diversidade de espécies, especialmente em ecossistemas altamente diversos como florestas tropicais.</p>
+<p><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-023-06161-x/MediaObjects/41586_2023_6161_Fig1_HTML.png?as=webp" class="img-fluid"></p>
+<section id="a-a-premissa-da-equivalência-funcional-simetria-per-capita" class="level4">
+<h4 class="anchored" data-anchor-id="a-a-premissa-da-equivalência-funcional-simetria-per-capita">A) A Premissa da Equivalência Funcional (Simetria <em>per capita</em>)</h4>
+<p>A hipótese mais radical de Hubbell é que todas as espécies em um mesmo nível trófico em uma metacomunidade são <strong>ecologicamente equivalentes e neutras</strong> em suas taxas <em>per capita</em> de nascimento, morte, especiação e dispersão. * A neutralidade não afirma que as espécies não diferem morfológica ou geneticamente, mas sim que essas diferenças não resultam em assimetrias ou vantagens de aptidão (<em>fitness</em>) médias a longo prazo.</p>
+</section>
+<section id="b-deriva-ecológica-e-limitação-de-dispersão" class="level4">
+<h4 class="anchored" data-anchor-id="b-deriva-ecológica-e-limitação-de-dispersão">B) Deriva Ecológica e Limitação de Dispersão</h4>
+<p>Na ausência de vantagens de nicho, a composição local de uma comunidade flutua aleatoriamente através da <strong>Deriva Ecológica</strong> (<em>ecological drift</em>). Quando um indivíduo morre na comunidade, sua vaga é aberta para substituição. A probabilidade de uma espécie ocupar essa vaga é estritamente proporcional à sua abundância relativa local e à taxa de imigração de dispersantes vindos da metacomunidade regional.</p>
+</section>
+<section id="c-distribuições-de-abundância-relativa-de-espécies-sads" class="level4">
+<h4 class="anchored" data-anchor-id="c-distribuições-de-abundância-relativa-de-espécies-sads">C) Distribuições de Abundância Relativa de Espécies (SADs)</h4>
+<p>A Teoria Neutra resolveu uma longa controvérsia matemática sobre Distribuições de Abundâncias de Espécies (SADs): 1. <strong>Log-série de Fisher:</strong> Ocorre no nível da <strong>metacomunidade regional</strong>, onde a especiação estocástica equilibra a extinção global. 2. <strong>Distribuição Multinomial Neutra:</strong> Na <strong>comunidade local</strong>, devido à <strong>limitação de dispersão</strong> (as sementes caem predominantemente perto dos pais), o modelo neutro prevê uma curva com modo interno contendo espécies raras de imigrantes, ajustando-se com precisão aos dados empíricos de grandes parcelas permanentes (como a parcela de 50 ha de <em>Barro Colorado Island</em> no Panamá e Pasoh na Malásia).</p>
+</section>
+</section>
+<section id="reconciliação-mecanismos-igualadores-vs.-estabilizadores" class="level3">
+<h3 class="anchored" data-anchor-id="reconciliação-mecanismos-igualadores-vs.-estabilizadores">3.3. Reconciliação: Mecanismos Igualadores <em>vs.</em> Estabilizadores</h3>
+<p>A comunidade científica atualmente reconhece que a Teoria Neutra atua como um excelente <strong>modelo nulo</strong>. Conforme formalizado por <strong>Peter Chesson</strong> (2000), a manutenção da biodiversidade resulta da interação de dois tipos de processos:</p>
+<ol type="1">
+<li><strong>Mecanismos Igualadores (<em>Equalizing Mechanisms</em>):</strong> Processos que minimizam as diferenças de aptidão (<em>fitness</em>) média entre espécies (ex.: similaridade em taxas de crescimento). Eles desaceleram a exclusão competitiva e amplificam o papel das dinâmicas neutras e da deriva estocástica.</li>
+<li><strong>Mecanismos Estabilizadores (<em>Stabilizing Mechanisms</em>):</strong> Processos baseados em diferenças de nicho que conferem vantagem às espécies quando estão em baixas abundâncias (ex.: dependência de densidade negativa, particionamento de recursos). Eles garantem resiliência contra a extinção estocástica.</li>
+</ol>
+<p>Consequentemente, a montagem das comunidades na natureza situa-se ao longo de um gradiente: em ambientes sob estresse abiótico severo ou com forte diferenciação de micro-habitats, as <strong>regras de nicho e filtros funcionais</strong> predominam; em comunidades hiperdiversas e homogêneas com alta limitação de dispersão, as dinâmicas de <strong>deriva e neutralidade</strong> têm papel relevante na estruturação local.</p>
+<hr>
+</section>
+</section>
+<section id="referências-citadas-no-texto-grounded-in-sources" class="level2">
+<h2 class="anchored" data-anchor-id="referências-citadas-no-texto-grounded-in-sources">REFERÊNCIAS CITADAS NO TEXTO (GROUNDED IN SOURCES)</h2>
+<ol type="1">
+<li><strong>Begon, M.; Townsend, C. R.; Harper, J. L.</strong> <em>Ecologia: de Indivíduos a Ecossistemas</em>. 4ª ed.&nbsp;Artmed, 2007.</li>
+<li><strong>Chave, J.</strong> <em>Neutral theory and community ecology</em>. Ecology Letters, 2004 / In: <em>Tropical Forest Community Ecology</em>, Wiley-Blackwell, 2002.</li>
+<li><strong>Chesson, P.</strong> <em>Mechanisms of maintenance of species diversity</em>. Annual Review of Ecology and Systematics, 2000.</li>
+<li><strong>Gleason, H. A.</strong> <em>The individualistic concept of the plant association</em>. Bulletin of the Torrey Botanical Club, 1926.</li>
+<li><strong>Hubbell, S. P.</strong> <em>The Unified Neutral Theory of Biodiversity and Biogeography</em>. Princeton University Press, 2001.</li>
+<li><strong>Hubbell, S. P.</strong> <em>Approaching ecological complexity from the perspective of symmetric neutral theory</em>. In: <em>Tropical Forest Community Ecology</em>, 2008.</li>
+<li><strong>Jost, L.</strong> <em>Entropy and diversity</em>. Oikos, 2006.</li>
+<li><strong>Keddy, P. A.; Laughlin, D. C.</strong> <em>A Framework for Community Ecology: Species Pools, Filters and Traits</em>. Cambridge University Press, 2021.</li>
+<li><strong>Ricklefs, R. E.; Relyea, R.</strong> <em>A Economia da Natureza</em>. 7ª ed.&nbsp;Guanabara Koogan, 2016.</li>
+<li><strong>Whittaker, R. H.</strong> <em>Gradient analysis of vegetation</em>. Biological Reviews, 1967.</li>
+</ol>
+<hr>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -682,7 +828,7 @@ ul.task-list li input[type="checkbox"] {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/fplmelo/ecologia_paisagens">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
+<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/fplmelo/eco_com">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
 </div>
   </div>
 </footer>

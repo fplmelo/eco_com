@@ -12,14 +12,14 @@ instructor:
   appointment_url: "https://outlook.office.com/bookwithme/user/5120d559d4e9484488ccaebe321870d1@ntu.ac.uk/meetingtype/kHsxHM8VN06_wL272nMy1Q2?anonymous&ep=mlink"
   
 course:
-  number: "BO304"
-  semester: "2026.1"
-  days: "Quintas-feiras"
-  time: "10-13h"
-  location: "Sala 5 CB-UFPE"
-  dates: "2026.1"
-  github: "https://github.com/fplmelo/ecologia_paisagens"
-  url: "https://fplmelo.github.io/ecologia_paisagens/"
+  number: " BO414 - ECOLOGIA DE COMUNIDADES"
+  semester: "2026.2"
+  days: "Quartas (16-18h) e Sextas (14-16h)"
+  # time: ""
+  location: "CB Sala 1 (quarta) e CB Sala 9 (sexta)"
+  dates: "2026.2"
+  github: "https://github.com/fplmelo/eco_com"
+  url: "https://fplmelo.github.io/eco_com/"
   copyright_year: "2026"
   
 
