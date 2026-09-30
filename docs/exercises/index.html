@@ -87,9 +87,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author"],
+      searchColumns: ["listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -278,12 +278,6 @@ window.Quarto = {
     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
       <option value="" disabled="" selected="" hidden="">Order By</option>
       <option value="index" data-direction="asc">Default</option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
       <option value="listing-title-sort" data-direction="asc">
         Title
       </option>
@@ -302,10 +296,6 @@ window.Quarto = {
 <tr>
 
 <th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
-</th>
-
-<th>
 <a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
 </th>
 
@@ -317,15 +307,22 @@ window.Quarto = {
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-date-sort="1767225600000" data-listing-file-modified-sort="1790622353439" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1264" data-listing-title-sort="Módulo 1: Descrição de Comunidades Biológicas — Protocolo LEGO &amp; Análises no R" data-listing-filename-sort="ex-1.qmd">
-<td>
-<span class="listing-date">Dec 31, 2025</span>
-</td>
+<tr data-index="0" data-listing-file-modified-sort="1790776634189" data-listing-reading-time-sort="7" data-listing-word-count-sort="1264" data-listing-title-sort="Módulo 1: Descrição de Comunidades Biológicas — Protocolo LEGO &amp; Análises no R" data-listing-filename-sort="ex-1.qmd">
 <td>
 <a href="../exercises/ex1/ex-1.html" class="title listing-title">Módulo 1: Descrição de Comunidades Biológicas — Protocolo LEGO &amp; Análises no R</a>
 </td>
 <td>
-<span class="listing-author">Disciplina de Ecologia de Comunidades</span>
+<span class="listing-author">&nbsp;</span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-listing-file-modified-sort="1790773037555" data-listing-reading-time-sort="8" data-listing-word-count-sort="1457" data-listing-title-sort="Módulo 2- Medidas clássicas de diversidade em ecologia de comunidades" data-listing-filename-sort="ex2.qmd">
+<td>
+<a href="../exercises/ex2/ex2.html" class="title listing-title">Módulo 2- Medidas clássicas de diversidade em ecologia de comunidades</a>
+</td>
+<td>
+<span class="listing-author">&nbsp;</span>
 </td>
 
 </tr>

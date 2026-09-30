@@ -8,111 +8,81 @@ format:
       toc-title-website: "Nesta página"
 ---
 
+## Cronograma das Aulas
 
+### Semana 1: Fundamentação Teórica e Introdução ao R
+* Aula 01 (Teórica): Síntese conceitual em Ecologia de Comunidades
+  * Conteúdo: Conceito de comunidade ecológica; debate histórico (Clements vs. Gleason); gradientes ambientais e ecótonos; species pools, filtros ambientais ($E$) e bióticos na matriz local ($C$); Teoria do Nicho vs. Teoria Neutra.
+  * Leituras: Ricklefs (Cap. 18); Keddy & Laughlin (Cap. 1); Chave (Cap. 9).
 
-## CRONOGRAMA DETALHADO SEMANA A SEMANA (16 AULAS)
-
-### **SEMANA 1: Fundamentação Teórica e Introdução ao R**
-* **Aula 01 — TEÓRICA 1**
-  * **Tópico:** **Síntese conceitual em Ecologia de Comunidades — por uma teoria unificada da Ecologia.**
-  * **Conteúdo:** O que é uma comunidade ecológica? Histórico do debate: a visão comunitária/interdependente do superorganismo (Frederic Clements) *vs.* a visão individualista/independente (Henry Gleason). Gradientes ambientais e ecótonos (Whittaker). Estrutura conceitual moderna: *Species Pools*, Filtros Ambientais (\\(E\\)), Filtros Bióticos e a Matriz Local (\\(C\\)). A ponte entre a Teoria do Nicho e a Teoria Neutra da Biodiversidade (Hubbell).
-  * **Leituras Recomendadas:** Ricklefs (Cap. 18); Keddy & Laughlin (Cap. 1); Chave (em *Tropical Forest Community Ecology*, Cap. 9).
-
-* **Aula 02 — PRÁTICA 1**
-  * **Tópico:** **Introdução ao Ambiente R para Ecologia de Comunidades e Organização de Dados.**
-  * **Atividade Prática:** RStudio Projects, boas práticas de reprodutibilidade e manipulação de planilhas de campo com `tidyverse`. Estruturação da matriz ecológica fundamental (*locais* nas linhas \\(\times\\) *espécies* nas colunas). Tratamento de dados de contagem e cobertura.
-  * **Pacotes R:** `tidyverse` (`dplyr`, `tidyr`), `readr`.
+* Aula 02 (Prática): Introdução ao R e Organização de Dados
+  * Atividade: RStudio Projects, reprodutibilidade e manipulação de dados com `tidyverse`. Estruturação da matriz ecológica (locais $\times$ espécies).
+  * Pacotes: `tidyverse`, `readr`.
 
 ---
 
-### **SEMANA 2: Abundância Relativa e SADs**
-* **Aula 03 — TEÓRICA 2**
-  * **Tópico:** **Descrição de comunidades: composição, riqueza e abundância de espécies de comunidades.**
-  * **Conteúdo:** Conceitos de Riqueza de Espécies (\\(S\\)), Abundância Absoluta e Abundância Relativa (\\(p_i\\)). Padrões de raridade e dominância. Distribuição Log-normal de Preston e a escala \\(\log_2\\). Curvas de Abundância Ranqueada (RADs / *Whittaker Plots*) e o conceito de Uniformidade (*Evenness*).
-  * **Leituras Recomendadas:** Ricklefs (Cap. 18); Begon et al. (Cap. 16/18).
+### Semana 2: Abundância Relativa e SADs
+* Aula 03 (Teórica): Descrição de Comunidades
+  * Conteúdo: Riqueza ($S$), abundância absoluta e relativa ($p_i$); padrões de raridade e dominância; distribuição Log-normal de Preston e escala $\log_2$; Curvas de Abundância Ranqueada (RADs) e uniformidade (*evenness*).
+  * Leituras: Ricklefs (Cap. 18); Begon et al. (Cap. 16/18).
 
-* **Aula 04 — PRÁTICA 2**
-  * **Tópico:** **Modelagem de Distribuições de Abundância de Espécies (SADs) e RADs no R.**
-  * **Atividade Prática:** Construção de Curvas de Abundância Ranqueada e ajuste de modelos teóricos de abundância de espécies (*Log-normal*, *Log-série*, *Broken-stick*, *Preston*) via `radfit()`. Comparação do ajuste de modelos por AIC.
-  * **Pacotes R:** `vegan`, `ggplot2`.
+* Aula 04 (Prática): Modelagem de SADs e RADs no R
+  * Atividade: Construção de RADs e ajuste de modelos teóricos (Log-normal, Log-série, Broken-stick, Preston) com `radfit()`. Comparação via AIC.
+  * Pacotes: `vegan`, `ggplot2`.
 
 ---
 
-### **SEMANA 3: Medidas Tradicionais de Diversidade e Padrões Espaciais**
-* **Aula 05 — TEÓRICA 3**
-  * **Tópico:** **Medidas e padrões de diversidade em comunidades.**
-  * **Conteúdo:** O conceito multidimensional de biodiversidade. Medidas tradicionais de diversidade local (\\(\alpha\\)): Índice de Shannon-Wiener (\\(H'\\)), Índice de Simpson (\\(D\\) e \\(1-D\\)) e Equitabilidade de Pielou (\\(J'\\)). Limitações estatísticas e não-linearidade dos índices clássicos.
-  * **Leituras Recomendadas:** Ricklefs (Cap. 18); Da Silva et al. (Cap. 12).
+### Semana 3: Medidas Tradicionais de Diversidade e Padrões Espaciais
+* Aula 05 (Teórica): Medidas de Diversidade Local ($\alpha$)
+  * Conteúdo: Conceito multidimensional de biodiversidade; índices clássicos: Shannon-Wiener ($H'$), Simpson ($D$) e Equitabilidade de Pielou ($J'$); limitações e não-linearidade.
+  * Leituras: Ricklefs (Cap. 18); Da Silva et al. (Cap. 12).
 
-* **Aula 06 — TEÓRICA 4**
-  * **Tópico:** **Padrões na riqueza de espécies; Padrões das comunidades no espaço e no tempo.**
-  * **Conteúdo:** Relações Espécie-Área (\\(S = c A^z\\)). Relação Produtividade-Riqueza e curva em corcunda (*hump-shaped*). Heterogeneidade do habitat (MacArthur & MacArthur). Hipótese da Perturbação Intermediária (IDH). Sucessão ecológica primária e secundária.
-  * **Leituras Recomendadas:** Ricklefs (Cap. 18 e 22).
+* Aula 06 (Teórica): Padrões Espaciais e Temporais da Riqueza
+  * Conteúdo: Relação Espécie-Área ($S = c A^z$); relação produtividade-riqueza; heterogeneidade de habitat; Hipótese da Perturbação Intermediária (IDH); sucessão ecológica.
+  * Leituras: Ricklefs (Cap. 18 e 22).
 
 ---
 
-### **SEMANA 4: Amostragem de Campo e Estimadores de Riqueza**
-* **Aula 07 — AULA DE CAMPO**
-  * **Tópico:** **Amostragem Quantitativa de Comunidades em Diferentes Ambientes.**
-  * **Atividade Prática:** Levantamento prático para amostragem de dados reais de comunidade ecológica (ex.: comparação entre área conservada *vs.* alterada). Aplicação de parcelas/transectos quantitativos e medição de variáveis ambientais.
-
-* **Aula 08 — PRÁTICA 3**
-  * **Tópico:** **Curvas de Acumulação de Espécies, Rarefação e Estimadores Não-Paramétricos de Riqueza.**
-  * **Atividade Prática:** Padronização do esforço amostral por indivíduos e amostragem (rarefação). Estimativa da riqueza real não observada com estimadores não-paramétricos (Chao 1, Chao 2 e Jackknife).
-  * **Pacotes R:** `vegan` (`specaccum`, `rarefy`), `iNEXT`.
+### Semana 4: Aula de Campo 
 
 ---
 
-### **SEMANA 5: Dimensões da Biodiversidade**
-* **Aula 09 — TEÓRICA 5**
-  * **Tópico:** **Diversidade taxonômica, funcional e filogenética.**
-  * **Conteúdo:** Além da equivalência taxonômica. Traços funcionais (*traits*) e Média Ponderada da Comunidade (CWM). Métricas funcionais: Riqueza (FRic), Uniformidade (FEve) e Divergência (FDiv). Diversidade Filogenética de Faith (PD). Estrutura filogenética: MPD/NRI e MNTD/NTI.
-  * **Leituras Recomendadas:** Keddy & Laughlin (Cap. 5 e 6); Chave et al. (Cap. 6).
+### Semana 5: Dimensões da Biodiversidade
+* Aula 09 (Teórica): Diversidade Taxonômica, Funcional e Filogenética
+  * Conteúdo: Traços funcionais (*traits*) e CWM; métricas funcionais (FRic, FEve, FDiv); Diversidade Filogenética de Faith (PD); estrutura filogenética (MPD/NRI, MNTD/NTI).
+  * Leituras: Keddy & Laughlin (Cap. 5–6); Chave et al. (Cap. 6).
 
-* **Aula 10 — PRÁTICA 4**
-  * **Tópico:** **Análise e Quantificação da Diversidade Funcional e Filogenética no R.**
-  * **Atividade Prática:** Cálculo de CWM e métricas funcionais a partir de matrizes de atributos. Integração da árvore filogenética e cálculo de NRI e NTI com modelos nulos para testar filtragem ambiental ou repulsão filogenética.
-  * **Pacotes R:** `FD` (`dbFD`), `picante` (`pd`, `ses.mpd`, `ses.mntd`).
+* Aula 10 (Prática): Análise Funcional e Filogenética no R
+  * Atividade: Cálculo de CWM e métricas funcionais; integração de árvores filogenéticas; testes de hipóteses com modelos nulos.
+  * Pacotes: `FD`, `picante`.
 
 ---
 
-### **SEMANA 6: Diversidade Verdadeira**
-* **Aula 11 — TEÓRICA 6**
-  * **Tópico:** **Índices de Diversidade Verdadeira (Números de Hill).**
-  * **Conteúdo:** Unificação matemática de Lou Jost (2006): a família de Números de Hill e Números Efetivos de Espécies. A ordem de diversidade \\(q\\):
-    * \\(q = 0\\): Riqueza de espécies.
-    * \\(q = 1\\): Exponencial de Shannon (\\(\exp(H')\\)).
-    * \\(q = 2\\): Inverso de Simpson (\\(1/D\\)).
-  * Por que comparações percentuais e de magnitude exigem a Diversidade Verdadeira.
-  * **Leituras Recomendadas:** Keddy & Laughlin (Cap. 7); Tidy Ecology ("When not to use Shannon").
+### Semana 6: Diversidade Verdadeira (Números de Hill)
+* Aula 11 (Teórica): Números de Hill e Números Efetivos
+  * Conteúdo: Framework de Lou Jost (2006); ordens de diversidade $q$ ($q=0$: Riqueza, $q=1$: $\exp(H')$, $q=2$: $1/D$); vantagens sobre índices tradicionais.
+  * Leituras: Keddy & Laughlin (Cap. 7); Tidy Ecology.
 
-* **Aula 12 — PRÁTICA 5**
-  * **Tópico:** **Perfis de Diversidade Verdadeira e Interpolação/Extrapolação no R.**
-  * **Atividade Prática:** Construção de perfis contínuos de diversidade verdadeira para comparar comunidades. Análise de interpolação e extrapolação baseada em amostragem e cobertura amostral.
-  * **Pacotes R:** `iNEXT`, `hilldiv`, `ggplot2`.
+* Aula 12 (Prática): Perfis de Diversidade e Rarefação/Extrapolação
+  * Atividade: Construção de perfis contínuos de diversidade verdadeira; análise de interpolação e extrapolação baseada em amostragem.
+  * Pacotes: `iNEXT`, `hilldiv`, `ggplot2`.
 
 ---
 
-### **SEMANA 7: Diversidade Beta e Partição**
-* **Aula 13 — TEÓRICA 7**
-  * **Tópico:** **Diversidade Beta e Partição da Diversidade \\(\beta\\).**
-  * **Conteúdo:** Substituição de espécies entre habitats. Partição multiplicativa de Whittaker (\\(\gamma = \alpha \cdot \beta\\)) *vs.* aditiva de Lande (\\(\beta = \gamma - \alpha\\)). Índices de dissimilaridade (Jaccard, Sørensen, Bray-Curtis, Morisita-Horn). Framework de Baselga: decomposição da diversidade \\(\beta\\) em **Substituição (*Turnover*)** e **Aninhamento (*Nestedness*)**.
-  * **Leituras Recomendadas:** Ricklefs (Cap. 22); Chave (Cap. 2); Tidy Ecology ("Beta diversity partitioning").
+### Semana 7: Diversidade Beta e Partição
+* Aula 13 (Teórica): Conceitos de Diversidade Beta ($\beta$)
+  * Conteúdo: Substituição de espécies; partição multiplicativa ($\gamma = \alpha \cdot \beta$) e aditiva ($\beta = \gamma - \alpha$); índices de dissimilaridade; decomposição em *turnover* e *nestedness* (Baselga).
+  * Leituras: Ricklefs (Cap. 22); Chave (Cap. 2).
 
-* **Aula 14 — PRÁTICA 6**
-  * **Tópico:** **Análise e Decomposição da Diversidade Beta no R.**
-  * **Atividade Prática:** Cálculo de matrizes de dissimilaridade e partição em *turnover* e aninhamento. Ordenação multidimensional não-métrica (NMDS) e PCoA para visualização das mudanças de composição.
-  * **Pacotes R:** `betapart`, `vegan` (`metaMDS`), `ggplot2`.
+* Aula 14 (Prática): Decomposição e Análise de Ordenação no R
+  * Atividade: Cálculo de dissimilaridade e partição da diversidade $\beta$; visualização com NMDS e PCoA.
+  * Pacotes: `betapart`, `vegan`, `ggplot2`.
 
 ---
 
-### **SEMANA 8: Integração, Apresentações e Avaliação**
-* **Aula 15 — SEMINÁRIO INTEGRADOR**
-  * **Tópico:** **Apresentação dos Projetos Práticos de Análise de Comunidades.**
-  * **Atividade:** Apresentação oral e defesa dos projetos em grupo elaborados a partir dos dados coletados na Aula de Campo (Aula 07), aplicando os scripts de diversidade \\(\alpha\\), \\(\beta\\), funcional/filogenética e SADs.
+### Semana 8: Integração e Avaliação
+* Aula 15 (Seminário): Apresentação dos Projetos Práticos
+  * Atividade: Apresentação oral dos trabalhos em grupo com os dados coletados na Aula 07.
 
-* **Aula 16 — AVALIAÇÃO E ENCERRAMENTO**
-  * **Tópico:** **Avaliação Geral Teórico-Prática e Encerramento da Disciplina.**
-  * **Atividade:** Prova escrita individual integrando os conceitos teóricos e a interpretação de saídas analíticas do R. Fechamento e síntese da disciplina.
-
----
+* Aula 16 (Avaliação): Encerramento da Disciplina
+  * Atividade: Prova individual integrando os conceitos teóricos e interpretação de análises do R.

@@ -82,6 +82,35 @@ ul.task-list li input[type="checkbox"] {
       }
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -203,16 +232,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Nesta página</h2>
    
   <ul>
-  <li><a href="#cronograma-detalhado-semana-a-semana-16-aulas" id="toc-cronograma-detalhado-semana-a-semana-16-aulas" class="nav-link active" data-scroll-target="#cronograma-detalhado-semana-a-semana-16-aulas">CRONOGRAMA DETALHADO SEMANA A SEMANA (16 AULAS)</a>
+  <li><a href="#cronograma-das-aulas" id="toc-cronograma-das-aulas" class="nav-link active" data-scroll-target="#cronograma-das-aulas">Cronograma das Aulas</a>
   <ul class="collapse">
-  <li><a href="#semana-1-fundamentação-teórica-e-introdução-ao-r" id="toc-semana-1-fundamentação-teórica-e-introdução-ao-r" class="nav-link" data-scroll-target="#semana-1-fundamentação-teórica-e-introdução-ao-r"><strong>SEMANA 1: Fundamentação Teórica e Introdução ao R</strong></a></li>
-  <li><a href="#semana-2-abundância-relativa-e-sads" id="toc-semana-2-abundância-relativa-e-sads" class="nav-link" data-scroll-target="#semana-2-abundância-relativa-e-sads"><strong>SEMANA 2: Abundância Relativa e SADs</strong></a></li>
-  <li><a href="#semana-3-medidas-tradicionais-de-diversidade-e-padrões-espaciais" id="toc-semana-3-medidas-tradicionais-de-diversidade-e-padrões-espaciais" class="nav-link" data-scroll-target="#semana-3-medidas-tradicionais-de-diversidade-e-padrões-espaciais"><strong>SEMANA 3: Medidas Tradicionais de Diversidade e Padrões Espaciais</strong></a></li>
-  <li><a href="#semana-4-amostragem-de-campo-e-estimadores-de-riqueza" id="toc-semana-4-amostragem-de-campo-e-estimadores-de-riqueza" class="nav-link" data-scroll-target="#semana-4-amostragem-de-campo-e-estimadores-de-riqueza"><strong>SEMANA 4: Amostragem de Campo e Estimadores de Riqueza</strong></a></li>
-  <li><a href="#semana-5-dimensões-da-biodiversidade" id="toc-semana-5-dimensões-da-biodiversidade" class="nav-link" data-scroll-target="#semana-5-dimensões-da-biodiversidade"><strong>SEMANA 5: Dimensões da Biodiversidade</strong></a></li>
-  <li><a href="#semana-6-diversidade-verdadeira" id="toc-semana-6-diversidade-verdadeira" class="nav-link" data-scroll-target="#semana-6-diversidade-verdadeira"><strong>SEMANA 6: Diversidade Verdadeira</strong></a></li>
-  <li><a href="#semana-7-diversidade-beta-e-partição" id="toc-semana-7-diversidade-beta-e-partição" class="nav-link" data-scroll-target="#semana-7-diversidade-beta-e-partição"><strong>SEMANA 7: Diversidade Beta e Partição</strong></a></li>
-  <li><a href="#semana-8-integração-apresentações-e-avaliação" id="toc-semana-8-integração-apresentações-e-avaliação" class="nav-link" data-scroll-target="#semana-8-integração-apresentações-e-avaliação"><strong>SEMANA 8: Integração, Apresentações e Avaliação</strong></a></li>
+  <li><a href="#semana-1-fundamentação-teórica-e-introdução-ao-r" id="toc-semana-1-fundamentação-teórica-e-introdução-ao-r" class="nav-link" data-scroll-target="#semana-1-fundamentação-teórica-e-introdução-ao-r">Semana 1: Fundamentação Teórica e Introdução ao R</a></li>
+  <li><a href="#semana-2-abundância-relativa-e-sads" id="toc-semana-2-abundância-relativa-e-sads" class="nav-link" data-scroll-target="#semana-2-abundância-relativa-e-sads">Semana 2: Abundância Relativa e SADs</a></li>
+  <li><a href="#semana-3-medidas-tradicionais-de-diversidade-e-padrões-espaciais" id="toc-semana-3-medidas-tradicionais-de-diversidade-e-padrões-espaciais" class="nav-link" data-scroll-target="#semana-3-medidas-tradicionais-de-diversidade-e-padrões-espaciais">Semana 3: Medidas Tradicionais de Diversidade e Padrões Espaciais</a></li>
+  <li><a href="#semana-4-aula-de-campo" id="toc-semana-4-aula-de-campo" class="nav-link" data-scroll-target="#semana-4-aula-de-campo">Semana 4: Aula de Campo</a></li>
+  <li><a href="#semana-5-dimensões-da-biodiversidade" id="toc-semana-5-dimensões-da-biodiversidade" class="nav-link" data-scroll-target="#semana-5-dimensões-da-biodiversidade">Semana 5: Dimensões da Biodiversidade</a></li>
+  <li><a href="#semana-6-diversidade-verdadeira-números-de-hill" id="toc-semana-6-diversidade-verdadeira-números-de-hill" class="nav-link" data-scroll-target="#semana-6-diversidade-verdadeira-números-de-hill">Semana 6: Diversidade Verdadeira (Números de Hill)</a></li>
+  <li><a href="#semana-7-diversidade-beta-e-partição" id="toc-semana-7-diversidade-beta-e-partição" class="nav-link" data-scroll-target="#semana-7-diversidade-beta-e-partição">Semana 7: Diversidade Beta e Partição</a></li>
+  <li><a href="#semana-8-integração-e-avaliação" id="toc-semana-8-integração-e-avaliação" class="nav-link" data-scroll-target="#semana-8-integração-e-avaliação">Semana 8: Integração e Avaliação</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -224,154 +253,120 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="cronograma-detalhado-semana-a-semana-16-aulas" class="level2">
-<h2 class="anchored" data-anchor-id="cronograma-detalhado-semana-a-semana-16-aulas">CRONOGRAMA DETALHADO SEMANA A SEMANA (16 AULAS)</h2>
+<section id="cronograma-das-aulas" class="level2">
+<h2 class="anchored" data-anchor-id="cronograma-das-aulas">Cronograma das Aulas</h2>
 <section id="semana-1-fundamentação-teórica-e-introdução-ao-r" class="level3">
-<h3 class="anchored" data-anchor-id="semana-1-fundamentação-teórica-e-introdução-ao-r"><strong>SEMANA 1: Fundamentação Teórica e Introdução ao R</strong></h3>
+<h3 class="anchored" data-anchor-id="semana-1-fundamentação-teórica-e-introdução-ao-r">Semana 1: Fundamentação Teórica e Introdução ao R</h3>
 <ul>
-<li><strong>Aula 01 — TEÓRICA 1</strong>
+<li>Aula 01 (Teórica): Síntese conceitual em Ecologia de Comunidades
 <ul>
-<li><strong>Tópico:</strong> <strong>Síntese conceitual em Ecologia de Comunidades — por uma teoria unificada da Ecologia.</strong></li>
-<li><strong>Conteúdo:</strong> O que é uma comunidade ecológica? Histórico do debate: a visão comunitária/interdependente do superorganismo (Frederic Clements) <em>vs.</em> a visão individualista/independente (Henry Gleason). Gradientes ambientais e ecótonos (Whittaker). Estrutura conceitual moderna: <em>Species Pools</em>, Filtros Ambientais (\(E\)), Filtros Bióticos e a Matriz Local (\(C\)). A ponte entre a Teoria do Nicho e a Teoria Neutra da Biodiversidade (Hubbell).</li>
-<li><strong>Leituras Recomendadas:</strong> Ricklefs (Cap. 18); Keddy &amp; Laughlin (Cap. 1); Chave (em <em>Tropical Forest Community Ecology</em>, Cap. 9).</li>
+<li>Conteúdo: Conceito de comunidade ecológica; debate histórico (Clements vs.&nbsp;Gleason); gradientes ambientais e ecótonos; species pools, filtros ambientais (<span class="math inline">\(E\)</span>) e bióticos na matriz local (<span class="math inline">\(C\)</span>); Teoria do Nicho vs.&nbsp;Teoria Neutra.</li>
+<li>Leituras: Ricklefs (Cap. 18); Keddy &amp; Laughlin (Cap. 1); Chave (Cap. 9).</li>
 </ul></li>
-<li><strong>Aula 02 — PRÁTICA 1</strong>
+<li>Aula 02 (Prática): Introdução ao R e Organização de Dados
 <ul>
-<li><strong>Tópico:</strong> <strong>Introdução ao Ambiente R para Ecologia de Comunidades e Organização de Dados.</strong></li>
-<li><strong>Atividade Prática:</strong> RStudio Projects, boas práticas de reprodutibilidade e manipulação de planilhas de campo com <code>tidyverse</code>. Estruturação da matriz ecológica fundamental (<em>locais</em> nas linhas \(\) <em>espécies</em> nas colunas). Tratamento de dados de contagem e cobertura.</li>
-<li><strong>Pacotes R:</strong> <code>tidyverse</code> (<code>dplyr</code>, <code>tidyr</code>), <code>readr</code>.</li>
+<li>Atividade: RStudio Projects, reprodutibilidade e manipulação de dados com <code>tidyverse</code>. Estruturação da matriz ecológica (locais <span class="math inline">\(\times\)</span> espécies).</li>
+<li>Pacotes: <code>tidyverse</code>, <code>readr</code>.</li>
 </ul></li>
 </ul>
 <hr>
 </section>
 <section id="semana-2-abundância-relativa-e-sads" class="level3">
-<h3 class="anchored" data-anchor-id="semana-2-abundância-relativa-e-sads"><strong>SEMANA 2: Abundância Relativa e SADs</strong></h3>
+<h3 class="anchored" data-anchor-id="semana-2-abundância-relativa-e-sads">Semana 2: Abundância Relativa e SADs</h3>
 <ul>
-<li><strong>Aula 03 — TEÓRICA 2</strong>
+<li>Aula 03 (Teórica): Descrição de Comunidades
 <ul>
-<li><strong>Tópico:</strong> <strong>Descrição de comunidades: composição, riqueza e abundância de espécies de comunidades.</strong></li>
-<li><strong>Conteúdo:</strong> Conceitos de Riqueza de Espécies (\(S\)), Abundância Absoluta e Abundância Relativa (\(p_i\)). Padrões de raridade e dominância. Distribuição Log-normal de Preston e a escala \(_2\). Curvas de Abundância Ranqueada (RADs / <em>Whittaker Plots</em>) e o conceito de Uniformidade (<em>Evenness</em>).</li>
-<li><strong>Leituras Recomendadas:</strong> Ricklefs (Cap. 18); Begon et al.&nbsp;(Cap. 16/18).</li>
+<li>Conteúdo: Riqueza (<span class="math inline">\(S\)</span>), abundância absoluta e relativa (<span class="math inline">\(p_i\)</span>); padrões de raridade e dominância; distribuição Log-normal de Preston e escala <span class="math inline">\(\log_2\)</span>; Curvas de Abundância Ranqueada (RADs) e uniformidade (<em>evenness</em>).</li>
+<li>Leituras: Ricklefs (Cap. 18); Begon et al.&nbsp;(Cap. 16/18).</li>
 </ul></li>
-<li><strong>Aula 04 — PRÁTICA 2</strong>
+<li>Aula 04 (Prática): Modelagem de SADs e RADs no R
 <ul>
-<li><strong>Tópico:</strong> <strong>Modelagem de Distribuições de Abundância de Espécies (SADs) e RADs no R.</strong></li>
-<li><strong>Atividade Prática:</strong> Construção de Curvas de Abundância Ranqueada e ajuste de modelos teóricos de abundância de espécies (<em>Log-normal</em>, <em>Log-série</em>, <em>Broken-stick</em>, <em>Preston</em>) via <code>radfit()</code>. Comparação do ajuste de modelos por AIC.</li>
-<li><strong>Pacotes R:</strong> <code>vegan</code>, <code>ggplot2</code>.</li>
+<li>Atividade: Construção de RADs e ajuste de modelos teóricos (Log-normal, Log-série, Broken-stick, Preston) com <code>radfit()</code>. Comparação via AIC.</li>
+<li>Pacotes: <code>vegan</code>, <code>ggplot2</code>.</li>
 </ul></li>
 </ul>
 <hr>
 </section>
 <section id="semana-3-medidas-tradicionais-de-diversidade-e-padrões-espaciais" class="level3">
-<h3 class="anchored" data-anchor-id="semana-3-medidas-tradicionais-de-diversidade-e-padrões-espaciais"><strong>SEMANA 3: Medidas Tradicionais de Diversidade e Padrões Espaciais</strong></h3>
+<h3 class="anchored" data-anchor-id="semana-3-medidas-tradicionais-de-diversidade-e-padrões-espaciais">Semana 3: Medidas Tradicionais de Diversidade e Padrões Espaciais</h3>
 <ul>
-<li><strong>Aula 05 — TEÓRICA 3</strong>
+<li>Aula 05 (Teórica): Medidas de Diversidade Local (<span class="math inline">\(\alpha\)</span>)
 <ul>
-<li><strong>Tópico:</strong> <strong>Medidas e padrões de diversidade em comunidades.</strong></li>
-<li><strong>Conteúdo:</strong> O conceito multidimensional de biodiversidade. Medidas tradicionais de diversidade local (\(\)): Índice de Shannon-Wiener (\(H’\)), Índice de Simpson (\(D\) e \(1-D\)) e Equitabilidade de Pielou (\(J’\)). Limitações estatísticas e não-linearidade dos índices clássicos.</li>
-<li><strong>Leituras Recomendadas:</strong> Ricklefs (Cap. 18); Da Silva et al.&nbsp;(Cap. 12).</li>
+<li>Conteúdo: Conceito multidimensional de biodiversidade; índices clássicos: Shannon-Wiener (<span class="math inline">\(H'\)</span>), Simpson (<span class="math inline">\(D\)</span>) e Equitabilidade de Pielou (<span class="math inline">\(J'\)</span>); limitações e não-linearidade.</li>
+<li>Leituras: Ricklefs (Cap. 18); Da Silva et al.&nbsp;(Cap. 12).</li>
 </ul></li>
-<li><strong>Aula 06 — TEÓRICA 4</strong>
+<li>Aula 06 (Teórica): Padrões Espaciais e Temporais da Riqueza
 <ul>
-<li><strong>Tópico:</strong> <strong>Padrões na riqueza de espécies; Padrões das comunidades no espaço e no tempo.</strong></li>
-<li><strong>Conteúdo:</strong> Relações Espécie-Área (\(S = c A^z\)). Relação Produtividade-Riqueza e curva em corcunda (<em>hump-shaped</em>). Heterogeneidade do habitat (MacArthur &amp; MacArthur). Hipótese da Perturbação Intermediária (IDH). Sucessão ecológica primária e secundária.</li>
-<li><strong>Leituras Recomendadas:</strong> Ricklefs (Cap. 18 e 22).</li>
+<li>Conteúdo: Relação Espécie-Área (<span class="math inline">\(S = c A^z\)</span>); relação produtividade-riqueza; heterogeneidade de habitat; Hipótese da Perturbação Intermediária (IDH); sucessão ecológica.</li>
+<li>Leituras: Ricklefs (Cap. 18 e 22).</li>
 </ul></li>
 </ul>
 <hr>
 </section>
-<section id="semana-4-amostragem-de-campo-e-estimadores-de-riqueza" class="level3">
-<h3 class="anchored" data-anchor-id="semana-4-amostragem-de-campo-e-estimadores-de-riqueza"><strong>SEMANA 4: Amostragem de Campo e Estimadores de Riqueza</strong></h3>
-<ul>
-<li><strong>Aula 07 — AULA DE CAMPO</strong>
-<ul>
-<li><strong>Tópico:</strong> <strong>Amostragem Quantitativa de Comunidades em Diferentes Ambientes.</strong></li>
-<li><strong>Atividade Prática:</strong> Levantamento prático para amostragem de dados reais de comunidade ecológica (ex.: comparação entre área conservada <em>vs.</em> alterada). Aplicação de parcelas/transectos quantitativos e medição de variáveis ambientais.</li>
-</ul></li>
-<li><strong>Aula 08 — PRÁTICA 3</strong>
-<ul>
-<li><strong>Tópico:</strong> <strong>Curvas de Acumulação de Espécies, Rarefação e Estimadores Não-Paramétricos de Riqueza.</strong></li>
-<li><strong>Atividade Prática:</strong> Padronização do esforço amostral por indivíduos e amostragem (rarefação). Estimativa da riqueza real não observada com estimadores não-paramétricos (Chao 1, Chao 2 e Jackknife).</li>
-<li><strong>Pacotes R:</strong> <code>vegan</code> (<code>specaccum</code>, <code>rarefy</code>), <code>iNEXT</code>.</li>
-</ul></li>
-</ul>
+<section id="semana-4-aula-de-campo" class="level3">
+<h3 class="anchored" data-anchor-id="semana-4-aula-de-campo">Semana 4: Aula de Campo</h3>
 <hr>
 </section>
 <section id="semana-5-dimensões-da-biodiversidade" class="level3">
-<h3 class="anchored" data-anchor-id="semana-5-dimensões-da-biodiversidade"><strong>SEMANA 5: Dimensões da Biodiversidade</strong></h3>
+<h3 class="anchored" data-anchor-id="semana-5-dimensões-da-biodiversidade">Semana 5: Dimensões da Biodiversidade</h3>
 <ul>
-<li><strong>Aula 09 — TEÓRICA 5</strong>
+<li>Aula 09 (Teórica): Diversidade Taxonômica, Funcional e Filogenética
 <ul>
-<li><strong>Tópico:</strong> <strong>Diversidade taxonômica, funcional e filogenética.</strong></li>
-<li><strong>Conteúdo:</strong> Além da equivalência taxonômica. Traços funcionais (<em>traits</em>) e Média Ponderada da Comunidade (CWM). Métricas funcionais: Riqueza (FRic), Uniformidade (FEve) e Divergência (FDiv). Diversidade Filogenética de Faith (PD). Estrutura filogenética: MPD/NRI e MNTD/NTI.</li>
-<li><strong>Leituras Recomendadas:</strong> Keddy &amp; Laughlin (Cap. 5 e 6); Chave et al.&nbsp;(Cap. 6).</li>
+<li>Conteúdo: Traços funcionais (<em>traits</em>) e CWM; métricas funcionais (FRic, FEve, FDiv); Diversidade Filogenética de Faith (PD); estrutura filogenética (MPD/NRI, MNTD/NTI).</li>
+<li>Leituras: Keddy &amp; Laughlin (Cap. 5–6); Chave et al.&nbsp;(Cap. 6).</li>
 </ul></li>
-<li><strong>Aula 10 — PRÁTICA 4</strong>
+<li>Aula 10 (Prática): Análise Funcional e Filogenética no R
 <ul>
-<li><strong>Tópico:</strong> <strong>Análise e Quantificação da Diversidade Funcional e Filogenética no R.</strong></li>
-<li><strong>Atividade Prática:</strong> Cálculo de CWM e métricas funcionais a partir de matrizes de atributos. Integração da árvore filogenética e cálculo de NRI e NTI com modelos nulos para testar filtragem ambiental ou repulsão filogenética.</li>
-<li><strong>Pacotes R:</strong> <code>FD</code> (<code>dbFD</code>), <code>picante</code> (<code>pd</code>, <code>ses.mpd</code>, <code>ses.mntd</code>).</li>
+<li>Atividade: Cálculo de CWM e métricas funcionais; integração de árvores filogenéticas; testes de hipóteses com modelos nulos.</li>
+<li>Pacotes: <code>FD</code>, <code>picante</code>.</li>
 </ul></li>
 </ul>
 <hr>
 </section>
-<section id="semana-6-diversidade-verdadeira" class="level3">
-<h3 class="anchored" data-anchor-id="semana-6-diversidade-verdadeira"><strong>SEMANA 6: Diversidade Verdadeira</strong></h3>
+<section id="semana-6-diversidade-verdadeira-números-de-hill" class="level3">
+<h3 class="anchored" data-anchor-id="semana-6-diversidade-verdadeira-números-de-hill">Semana 6: Diversidade Verdadeira (Números de Hill)</h3>
 <ul>
-<li><strong>Aula 11 — TEÓRICA 6</strong>
+<li>Aula 11 (Teórica): Números de Hill e Números Efetivos
 <ul>
-<li><strong>Tópico:</strong> <strong>Índices de Diversidade Verdadeira (Números de Hill).</strong></li>
-<li><strong>Conteúdo:</strong> Unificação matemática de Lou Jost (2006): a família de Números de Hill e Números Efetivos de Espécies. A ordem de diversidade \(q\):
-<ul>
-<li>\(q = 0\): Riqueza de espécies.</li>
-<li>\(q = 1\): Exponencial de Shannon (\((H’)\)).</li>
-<li>\(q = 2\): Inverso de Simpson (\(1/D\)).</li>
+<li>Conteúdo: Framework de Lou Jost (2006); ordens de diversidade <span class="math inline">\(q\)</span> (<span class="math inline">\(q=0\)</span>: Riqueza, <span class="math inline">\(q=1\)</span>: <span class="math inline">\(\exp(H')\)</span>, <span class="math inline">\(q=2\)</span>: <span class="math inline">\(1/D\)</span>); vantagens sobre índices tradicionais.</li>
+<li>Leituras: Keddy &amp; Laughlin (Cap. 7); Tidy Ecology.</li>
 </ul></li>
-<li>Por que comparações percentuais e de magnitude exigem a Diversidade Verdadeira.</li>
-<li><strong>Leituras Recomendadas:</strong> Keddy &amp; Laughlin (Cap. 7); Tidy Ecology (“When not to use Shannon”).</li>
-</ul></li>
-<li><strong>Aula 12 — PRÁTICA 5</strong>
+<li>Aula 12 (Prática): Perfis de Diversidade e Rarefação/Extrapolação
 <ul>
-<li><strong>Tópico:</strong> <strong>Perfis de Diversidade Verdadeira e Interpolação/Extrapolação no R.</strong></li>
-<li><strong>Atividade Prática:</strong> Construção de perfis contínuos de diversidade verdadeira para comparar comunidades. Análise de interpolação e extrapolação baseada em amostragem e cobertura amostral.</li>
-<li><strong>Pacotes R:</strong> <code>iNEXT</code>, <code>hilldiv</code>, <code>ggplot2</code>.</li>
+<li>Atividade: Construção de perfis contínuos de diversidade verdadeira; análise de interpolação e extrapolação baseada em amostragem.</li>
+<li>Pacotes: <code>iNEXT</code>, <code>hilldiv</code>, <code>ggplot2</code>.</li>
 </ul></li>
 </ul>
 <hr>
 </section>
 <section id="semana-7-diversidade-beta-e-partição" class="level3">
-<h3 class="anchored" data-anchor-id="semana-7-diversidade-beta-e-partição"><strong>SEMANA 7: Diversidade Beta e Partição</strong></h3>
+<h3 class="anchored" data-anchor-id="semana-7-diversidade-beta-e-partição">Semana 7: Diversidade Beta e Partição</h3>
 <ul>
-<li><strong>Aula 13 — TEÓRICA 7</strong>
+<li>Aula 13 (Teórica): Conceitos de Diversidade Beta (<span class="math inline">\(\beta\)</span>)
 <ul>
-<li><strong>Tópico:</strong> <strong>Diversidade Beta e Partição da Diversidade \(\).</strong></li>
-<li><strong>Conteúdo:</strong> Substituição de espécies entre habitats. Partição multiplicativa de Whittaker (\(= \)) <em>vs.</em> aditiva de Lande (\(= - \)). Índices de dissimilaridade (Jaccard, Sørensen, Bray-Curtis, Morisita-Horn). Framework de Baselga: decomposição da diversidade \(\) em <strong>Substituição (<em>Turnover</em>)</strong> e <strong>Aninhamento (<em>Nestedness</em>)</strong>.</li>
-<li><strong>Leituras Recomendadas:</strong> Ricklefs (Cap. 22); Chave (Cap. 2); Tidy Ecology (“Beta diversity partitioning”).</li>
+<li>Conteúdo: Substituição de espécies; partição multiplicativa (<span class="math inline">\(\gamma = \alpha \cdot \beta\)</span>) e aditiva (<span class="math inline">\(\beta = \gamma - \alpha\)</span>); índices de dissimilaridade; decomposição em <em>turnover</em> e <em>nestedness</em> (Baselga).</li>
+<li>Leituras: Ricklefs (Cap. 22); Chave (Cap. 2).</li>
 </ul></li>
-<li><strong>Aula 14 — PRÁTICA 6</strong>
+<li>Aula 14 (Prática): Decomposição e Análise de Ordenação no R
 <ul>
-<li><strong>Tópico:</strong> <strong>Análise e Decomposição da Diversidade Beta no R.</strong></li>
-<li><strong>Atividade Prática:</strong> Cálculo de matrizes de dissimilaridade e partição em <em>turnover</em> e aninhamento. Ordenação multidimensional não-métrica (NMDS) e PCoA para visualização das mudanças de composição.</li>
-<li><strong>Pacotes R:</strong> <code>betapart</code>, <code>vegan</code> (<code>metaMDS</code>), <code>ggplot2</code>.</li>
+<li>Atividade: Cálculo de dissimilaridade e partição da diversidade <span class="math inline">\(\beta\)</span>; visualização com NMDS e PCoA.</li>
+<li>Pacotes: <code>betapart</code>, <code>vegan</code>, <code>ggplot2</code>.</li>
 </ul></li>
 </ul>
 <hr>
 </section>
-<section id="semana-8-integração-apresentações-e-avaliação" class="level3">
-<h3 class="anchored" data-anchor-id="semana-8-integração-apresentações-e-avaliação"><strong>SEMANA 8: Integração, Apresentações e Avaliação</strong></h3>
+<section id="semana-8-integração-e-avaliação" class="level3">
+<h3 class="anchored" data-anchor-id="semana-8-integração-e-avaliação">Semana 8: Integração e Avaliação</h3>
 <ul>
-<li><strong>Aula 15 — SEMINÁRIO INTEGRADOR</strong>
+<li>Aula 15 (Seminário): Apresentação dos Projetos Práticos
 <ul>
-<li><strong>Tópico:</strong> <strong>Apresentação dos Projetos Práticos de Análise de Comunidades.</strong></li>
-<li><strong>Atividade:</strong> Apresentação oral e defesa dos projetos em grupo elaborados a partir dos dados coletados na Aula de Campo (Aula 07), aplicando os scripts de diversidade \(\), \(\), funcional/filogenética e SADs.</li>
+<li>Atividade: Apresentação oral dos trabalhos em grupo com os dados coletados na Aula 07.</li>
 </ul></li>
-<li><strong>Aula 16 — AVALIAÇÃO E ENCERRAMENTO</strong>
+<li>Aula 16 (Avaliação): Encerramento da Disciplina
 <ul>
-<li><strong>Tópico:</strong> <strong>Avaliação Geral Teórico-Prática e Encerramento da Disciplina.</strong></li>
-<li><strong>Atividade:</strong> Prova escrita individual integrando os conceitos teóricos e a interpretação de saídas analíticas do R. Fechamento e síntese da disciplina.</li>
+<li>Atividade: Prova individual integrando os conceitos teóricos e interpretação de análises do R.</li>
 </ul></li>
 </ul>
-<hr>
 
 
 </section>

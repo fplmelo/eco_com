@@ -1,8 +1,6 @@
 ---
 title: "Módulo 1: Descrição de Comunidades Biológicas — Protocolo LEGO & Análises no R"
 subtitle: "Ecologia de Comunidades: Riqueza, Abundância Relativa, Rank-Abundância e Rarefação"
-author: "Disciplina de Ecologia de Comunidades"
-date: "2026"
 format:
   html:
     toc: true
