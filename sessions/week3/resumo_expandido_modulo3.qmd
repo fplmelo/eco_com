@@ -1,8 +1,8 @@
 ---
 title: "Semana 3: Resumo expandido — Diversidade taxonômica, funcional e filogenética em ecologia de comunidades"
 subtitle: "Além da equivalência taxonômica: traços funcionais, estrutura filogenética e regras de montagem"
-author: "Disciplina de Ecologia de Comunidades"
-date: "2026-10-02"
+author: "Felipe Melo"
+date: "today"
 format:
   html:
     # theme: cosmo

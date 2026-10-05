@@ -226,15 +226,28 @@ disciplina de ecologia de comunidades
 <p><img data-src="../img/FeveFdiv.png"></p>
 </div></div>
 </section>
-<section id="entropia-quadrática-de-rao-raos-q" class="slide level2">
-<h2>7. entropia quadrática de Rao (Rao’s Q)</h2>
+<section id="dispersão-fucnional-fdis" class="slide level2">
+<h2>Dispersão Fucnional (Fdis)</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>integra simultaneamente a abundância relativa das espécies e as distâncias funcionais ou filogenéticas par a par.</li>
-<li>fórmula: <span class="math inline">\(Q = \sum_{i=1}^S \sum_{j=1}^S d_{ij} \cdot p_i \cdot p_j\)</span>.</li>
-<li><span class="math inline">\(d_{ij}\)</span> é a distância de dissimilaridade funcional (ex.: distância Gower ou Euclidiana) entre a espécie <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span>.</li>
-<li>expressa a diferença funcional esperada entre dois indivíduos sorteados aleatoriamente na comunidade.</li>
+<li>Integra a abundância relativa das espécies e as distâncias funcionais a um centróide.</li>
+<li>fórmula: <span class="math display">\[FDis = \frac{\sum_{i=1}^{S} w_i z_i}{\sum_{i=1}^{S} w_i}\]</span></li>
+<li><strong><span class="math inline">\(S\)</span></strong> número de espécies.</li>
+<li><strong><span class="math inline">\(w_i\)</span></strong> abdunÂncia da espécie <span class="math inline">\(i\)</span>.</li>
+<li><strong><span class="math inline">\(z_i\)</span></strong> distcia da espécie <span class="math inline">\(i\)</span> ao centróide ponderado (<span class="math inline">\(c\)</span>).</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="../img/fdis.jpg"></p>
+</div></div>
+</section>
+<section id="regras-de-montagem-o-papel-dos-filtros-abióticos" class="slide level2">
+<h2>Regras de montagem: o papel dos filtros abióticos</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Filtros abióticos severos (seca, geada, solo ácido) forçam a convergência funcional (<em>trait underdispersion</em>).</li>
+<li>espécies da comunidade local são mais aparentadas entre si do que o esperado ao acaso.</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -248,15 +261,13 @@ disciplina de ecologia de comunidades
 </div>
 </div></div>
 </section>
-<section id="introdução-à-diversidade-filogenética" class="slide level2">
-<h2>8. introdução à diversidade filogenética</h2>
+<section id="regras-de-montagem-o-papel-dos-filtros-bióticos" class="slide level2">
+<h2>Regras de montagem: o papel dos filtros bióticos</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>a diversidade filogenética quantifica a história evolutiva acumulada pelas espécies de uma comunidade.</li>
-<li>assume que o parentesco reflete a similaridade genômica e traços não mensurados (conservadorismo de nicho).</li>
-<li>comunidades filogeneticamente diversas preservam um reservatório genético e evolutivo maior.</li>
-<li>essencial para a biologia da conservação e para inferir processos históricos de montagem.</li>
+<li>Competição impede a coexistência e força a divergência funcional (<em>trait overdispersion</em>).</li>
+<li>Espécies coexistentes são menos aparentadas entre si do que o esperado ao acaso.</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -264,138 +275,6 @@ disciplina de ecologia de comunidades
 <div>
 <figure>
 <p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="diversidade-filogenética-de-faith-pd" class="slide level2">
-<h2>9. diversidade filogenética de Faith (PD)</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>proposta por Daniel Faith em 1992.</li>
-<li>definida como a soma total do comprimento dos ramos da árvore filogenética que conecta todas as espécies do local.</li>
-<li>fórmula: <span class="math inline">\(\text{PD} = \sum_{b \in T} l_b\)</span>.</li>
-<li>fortemente correlacionada com a riqueza de espécies (<span class="math inline">\(S\)</span>); exige avaliação via modelos nulos para separar o efeito de <span class="math inline">\(S\)</span>.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="distância-filogenética-média-mpd-e-mntd" class="slide level2">
-<h2>10. distância filogenética média (MPD e MNTD)</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>MPD (<em>mean phylogenetic distance</em>): média de todas as distâncias filogenéticas par a par entre as espécies locais.</li>
-<li>MNTD (<em>mean nearest taxon distance</em>): distância média até o vizinho filogenético mais próximo de cada espécie.</li>
-<li>MPD reflete a estrutura filogenética ampla ao longo de toda a árvore.</li>
-<li>MNTD reflete o adensamento terminal e o parentesco entre espécies mais próximas.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="modelos-nulos-e-padronização-filogenética" class="slide level2">
-<h2>11. modelos nulos e padronização filogenética</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>como MPD e MNTD variam com a riqueza de espécies (<span class="math inline">\(S\)</span>), utilizam-se modelos nulos de sorteio do pool regional.</li>
-<li>geram-se comunidades aleatórias mantendo a riqueza observada constante.</li>
-<li>calcula-se a média (<span class="math inline">\(\text{MPD}_{nulo}\)</span>) e desvio padrão (<span class="math inline">\(\text{sd}_{nulo}\)</span>) das simulações aleatórias.</li>
-<li>permite isolar se o agrupamento ou dispersão filogenética é estatisticamente significativo.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="índices-padronizados-nri-e-nti" class="slide level2">
-<h2>12. índices padronizados: NRI e NTI</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>Net Relatedness Index (NRI): <span class="math inline">\(\text{NRI} = -1 \cdot \frac{\text{MPD}_{obs} - \text{mean}(\text{MPD}_{nulo})}{\text{sd}(\text{MPD}_{nulo})}\)</span>.</li>
-<li>Nearest Taxon Index (NTI): <span class="math inline">\(\text{NTI} = -1 \cdot \frac{\text{MNTD}_{obs} - \text{mean}(\text{MNTD}_{nulo})}{\text{sd}(\text{MNTD}_{nulo})}\)</span>.</li>
-<li>NRI/NTI <span class="math inline">\(&gt; +1,96\)</span>: agrupamento filogenético (<em>phylogenetic clustering</em>).</li>
-<li>NRI/NTI <span class="math inline">\(&lt; -1,96\)</span>: superdispersão filogenética (<em>phylogenetic overdispersion</em>).</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="regras-de-montagem-o-papel-dos-filtros-abióticos" class="slide level2">
-<h2>13. regras de montagem: o papel dos filtros abióticos</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>filtros abióticos severos (seca, geada, solo ácido) atuam selecionando traços adaptativos específicos.</li>
-<li>forçam a convergência funcional (<em>trait underdispersion</em>).</li>
-<li>sob conservadorismo de nicho, geram agrupamento filogenético (<span class="math inline">\(\text{NRI} &gt; +1,96\)</span>).</li>
-<li>espécies da comunidade local são mais aparentadas entre si do que o esperado ao acaso.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="regras-de-montagem-o-papel-dos-filtros-bióticos" class="slide level2">
-<h2>14. regras de montagem: o papel dos filtros bióticos</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>a competição interespecífica severa impede a coexistência de espécies funcionalmente idênticas (limitação de similaridade).</li>
-<li>força a divergência funcional (<em>trait overdispersion</em>).</li>
-<li>sob conservadorismo de nicho, gera superdispersão filogenética (<span class="math inline">\(\text{NRI} &lt; -1,96\)</span>).</li>
-<li>espécies coexistentes são menos aparentadas entre si do que o esperado ao acaso.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -417,29 +296,27 @@ disciplina de ecologia de comunidades
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="construindo-a-filogenia-morfológica-de-lego-no-r" class="slide level2">
-<h2>16. construindo a filogenia morfológica de lego no r</h2>
+<section id="construindo-a-filogenia-morfológica" class="slide level2">
+<h2>Construindo a filogenia morfológica</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>as peças de LEGO possuem relações de parentesco morfológico baseadas no seu processo de fabricação.</li>
-<li>blocos altos compartilham ancestrais morfológicos comuns; placas finas formam um clade derivado.</li>
-<li>calcula-se a matriz de distância Euclidiana entre os traços das peças.</li>
-<li>aplica-se o agrupamento hierárquico (<code>hclust</code>) para gerar a árvore filogenética (<code>phylo</code>) via pacote <code>ape</code>.</li>
+<li>As peças de LEGO possuem relações de parentesco</li>
+<li>Blocos altos compartilham ancestrais morfológicos comuns; placas finas formam um clade derivado.</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -447,13 +324,12 @@ disciplina de ecologia de comunidades
 </div></div>
 </section>
 <section id="simulando-um-filtro-abiótico-em-sala-com-lego" class="slide level2">
-<h2>17. simulando um filtro abiótico em sala com lego</h2>
+<h2>Simulando um filtro abiótico em sala com lego</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>simulação: um evento de inundação severa atinge a comunidade de LEGO.</li>
-<li>regra de filtro: apenas peças com altura <span class="math inline">\(\ge 1,0\)</span> (blocos altos) e <span class="math inline">\(\ge 4\)</span> pinos sobrevivem no substrato.</li>
-<li>placas finas e peças pequenas de 1 pino são filtradas e removidas da comunidade local.</li>
+<li>Simulação: um evento de inundação severa atinge a comunidade de LEGO.</li>
+<li>Apenas peças com altura <span class="math inline">\(\ge 1,0\)</span> (blocos altos) e <span class="math inline">\(\ge 4\)</span> pinos sobrevivem no substrato.</li>
 <li>resultado empírico: redução da riqueza funcional (FRic) e surgimento de agrupamento filogenético.</li>
 </ul>
 </div><div class="column" style="width:50%;">
@@ -461,29 +337,7 @@ disciplina de ecologia de comunidades
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="análises-no-r-com-pacotes-fd-e-picante" class="slide level2">
-<h2>18. análises no r com pacotes FD e picante</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>pacote <code>FD</code>: função <code>dbFD()</code> calcula CWM, FRic, FEve, FDiv e Rao’s Q a partir das matrizes L e T.</li>
-<li>pacote <code>picante</code>: função <code>pd()</code> calcula a diversidade filogenética de Faith (PD).</li>
-<li>funções <code>ses.mpd()</code> e <code>ses.mntd()</code> do <code>picante</code>: executam os modelos nulos e calculam NRI e NTI.</li>
-<li>automação completa da análise multidimensional em scripts reprodutíveis.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -491,21 +345,21 @@ disciplina de ecologia de comunidades
 </div></div>
 </section>
 <section id="interpretação-integrada-das-três-dimensões" class="slide level2">
-<h2>19. interpretação integrada das três dimensões</h2>
+<h2>Interpretação integrada das três dimensões</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
 <li>diversidade taxonômica (<span class="math inline">\(S, H'\)</span>): quantifica o número e equitabilidade dos nomes/táxons.</li>
-<li>diversidade funcional (CWM, FRic, Rao Q): quantifica o espaço de nichos e papéis ecossistêmicos.</li>
+<li>diversidade funcional (CWM, FRic, FDis): quantifica o espaço de nichos e papéis ecossistêmicos.</li>
 <li>diversidade filogenética (PD, NRI): quantifica a linhagem evolutiva e o patrimônio genético acumulado.</li>
-<li>a sobreposição das três dimensões revela os mecanismos causais da montagem de comunidades.</li>
+<li>A sobreposição das três dimensões revela os mecanismos causais da montagem de comunidades.</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -513,21 +367,20 @@ disciplina de ecologia de comunidades
 </div></div>
 </section>
 <section id="síntese-e-orientações-para-o-exercício-prático" class="slide level2">
-<h2>20. síntese e orientações para o exercício prático</h2>
+<h2>Síntese e orientações para o exercício prático</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
 <li>cada grupo usará sua matriz de 100 peças de LEGO atualizada com atributos funcionais.</li>
-<li>criar a matriz T no R com número de pinos, altura e massa de cada morfotipo.</li>
-<li>rodar a função <code>dbFD()</code> para extrair CWM e índices multidimensionais.</li>
-<li>gerar o dendrograma filogenético e rodar <code>pd()</code> e <code>ses.mpd()</code> para diagnosticar se o seu saco sofreu filtro abiótico ou limitação de similaridade.</li>
+<li>criar a matriz L no <code>R</code> com número de pinos, altura e massa de cada morfotipo.</li>
+<li>rodar a função <code>dbFD()</code> do pacote <code>FD</code> para extrair CWM e índices multidimensionais.</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+<p><img data-src="3-slides-func_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
 </figure>
 </div>
 </div>

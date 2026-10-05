@@ -1,0 +1,193 @@
+---
+title: "Módulo 3: diversidade funcional em ecologia de comunidades com LEGO & R"
+subtitle: "Quantificação de traços funcionais, CWM e métricas multidimensionais (FD)"
+author: "Felipe Melo"
+date: "today"
+format:
+  html:
+    # theme: flatly
+    toc: true
+    toc-depth: 3
+    code-fold: false
+    number-sections: true
+---
+
+# Apresentação do módulo
+
+neste terceiro módulo, avançamos na análise de comunidades biológicas superando a premissa da equivalência taxonômica. nos módulos 1 e 2, tratamos as espécies (cores das peças de LEGO) como unidades equivalentes. agora, incorporamos a dimensão da **diversidade funcional**, mensurando as características morfológicas e ecológicas dos indivíduos que influenciam diretamente seu desempenho e papel no ecossistema.
+
+utilizaremos a mesma comunidade simulada de 100 peças de LEGO por grupo, mas expandiremos a caracterização das peças para além da cor, registrando seus traços funcionais (*functional traits*).
+
+## Definições do modelo no módulo 3
+
+* **espécie (morfotipo):** combinação de cor e formato da peça de LEGO (exemplo: *vermelho bloco 2x4*, *amarelo placa 1x2*).
+* **indivíduo:** cada peça física de LEGO presente na amostragem.
+* **matriz de abundância (L):** matriz contendo a contagem de indivíduos de cada espécie por local/saco.
+* **matriz de traços (Q):** tabela descrevendo os atributos funcionais de cada espécie:
+  1. **pinos (número de pinos):** proxy quantitativo de tamanho e biomassa individual (traço morfológico/fisiológico).
+  2. **altura (altura relativa):** proxy contínuo de estratificação e guilda funcional (bloco alto = $1,0$; placa fina = $0,33$; rampa = $1,0$).
+
+---
+
+# demonstrativo prático de sala (hands-on)
+
+antes de iniciar as análises computacionais no R, os grupos realizarão uma atividade tátil para compreender como os filtros ambientais alteram a estrutura funcional da comunidade.
+
+::: {.callout-note icon=false appearance="simple"}
+## 🧩 Protocolo prático: medição de traços e simulação de filtro abiótico
+
+1. **montagem da matriz de traços (Q)**  
+   Separe uma peça de cada morfotipo (cor/formato) do seu saco e preencha a ficha de traços mensurando o número de pinos, a altura e a massa em gramas.
+
+2. **Ensaio tátil da média ponderada (CWM)**  
+   Segure a comunidade inteira na mão (ou sinta o peso total do saco). comunidades dominadas por peças grandes de 8 pinos parecerão visivelmente mais pesadas do que comunidades com a mesma riqueza compostas por placas de 2 pinos, ilustrando intuitivamente a média ponderada comunitária (CWM).
+
+3. **Simulação do filtro abiótico de inundação**  
+   Simule um evento extremo de inundação na bancada: uma elevação do nível da água retira da comunidade todas as peças com altura $< 0,5$ (placas finas) e biomassa $< 2$ pinos. observe visualmente o colapso do volume funcional ocupado pelas peças remanescentes.
+:::
+
+---
+
+# Exercício aplicado no R (`FD` e `tidyverse`)
+
+## Carregamento de pacotes e estruturação das matrizes L e T
+
+vamos simular as quatro comunidades de referência de 100 peças e construir a matriz de traços funcionais correspondente aos oito morfotipos principais.
+
+```{r}
+#| message: false
+#| warning: false
+library(FD)
+library(vegan)
+library(tidyverse)
+
+# 1. Matriz de traços funcionais (Q) - espécies nas linhas, traços nas colunas
+matriz_tracos <- data.frame(
+  Pinos  = c(8, 2, 4, 1, 6, 2, 4, 8),
+  Altura = c(1.0, 0.33, 1.0, 1.0, 1.0, 0.33, 0.33, 0.33),
+  row.names = c("Vermelho", "Amarelo", "Azul", "Verde", "Branco", "Preto", "Laranja", "Cinza")
+)
+
+# 2. Matriz de abundância de comunidades (L) - locais nas linhas, espécies nas colunas
+matriz_abundancia <- matrix(
+  c(70, 15, 8, 4, 2, 1, 0, 0,   # Saco A: hiperdominante em peça grande
+    40, 22, 14, 10, 6, 4, 3, 1,  # Saco B: distribuição log-normal típica
+    10, 10, 10, 10, 10, 10, 10, 10, # Saco C: equitativo/uniforme
+    5, 30, 8, 2, 5, 25, 20, 5),  # Saco D: dominado por placas pequenas e leves
+  nrow = 4, byrow = TRUE,
+  dimnames = list(c("Saco_A", "Saco_B", "Saco_C", "Saco_D"), rownames(matriz_tracos))
+)
+
+# Exibição da matriz de traços
+knitr::kable(matriz_tracos, caption = "Matriz Q: traços funcionais dos morfotipos de LEGO")
+```
+
+---
+
+## Cálculo da média ponderada da comunidade (CWM)
+
+A função `functcomp()` do pacote `FD` calcula a média de cada traço ponderada pela abundância relativa de cada espécie presente em cada local ($\text{CWM}_k = \sum p_i \cdot t_{ik}$).
+
+```{r}
+# Cálculo das CWMs para os traços quantitativos
+cwm_resultados <- functcomp(as.matrix(matriz_tracos), matriz_abundancia)
+
+knitr::kable(round(cwm_resultados, 2), caption = "Valores de CWM para os traços funcionais nos quatro sacos de LEGO")
+```
+
+---
+
+## cálculo dos índices multidimensionais de diversidade funcional
+
+utilizaremos a função `dbFD()` para extrair a riqueza funcional ($\text{FRic}$), a uniformidade funcional ($\text{FEve}$), a divergência funcional ($\text{FDiv}$) e a entropia quadrática de Rao ($\text{Rao's Q}$).
+
+```{r}
+#| message: false
+#| warning: false
+# Execução da análise multidimensional via dbFD
+res_fd <- dbFD(
+  x = matriz_tracos,
+  a = matriz_abundancia,
+  calc.FRic = TRUE,
+  calc.FDiv = TRUE,
+  print.pco = FALSE
+)
+
+# Consolidação da tabela de índices funcionais
+tabela_fd <- data.frame(
+  Comunidade = rownames(matriz_abundancia),
+  Riqueza_S  = specnumber(matriz_abundancia),
+  CWM_Pinos  = round(res_fd$CWM$Pinos, 2),
+  FRic       = round(res_fd$FRic, 3),
+  FEve       = round(res_fd$FEve, 3),
+  FDiv       = round(res_fd$FDiv, 3),
+  Rao_Q      = round(res_fd$RaoQ, 3)
+)
+
+knitr::kable(tabela_fd, caption = "Índices multidimensionais de diversidade funcional entre os quatro sacos de LEGO")
+```
+
+---
+
+## visualização gráfica dos índices funcionais
+
+construímos um gráfico comparativo utilizando o pacote `ggplot2` para analisar como o espaço funcional varia entre as comunidades.
+
+```{r}
+# Reorganização dos dados para formato longo (tidy)
+df_fd_grafico <- tabela_fd %>%
+  pivot_longer(
+    cols = c("FRic", "FEve", "FDiv", "Rao_Q"),
+    names_to = "Indice_Funcional",
+    values_to = "Valor"
+  )
+
+# Gráfico de barras facetado
+ggplot(df_fd_grafico, aes(x = Comunidade, y = Valor, fill = Comunidade)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ Indice_Funcional, scales = "free_y", ncol = 2) +
+  scale_fill_brewer(palette = "Set1") +
+  theme_minimal(base_size = 12) +
+  labs(
+    title = "comparação dos índices funcionais entre os sacos de LEGO",
+    subtitle = "respostas contrastantes de riqueza funcional (FRic), uniformidade (FEve), divergência (FDiv) e Rao Q",
+    x = "comunidade (saco)",
+    y = "valor da métrica"
+  )
+```
+
+---
+
+# Instruções para uso do próprio arquivo .csv no exercício
+
+Nesta etapa, você aplicará as rotinas de diversidade funcional aos dados coletados pelo seu próprio grupo.
+
+::: {.callout-note icon=false appearance="simple"}
+## 📋 Orientações para integração da sua base de dados no R
+
+1. **Preparação do arquivo de traços (.csv)**  
+   crie um arquivo separado chamado `tracos_grupo.csv` contendo os nomes dos morfotipos do seu grupo nas linhas e as colunas `Pinos` e `Altura`.
+
+2. **Carregamento dos dados reais do grupo**  
+   importe sua planilha de abundância do módulo 1 (`dados_lego_grupo.csv`) e sua nova planilha de traços (`tracos_grupo.csv`) garantindo que os nomes das espécies sejam rigorosamente idênticos nas duas planilhas.
+
+3. **Execução dos comandos no R**  
+   copie o bloco de código demonstrativo acima e substitua `matriz_abundancia` pela sua matriz importada e `matriz_tracos` pela sua tabela de traços reais.
+
+4. **Análise dos resultados funcionais**  
+   calcule a CWM do seu grupo e interprete se a sua comunidade é funcionalmente dominada por organismos de grande porte ou de pequeno porte, identificando os valores de FRic e Rao's Q.
+:::
+
+---
+
+# Perguntas de interpretação ecológica
+
+Responda às seguintes questões com base nos conceitos de diversidade funcional e nos resultados quantitativos obtidos:
+
+1. **nterpretação da média ponderada (CWM):** o **Saco A** apresentou $\text{CWM}_{\text{Pinos}} = 6,36$, enquanto o **Saco D** apresentou $\text{CWM}_{\text{Pinos}} = 2,90$. o que essa diferença indica em termos de alocação de biomassa e estratégia ecológica dominante entre essas duas comunidades?
+
+2. **Desacoplamento entre riqueza taxonômica e riqueza funcional (FRic):** compare o **Saco C** e o **Saco D**. é possível que uma comunidade com maior riqueza de espécies ($S$) apresente menor riqueza funcional ($\text{FRic}$)? sob quais condições de distribuição de traços no espaço de nichos isso acontece em ecossistemas naturais?
+
+3. **Divergência funcional (FDiv) e competição:** o **Saco C** (com abundâncias perfeitamente uniformes) apresentou alto valor de divergência funcional ($\text{FDiv}$). como um alto valor de FDiv reduz a sobreposição de nichos e a intensidade da competição interespecífica em uma comunidade?
+
+4. **Simulação de filtro ambiental abiótico:** se um filtro abiótico severo (como seca prolongada ou poluição por metais) eliminar todas as espécies com morfotipos pequenos e placas finas da comunidade, o que acontecerá com os valores de FRic e CWM? essa mudança indica convergência funcional ou divergência funcional?

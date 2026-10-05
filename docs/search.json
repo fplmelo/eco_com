@@ -599,7 +599,7 @@
     "href": "sessions/index.html",
     "title": "Conteúdo",
     "section": "",
-    "text": "Semana 01: Origens e Conceitos de Escala\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 02: Medidas clássicas de diversidade local em comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 3: Resumo expandido — Diversidade taxonômica, funcional e filogenética em ecologia de comunidades\n\n\n\n\n\n\nDisciplina de Ecologia de Comunidades\n\n\nOct 2, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Semana 01: Origens e Conceitos de Escala\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 02: Medidas clássicas de diversidade local em comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 3: Resumo expandido — Diversidade taxonômica, funcional e filogenética em ecologia de comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\nOct 5, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "slides/2-slides-indices.html#a-dimensão-dupla-da-biodiversidade-local",
@@ -1438,8 +1438,8 @@
     "objectID": "slides/3-slides-func.html#entropia-quadrática-de-rao-raos-q",
     "href": "slides/3-slides-func.html#entropia-quadrática-de-rao-raos-q",
     "title": "Diversidade taxonômica, funcional e filogenética",
-    "section": "7. entropia quadrática de Rao (Rao’s Q)",
-    "text": "7. entropia quadrática de Rao (Rao’s Q)\n\n\n\nintegra simultaneamente a abundância relativa das espécies e as distâncias funcionais ou filogenéticas par a par.\nfórmula: \\(Q = \\sum_{i=1}^S \\sum_{j=1}^S d_{ij} \\cdot p_i \\cdot p_j\\).\n\\(d_{ij}\\) é a distância de dissimilaridade funcional (ex.: distância Gower ou Euclidiana) entre a espécie \\(i\\) e \\(j\\).\nexpressa a diferença funcional esperada entre dois indivíduos sorteados aleatoriamente na comunidade."
+    "section": "Entropia quadrática de Rao (Rao’s Q)",
+    "text": "Entropia quadrática de Rao (Rao’s Q)\n\n\n\nintegra simultaneamente a abundância relativa das espécies e as distâncias funcionais ou filogenéticas par a par.\nfórmula: \\(Q = \\sum_{i=1}^S \\sum_{j=1}^S d_{ij} \\cdot p_i \\cdot p_j\\).\n\\(d_{ij}\\) é a distância de dissimilaridade funcional (ex.: distância Gower ou Euclidiana) entre a espécie \\(i\\) e \\(j\\).\nexpressa a diferença funcional esperada entre dois indivíduos sorteados aleatoriamente na comunidade."
   },
   {
     "objectID": "slides/3-slides-func.html#introdução-à-diversidade-filogenética",
@@ -1480,15 +1480,15 @@
     "objectID": "slides/3-slides-func.html#regras-de-montagem-o-papel-dos-filtros-abióticos",
     "href": "slides/3-slides-func.html#regras-de-montagem-o-papel-dos-filtros-abióticos",
     "title": "Diversidade taxonômica, funcional e filogenética",
-    "section": "13. regras de montagem: o papel dos filtros abióticos",
-    "text": "13. regras de montagem: o papel dos filtros abióticos\n\n\n\nfiltros abióticos severos (seca, geada, solo ácido) atuam selecionando traços adaptativos específicos.\nforçam a convergência funcional (trait underdispersion).\nsob conservadorismo de nicho, geram agrupamento filogenético (\\(\\text{NRI} &gt; +1,96\\)).\nespécies da comunidade local são mais aparentadas entre si do que o esperado ao acaso."
+    "section": "Regras de montagem: o papel dos filtros abióticos",
+    "text": "Regras de montagem: o papel dos filtros abióticos\n\n\n\nFiltros abióticos severos (seca, geada, solo ácido) forçam a convergência funcional (trait underdispersion).\nespécies da comunidade local são mais aparentadas entre si do que o esperado ao acaso."
   },
   {
     "objectID": "slides/3-slides-func.html#regras-de-montagem-o-papel-dos-filtros-bióticos",
     "href": "slides/3-slides-func.html#regras-de-montagem-o-papel-dos-filtros-bióticos",
     "title": "Diversidade taxonômica, funcional e filogenética",
-    "section": "14. regras de montagem: o papel dos filtros bióticos",
-    "text": "14. regras de montagem: o papel dos filtros bióticos\n\n\n\na competição interespecífica severa impede a coexistência de espécies funcionalmente idênticas (limitação de similaridade).\nforça a divergência funcional (trait overdispersion).\nsob conservadorismo de nicho, gera superdispersão filogenética (\\(\\text{NRI} &lt; -1,96\\)).\nespécies coexistentes são menos aparentadas entre si do que o esperado ao acaso."
+    "section": "Regras de montagem: o papel dos filtros bióticos",
+    "text": "Regras de montagem: o papel dos filtros bióticos\n\n\n\nCompetição impede a coexistência e força a divergência funcional (trait overdispersion).\nEspécies coexistentes são menos aparentadas entre si do que o esperado ao acaso."
   },
   {
     "objectID": "slides/3-slides-func.html#o-modelo-prático-de-lego-no-módulo-3",
@@ -1508,8 +1508,8 @@
     "objectID": "slides/3-slides-func.html#simulando-um-filtro-abiótico-em-sala-com-lego",
     "href": "slides/3-slides-func.html#simulando-um-filtro-abiótico-em-sala-com-lego",
     "title": "Diversidade taxonômica, funcional e filogenética",
-    "section": "17. simulando um filtro abiótico em sala com lego",
-    "text": "17. simulando um filtro abiótico em sala com lego\n\n\n\nsimulação: um evento de inundação severa atinge a comunidade de LEGO.\nregra de filtro: apenas peças com altura \\(\\ge 1,0\\) (blocos altos) e \\(\\ge 4\\) pinos sobrevivem no substrato.\nplacas finas e peças pequenas de 1 pino são filtradas e removidas da comunidade local.\nresultado empírico: redução da riqueza funcional (FRic) e surgimento de agrupamento filogenético."
+    "section": "Simulando um filtro abiótico em sala com lego",
+    "text": "Simulando um filtro abiótico em sala com lego\n\n\n\nSimulação: um evento de inundação severa atinge a comunidade de LEGO.\nApenas peças com altura \\(\\ge 1,0\\) (blocos altos) e \\(\\ge 4\\) pinos sobrevivem no substrato.\nresultado empírico: redução da riqueza funcional (FRic) e surgimento de agrupamento filogenético."
   },
   {
     "objectID": "slides/3-slides-func.html#análises-no-r-com-pacotes-fd-e-picante",
@@ -1522,15 +1522,15 @@
     "objectID": "slides/3-slides-func.html#interpretação-integrada-das-três-dimensões",
     "href": "slides/3-slides-func.html#interpretação-integrada-das-três-dimensões",
     "title": "Diversidade taxonômica, funcional e filogenética",
-    "section": "19. interpretação integrada das três dimensões",
-    "text": "19. interpretação integrada das três dimensões\n\n\n\ndiversidade taxonômica (\\(S, H'\\)): quantifica o número e equitabilidade dos nomes/táxons.\ndiversidade funcional (CWM, FRic, Rao Q): quantifica o espaço de nichos e papéis ecossistêmicos.\ndiversidade filogenética (PD, NRI): quantifica a linhagem evolutiva e o patrimônio genético acumulado.\na sobreposição das três dimensões revela os mecanismos causais da montagem de comunidades."
+    "section": "Interpretação integrada das três dimensões",
+    "text": "Interpretação integrada das três dimensões\n\n\n\ndiversidade taxonômica (\\(S, H'\\)): quantifica o número e equitabilidade dos nomes/táxons.\ndiversidade funcional (CWM, FRic, FDis): quantifica o espaço de nichos e papéis ecossistêmicos.\ndiversidade filogenética (PD, NRI): quantifica a linhagem evolutiva e o patrimônio genético acumulado.\nA sobreposição das três dimensões revela os mecanismos causais da montagem de comunidades."
   },
   {
     "objectID": "slides/3-slides-func.html#síntese-e-orientações-para-o-exercício-prático",
     "href": "slides/3-slides-func.html#síntese-e-orientações-para-o-exercício-prático",
     "title": "Diversidade taxonômica, funcional e filogenética",
-    "section": "20. síntese e orientações para o exercício prático",
-    "text": "20. síntese e orientações para o exercício prático\n\n\n\ncada grupo usará sua matriz de 100 peças de LEGO atualizada com atributos funcionais.\ncriar a matriz T no R com número de pinos, altura e massa de cada morfotipo.\nrodar a função dbFD() para extrair CWM e índices multidimensionais.\ngerar o dendrograma filogenético e rodar pd() e ses.mpd() para diagnosticar se o seu saco sofreu filtro abiótico ou limitação de similaridade."
+    "section": "Síntese e orientações para o exercício prático",
+    "text": "Síntese e orientações para o exercício prático\n\n\n\ncada grupo usará sua matriz de 100 peças de LEGO atualizada com atributos funcionais.\ncriar a matriz L no R com número de pinos, altura e massa de cada morfotipo.\nrodar a função dbFD() do pacote FD para extrair CWM e índices multidimensionais."
   },
   {
     "objectID": "slides/3-slides-func.html#limitação-da-equivalência-taxonômica",
@@ -1552,5 +1552,110 @@
     "title": "",
     "section": "",
     "text": "title: “Diversidade taxonômica, funcional e filogenética” subtitle: “Além da equivalência de espécies” author: “disciplina de ecologia de comunidades” # date: “2026-10-02” format: revealjs: # theme: sky slide-number: true transition: fade width: 1280 height: 720\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "slides/3-slides-func.html#dispersão-fucnional-fdis",
+    "href": "slides/3-slides-func.html#dispersão-fucnional-fdis",
+    "title": "Diversidade taxonômica, funcional e filogenética",
+    "section": "Dispersão Fucnional (Fdis)",
+    "text": "Dispersão Fucnional (Fdis)\n\n\n\nIntegra a abundância relativa das espécies e as distâncias funcionais a um centróide.\nfórmula: \\[FDis = \\frac{\\sum_{i=1}^{S} w_i z_i}{\\sum_{i=1}^{S} w_i}\\]\n\\(S\\) número de espécies.\n\\(w_i\\) abdunÂncia da espécie \\(i\\).\n\\(z_i\\) distcia da espécie \\(i\\) ao centróide ponderado (\\(c\\))."
+  },
+  {
+    "objectID": "slides/3-slides-func.html#construindo-a-filogenia-morfológica",
+    "href": "slides/3-slides-func.html#construindo-a-filogenia-morfológica",
+    "title": "Diversidade taxonômica, funcional e filogenética",
+    "section": "Construindo a filogenia morfológica",
+    "text": "Construindo a filogenia morfológica\n\n\n\nAs peças de LEGO possuem relações de parentesco\nBlocos altos compartilham ancestrais morfológicos comuns; placas finas formam um clade derivado."
+  },
+  {
+    "objectID": "exercises/ex3/modulo3_lego_ecologia.html",
+    "href": "exercises/ex3/modulo3_lego_ecologia.html",
+    "title": "Módulo 3: diversidade funcional em ecologia de comunidades com LEGO & R",
+    "section": "",
+    "text": "neste terceiro módulo, avançamos na análise de comunidades biológicas superando a premissa da equivalência taxonômica. nos módulos 1 e 2, tratamos as espécies (cores das peças de LEGO) como unidades equivalentes. agora, incorporamos a dimensão da diversidade funcional, mensurando as características morfológicas e ecológicas dos indivíduos que influenciam diretamente seu desempenho e papel no ecossistema.\nutilizaremos a mesma comunidade simulada de 100 peças de LEGO por grupo, mas expandiremos a caracterização das peças para além da cor, registrando seus traços funcionais (functional traits).\n\n\n\nespécie (morfotipo): combinação de cor e formato da peça de LEGO (exemplo: vermelho bloco 2x4, amarelo placa 1x2).\nindivíduo: cada peça física de LEGO presente na amostragem.\nmatriz de abundância (L): matriz contendo a contagem de indivíduos de cada espécie por local/saco.\nmatriz de traços (Q): tabela descrevendo os atributos funcionais de cada espécie:\n\npinos (número de pinos): proxy quantitativo de tamanho e biomassa individual (traço morfológico/fisiológico).\naltura (altura relativa): proxy contínuo de estratificação e guilda funcional (bloco alto = \\(1,0\\); placa fina = \\(0,33\\); rampa = \\(1,0\\))."
+  },
+  {
+    "objectID": "exercises/ex3/modulo3_lego_ecologia.html#definições-do-modelo-no-módulo-3",
+    "href": "exercises/ex3/modulo3_lego_ecologia.html#definições-do-modelo-no-módulo-3",
+    "title": "Módulo 3: diversidade funcional em ecologia de comunidades com LEGO & R",
+    "section": "",
+    "text": "espécie (morfotipo): combinação de cor e formato da peça de LEGO (exemplo: vermelho bloco 2x4, amarelo placa 1x2).\nindivíduo: cada peça física de LEGO presente na amostragem.\nmatriz de abundância (L): matriz contendo a contagem de indivíduos de cada espécie por local/saco.\nmatriz de traços (Q): tabela descrevendo os atributos funcionais de cada espécie:\n\npinos (número de pinos): proxy quantitativo de tamanho e biomassa individual (traço morfológico/fisiológico).\naltura (altura relativa): proxy contínuo de estratificação e guilda funcional (bloco alto = \\(1,0\\); placa fina = \\(0,33\\); rampa = \\(1,0\\))."
+  },
+  {
+    "objectID": "exercises/ex3/modulo3_lego_ecologia.html#carregamento-de-pacotes-e-estruturação-das-matrizes-l-e-t",
+    "href": "exercises/ex3/modulo3_lego_ecologia.html#carregamento-de-pacotes-e-estruturação-das-matrizes-l-e-t",
+    "title": "Módulo 3: diversidade funcional em ecologia de comunidades com LEGO & R",
+    "section": "3.1 Carregamento de pacotes e estruturação das matrizes L e T",
+    "text": "3.1 Carregamento de pacotes e estruturação das matrizes L e T\nvamos simular as quatro comunidades de referência de 100 peças e construir a matriz de traços funcionais correspondente aos oito morfotipos principais.\n\nlibrary(FD)\nlibrary(vegan)\nlibrary(tidyverse)\n\n# 1. Matriz de traços funcionais (Q) - espécies nas linhas, traços nas colunas\nmatriz_tracos &lt;- data.frame(\n  Pinos  = c(8, 2, 4, 1, 6, 2, 4, 8),\n  Altura = c(1.0, 0.33, 1.0, 1.0, 1.0, 0.33, 0.33, 0.33),\n  row.names = c(\"Vermelho\", \"Amarelo\", \"Azul\", \"Verde\", \"Branco\", \"Preto\", \"Laranja\", \"Cinza\")\n)\n\n# 2. Matriz de abundância de comunidades (L) - locais nas linhas, espécies nas colunas\nmatriz_abundancia &lt;- matrix(\n  c(70, 15, 8, 4, 2, 1, 0, 0,   # Saco A: hiperdominante em peça grande\n    40, 22, 14, 10, 6, 4, 3, 1,  # Saco B: distribuição log-normal típica\n    10, 10, 10, 10, 10, 10, 10, 10, # Saco C: equitativo/uniforme\n    5, 30, 8, 2, 5, 25, 20, 5),  # Saco D: dominado por placas pequenas e leves\n  nrow = 4, byrow = TRUE,\n  dimnames = list(c(\"Saco_A\", \"Saco_B\", \"Saco_C\", \"Saco_D\"), rownames(matriz_tracos))\n)\n\n# Exibição da matriz de traços\nknitr::kable(matriz_tracos, caption = \"Matriz Q: traços funcionais dos morfotipos de LEGO\")\n\n\nMatriz Q: traços funcionais dos morfotipos de LEGO\n\n\n\nPinos\nAltura\n\n\n\n\nVermelho\n8\n1.00\n\n\nAmarelo\n2\n0.33\n\n\nAzul\n4\n1.00\n\n\nVerde\n1\n1.00\n\n\nBranco\n6\n1.00\n\n\nPreto\n2\n0.33\n\n\nLaranja\n4\n0.33\n\n\nCinza\n8\n0.33"
+  },
+  {
+    "objectID": "exercises/ex3/modulo3_lego_ecologia.html#cálculo-da-média-ponderada-da-comunidade-cwm",
+    "href": "exercises/ex3/modulo3_lego_ecologia.html#cálculo-da-média-ponderada-da-comunidade-cwm",
+    "title": "Módulo 3: diversidade funcional em ecologia de comunidades com LEGO & R",
+    "section": "3.2 Cálculo da média ponderada da comunidade (CWM)",
+    "text": "3.2 Cálculo da média ponderada da comunidade (CWM)\nA função functcomp() do pacote FD calcula a média de cada traço ponderada pela abundância relativa de cada espécie presente em cada local (\\(\\text{CWM}_k = \\sum p_i \\cdot t_{ik}\\)).\n\n# Cálculo das CWMs para os traços quantitativos\ncwm_resultados &lt;- functcomp(as.matrix(matriz_tracos), matriz_abundancia)\n\nknitr::kable(round(cwm_resultados, 2), caption = \"Valores de CWM para os traços funcionais nos quatro sacos de LEGO\")\n\n\nValores de CWM para os traços funcionais nos quatro sacos de LEGO\n\n\n\nPinos\nAltura\n\n\n\n\nSaco_A\n6.40\n0.89\n\n\nSaco_B\n4.94\n0.80\n\n\nSaco_C\n4.38\n0.66\n\n\nSaco_D\n3.34\n0.46"
+  },
+  {
+    "objectID": "exercises/ex3/modulo3_lego_ecologia.html#cálculo-dos-índices-multidimensionais-de-diversidade-funcional",
+    "href": "exercises/ex3/modulo3_lego_ecologia.html#cálculo-dos-índices-multidimensionais-de-diversidade-funcional",
+    "title": "Módulo 3: diversidade funcional em ecologia de comunidades com LEGO & R",
+    "section": "3.3 cálculo dos índices multidimensionais de diversidade funcional",
+    "text": "3.3 cálculo dos índices multidimensionais de diversidade funcional\nutilizaremos a função dbFD() para extrair a riqueza funcional (\\(\\text{FRic}\\)), a uniformidade funcional (\\(\\text{FEve}\\)), a divergência funcional (\\(\\text{FDiv}\\)) e a entropia quadrática de Rao (\\(\\text{Rao's Q}\\)).\n\n# Execução da análise multidimensional via dbFD\nres_fd &lt;- dbFD(\n  x = matriz_tracos,\n  a = matriz_abundancia,\n  calc.FRic = TRUE,\n  calc.FDiv = TRUE,\n  print.pco = FALSE\n)\n\nFRic: No dimensionality reduction was required. The 2 PCoA axes were kept as 'traits'. \n\n# Consolidação da tabela de índices funcionais\ntabela_fd &lt;- data.frame(\n  Comunidade = rownames(matriz_abundancia),\n  Riqueza_S  = specnumber(matriz_abundancia),\n  CWM_Pinos  = round(res_fd$CWM$Pinos, 2),\n  FRic       = round(res_fd$FRic, 3),\n  FEve       = round(res_fd$FEve, 3),\n  FDiv       = round(res_fd$FDiv, 3),\n  Rao_Q      = round(res_fd$RaoQ, 3)\n)\n\nknitr::kable(tabela_fd, caption = \"Índices multidimensionais de diversidade funcional entre os quatro sacos de LEGO\")\n\n\nÍndices multidimensionais de diversidade funcional entre os quatro sacos de LEGO\n\n\n\nComunidade\nRiqueza_S\nCWM_Pinos\nFRic\nFEve\nFDiv\nRao_Q\n\n\n\n\nSaco_A\nSaco_A\n6\n6.40\n2.405\n0.546\n0.936\n1.350\n\n\nSaco_B\nSaco_B\n8\n4.94\n4.467\n0.374\n0.905\n1.795\n\n\nSaco_C\nSaco_C\n8\n4.38\n4.467\n0.720\n0.850\n1.750\n\n\nSaco_D\nSaco_D\n8\n3.34\n4.467\n0.636\n0.857\n1.065"
+  },
+  {
+    "objectID": "exercises/ex3/modulo3_lego_ecologia.html#visualização-gráfica-dos-índices-funcionais",
+    "href": "exercises/ex3/modulo3_lego_ecologia.html#visualização-gráfica-dos-índices-funcionais",
+    "title": "Módulo 3: diversidade funcional em ecologia de comunidades com LEGO & R",
+    "section": "3.4 visualização gráfica dos índices funcionais",
+    "text": "3.4 visualização gráfica dos índices funcionais\nconstruímos um gráfico comparativo utilizando o pacote ggplot2 para analisar como o espaço funcional varia entre as comunidades.\n\n# Reorganização dos dados para formato longo (tidy)\ndf_fd_grafico &lt;- tabela_fd %&gt;%\n  pivot_longer(\n    cols = c(\"FRic\", \"FEve\", \"FDiv\", \"Rao_Q\"),\n    names_to = \"Indice_Funcional\",\n    values_to = \"Valor\"\n  )\n\n# Gráfico de barras facetado\nggplot(df_fd_grafico, aes(x = Comunidade, y = Valor, fill = Comunidade)) +\n  geom_col(show.legend = FALSE) +\n  facet_wrap(~ Indice_Funcional, scales = \"free_y\", ncol = 2) +\n  scale_fill_brewer(palette = \"Set1\") +\n  theme_minimal(base_size = 12) +\n  labs(\n    title = \"comparação dos índices funcionais entre os sacos de LEGO\",\n    subtitle = \"respostas contrastantes de riqueza funcional (FRic), uniformidade (FEve), divergência (FDiv) e Rao Q\",\n    x = \"comunidade (saco)\",\n    y = \"valor da métrica\"\n  )"
+  },
+  {
+    "objectID": "slides/3.2-slides-filo.html",
+    "href": "slides/3.2-slides-filo.html",
+    "title": "Diversidade taxonômica, funcional e filogenética",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(FD)"
+  },
+  {
+    "objectID": "slides/3.2-slides-filo.html#limitação-da-equivalência-taxonômica",
+    "href": "slides/3.2-slides-filo.html#limitação-da-equivalência-taxonômica",
+    "title": "Diversidade taxonômica, funcional e filogenética",
+    "section": "Limitação da equivalência taxonômica",
+    "text": "Limitação da equivalência taxonômica\n\n\n\nTodas as espécies como unidades ecológicas idênticas.\nFilogenia é a história evolutiva.\nA ecologia moderna integra as dimensões taxonômica, funcional e filogenética."
+  },
+  {
+    "objectID": "slides/3.2-slides-filo.html#construindo-a-filogenia-morfológica-de-lego-no-r",
+    "href": "slides/3.2-slides-filo.html#construindo-a-filogenia-morfológica-de-lego-no-r",
+    "title": "Diversidade taxonômica, funcional e filogenética",
+    "section": "16. construindo a filogenia morfológica de lego no r",
+    "text": "16. construindo a filogenia morfológica de lego no r\n\n\n\nas peças de LEGO possuem relações de parentesco morfológico baseadas no seu processo de fabricação.\nblocos altos compartilham ancestrais morfológicos comuns; placas finas formam um clade derivado.\ncalcula-se a matriz de distância Euclidiana entre os traços das peças.\naplica-se o agrupamento hierárquico (hclust) para gerar a árvore filogenética (phylo) via pacote ape."
+  },
+  {
+    "objectID": "slides/3.2-slides-filo.html#simulando-um-filtro-abiótico-em-sala-com-lego",
+    "href": "slides/3.2-slides-filo.html#simulando-um-filtro-abiótico-em-sala-com-lego",
+    "title": "Diversidade taxonômica, funcional e filogenética",
+    "section": "17. simulando um filtro abiótico em sala com lego",
+    "text": "17. simulando um filtro abiótico em sala com lego\n\n\n\nsimulação: um evento de inundação severa atinge a comunidade de LEGO.\nregra de filtro: apenas peças com altura \\(\\ge 1,0\\) (blocos altos) e \\(\\ge 4\\) pinos sobrevivem no substrato.\nplacas finas e peças pequenas de 1 pino são filtradas e removidas da comunidade local.\nresultado empírico: redução da riqueza funcional (FRic) e surgimento de agrupamento filogenético."
+  },
+  {
+    "objectID": "slides/3.2-slides-filo.html#análises-no-r-com-pacotes-fd-e-picante",
+    "href": "slides/3.2-slides-filo.html#análises-no-r-com-pacotes-fd-e-picante",
+    "title": "Diversidade taxonômica, funcional e filogenética",
+    "section": "18. análises no r com pacotes FD e picante",
+    "text": "18. análises no r com pacotes FD e picante\n\n\n\npacote FD: função dbFD() calcula CWM, FRic, FEve, FDiv e Rao’s Q a partir das matrizes L e T.\npacote picante: função pd() calcula a diversidade filogenética de Faith (PD).\nfunções ses.mpd() e ses.mntd() do picante: executam os modelos nulos e calculam NRI e NTI.\nautomação completa da análise multidimensional em scripts reprodutíveis."
+  },
+  {
+    "objectID": "slides/3.2-slides-filo.html#interpretação-integrada-das-três-dimensões",
+    "href": "slides/3.2-slides-filo.html#interpretação-integrada-das-três-dimensões",
+    "title": "Diversidade taxonômica, funcional e filogenética",
+    "section": "19. interpretação integrada das três dimensões",
+    "text": "19. interpretação integrada das três dimensões\n\n\n\ndiversidade taxonômica (\\(S, H'\\)): quantifica o número e equitabilidade dos nomes/táxons.\ndiversidade funcional (CWM, FRic, Rao Q): quantifica o espaço de nichos e papéis ecossistêmicos.\ndiversidade filogenética (PD, NRI): quantifica a linhagem evolutiva e o patrimônio genético acumulado.\na sobreposição das três dimensões revela os mecanismos causais da montagem de comunidades.\n\n\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead."
+  },
+  {
+    "objectID": "slides/3.2-slides-filo.html#síntese-e-orientações-para-o-exercício-prático",
+    "href": "slides/3.2-slides-filo.html#síntese-e-orientações-para-o-exercício-prático",
+    "title": "Diversidade taxonômica, funcional e filogenética",
+    "section": "20. síntese e orientações para o exercício prático",
+    "text": "20. síntese e orientações para o exercício prático\n\n\n\ncada grupo usará sua matriz de 100 peças de LEGO atualizada com atributos funcionais.\ncriar a matriz T no R com número de pinos, altura e massa de cada morfotipo.\nrodar a função dbFD() para extrair CWM e índices multidimensionais.\ngerar o dendrograma filogenético e rodar pd() e ses.mpd() para diagnosticar se o seu saco sofreu filtro abiótico ou limitação de similaridade."
   }
 ]

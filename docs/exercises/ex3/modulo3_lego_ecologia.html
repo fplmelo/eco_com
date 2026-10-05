@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Felipe Melo">
+<meta name="dcterms.date" content="2026-10-05">
+
+<title>Módulo 3: diversidade funcional em ecologia de comunidades com LEGO &amp; R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ee3acdd36c54509ec1093f55d866e97f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../img/logo_branco_ufpe.png" alt="UFPE logo" class="navbar-logo light-content">
+    <img src="../../img/logo_branco_ufpe.png" alt="UFPE logo" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Início</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html"> 
+<span class="menu-text">Objetivos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../schedule.html"> 
+<span class="menu-text">Cronograma</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-intro" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">R Intro</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-r-intro">    
+        <li>
+    <a class="dropdown-item" href="../../get-started/1-install.html"><i class="bi bi-emoji-sunglasses-fill" role="img">
+</i> 
+ <span class="dropdown-text">1 - Instalar R &amp; Rstudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/2-basic-intro.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">2 - Introdução Básica ao R e Rstudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/3-syntax.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">3 - Sintaxe &amp; Estrutura de Dados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/4-functions.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">4 - Funções e Comandos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/5-data.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">5 - Dados em R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../workbook/workbook.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">6 - Seu próprio site</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../sessions/index.html"> 
+<span class="menu-text">Todas as Aulas</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../exercises/index.html"> 
+<span class="menu-text">Exercícios</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources/index.html"> 
+<span class="menu-text">Recursos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../assessment.html"> 
+<span class="menu-text">Tipo de Avaliação</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://twitter.com/quarto_pub" title="Quarto Twitter" class="quarto-navigation-tool px-1" aria-label="Quarto Twitter"><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/quarto-dev/quarto-cli" title="Quarto GitHub" class="quarto-navigation-tool px-1" aria-label="Quarto GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://quarto.org/docs/blog/index.xml" title="Quarto Blog RSS" class="quarto-navigation-tool px-1" aria-label="Quarto Blog RSS"><i class="bi bi-rss"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#apresentação-do-módulo" id="toc-apresentação-do-módulo" class="nav-link active" data-scroll-target="#apresentação-do-módulo"><span class="header-section-number">1</span> Apresentação do módulo</a>
+  <ul class="collapse">
+  <li><a href="#definições-do-modelo-no-módulo-3" id="toc-definições-do-modelo-no-módulo-3" class="nav-link" data-scroll-target="#definições-do-modelo-no-módulo-3"><span class="header-section-number">1.1</span> Definições do modelo no módulo 3</a></li>
+  </ul></li>
+  <li><a href="#demonstrativo-prático-de-sala-hands-on" id="toc-demonstrativo-prático-de-sala-hands-on" class="nav-link" data-scroll-target="#demonstrativo-prático-de-sala-hands-on"><span class="header-section-number">2</span> demonstrativo prático de sala (hands-on)</a></li>
+  <li><a href="#exercício-aplicado-no-r-fd-e-tidyverse" id="toc-exercício-aplicado-no-r-fd-e-tidyverse" class="nav-link" data-scroll-target="#exercício-aplicado-no-r-fd-e-tidyverse"><span class="header-section-number">3</span> Exercício aplicado no R (<code>FD</code> e <code>tidyverse</code>)</a>
+  <ul class="collapse">
+  <li><a href="#carregamento-de-pacotes-e-estruturação-das-matrizes-l-e-t" id="toc-carregamento-de-pacotes-e-estruturação-das-matrizes-l-e-t" class="nav-link" data-scroll-target="#carregamento-de-pacotes-e-estruturação-das-matrizes-l-e-t"><span class="header-section-number">3.1</span> Carregamento de pacotes e estruturação das matrizes L e T</a></li>
+  <li><a href="#cálculo-da-média-ponderada-da-comunidade-cwm" id="toc-cálculo-da-média-ponderada-da-comunidade-cwm" class="nav-link" data-scroll-target="#cálculo-da-média-ponderada-da-comunidade-cwm"><span class="header-section-number">3.2</span> Cálculo da média ponderada da comunidade (CWM)</a></li>
+  <li><a href="#cálculo-dos-índices-multidimensionais-de-diversidade-funcional" id="toc-cálculo-dos-índices-multidimensionais-de-diversidade-funcional" class="nav-link" data-scroll-target="#cálculo-dos-índices-multidimensionais-de-diversidade-funcional"><span class="header-section-number">3.3</span> cálculo dos índices multidimensionais de diversidade funcional</a></li>
+  <li><a href="#visualização-gráfica-dos-índices-funcionais" id="toc-visualização-gráfica-dos-índices-funcionais" class="nav-link" data-scroll-target="#visualização-gráfica-dos-índices-funcionais"><span class="header-section-number">3.4</span> visualização gráfica dos índices funcionais</a></li>
+  </ul></li>
+  <li><a href="#instruções-para-uso-do-próprio-arquivo-.csv-no-exercício" id="toc-instruções-para-uso-do-próprio-arquivo-.csv-no-exercício" class="nav-link" data-scroll-target="#instruções-para-uso-do-próprio-arquivo-.csv-no-exercício"><span class="header-section-number">4</span> Instruções para uso do próprio arquivo .csv no exercício</a></li>
+  <li><a href="#perguntas-de-interpretação-ecológica" id="toc-perguntas-de-interpretação-ecológica" class="nav-link" data-scroll-target="#perguntas-de-interpretação-ecológica"><span class="header-section-number">5</span> Perguntas de interpretação ecológica</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Módulo 3: diversidade funcional em ecologia de comunidades com LEGO &amp; R</h1>
+<p class="subtitle lead">Quantificação de traços funcionais, CWM e métricas multidimensionais (FD)</p>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Felipe Melo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 5, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="apresentação-do-módulo" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Apresentação do módulo</h1>
+<p>neste terceiro módulo, avançamos na análise de comunidades biológicas superando a premissa da equivalência taxonômica. nos módulos 1 e 2, tratamos as espécies (cores das peças de LEGO) como unidades equivalentes. agora, incorporamos a dimensão da <strong>diversidade funcional</strong>, mensurando as características morfológicas e ecológicas dos indivíduos que influenciam diretamente seu desempenho e papel no ecossistema.</p>
+<p>utilizaremos a mesma comunidade simulada de 100 peças de LEGO por grupo, mas expandiremos a caracterização das peças para além da cor, registrando seus traços funcionais (<em>functional traits</em>).</p>
+<section id="definições-do-modelo-no-módulo-3" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="definições-do-modelo-no-módulo-3"><span class="header-section-number">1.1</span> Definições do modelo no módulo 3</h2>
+<ul>
+<li><strong>espécie (morfotipo):</strong> combinação de cor e formato da peça de LEGO (exemplo: <em>vermelho bloco 2x4</em>, <em>amarelo placa 1x2</em>).</li>
+<li><strong>indivíduo:</strong> cada peça física de LEGO presente na amostragem.</li>
+<li><strong>matriz de abundância (L):</strong> matriz contendo a contagem de indivíduos de cada espécie por local/saco.</li>
+<li><strong>matriz de traços (Q):</strong> tabela descrevendo os atributos funcionais de cada espécie:
+<ol type="1">
+<li><strong>pinos (número de pinos):</strong> proxy quantitativo de tamanho e biomassa individual (traço morfológico/fisiológico).</li>
+<li><strong>altura (altura relativa):</strong> proxy contínuo de estratificação e guilda funcional (bloco alto = <span class="math inline">\(1,0\)</span>; placa fina = <span class="math inline">\(0,33\)</span>; rampa = <span class="math inline">\(1,0\)</span>).</li>
+</ol></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="demonstrativo-prático-de-sala-hands-on" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> demonstrativo prático de sala (hands-on)</h1>
+<p>antes de iniciar as análises computacionais no R, os grupos realizarão uma atividade tátil para compreender como os filtros ambientais alteram a estrutura funcional da comunidade.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🧩 Protocolo prático: medição de traços e simulação de filtro abiótico
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>montagem da matriz de traços (Q)</strong><br>
+Separe uma peça de cada morfotipo (cor/formato) do seu saco e preencha a ficha de traços mensurando o número de pinos, a altura e a massa em gramas.</p></li>
+<li><p><strong>Ensaio tátil da média ponderada (CWM)</strong><br>
+Segure a comunidade inteira na mão (ou sinta o peso total do saco). comunidades dominadas por peças grandes de 8 pinos parecerão visivelmente mais pesadas do que comunidades com a mesma riqueza compostas por placas de 2 pinos, ilustrando intuitivamente a média ponderada comunitária (CWM).</p></li>
+<li><p><strong>Simulação do filtro abiótico de inundação</strong><br>
+Simule um evento extremo de inundação na bancada: uma elevação do nível da água retira da comunidade todas as peças com altura <span class="math inline">\(&lt; 0,5\)</span> (placas finas) e biomassa <span class="math inline">\(&lt; 2\)</span> pinos. observe visualmente o colapso do volume funcional ocupado pelas peças remanescentes.</p></li>
+</ol>
+</div>
+</div>
+<hr>
+</section>
+<section id="exercício-aplicado-no-r-fd-e-tidyverse" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Exercício aplicado no R (<code>FD</code> e <code>tidyverse</code>)</h1>
+<section id="carregamento-de-pacotes-e-estruturação-das-matrizes-l-e-t" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="carregamento-de-pacotes-e-estruturação-das-matrizes-l-e-t"><span class="header-section-number">3.1</span> Carregamento de pacotes e estruturação das matrizes L e T</h2>
+<p>vamos simular as quatro comunidades de referência de 100 peças e construir a matriz de traços funcionais correspondente aos oito morfotipos principais.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(FD)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Matriz de traços funcionais (Q) - espécies nas linhas, traços nas colunas</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>matriz_tracos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pinos  =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Altura =</span> <span class="fu">c</span>(<span class="fl">1.0</span>, <span class="fl">0.33</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">0.33</span>, <span class="fl">0.33</span>, <span class="fl">0.33</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">"Vermelho"</span>, <span class="st">"Amarelo"</span>, <span class="st">"Azul"</span>, <span class="st">"Verde"</span>, <span class="st">"Branco"</span>, <span class="st">"Preto"</span>, <span class="st">"Laranja"</span>, <span class="st">"Cinza"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Matriz de abundância de comunidades (L) - locais nas linhas, espécies nas colunas</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>matriz_abundancia <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">15</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>,   <span class="co"># Saco A: hiperdominante em peça grande</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="dv">40</span>, <span class="dv">22</span>, <span class="dv">14</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>,  <span class="co"># Saco B: distribuição log-normal típica</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="co"># Saco C: equitativo/uniforme</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>, <span class="dv">30</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">25</span>, <span class="dv">20</span>, <span class="dv">5</span>),  <span class="co"># Saco D: dominado por placas pequenas e leves</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"Saco_A"</span>, <span class="st">"Saco_B"</span>, <span class="st">"Saco_C"</span>, <span class="st">"Saco_D"</span>), <span class="fu">rownames</span>(matriz_tracos))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibição da matriz de traços</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(matriz_tracos, <span class="at">caption =</span> <span class="st">"Matriz Q: traços funcionais dos morfotipos de LEGO"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Matriz Q: traços funcionais dos morfotipos de LEGO</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Pinos</th>
+<th style="text-align: right;">Altura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Vermelho</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Amarelo</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Azul</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Verde</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Branco</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Preto</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Laranja</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.33</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cinza</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0.33</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr>
+</section>
+<section id="cálculo-da-média-ponderada-da-comunidade-cwm" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="cálculo-da-média-ponderada-da-comunidade-cwm"><span class="header-section-number">3.2</span> Cálculo da média ponderada da comunidade (CWM)</h2>
+<p>A função <code>functcomp()</code> do pacote <code>FD</code> calcula a média de cada traço ponderada pela abundância relativa de cada espécie presente em cada local (<span class="math inline">\(\text{CWM}_k = \sum p_i \cdot t_{ik}\)</span>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo das CWMs para os traços quantitativos</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>cwm_resultados <span class="ot">&lt;-</span> <span class="fu">functcomp</span>(<span class="fu">as.matrix</span>(matriz_tracos), matriz_abundancia)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">round</span>(cwm_resultados, <span class="dv">2</span>), <span class="at">caption =</span> <span class="st">"Valores de CWM para os traços funcionais nos quatro sacos de LEGO"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Valores de CWM para os traços funcionais nos quatro sacos de LEGO</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Pinos</th>
+<th style="text-align: right;">Altura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Saco_A</td>
+<td style="text-align: right;">6.40</td>
+<td style="text-align: right;">0.89</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Saco_B</td>
+<td style="text-align: right;">4.94</td>
+<td style="text-align: right;">0.80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Saco_C</td>
+<td style="text-align: right;">4.38</td>
+<td style="text-align: right;">0.66</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Saco_D</td>
+<td style="text-align: right;">3.34</td>
+<td style="text-align: right;">0.46</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr>
+</section>
+<section id="cálculo-dos-índices-multidimensionais-de-diversidade-funcional" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="cálculo-dos-índices-multidimensionais-de-diversidade-funcional"><span class="header-section-number">3.3</span> cálculo dos índices multidimensionais de diversidade funcional</h2>
+<p>utilizaremos a função <code>dbFD()</code> para extrair a riqueza funcional (<span class="math inline">\(\text{FRic}\)</span>), a uniformidade funcional (<span class="math inline">\(\text{FEve}\)</span>), a divergência funcional (<span class="math inline">\(\text{FDiv}\)</span>) e a entropia quadrática de Rao (<span class="math inline">\(\text{Rao's Q}\)</span>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Execução da análise multidimensional via dbFD</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>res_fd <span class="ot">&lt;-</span> <span class="fu">dbFD</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> matriz_tracos,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> matriz_abundancia,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">calc.FRic =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">calc.FDiv =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">print.pco =</span> <span class="cn">FALSE</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>FRic: No dimensionality reduction was required. The 2 PCoA axes were kept as 'traits'. </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Consolidação da tabela de índices funcionais</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tabela_fd <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Comunidade =</span> <span class="fu">rownames</span>(matriz_abundancia),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Riqueza_S  =</span> <span class="fu">specnumber</span>(matriz_abundancia),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">CWM_Pinos  =</span> <span class="fu">round</span>(res_fd<span class="sc">$</span>CWM<span class="sc">$</span>Pinos, <span class="dv">2</span>),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">FRic       =</span> <span class="fu">round</span>(res_fd<span class="sc">$</span>FRic, <span class="dv">3</span>),</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">FEve       =</span> <span class="fu">round</span>(res_fd<span class="sc">$</span>FEve, <span class="dv">3</span>),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">FDiv       =</span> <span class="fu">round</span>(res_fd<span class="sc">$</span>FDiv, <span class="dv">3</span>),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Rao_Q      =</span> <span class="fu">round</span>(res_fd<span class="sc">$</span>RaoQ, <span class="dv">3</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tabela_fd, <span class="at">caption =</span> <span class="st">"Índices multidimensionais de diversidade funcional entre os quatro sacos de LEGO"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Índices multidimensionais de diversidade funcional entre os quatro sacos de LEGO</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Comunidade</th>
+<th style="text-align: right;">Riqueza_S</th>
+<th style="text-align: right;">CWM_Pinos</th>
+<th style="text-align: right;">FRic</th>
+<th style="text-align: right;">FEve</th>
+<th style="text-align: right;">FDiv</th>
+<th style="text-align: right;">Rao_Q</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Saco_A</td>
+<td style="text-align: left;">Saco_A</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6.40</td>
+<td style="text-align: right;">2.405</td>
+<td style="text-align: right;">0.546</td>
+<td style="text-align: right;">0.936</td>
+<td style="text-align: right;">1.350</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Saco_B</td>
+<td style="text-align: left;">Saco_B</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4.94</td>
+<td style="text-align: right;">4.467</td>
+<td style="text-align: right;">0.374</td>
+<td style="text-align: right;">0.905</td>
+<td style="text-align: right;">1.795</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Saco_C</td>
+<td style="text-align: left;">Saco_C</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4.38</td>
+<td style="text-align: right;">4.467</td>
+<td style="text-align: right;">0.720</td>
+<td style="text-align: right;">0.850</td>
+<td style="text-align: right;">1.750</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Saco_D</td>
+<td style="text-align: left;">Saco_D</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">3.34</td>
+<td style="text-align: right;">4.467</td>
+<td style="text-align: right;">0.636</td>
+<td style="text-align: right;">0.857</td>
+<td style="text-align: right;">1.065</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr>
+</section>
+<section id="visualização-gráfica-dos-índices-funcionais" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="visualização-gráfica-dos-índices-funcionais"><span class="header-section-number">3.4</span> visualização gráfica dos índices funcionais</h2>
+<p>construímos um gráfico comparativo utilizando o pacote <code>ggplot2</code> para analisar como o espaço funcional varia entre as comunidades.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorganização dos dados para formato longo (tidy)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df_fd_grafico <span class="ot">&lt;-</span> tabela_fd <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"FRic"</span>, <span class="st">"FEve"</span>, <span class="st">"FDiv"</span>, <span class="st">"Rao_Q"</span>),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Indice_Funcional"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Valor"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de barras facetado</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_fd_grafico, <span class="fu">aes</span>(<span class="at">x =</span> Comunidade, <span class="at">y =</span> Valor, <span class="at">fill =</span> Comunidade)) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Indice_Funcional, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>) <span class="sc">+</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"comparação dos índices funcionais entre os sacos de LEGO"</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"respostas contrastantes de riqueza funcional (FRic), uniformidade (FEve), divergência (FDiv) e Rao Q"</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"comunidade (saco)"</span>,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"valor da métrica"</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="modulo3_lego_ecologia_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="instruções-para-uso-do-próprio-arquivo-.csv-no-exercício" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Instruções para uso do próprio arquivo .csv no exercício</h1>
+<p>Nesta etapa, você aplicará as rotinas de diversidade funcional aos dados coletados pelo seu próprio grupo.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📋 Orientações para integração da sua base de dados no R
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Preparação do arquivo de traços (.csv)</strong><br>
+crie um arquivo separado chamado <code>tracos_grupo.csv</code> contendo os nomes dos morfotipos do seu grupo nas linhas e as colunas <code>Pinos</code> e <code>Altura</code>.</p></li>
+<li><p><strong>Carregamento dos dados reais do grupo</strong><br>
+importe sua planilha de abundância do módulo 1 (<code>dados_lego_grupo.csv</code>) e sua nova planilha de traços (<code>tracos_grupo.csv</code>) garantindo que os nomes das espécies sejam rigorosamente idênticos nas duas planilhas.</p></li>
+<li><p><strong>Execução dos comandos no R</strong><br>
+copie o bloco de código demonstrativo acima e substitua <code>matriz_abundancia</code> pela sua matriz importada e <code>matriz_tracos</code> pela sua tabela de traços reais.</p></li>
+<li><p><strong>Análise dos resultados funcionais</strong><br>
+calcule a CWM do seu grupo e interprete se a sua comunidade é funcionalmente dominada por organismos de grande porte ou de pequeno porte, identificando os valores de FRic e Rao’s Q.</p></li>
+</ol>
+</div>
+</div>
+<hr>
+</section>
+<section id="perguntas-de-interpretação-ecológica" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Perguntas de interpretação ecológica</h1>
+<p>Responda às seguintes questões com base nos conceitos de diversidade funcional e nos resultados quantitativos obtidos:</p>
+<ol type="1">
+<li><p><strong>nterpretação da média ponderada (CWM):</strong> o <strong>Saco A</strong> apresentou <span class="math inline">\(\text{CWM}_{\text{Pinos}} = 6,36\)</span>, enquanto o <strong>Saco D</strong> apresentou <span class="math inline">\(\text{CWM}_{\text{Pinos}} = 2,90\)</span>. o que essa diferença indica em termos de alocação de biomassa e estratégia ecológica dominante entre essas duas comunidades?</p></li>
+<li><p><strong>Desacoplamento entre riqueza taxonômica e riqueza funcional (FRic):</strong> compare o <strong>Saco C</strong> e o <strong>Saco D</strong>. é possível que uma comunidade com maior riqueza de espécies (<span class="math inline">\(S\)</span>) apresente menor riqueza funcional (<span class="math inline">\(\text{FRic}\)</span>)? sob quais condições de distribuição de traços no espaço de nichos isso acontece em ecossistemas naturais?</p></li>
+<li><p><strong>Divergência funcional (FDiv) e competição:</strong> o <strong>Saco C</strong> (com abundâncias perfeitamente uniformes) apresentou alto valor de divergência funcional (<span class="math inline">\(\text{FDiv}\)</span>). como um alto valor de FDiv reduz a sobreposição de nichos e a intensidade da competição interespecífica em uma comunidade?</p></li>
+<li><p><strong>Simulação de filtro ambiental abiótico:</strong> se um filtro abiótico severo (como seca prolongada ou poluição por metais) eliminar todas as espécies com morfotipos pequenos e placas finas da comunidade, o que acontecerá com os valores de FRic e CWM? essa mudança indica convergência funcional ou divergência funcional?</p></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2026 by <a href="https://ecoaplic.org/">felipe Melo</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/fplmelo/eco_com">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
