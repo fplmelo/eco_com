@@ -1649,7 +1649,7 @@
     "href": "slides/3.2-slides-filo.html#interpretação-integrada-das-três-dimensões",
     "title": "Diversidade taxonômica, funcional e filogenética",
     "section": "19. interpretação integrada das três dimensões",
-    "text": "19. interpretação integrada das três dimensões\n\n\n\ndiversidade taxonômica (\\(S, H'\\)): quantifica o número e equitabilidade dos nomes/táxons.\ndiversidade funcional (CWM, FRic, Rao Q): quantifica o espaço de nichos e papéis ecossistêmicos.\ndiversidade filogenética (PD, NRI): quantifica a linhagem evolutiva e o patrimônio genético acumulado.\na sobreposição das três dimensões revela os mecanismos causais da montagem de comunidades.\n\n\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead."
+    "text": "19. interpretação integrada das três dimensões\n\n\n\ndiversidade taxonômica (\\(S, H'\\)): quantifica o número e equitabilidade dos nomes/táxons.\ndiversidade funcional (CWM, FRic, Rao Q): quantifica o espaço de nichos e papéis ecossistêmicos.\ndiversidade filogenética (PD, NRI): quantifica a linhagem evolutiva e o patrimônio genético acumulado.\na sobreposição das três dimensões revela os mecanismos causais da montagem de comunidades."
   },
   {
     "objectID": "slides/3.2-slides-filo.html#síntese-e-orientações-para-o-exercício-prático",
