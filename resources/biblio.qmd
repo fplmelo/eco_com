@@ -1,0 +1,18 @@
+---
+title: "Livros em PDF"
+author: "Felipe Melo"
+---
+
+## Aqui tem uma lista de livros-texto e recursos online
+
+* Begon, Townsend &amp; Harper (2007) — Ecologia: De Indivíduos a Ecossistemas [Baixar PDF - Begon et al. (2007)](/biblio/ecologia-de-individuos-a-ecossistemas-4-ed-begon-townsed-harper-2007_compress.pdf)`
+* Keddy & Laughlin (2021) — A Framework for Community Ecology [Baixar PDF - Keddy &amp; Laughlin (2021)](/biblio/Paul%20A.%20Keddy_%20Daniel%20C.%20Laughlin%20-%20A%20Framework%20for%20Community%20Ecology_%20Species%20Pools,%20Filters%20and%20Traits-Cambridge%20University%20Press%20(2021).pdf)
+* Ricklefs & Relyea (2016) — A Economia da Natureza [Baixar PDF - Ricklefs &amp; Relyea (2016)](/biblio/Economia-Da-Natureza-Robert-E-Ricklefs-7ª-Ed_compressed.pdf)
+* Carson & Schnitzer (Eds.) — Tropical Forest Community Ecology `[Baixar PDF - Tropical Forest Community Ecology](/biblio/Tropical_Forest_Community_Ecology.pdf)
+
+* Baldauf (Ed.) (2020) — Participatory Biodiversity Conservation [Baixar PDF - Baldauf (2020)](/biblio/Participatory%20Biodiversity%20Conservation.pdf)
+
+## Análises Ecológicas no R
+
+* Da Silva FR, Gonçalves-Souza T, Paterno GB, Provete DB, Vancine MH. 2022. [Análises ecológicas no R](https://analises-ecologicas.com/). Nupeea : Recife, PE, Canal 6 : São Paulo. 640 p. ISBN 978-85-7917-564-0.
+

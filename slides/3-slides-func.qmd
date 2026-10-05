@@ -1,0 +1,528 @@
+---
+title: "Diversidade taxonômica, funcional e filogenética"
+subtitle: "Além da equivalência de espécies"
+author: "disciplina de ecologia de comunidades"
+# date: "2026-10-02"
+format:
+  revealjs:
+    # theme: sky
+    slide-number: true
+    transition: fade
+    width: 1280
+    height: 720
+---
+
+```{r}
+#| warning: false
+
+library(tidyverse)
+```
+
+
+## Limitação da equivalência taxonômica
+
+::: {.columns}
+::: {.column width="50%"}
+- Todas as espécies como unidades ecológicas idênticas.
+- Filogenia é a história evolutiva.
+- A ecologia moderna integra as dimensões taxonômica, funcional e filogenética.
+:::
+
+::: {.column width="50%"}
+![](https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0017476.g001&type=large){width=70%}
+:::
+:::
+
+
+
+## Traços funcionais (functional traits)
+
+::: {.columns}
+::: {.column width="50%"}
+- São características morfológicas, fisiológicas ou fenológicas mensuráveis no nível do indivíduo.
+- Traços de resposta (*response traits*): determinam como as espécies respondem aos filtros ambientais abióticos.
+- Traços de efeito (*effect traits*): determinam como as espécies influenciam os processos do ecossistema.
+:::
+
+::: {.column width="50%"}
+![](https://www.researchgate.net/publication/325528396/figure/fig1/AS:962235161665542@1606426148328/Illustration-of-the-concepts-of-functional-diversity-and-those-differences-low-high_W640.jpg)
+:::
+:::
+
+
+
+## Matrizes ecológicas fundamentais na análise funcional
+
+::: {.columns}
+::: {.column width="50%"}
+- Matriz **L** (locais $\times$ espécies)
+- Matriz **Q** (espécies $\times$ traços)
+- Matriz **R** (locais $\times$ variáveis ambientais)
+:::
+
+::: {.column width="50%"}
+
+![](https://www.davidzeleny.net/anadat-r/lib/exe/fetch.php/obrazky:three-matrix-diagram_v2.png)
+:::
+:::
+
+
+
+## Média ponderada da comunidade (CWM)
+
+
+- Calcula o valor médio de um traço na comunidade.
+- Fórmula: $\text{CWM}_k = \sum_{i=1}^S p_i \cdot t_{ik}$.
+- reflete o valor dominante do traço adaptativo selecionado pelo ambiente local.
+
+![](/img/cwm.webp){width=200% fig-align=center}
+
+
+## Riqueza funcional (FRic) e o hipervolume do nicho
+
+::: {.columns}
+::: {.column width="50%"}
+- Riqueza funcional (FRic) mede a quantidade de espaço funcional ocupado pelas espécies da comunidade.
+- Comunidades com alto FRic utilizam mais amplitude de recursos no ecossistema.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+set.seed(42)
+df_fric <- data.frame(Trait1 = rnorm(8), Trait2 = rnorm(8))
+chull_pts <- chull(df_fric$Trait1, df_fric$Trait2)
+chull_pts <- c(chull_pts, chull_pts[1])
+ggplot(df_fric, aes(x = Trait1, y = Trait2)) +
+  geom_polygon(data = df_fric[chull_pts, ], fill = "#9b59b6", alpha = 0.3, color = "#8e44ad") +
+  geom_point(size = 3, color = "#2c3e50") +
+  theme_minimal(base_size = 14) +
+  labs(title = "envelope convexo da riqueza funcional (FRic)",
+       x = "eixo funcional 1 (PCoA)", y = "eixo funcional 2 (PCoA)")
+```
+:::
+:::
+
+
+
+## Uniformidade funcional (FEve) e divergência funcional (FDiv)
+
+::: {.columns}
+::: {.column width="50%"}
+- Uniformidade funcional (FEve): variação na distância entre espécies.
+- Divergência funcional (FDiv): variação da abundância em razão ao centro
+- alto **FDiv** = espécies mais abundantes possuem traços bem divergentes, reduzindo a competição.
+:::
+
+::: {.column width="50%"}
+![](/img/FeveFdiv.png)
+:::
+:::
+
+
+
+## 7. entropia quadrática de Rao (Rao's Q)
+
+::: {.columns}
+::: {.column width="50%"}
+- integra simultaneamente a abundância relativa das espécies e as distâncias funcionais ou filogenéticas par a par.
+- fórmula: $Q = \sum_{i=1}^S \sum_{j=1}^S d_{ij} \cdot p_i \cdot p_j$.
+- $d_{ij}$ é a distância de dissimilaridade funcional (ex.: distância Gower ou Euclidiana) entre a espécie $i$ e $j$.
+- expressa a diferença funcional esperada entre dois indivíduos sorteados aleatoriamente na comunidade.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+rao_df <- data.frame(
+  Comunidade = c("Comunidade A", "Comunidade B"),
+  Rao_Q = c(0.15, 0.68)
+)
+ggplot(rao_df, aes(x = Comunidade, y = Rao_Q, fill = Comunidade)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  scale_fill_manual(values = c("#34495e", "#2980b9")) +
+  theme_minimal(base_size = 14) +
+  labs(title = "entropia quadrática de Rao (Rao Q)",
+       y = "dissimilaridade média esperada", x = "")
+```
+:::
+:::
+
+
+
+## 8. introdução à diversidade filogenética
+
+::: {.columns}
+::: {.column width="50%"}
+- a diversidade filogenética quantifica a história evolutiva acumulada pelas espécies de uma comunidade.
+- assume que o parentesco reflete a similaridade genômica e traços não mensurados (conservadorismo de nicho).
+- comunidades filogeneticamente diversas preservam um reservatório genético e evolutivo maior.
+- essencial para a biologia da conservação e para inferir processos históricos de montagem.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+library(ape)
+tree <- read.tree(text = "((EspA:10, EspB:10):15, (EspC:20, EspD:20):5);")
+plot(tree, main = "árvore filogenética de 4 espécies", cex = 1.2)
+```
+:::
+:::
+
+
+
+## 9. diversidade filogenética de Faith (PD)
+
+::: {.columns}
+::: {.column width="50%"}
+- proposta por Daniel Faith em 1992.
+- definida como a soma total do comprimento dos ramos da árvore filogenética que conecta todas as espécies do local.
+- fórmula: $\text{PD} = \sum_{b \in T} l_b$.
+- fortemente correlacionada com a riqueza de espécies ($S$); exige avaliação via modelos nulos para separar o efeito de $S$.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+pd_df <- data.frame(
+  Sítio = c("Sítio 1 (S=4)", "Sítio 2 (S=4)"),
+  Faith_PD = c(50, 110)
+)
+ggplot(pd_df, aes(x = Sítio, y = Faith_PD, fill = Sítio)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  scale_fill_manual(values = c("#8e44ad", "#27ae60")) +
+  theme_minimal(base_size = 14) +
+  labs(title = "comparação de PD de Faith para mesmo S",
+       y = "soma do comprimento dos ramos (Ma)", x = "")
+```
+:::
+:::
+
+
+
+## 10. distância filogenética média (MPD e MNTD)
+
+::: {.columns}
+::: {.column width="50%"}
+- MPD (*mean phylogenetic distance*): média de todas as distâncias filogenéticas par a par entre as espécies locais.
+- MNTD (*mean nearest taxon distance*): distância média até o vizinho filogenético mais próximo de cada espécie.
+- MPD reflete a estrutura filogenética ampla ao longo de toda a árvore.
+- MNTD reflete o adensamento terminal e o parentesco entre espécies mais próximas.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+mpd_df <- data.frame(
+  Métrica = c("MPD (Ampla)", "MNTD (Terminal)"),
+  Valor = c(42.5, 12.1)
+)
+ggplot(mpd_df, aes(x = Métrica, y = Valor, fill = Métrica)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  theme_minimal(base_size = 14) +
+  scale_fill_manual(values = c("#d35400", "#c0392b")) +
+  labs(title = "métricas filogenéticas par a par",
+       y = "distância evolutiva média (Ma)", x = "")
+```
+:::
+:::
+
+
+
+## 11. modelos nulos e padronização filogenética
+
+::: {.columns}
+::: {.column width="50%"}
+- como MPD e MNTD variam com a riqueza de espécies ($S$), utilizam-se modelos nulos de sorteio do pool regional.
+- geram-se comunidades aleatórias mantendo a riqueza observada constante.
+- calcula-se a média ($\text{MPD}_{nulo}$) e desvio padrão ($\text{sd}_{nulo}$) das simulações aleatórias.
+- permite isolar se o agrupamento ou dispersão filogenética é estatisticamente significativo.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+set.seed(123)
+null_dist <- rnorm(1000, mean = 50, sd = 5)
+ggplot(data.frame(x = null_dist), aes(x = x)) +
+  geom_histogram(fill = "#bdc3c7", color = "white", bins = 30) +
+  geom_vline(xintercept = 38, color = "#e74c3c", size = 1.5, linetype = "dashed") +
+  theme_minimal(base_size = 14) +
+  labs(title = "distribuição nula vs. MPD observado",
+       x = "valor de MPD nulo simualdo", y = "frequência")
+```
+:::
+:::
+
+
+
+## 12. índices padronizados: NRI e NTI
+
+::: {.columns}
+::: {.column width="50%"}
+- Net Relatedness Index (NRI): $\text{NRI} = -1 \cdot \frac{\text{MPD}_{obs} - \text{mean}(\text{MPD}_{nulo})}{\text{sd}(\text{MPD}_{nulo})}$.
+- Nearest Taxon Index (NTI): $\text{NTI} = -1 \cdot \frac{\text{MNTD}_{obs} - \text{mean}(\text{MNTD}_{nulo})}{\text{sd}(\text{MNTD}_{nulo})}$.
+- NRI/NTI $> +1,96$: agrupamento filogenético (*phylogenetic clustering*).
+- NRI/NTI $< -1,96$: superdispersão filogenética (*phylogenetic overdispersion*).
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+nri_df <- data.frame(
+  Sítio = c("Sítio A (Filtro)", "Sítio B (Competição)"),
+  NRI = c(2.45, -2.10)
+)
+ggplot(nri_df, aes(x = Sítio, y = NRI, fill = Sítio)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  geom_hline(yintercept = c(-1.96, 1.96), linetype = "dotted", color = "gray30") +
+  theme_minimal(base_size = 14) +
+  scale_fill_manual(values = c("#e74c3c", "#2ecc71")) +
+  labs(title = "índice nri e limiares de significância",
+       y = "valor de NRI padronizado", x = "")
+```
+:::
+:::
+
+
+
+## 13. regras de montagem: o papel dos filtros abióticos
+
+::: {.columns}
+::: {.column width="50%"}
+- filtros abióticos severos (seca, geada, solo ácido) atuam selecionando traços adaptativos específicos.
+- forçam a convergência funcional (*trait underdispersion*).
+- sob conservadorismo de nicho, geram agrupamento filogenético ($\text{NRI} > +1,96$).
+- espécies da comunidade local são mais aparentadas entre si do que o esperado ao acaso.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+ggplot() +
+  annotate("rect", xmin = 1, xmax = 5, ymin = 1, ymax = 5, fill = "#fadbd8", alpha = 0.5) +
+  annotate("text", x = 3, y = 4.5, label = "filtro ambiental severo", fontface = "bold", color = "#c0392b") +
+  geom_point(aes(x = c(2.8, 3.0, 3.1, 2.9), y = c(2.1, 2.3, 2.0, 2.2)), size = 5, color = "#c0392b") +
+  theme_minimal(base_size = 14) +
+  labs(title = "convergência e agrupamento no espaço de traços", x = "traço 1", y = "traço 2")
+```
+:::
+:::
+
+
+
+## 14. regras de montagem: o papel dos filtros bióticos
+
+::: {.columns}
+::: {.column width="50%"}
+- a competição interespecífica severa impede a coexistência de espécies funcionalmente idênticas (limitação de similaridade).
+- força a divergência funcional (*trait overdispersion*).
+- sob conservadorismo de nicho, gera superdispersão filogenética ($\text{NRI} < -1,96$).
+- espécies coexistentes são menos aparentadas entre si do que o esperado ao acaso.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+ggplot() +
+  annotate("rect", xmin = 1, xmax = 5, ymin = 1, ymax = 5, fill = "#d5f5e3", alpha = 0.5) +
+  annotate("text", x = 3, y = 4.5, label = "competição / limitação de similaridade", fontface = "bold", color = "#27ae60") +
+  geom_point(aes(x = c(1.5, 4.5, 1.8, 4.2), y = c(1.5, 4.5, 4.2, 1.8)), size = 5, color = "#27ae60") +
+  theme_minimal(base_size = 14) +
+  labs(title = "divergência e superdispersão no espaço de traços", x = "traço 1", y = "traço 2")
+```
+:::
+:::
+
+
+
+## 15. o modelo prático de lego no módulo 3
+
+::: {.columns}
+::: {.column width="50%"}
+- espécie = combinação única de cor e morfotipo de peça de LEGO.
+- traço funcional 1: número de pinos (representa tamanho e biomassa individual).
+- traço funcional 2: altura/tipo (bloco alto, placa fina, rampa — representa estratificação/guilda).
+- traço funcional 3: massa em gramas (fisiologia/investimento de recurso).
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+lego_traits <- data.frame(
+  Peça = c("Bloco 2x4", "Placa 1x2", "Rampa 2x2", "Bloco 1x1"),
+  Pinos = c(8, 2, 4, 1),
+  Altura = c(1.0, 0.33, 1.0, 1.0)
+)
+ggplot(lego_traits, aes(x = Pinos, y = Altura, label = Peça, color = Peça)) +
+  geom_point(size = 6, show.legend = FALSE) +
+  geom_text(vjust = -0.8, size = 4, color = "black") +
+  theme_minimal(base_size = 14) +
+  labs(title = "espaço funcional das peças de lego", x = "número de pinos (biomassa)", y = "altura relativa")
+```
+:::
+:::
+
+
+
+## 16. construindo a filogenia morfológica de lego no r
+
+::: {.columns}
+::: {.column width="50%"}
+- as peças de LEGO possuem relações de parentesco morfológico baseadas no seu processo de fabricação.
+- blocos altos compartilham ancestrais morfológicos comuns; placas finas formam um clade derivado.
+- calcula-se a matriz de distância Euclidiana entre os traços das peças.
+- aplica-se o agrupamento hierárquico (`hclust`) para gerar a árvore filogenética (`phylo`) via pacote `ape`.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+dist_mat <- dist(matrix(c(8,1.0, 2,0.33, 4,1.0, 1,1.0), ncol=2, byrow=TRUE))
+hc <- hclust(dist_mat)
+phy <- as.phylo(hc)
+phy$tip.label <- c("Bloco 2x4", "Placa 1x2", "Rampa 2x2", "Bloco 1x1")
+plot(phy, main = "dendrograma filogenético das peças de lego", cex = 1.1)
+```
+:::
+:::
+
+
+
+## 17. simulando um filtro abiótico em sala com lego
+
+::: {.columns}
+::: {.column width="50%"}
+- simulação: um evento de inundação severa atinge a comunidade de LEGO.
+- regra de filtro: apenas peças com altura $\ge 1,0$ (blocos altos) e $\ge 4$ pinos sobrevivem no substrato.
+- placas finas e peças pequenas de 1 pino são filtradas e removidas da comunidade local.
+- resultado empírico: redução da riqueza funcional (FRic) e surgimento de agrupamento filogenético.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+filtro_df <- data.frame(
+  Estágio = c("Antes do Filtro", "Após o Filtro Abiótico"),
+  Riqueza_Funcional = c(12.4, 3.1)
+)
+ggplot(filtro_df, aes(x = Estágio, y = Riqueza_Funcional, fill = Estágio)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  scale_fill_manual(values = c("#3498db", "#e74c3c")) +
+  theme_minimal(base_size = 14) +
+  labs(title = "redução do espaço funcional após o filtro", y = "riqueza funcional (FRic)", x = "")
+```
+:::
+:::
+
+
+
+## 18. análises no r com pacotes FD e picante
+
+::: {.columns}
+::: {.column width="50%"}
+- pacote `FD`: função `dbFD()` calcula CWM, FRic, FEve, FDiv e Rao's Q a partir das matrizes L e T.
+- pacote `picante`: função `pd()` calcula a diversidade filogenética de Faith (PD).
+- funções `ses.mpd()` e `ses.mntd()` do `picante`: executam os modelos nulos e calculam NRI e NTI.
+- automação completa da análise multidimensional em scripts reprodutíveis.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+code_df <- data.frame(
+  x_pos = 1:4,
+  Pacote = c("FD", "picante", "vegan", "ape"),
+  Funções_Chave = c("dbFD(), functcomp()", "pd(), ses.mpd()", "diversity(), radfit()", "as.phylo(), plot.phylo()"),
+  y_pos = 4:1
+)
+ggplot(code_df, aes(x = x_pos, y = y_pos, label = Funções_Chave)) +
+  geom_point(size = 5, color = "#2980b9") +
+  geom_text(hjust = -0.1, size = 4) +
+  scale_x_continuous(breaks = 1:4, labels = code_df$Pacote, limits = c(0.5, 5.0)) +
+  coord_cartesian(ylim = c(0, 5)) +
+  theme_minimal(base_size = 14) +
+  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
+  labs(title = "ecossistema de pacotes em R", x = "", y = "")
+```
+:::
+:::
+
+
+
+## 19. interpretação integrada das três dimensões
+
+::: {.columns}
+::: {.column width="50%"}
+- diversidade taxonômica ($S, H'$): quantifica o número e equitabilidade dos nomes/táxons.
+- diversidade funcional (CWM, FRic, Rao Q): quantifica o espaço de nichos e papéis ecossistêmicos.
+- diversidade filogenética (PD, NRI): quantifica a linhagem evolutiva e o patrimônio genético acumulado.
+- a sobreposição das três dimensões revela os mecanismos causais da montagem de comunidades.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+library(grid)
+ggplot() +
+  annotate("path", x = cos(seq(0, 2*pi, length.out=100)) + 2, y = sin(seq(0, 2*pi, length.out=100)) + 2, color = "red", size = 1.2) +
+  annotate("path", x = cos(seq(0, 2*pi, length.out=100)) + 3, y = sin(seq(0, 2*pi, length.out=100)) + 2, color = "blue", size = 1.2) +
+  annotate("path", x = cos(seq(0, 2*pi, length.out=100)) + 2.5, y = sin(seq(0, 2*pi, length.out=100)) + 1, color = "green", size = 1.2) +
+  annotate("text", x = 1.6, y = 2.4, label = "Taxonômica", color = "red", fontface="bold") +
+  annotate("text", x = 3.4, y = 2.4, label = "Funcional", color = "blue", fontface="bold") +
+  annotate("text", x = 2.5, y = 0.6, label = "Filogenética", color = "green4", fontface="bold") +
+  coord_cartesian(xlim = c(0, 5), ylim = c(-0.2, 3.5)) +
+  theme_void() +
+  labs(title = "integração das 3 dimensões da biodiversidade")
+```
+:::
+:::
+
+
+
+## 20. síntese e orientações para o exercício prático
+
+::: {.columns}
+::: {.column width="50%"}
+- cada grupo usará sua matriz de 100 peças de LEGO atualizada com atributos funcionais.
+- criar a matriz T no R com número de pinos, altura e massa de cada morfotipo.
+- rodar a função `dbFD()` para extrair CWM e índices multidimensionais.
+- gerar o dendrograma filogenético e rodar `pd()` e `ses.mpd()` para diagnosticar se o seu saco sofreu filtro abiótico ou limitação de similaridade.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+summary_df <- data.frame(
+  x_pos = 1:4,
+  Passo = paste("Passo", 1:4),
+  Status = c("Medição dos Traços", "Matrizes L e T no R", "Cálculo de FRic/RaoQ", "Teste do NRI Nulo"),
+  y_pos = 4:1
+)
+ggplot(summary_df, aes(x = x_pos, y = y_pos, label = Status)) +
+  geom_point(size = 6, color = "#27ae60") +
+  geom_text(hjust = -0.1, size = 4.5, fontface = "bold") +
+  scale_x_continuous(breaks = 1:4, labels = summary_df$Passo, limits = c(0.5, 5.0)) +
+  coord_cartesian(ylim = c(0, 5)) +
+  theme_minimal(base_size = 14) +
+  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
+  labs(title = "roteiro prático do módulo 3", x = "", y = "")
+```
+:::
+:::
