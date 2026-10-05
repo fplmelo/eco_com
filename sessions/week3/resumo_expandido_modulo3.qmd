@@ -1,5 +1,5 @@
 ---
-title: "Semana 3: Resumo expandido — Diversidade taxonômica, funcional e filogenética em ecologia de comunidades"
+title: "Semana 3: Diversidade taxonômica, funcional e filogenética em ecologia de comunidades"
 subtitle: "Além da equivalência taxonômica: traços funcionais, estrutura filogenética e regras de montagem"
 author: "Felipe Melo"
 date: "today"
@@ -11,6 +11,14 @@ format:
     number-sections: true
     code-fold: false
 ---
+
+
+## Slides desta aula
+
+Tela cheia [CLIQUE AQUI](https://fplmelo.github.io/eco_com/slides/3-slides-func.html#/title-slide) e depois pressione 'f'
+
+<iframe class="slide-deck" src="https://fplmelo.github.io/eco_com/slides/3-slides-func.html#/title-slide" width="700px" height="500px"></iframe>
+
 
 # Introdução: por que ir além da diversidade taxonômica?
 
