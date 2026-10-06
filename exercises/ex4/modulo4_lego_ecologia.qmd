@@ -1,0 +1,209 @@
+---
+title: "Módulo 4: Diversidade Beta, Dissimilaridade e Ordenação Multidimensional com LEGO & R"
+subtitle: "Análise prática de Bray-Curtis, NMDS e PERMANOVA"
+author: "Felipe Melo"
+date: last-mofidied
+format:
+  html:
+    theme: flatly
+    toc: true
+    toc-depth: 3
+    code-fold: false
+    number-sections: true
+---
+
+# Apresentação do módulo
+
+Nos módulos anteriores, investigamos a estrutura interna das comunidades em nível local (diversidade alfa, $\alpha$), cobrindo a amostragem e distribuições de abundância relativa (Módulo 1), os índices clássicos de Shannon, Simpson e Pielou (Módulo 2) e a diversidade funcional (Módulo 3).
+
+Neste quarto módulo, escalamos a nossa investigação para a comparação entre diferentes comunidades — a **Diversidade Beta ($\beta$)**. Analisaremos a variação na composição e abundância relativa de espécies (cores de LEGO) entre múltiplos locais por meio de:
+
+1. **Matrizes de dissimilaridade ecológica:** Cálculo dos índices de Jaccard (presença/ausência) e Bray-Curtis (abundância relativa).
+2. **Ordenação multidimensional:** Escalonamento Multidimensional Não-Métrico (NMDS) e interpretação do valor de *stress*.
+3. **Agrupamento hierárquico:** Construção de dendrograma de similaridade UPGMA.
+4. **Teste de hipóteses permutacional:** Análise de Variância Permutacional (PERMANOVA com `adonis2`) e teste de homogeneidade de dispersões (`betadisper`).
+
+---
+
+# Demonstrativo prático de sala (Hands-on)
+
+Cada grupo de alunos comparará a composição de espécies do seu saco de 100 peças de LEGO com os outros sacos presentes na sala (ou com os quatro sacos de referência A, B, C e D) para entender intuitivamente os conceitos de substituição (*turnover*) e aninhamento (*nestedness*).
+
+<div style="background-color: #f8f9fa; border: 2px solid #2b579a; border-radius: 10px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); max-width: 680px; font-family: system-ui, -apple-system, sans-serif; margin: 20px 0;">
+  <div style="display: flex; align-items: center; border-bottom: 2px solid #e9ecef; padding-bottom: 12px; margin-bottom: 16px;">
+    <span style="font-size: 24px; margin-right: 12px;">🧩</span>
+    <h3 style="color: #2b579a; margin: 0; font-size: 1.15rem; font-weight: 700; letter-spacing: 0.5px;">
+      Protocolo prático: Estimativa tátil da diversidade beta
+    </h3>
+  </div>
+  <ol style="padding-left: 20px; margin: 0; color: #2c3e50; line-height: 1.7; font-size: 0.95rem;">
+    <li style="margin-bottom: 10px;">
+      <strong style="color: #2b579a;">COMPARAÇÃO DE PARES DE SACOS:</strong> Coloque as pilhas de cores do seu saco lado a lado com as pilhas do saco de um grupo vizinho.
+    </li>
+    <li style="margin-bottom: 10px;">
+      <strong style="color: #2b579a;">IDENTIFICAÇÃO DE ESPÉCIE EXCLUSIVAS:</strong> Conte quantas cores existem apenas no seu saco, quantas existem apenas no saco vizinho, e quantas são compartilhadas por ambos.
+    </li>
+    <li style="margin-bottom: 10px;">
+      <strong style="color: #2b579a;">DIAGNÓSTICO DE TURNOVER VS. NESTEDNESS:</strong> Se os dois sacos possuem números semelhantes de cores, mas com cores totalmente diferentes, a dissimilaridade é gerada por <em>turnover</em> (substituição). Se um saco contém apenas um subconjunto das cores do outro saco mais rico, a dissimilaridade é gerada por <em>nestedness</em> (aninhamento).
+    </li>
+  </ol>
+</div>
+
+---
+
+# Exercício aplicado no R (`vegan` e `tidyverse`)
+
+## Carregamento dos pacotes e estruturação da matriz de comunidades
+
+Simularemos 8 amostras de comunidades de LEGO organizadas em dois tratamentos ambientais ("Preservado" vs. "Perturbado"):
+
+```{r}
+#| message: false
+#| warning: false
+library(vegan)
+library(tidyverse)
+
+# Criação da matriz de contagens de 8 locais amostrados (4 no ambiente Preservado, 4 no Perturbado)
+set.seed(123)
+matriz_comunidades <- data.frame(
+  Vermelho = c(40, 38, 42, 35, 75, 80, 70, 72),
+  Amarelo  = c(22, 25, 20, 24, 12, 10, 15, 14),
+  Azul     = c(14, 12, 15, 16,  8,  5,  7,  8),
+  Verde    = c(10, 11,  9, 10,  3,  2,  4,  3),
+  Branco   = c( 6,  7,  8,  7,  1,  2,  2,  1),
+  Preto    = c( 4,  4,  3,  5,  1,  1,  1,  2),
+  Laranja  = c( 3,  2,  2,  2,  0,  0,  1,  0),
+  Cinza    = c( 1,  1,  1,  1,  0,  0,  0,  0)
+)
+
+rownames(matriz_comunidades) <- paste0("Amostra_", 1:8)
+
+# Tabela de dados ambientais / tratamentos
+dados_env <- data.frame(
+  Amostra = paste0("Amostra_", 1:8),
+  Ambiente = rep(c("Preservado", "Perturbado"), each = 4)
+)
+rownames(dados_env) <- dados_env$Amostra
+
+# Visualização da matriz ecológica
+print(matriz_comunidades)
+```
+
+---
+
+## Cálculo das matrizes de dissimilaridade (Jaccard e Bray-Curtis)
+
+Utilizamos a função `vegdist()` para calcular a dissimilaridade ecológica entre todas as combinações de amostras:
+
+```{r}
+# 1. Dissimilaridade de Jaccard (presença e ausência)
+dist_jaccard <- vegdist(matriz_comunidades, method = "jaccard", binary = TRUE)
+
+# 2. Dissimilaridade de Bray-Curtis (abundância relativa)
+dist_bray <- vegdist(matriz_comunidades, method = "bray")
+
+# Exibição da matriz de Bray-Curtis formatada
+knitr::kable(as.matrix(round(dist_bray, 3)), caption = "Matriz de dissimilaridade de Bray-Curtis entre as 8 amostras de LEGO")
+```
+
+---
+
+## Ordenação multidimensional por NMDS
+
+Aplica-se o Escalonamento Multidimensional Não-Métrico (NMDS) para projetar as amostras em duas dimensões:
+
+```{r}
+# Execução do NMDS
+nmds_res <- metaMDS(matriz_comunidades, distance = "bray", k = 2, autotransform = FALSE, trace = 0)
+
+# Extração das coordenadas do NMDS
+df_nmds <- as.data.frame(nmds_res$points) %>%
+  rownames_to_column("Amostra") %>%
+  left_join(dados_env, by = "Amostra")
+
+# Gráfico de ordenação NMDS
+ggplot(df_nmds, aes(x = MDS1, y = MDS2, color = Ambiente, shape = Ambiente)) +
+  geom_point(size = 5) +
+  stat_ellipse(level = 0.95, linetype = "dashed") +
+  theme_minimal(base_size = 13) +
+  scale_color_manual(values = c("#e74c3c", "#27ae60")) +
+  labs(
+    title = paste("Ordenação por NMDS das comunidades de LEGO (Stress =", round(nmds_res$stress, 3), ")"),
+    subtitle = "Separação clara na composição entre ambientes Preservado e Perturbado",
+    x = "Eixo NMDS 1",
+    y = "Eixo NMDS 2"
+  )
+```
+
+---
+
+## Agrupamento hierárquico (Dendrograma UPGMA)
+
+Construção de um dendrograma para visualizar os agrupamentos de similaridade entre as amostras:
+
+```{r}
+# Agrupamento UPGMA
+hc_bray <- hclust(dist_bray, method = "average")
+
+# Plot do dendrograma
+plot(hc_bray, main = "Dendrograma de dissimilaridade de Bray-Curtis (UPGMA)",
+     xlab = "Amostras de LEGO", ylab = "Dissimilaridade de Bray-Curtis", sub = "")
+```
+
+---
+
+## Teste estatístico de hipóteses: PERMANOVA e Homogeneidade de Dispersão
+
+Testamos se a variação na composição entre os ambientes Preservado e Perturbado é estatisticamente significativa:
+
+```{r}
+# 1. PERMANOVA com adonis2
+set.seed(42)
+res_permanova <- adonis2(matriz_comunidades ~ Ambiente, data = dados_env, method = "bray", permutations = 999)
+print(res_permanova)
+
+# 2. Teste de homogeneidade de dispersão multivariada (betadisper)
+res_disp <- betadisper(dist_bray, dados_env$Ambiente)
+permutest(res_disp)
+```
+
+---
+
+# Instruções para uso do próprio arquivo `.csv` no exercício
+
+Nesta etapa do exercício, cada grupo deve unificar seus dados de amostragem com os dados das demais equipes da sala para analisar a diversidade beta da turma.
+
+::: {.callout-note icon=false appearance="simple"}
+## 📋 Orientações para análise multivariada dos dados da turma
+
+1. **Unificação da matriz da turma**  
+   Compile as planilhas do Módulo 1 de todos os grupos em um único arquivo chamado `matriz_turma_lego.csv`, onde cada linha representa o saco de um grupo e cada coluna representa uma cor de peça.
+
+2. **Importação e formatação no R**  
+   Carregue o arquivo com `read.csv("matriz_turma_lego.csv", row.names = 1)` e certifique-se de que a matriz contenha apenas valores numéricos de abundância.
+
+3. **Cálculo da dissimilaridade de Bray-Curtis**  
+   Execute `dist_turma <- vegdist(matriz_turma, method = "bray")` para gerar a matriz de dissimilaridade da sala.
+
+4. **Gerando a ordenação NMDS e o dendrograma**  
+   Rode a função `metaMDS()` e plote o gráfico de ordenação com `ggplot2`. Verifique o valor de *stress* gerado.
+
+5. **Testando hipóteses ecológicas**  
+   Se os grupos coletaram em diferentes bancadas ou sob diferentes regras de amostragem, crie um vetor de fatores e teste o efeito com `adonis2(matriz_turma ~ Fator, data = env_turma)`.
+:::
+
+---
+
+# Perguntas de interpretação ecológica
+
+Responda às seguintes questões com base nos resultados quantitativos obtidos na matriz de dissimilaridade, no NMDS e na PERMANOVA:
+
+1. **Jaccard vs. Bray-Curtis:** Explique por que duas comunidades podem apresentar uma dissimilaridade de Jaccard baixa (por exemplo, $D_J = 0,10$), mas uma dissimilaridade de Bray-Curtis alta (por exemplo, $D_{BC} = 0,65$). O que essa divergência revela sobre a estrutura de abundâncias?
+
+2. **Interpretação do Stress no NMDS:** O NMDS das comunidades de LEGO apresentou um valor de *stress* de $0,012$. Como esse valor deve ser interpretado em termos da confiabilidade do gráfico bidimensional? O que significaria se o valor de *stress* fosse de $0,28$?
+
+3. **Análise do Gráfico de Ordenação:** Observando a separação das amostras no gráfico de NMDS, descreva como as comunidades dos ambientes "Preservado" e "Perturbado" se comportaram no espaço multivariado. Qual das duas apresentou maior variância/dispersão interna?
+
+4. **Interpretação da PERMANOVA (`adonis2`):** Na tabela da PERMANOVA, qual foi o valor do coeficiente de determinação ($R^2$) e do valor de $p$? Como um gestor ambiental deve interpretar o resultado de um $R^2 = 0,82$ e $p = 0,001$ ao comparar uma área nativa com uma área sob impacto de mineração?
+
+5. **Turnover vs. Aninhamento para Conservação:** Imagine que a turma identificou uma alta diversidade beta entre 5 fragmentos florestais amostrados. Se a partição de Baselga demonstrar que 90% dessa diversidade beta é explicada por *turnover* (substituição), qual deve ser a recomendação prática de conservação para a tomada de decisão pública?

@@ -1,0 +1,605 @@
+---
+title: "módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades"
+subtitle: "análise da substituição de espécies e ordenação multidimensional no R"
+author: "disciplina de ecologia de comunidades"
+date: "2026-10-06"
+format:
+  revealjs:
+    theme: sky
+    slide-number: true
+    transition: fade
+    width: 1280
+    height: 720
+---
+
+## 1. introdução à diversidade beta (beta diversity)
+
+::: {.columns}
+::: {.column width="50%"}
+- diversidade beta ($eta$) mede a variação na composição de espécies entre amostras ou locais.
+- conecta a riqueza local ($lpha$) à diversidade regional ($\gamma$).
+- essencial para identificar processos causais na montagem de comunidades.
+- permite diagnosticar o impacto de gradientes ambientais e da perda de habitats.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+library(ggplot2)
+df_beta <- data.frame(
+  Escala = c("Alfa (Local)", "Beta (Substituição)", "Gama (Regional)"),
+  Valor = c(10, 2.5, 25)
+)
+ggplot(df_beta, aes(x = Escala, y = Valor, fill = Escala)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  scale_fill_manual(values = c("#3498db", "#e67e22", "#2ecc71")) +
+  theme_minimal(base_size = 14) +
+  labs(title = "escalas de diversidade de whittaker", y = "valor relativo / riqueza", x = "")
+```
+:::
+:::
+
+---
+
+## 2. partição da diversidade: multiplicativa vs. aditiva
+
+::: {.columns}
+::: {.column width="50%"}
+- partição multiplicativa de whittaker: $eta_W = \gamma / ar{lpha}$.
+- partição aditiva de lande: $\gamma = ar{lpha} + eta_A \implies eta_A = \gamma - ar{lpha}$.
+- a partição aditiva mantém todas as componentes na mesma unidade física (número de espécies).
+- facilita a comparação entre escalas espaciais hierárquicas.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+df_part <- data.frame(
+  Componente = c("Alfa Média", "Beta Aditiva"),
+  Espécies = c(8, 14)
+)
+ggplot(df_part, aes(x = "", y = Espécies, fill = Componente)) +
+  geom_col(width = 0.4) +
+  scale_fill_manual(values = c("#2980b9", "#d35400")) +
+  theme_minimal(base_size = 14) +
+  labs(title = "partição aditiva da riqueza regional (Gama = 22)", x = "", y = "número de espécies")
+```
+:::
+:::
+
+---
+
+## 3. matrizes de dissimilaridade e distância ecológica
+
+::: {.columns}
+::: {.column width="50%"}
+- quantificam a diferença na composição de espécies entre todos os pares de locais.
+- intervalo estrito de 0 (comunidades idênticas) a 1 (nenhuma espécie compartilhada).
+- base fundamental para todas as análises multivariadas em ecologia (ordenação e agrupamento).
+- a escolha do índice depende do tipo de dado (presença/ausência vs. abundância).
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+mat_dist <- data.frame(
+  Sítio = paste("Sítio", 1:4),
+  Sítio_1 = c(0.0, 0.2, 0.6, 0.9),
+  Sítio_2 = c(0.2, 0.0, 0.5, 0.8)
+)
+ggplot(mat_dist, aes(x = Sítio, y = Sítio_1, group = 1)) +
+  geom_line(color = "#8e44ad", size = 1.2) +
+  geom_point(color = "#8e44ad", size = 4) +
+  theme_minimal(base_size = 14) +
+  labs(title = "dissimilaridade do Sítio 1 em relação aos demais", y = "distância de bray-curtis", x = "")
+```
+:::
+:::
+
+---
+
+## 4. índices para dados de presença e ausência: jaccard e sørensen
+
+::: {.columns}
+::: {.column width="50%"}
+- baseados no número de espécies compartilhadas ($a$) e exclusivas ($b, c$).
+- dissimilaridade de jaccard: $D_J = (b + c) / (a + b + c)$.
+- dissimilaridade de sørensen: $D_S = (b + c) / (2a + b + c)$.
+- sørensen concede maior peso relativo às espécies compartilhadas.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+comp_df <- data.frame(
+  Sobreposição = c("Alta (a=15)", "Média (a=8)", "Baixa (a=2)"),
+  Jaccard = c(0.25, 0.55, 0.88),
+  Sørensen = c(0.14, 0.38, 0.78)
+)
+comp_long <- tidyr::pivot_longer(comp_df, cols = c(Jaccard, Sørensen), names_to = "Índice", values_to = "Dissimilaridade")
+ggplot(comp_long, aes(x = Sobreposição, y = Dissimilaridade, fill = Índice)) +
+  geom_col(position = "dodge", width = 0.6) +
+  scale_fill_manual(values = c("#16a085", "#f39c12")) +
+  theme_minimal(base_size = 14) +
+  labs(title = "comparação jaccard vs. sørensen", y = "dissimilaridade", x = "")
+```
+:::
+:::
+
+---
+
+## 5. dissimilaridade de bray-curtis para dados quantitativos
+
+::: {.columns}
+::: {.column width="50%"}
+- incorpora a abundância relativa ou biomassa de cada espécie.
+- fórmula: $D_{BC} = rac{\sum |y_{ik} - y_{jk}|}{\sum (y_{ik} + y_{jk})}$.
+- sensível a mudanças na dominância ecológica, mesmo quando as espécies são as mesmas.
+- o índice quantitativo mais utilizado na literatura ecológica internacional.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+bc_example <- data.frame(
+  Cenário = c("Mesmas Espécies, Abundância Distinta", "Espécies Parcialmente Distintas"),
+  Bray_Curtis = c(0.42, 0.85)
+)
+ggplot(bc_example, aes(x = Cenário, y = Bray_Curtis, fill = Cenário)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  scale_fill_manual(values = c("#2980b9", "#c0392b")) +
+  theme_minimal(base_size = 14) +
+  labs(title = "sensibilidade do índice de bray-curtis", y = "dissimilaridade de bray-curtis", x = "")
+```
+:::
+:::
+
+---
+
+## 6. decomposição da diversidade beta: turnover vs. aninhamento
+
+::: {.columns}
+::: {.column width="50%"}
+- a dissimilaridade total pode ser gerada por dois processos biológicos distintos.
+- substituição (*turnover*): troca de espécies entre locais por restrição de nicho/ambiente.
+- aninhamento (*nestedness*): comunidades mais pobres são subconjuntos estritos das comunidades mais ricas.
+- partição de baselga: $eta_{sor} = eta_{sim} + eta_{nes}$.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+baselga_df <- data.frame(
+  Processo = c("Turnover (Substituição)", "Nestedness (Aninhamento)"),
+  Proporção = c(0.72, 0.28)
+)
+ggplot(baselga_df, aes(x = "", y = Proporção, fill = Processo)) +
+  geom_col(width = 0.5) +
+  scale_fill_manual(values = c("#d35400", "#27ae60")) +
+  theme_minimal(base_size = 14) +
+  labs(title = "decomposição da diversidade beta (baselga)", x = "", y = "proporção da dissimilaridade")
+```
+:::
+:::
+
+---
+
+## 7. implicações da partição da diversidade beta para conservação
+
+::: {.columns}
+::: {.column width="50%"}
+- se a diversidade beta for dominada por turnover:
+  - alta substituição espacial de espécies.
+  - estratégia: proteger múltiplos fragmentos ao longo de todo o gradiente.
+- se for dominada por aninhamento:
+  - perda sequencial de espécies.
+  - estratégia: focar recursos na proteção do maior e mais rico fragmento.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+cons_df <- data.frame(
+  Estratégia = c("Múltiplos Fragmentos (Turnover)", "Único Fragmento Grande (Nestedness)"),
+  Prioridade_Relativa = c(85, 95)
+)
+ggplot(cons_df, aes(x = Estratégia, y = Prioridade_Relativa, fill = Estratégia)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  scale_fill_manual(values = c("#8e44ad", "#16a085")) +
+  theme_minimal(base_size = 14) +
+  labs(title = "estratégias de conservação derivadas de beta", y = "índice de eficácia", x = "")
+```
+:::
+:::
+
+---
+
+## 8. introdução às técnicas de ordenação multidimensional
+
+::: {.columns}
+::: {.column width="50%"}
+- reduzem a complexidade de matrizes de alta dimensionalidade (muitas espécies).
+- projetam os locais em um espaço gráfico bidimensional contínuo.
+- locais representados próximos no gráfico possuem composição ecológica semelhante.
+- locais distantes possuem composição altamente dissimilar.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+set.seed(42)
+ord_demo <- data.frame(Eixo1 = rnorm(10), Eixo2 = rnorm(10), Grupo = rep(c("Sítio A", "Sítio B"), each = 5))
+ggplot(ord_demo, aes(x = Eixo1, y = Eixo2, color = Grupo)) +
+  geom_point(size = 5) +
+  theme_minimal(base_size = 14) +
+  scale_color_manual(values = c("#e74c3c", "#3498db")) +
+  labs(title = "conceito de diagrama de ordenação", x = "eixo de ordenação 1", y = "eixo de ordenação 2")
+```
+:::
+:::
+
+---
+
+## 9. escalonamento multidimensional não-métrico (NMDS)
+
+::: {.columns}
+::: {.column width="50%"}
+- a técnica de ordenação mais popular e robusta para dados biológicos não-normais.
+- preserva o ranqueamento das distâncias ecológicas entre pares de amostras.
+- não assume relações lineares entre abundâncias e variáveis ambientais.
+- implementado no R pela função `metaMDS()` do pacote `vegan`.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+library(vegan)
+data(dune)
+nmds <- metaMDS(dune, trace = 0)
+nmds_df <- data.frame(NMDS1 = nmds$points[,1], NMDS2 = nmds$points[,2])
+ggplot(nmds_df, aes(x = NMDS1, y = NMDS2)) +
+  geom_point(size = 4, color = "#2c3e50") +
+  theme_minimal(base_size = 14) +
+  labs(title = paste("ordenação NMDS (dune) - stress:", round(nmds$stress, 3)), x = "NMDS 1", y = "NMDS 2")
+```
+:::
+:::
+
+---
+
+## 10. interpretando o valor de stress no NMDS
+
+::: {.columns}
+::: {.column width="50%"}
+- o stress quantifica o desacordo entre as distâncias reais e as distâncias no gráfico.
+- stress $< 0,05$: excelente representação bidimensional.
+- stress $< 0,10$: boa representação; conclusões muito confiáveis.
+- stress $< 0,20$: razoável; aceitável para dados ecológicos complexos.
+- stress $> 0,20$: representação não confiável (aumentar eixos para $k=3$).
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+stress_df <- data.frame(
+  Classificação = c("Excelente (<0.05)", "Boa (<0.10)", "Razoável (<0.20)", "Ruim (>0.20)"),
+  Limite = c(0.05, 0.10, 0.20, 0.30)
+)
+ggplot(stress_df, aes(x = Classificação, y = Limite, fill = Classificação)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  scale_fill_manual(values = c("#27ae60", "#2980b9", "#f39c12", "#c0392b")) +
+  theme_minimal(base_size = 14) +
+  labs(title = "escala de qualidade de stress no NMDS", y = "valor limite de stress", x = "")
+```
+:::
+:::
+
+---
+
+## 11. análise de coordenadas principais (PCoA)
+
+::: {.columns}
+::: {.column width="50%"}
+- ordenação métrica que projeta a matriz de dissimilaridade em espaço euclidiano.
+- permite calcular a porcentagem exata da variância explicada por cada eixo.
+- flexível: funciona com qualquer matriz de distância (bray-curtis, jaccard, gower).
+- implementado via `cmdscale()` ou `wcmdscale()` no pacote `vegan`.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+pcoa_df <- data.frame(
+  Eixo = c("PCoA 1", "PCoA 2", "PCoA 3"),
+  Variância = c(42.5, 21.3, 11.2)
+)
+ggplot(pcoa_df, aes(x = Eixo, y = Variância, fill = Eixo)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  scale_fill_manual(values = c("#8e44ad", "#9b59b6", "#bdc3c7")) +
+  theme_minimal(base_size = 14) +
+  labs(title = "porcentagem de variância explicada na PCoA", y = "% de variância explicada", x = "")
+```
+:::
+:::
+
+---
+
+## 12. agrupamento hierárquico (cluster analysis) e dendrogramas
+
+::: {.columns}
+::: {.column width="50%"}
+- agrupa amostras em uma estrutura hierárquica em árvore (dendrograma).
+- métodos de ligação: UPGMA (média das distâncias) e ward (mínima variância).
+- excelente para identificar grupos discretos de comunidades e ecótonos.
+- complementa as ordenações contínuas (NMDS/PCoA).
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+library(vegan)
+data(dune)
+d <- vegdist(dune, "bray")
+hc <- hclust(d, method = "average")
+plot(hc, main = "dendrograma UPGMA (dune)", xlab = "amostras", sub = "")
+```
+:::
+:::
+
+---
+
+## 13. teste de hipóteses multivariado: PERMANOVA (adonis2)
+
+::: {.columns}
+::: {.column width="50%"}
+- Permutational Multivariate Analysis of Variance (PERMANOVA).
+- testa se a composição de espécies difere entre fatores ou tratamentos.
+- estatística pseudo-$F$ avaliada por permutações aleatórias ($n = 999$).
+- não assume normalidade multivariada; extremamente robusto.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+permanova_df <- data.frame(
+  Fonte = c("Tratamento (Uso)", "Resíduos"),
+  R2 = c(0.48, 0.52)
+)
+ggplot(permanova_df, aes(x = "", y = R2, fill = Fonte)) +
+  geom_col(width = 0.4) +
+  scale_fill_manual(values = c("#e74c3c", "#7f8c8d")) +
+  theme_minimal(base_size = 14) +
+  labs(title = "partição da variância na PERMANOVA (R2)", x = "", y = "proporção explicada")
+```
+:::
+:::
+
+---
+
+## 14. verificando premissas: homogeneidade de dispersão (betadisper)
+
+::: {.columns}
+::: {.column width="50%"}
+- uma PERMANOVA significativa pode ser causada por mudança no centroide OU por variância desigual.
+- a função `betadisper()` testa se a distância média das amostras ao centroide é igual entre grupos.
+- análogo multivariado do teste de levene para homogeneidade de variâncias.
+- etapa obrigatória para garantir rigor nas conclusões da PERMANOVA.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+disp_df <- data.frame(
+  Grupo = c("Nativo (Baixa Dispersão)", "Perturbado (Alta Dispersão)"),
+  Distância_Centroide = c(0.18, 0.45)
+)
+ggplot(disp_df, aes(x = Grupo, y = Distância_Centroide, fill = Grupo)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  scale_fill_manual(values = c("#27ae60", "#e67e22")) +
+  theme_minimal(base_size = 14) +
+  labs(title = "teste de dispersão multivariada (betadisper)", y = "distância média ao centroide", x = "")
+```
+:::
+:::
+
+---
+
+## 15. o modelo prático de LEGO para a diversidade beta
+
+::: {.columns}
+::: {.column width="50%"}
+- os 4 sacos de LEGO representam comunidades submetidas a diferentes forças de montagem.
+- saco A: comunidade degradada/hiperdominante.
+- saco B: comunidade nativa equilibrada.
+- saco C: comunidade artificialmente uniforme.
+- saco D: comunidade heterogênea com espécies raras.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+lego_beta <- data.frame(
+  Par_Sacos = c("A vs B", "A vs C", "A vs D", "B vs C", "B vs D", "C vs D"),
+  Bray_Curtis = c(0.35, 0.62, 0.58, 0.40, 0.45, 0.52)
+)
+ggplot(lego_beta, aes(x = Par_Sacos, y = Bray_Curtis, fill = Par_Sacos)) +
+  geom_col(show.legend = FALSE) +
+  theme_minimal(base_size = 14) +
+  scale_fill_brewer(palette = "Set3") +
+  labs(title = "dissimilaridade de bray-curtis entre sacos de LEGO", y = "distância de bray-curtis", x = "")
+```
+:::
+:::
+
+---
+
+## 16. ordenação por NMDS dos sacos de LEGO no R
+
+::: {.columns}
+::: {.column width="50%"}
+- aplicação de `metaMDS()` na matriz dos 4 sacos de LEGO.
+- o gráfico visualiza a posição relativa de cada saco no espaço multidimensional.
+- o saco A (hiperdominante) e o saco D (muitas raras) ocupam extremos opostos no NMDS.
+- permite testar visualmente a dissimilaridade das comunidades amostradas.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+lego_nmds <- data.frame(
+  Comunidade = c("Saco A", "Saco B", "Saco C", "Saco D"),
+  NMDS1 = c(-0.45, -0.10, 0.20, 0.35),
+  NMDS2 = c(0.12, -0.25, -0.15, 0.28)
+)
+ggplot(lego_nmds, aes(x = NMDS1, y = NMDS2, color = Comunidade, label = Comunidade)) +
+  geom_point(size = 6) +
+  geom_text(vjust = -1, size = 5, fontface = "bold") +
+  xlim(-0.7, 0.7) + ylim(-0.5, 0.5) +
+  theme_minimal(base_size = 14) +
+  scale_color_brewer(palette = "Set1") +
+  labs(title = "ordenação NMDS bidimensional dos 4 sacos de LEGO", x = "NMDS 1", y = "NMDS 2")
+```
+:::
+:::
+
+---
+
+## 17. dendrograma de similaridade dos sacos de LEGO
+
+::: {.columns}
+::: {.column width="50%"}
+- agrupamento hierárquico UPGMA aplicado às distâncias de bray-curtis.
+- revela a formação de clades ecológicos entre os sacos de LEGO.
+- ajuda a identificar quais comunidades possuem composição mais afim.
+- valida os padrões observados na ordenação do NMDS.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+lego_mat <- matrix(c(
+  70,15,8,4,2,1,0,0,
+  40,22,14,10,6,4,3,1,
+  10,10,10,10,10,10,10,10,
+  30,18,12,8,6,4,3,3
+), nrow=4, byrow=TRUE)
+rownames(lego_mat) <- c("Saco A", "Saco B", "Saco C", "Saco D")
+d_lego <- vegdist(lego_mat, "bray")
+hc_lego <- hclust(d_lego, "average")
+plot(hc_lego, main = "dendrograma UPGMA dos sacos de LEGO", xlab = "", sub = "")
+```
+:::
+:::
+
+---
+
+## 18. script essencial no R com o pacote vegan
+
+::: {.columns}
+::: {.column width="50%"}
+- `vegdist(mat, method = "bray")`: calcula a matriz de dissimilaridade.
+- `metaMDS(mat, distance = "bray")`: executa a ordenação por NMDS.
+- `adonis2(mat ~ tratamento, data = env)`: executa a PERMANOVA.
+- `betadisper(dist, tratamento)`: avalia a homogeneidade de dispersões.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+pkgs_df <- data.frame(
+  x_pos = 1:4,
+  Função = c("vegdist()", "metaMDS()", "adonis2()", "betadisper()"),
+  Aplicação = c("Dissimilaridade", "Ordenação NMDS", "PERMANOVA", "Homogeneidade")
+)
+ggplot(pkgs_df, aes(x = x_pos, y = 5 - x_pos, label = paste(Função, "-", Aplicação))) +
+  geom_point(size = 5, color = "#2980b9") +
+  geom_text(hjust = -0.1, size = 4.5, fontface = "bold") +
+  scale_x_continuous(limits = c(0.5, 5)) +
+  theme_minimal(base_size = 14) +
+  theme(axis.text = element_blank(), axis.ticks = element_blank()) +
+  labs(title = "funções chave do pacote vegan", x = "", y = "")
+```
+:::
+:::
+
+---
+
+## 19. protocolo de amostragem em grupo para o módulo 4
+
+::: {.columns}
+::: {.column width="50%"}
+- cada grupo usará a sua planilha do Módulo 1 contendo as contagens de peças.
+- compilar as planilhas de todos os grupos de sala em uma única matriz multivariada.
+- calcular a matriz de bray-curtis entre as comunidades dos diferentes grupos.
+- gerar a ordenação por NMDS e o dendrograma para mapear a diversidade beta da turma.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+steps_df <- data.frame(
+  x_pos = 1:4,
+  Etapa = c("Etapa 1: Unificação", "Etapa 2: Bray-Curtis", "Etapa 3: NMDS", "Etapa 4: PERMANOVA")
+)
+ggplot(steps_df, aes(x = x_pos, y = x_pos, label = Etapa)) +
+  geom_line(color = "#27ae60", size = 1.2) +
+  geom_point(size = 5, color = "#27ae60") +
+  geom_text(vjust = -1, size = 4.5, fontface = "bold") +
+  scale_x_continuous(limits = c(0.5, 4.5)) +
+  scale_y_continuous(limits = c(0.5, 4.5)) +
+  theme_minimal(base_size = 14) +
+  labs(title = "fluxo de trabalho prático no R", x = "progressão", y = "")
+```
+:::
+:::
+
+---
+
+## 20. síntese do módulo 4 e conclusões
+
+::: {.columns}
+::: {.column width="50%"}
+- a diversidade beta desvenda os padrões de substituição e estruturação no espaço.
+- a partição em turnover e aninhamento orienta decisões estratégicas de conservação.
+- a ordenação por NMDS e a PERMANOVA são ferramentas indispensáveis do ecólogo moderno.
+- a integração da diversidade alfa (módulos 1-3) e beta (módulo 4) completa o diagnóstico da comunidade.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 5
+final_df <- data.frame(
+  Módulo = paste("Módulo", 1:4),
+  Foco = c("Amostragem & SADs", "Diversidade Alfa", "Diversidade Funcional", "Diversidade Beta & NMDS")
+)
+ggplot(final_df, aes(x = Módulo, y = 4:1, label = Foco)) +
+  geom_point(size = 6, color = "#8e44ad") +
+  geom_text(hjust = -0.1, size = 4.5, fontface = "bold") +
+  scale_x_discrete() +
+  scale_y_continuous(limits = c(0, 5)) +
+  theme_minimal(base_size = 14) +
+  theme(axis.text.y = element_blank()) +
+  labs(title = "síntese da sequência didática de ecologia", x = "", y = "")
+```
+:::
+:::
