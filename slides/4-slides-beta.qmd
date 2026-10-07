@@ -1,136 +1,95 @@
 ---
-title: "módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades"
-subtitle: "análise da substituição de espécies e ordenação multidimensional no R"
-author: "disciplina de ecologia de comunidades"
-date: "2026-10-06"
+title: "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades"
+subtitle: "análise da substituição de espécies"
+author: "Felipe Melo"
+date: las-modified
 format:
   revealjs:
-    theme: sky
+    # theme: sky
     slide-number: true
     transition: fade
     width: 1280
     height: 720
 ---
 
-## 1. introdução à diversidade beta (beta diversity)
-
-::: {.columns}
-::: {.column width="50%"}
-- diversidade beta ($eta$) mede a variação na composição de espécies entre amostras ou locais.
-- conecta a riqueza local ($lpha$) à diversidade regional ($\gamma$).
-- essencial para identificar processos causais na montagem de comunidades.
-- permite diagnosticar o impacto de gradientes ambientais e da perda de habitats.
-:::
-
-::: {.column width="50%"}
 ```{r}
-#| echo: false
-#| fig-height: 5
-library(ggplot2)
-df_beta <- data.frame(
-  Escala = c("Alfa (Local)", "Beta (Substituição)", "Gama (Regional)"),
-  Valor = c(10, 2.5, 25)
-)
-ggplot(df_beta, aes(x = Escala, y = Valor, fill = Escala)) +
-  geom_col(width = 0.5, show.legend = FALSE) +
-  scale_fill_manual(values = c("#3498db", "#e67e22", "#2ecc71")) +
-  theme_minimal(base_size = 14) +
-  labs(title = "escalas de diversidade de whittaker", y = "valor relativo / riqueza", x = "")
+#| message: false
+#| warning: false
+#| include: false
+library(tidyverse)
 ```
-:::
-:::
 
----
 
-## 2. partição da diversidade: multiplicativa vs. aditiva
+## Introdução à diversidade beta
 
 ::: {.columns}
 ::: {.column width="50%"}
-- partição multiplicativa de whittaker: $eta_W = \gamma / ar{lpha}$.
-- partição aditiva de lande: $\gamma = ar{lpha} + eta_A \implies eta_A = \gamma - ar{lpha}$.
+- diversidade beta ($beta$) mede a variação na composição de espécies
+- conecta a riqueza local ($alpha$) à diversidade regional ($\gamma$).
+- essencial para identificar processos causais na montagem de comunidades.
+
+:::
+
+::: {.column width="50%"}
+![](/img/beta-h.png)
+:::
+:::
+
+##
+
+![](https://biostatsquid.com/wp-content/uploads/2026/02/Slide7.png)
+
+## 
+
+![](https://biostatsquid.com/wp-content/uploads/2026/02/Slide10.png)
+
+##
+
+![](https://biostatsquid.com/wp-content/uploads/2026/02/Slide11.png)
+
+##
+
+![](https://biostatsquid.com/wp-content/uploads/2026/02/Slide12.png)
+
+##
+
+![](https://biostatsquid.com/wp-content/uploads/2026/02/Slide20.png)
+
+## Partição da diversidade: multiplicativa vs. aditiva
+
+::: {.columns}
+::: {.column width="50%"}
+- partição multiplicativa: $\beta_W = \frac{\gamma}{\bar{\alpha}}$
+- partição aditiva:$\gamma = \bar{\alpha} + \beta_A \implies \beta_A = \gamma - \bar{\alpha}$
 - a partição aditiva mantém todas as componentes na mesma unidade física (número de espécies).
 - facilita a comparação entre escalas espaciais hierárquicas.
 :::
 
 ::: {.column width="50%"}
-```{r}
-#| echo: false
-#| fig-height: 5
-df_part <- data.frame(
-  Componente = c("Alfa Média", "Beta Aditiva"),
-  Espécies = c(8, 14)
-)
-ggplot(df_part, aes(x = "", y = Espécies, fill = Componente)) +
-  geom_col(width = 0.4) +
-  scale_fill_manual(values = c("#2980b9", "#d35400")) +
-  theme_minimal(base_size = 14) +
-  labs(title = "partição aditiva da riqueza regional (Gama = 22)", x = "", y = "número de espécies")
-```
+![](/img/beta.gif){width=60%}
+
 :::
 :::
 
 ---
 
-## 3. matrizes de dissimilaridade e distância ecológica
 
-::: {.columns}
-::: {.column width="50%"}
-- quantificam a diferença na composição de espécies entre todos os pares de locais.
-- intervalo estrito de 0 (comunidades idênticas) a 1 (nenhuma espécie compartilhada).
-- base fundamental para todas as análises multivariadas em ecologia (ordenação e agrupamento).
-- a escolha do índice depende do tipo de dado (presença/ausência vs. abundância).
-:::
-
-::: {.column width="50%"}
-```{r}
-#| echo: false
-#| fig-height: 5
-mat_dist <- data.frame(
-  Sítio = paste("Sítio", 1:4),
-  Sítio_1 = c(0.0, 0.2, 0.6, 0.9),
-  Sítio_2 = c(0.2, 0.0, 0.5, 0.8)
-)
-ggplot(mat_dist, aes(x = Sítio, y = Sítio_1, group = 1)) +
-  geom_line(color = "#8e44ad", size = 1.2) +
-  geom_point(color = "#8e44ad", size = 4) +
-  theme_minimal(base_size = 14) +
-  labs(title = "dissimilaridade do Sítio 1 em relação aos demais", y = "distância de bray-curtis", x = "")
-```
-:::
-:::
-
----
-
-## 4. índices para dados de presença e ausência: jaccard e sørensen
+## Jaccard e Sørensen (pres/aus)
 
 ::: {.columns}
 ::: {.column width="50%"}
 - baseados no número de espécies compartilhadas ($a$) e exclusivas ($b, c$).
-- dissimilaridade de jaccard: $D_J = (b + c) / (a + b + c)$.
-- dissimilaridade de sørensen: $D_S = (b + c) / (2a + b + c)$.
-- sørensen concede maior peso relativo às espécies compartilhadas.
+- dissimilaridade de Jaccard: $Jac = (b + c) / (a + b + c)$
+- dissimilaridade de Sørensen: $Sor = (b + c) / (2a + b + c)$.
 :::
 
 ::: {.column width="50%"}
-```{r}
-#| echo: false
-#| fig-height: 5
-comp_df <- data.frame(
-  Sobreposição = c("Alta (a=15)", "Média (a=8)", "Baixa (a=2)"),
-  Jaccard = c(0.25, 0.55, 0.88),
-  Sørensen = c(0.14, 0.38, 0.78)
-)
-comp_long <- tidyr::pivot_longer(comp_df, cols = c(Jaccard, Sørensen), names_to = "Índice", values_to = "Dissimilaridade")
-ggplot(comp_long, aes(x = Sobreposição, y = Dissimilaridade, fill = Índice)) +
-  geom_col(position = "dodge", width = 0.6) +
-  scale_fill_manual(values = c("#16a085", "#f39c12")) +
-  theme_minimal(base_size = 14) +
-  labs(title = "comparação jaccard vs. sørensen", y = "dissimilaridade", x = "")
-```
+![](https://biostatsquid.com/wp-content/uploads/2026/02/Slide10.png)
 :::
 :::
 
----
+## 
+
 
 ## 5. dissimilaridade de bray-curtis para dados quantitativos
 

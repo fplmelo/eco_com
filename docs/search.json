@@ -508,7 +508,7 @@
     "href": "sessions/index.html",
     "title": "Conteúdo",
     "section": "",
-    "text": "Resumo expandido: diversidade beta, dissimilaridade e partição da variação em comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\nOct 6, 2026\n\n\n\n\n\n\n\n\n\n\n\nSemana 01: Origens e Conceitos de Escala\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 02: Medidas clássicas de diversidade local em comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 3: Diversidade taxonômica, funcional e filogenética em ecologia de comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\nOct 6, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Resumo expandido: diversidade beta, dissimilaridade e partição da variação em comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\nOct 7, 2026\n\n\n\n\n\n\n\n\n\n\n\nSemana 01: Origens e Conceitos de Escala\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 02: Medidas clássicas de diversidade local em comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 3: Diversidade taxonômica, funcional e filogenética em ecologia de comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\nOct 7, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "sessions/week1/1-intro.html",
@@ -1895,5 +1895,159 @@
     "title": "Medidas clássicas de diversidade em ecologia",
     "section": "",
     "text": "A diversidade biológica local não se resume à contagem de espécies.\nRiqueza (\\(S\\)): número total de espécies presentes.\nEquitabilidade (\\(J'\\)): grau de uniformidade da abundância entre espécies.\nDuas comunidades com a mesma riqueza podem ter estruturas opostas."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#introdução-à-diversidade-beta",
+    "href": "slides/4-slides-beta.html#introdução-à-diversidade-beta",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "Introdução à diversidade beta",
+    "text": "Introdução à diversidade beta\n\n\n\ndiversidade beta (\\(beta\\)) mede a variação na composição de espécies\nconecta a riqueza local (\\(alpha\\)) à diversidade regional (\\(\\gamma\\)).\nessencial para identificar processos causais na montagem de comunidades."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#partição-da-diversidade-multiplicativa-vs.-aditiva",
+    "href": "slides/4-slides-beta.html#partição-da-diversidade-multiplicativa-vs.-aditiva",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "Partição da diversidade: multiplicativa vs. aditiva",
+    "text": "Partição da diversidade: multiplicativa vs. aditiva\n\n\n\npartição multiplicativa: \\(\\beta_W = \\frac{\\gamma}{\\bar{\\alpha}}\\)\npartição aditiva:\\(\\gamma = \\bar{\\alpha} + \\beta_A \\implies \\beta_A = \\gamma - \\bar{\\alpha}\\)\na partição aditiva mantém todas as componentes na mesma unidade física (número de espécies).\nfacilita a comparação entre escalas espaciais hierárquicas."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#matrizes-de-dissimilaridade-e-distância-ecológica",
+    "href": "slides/4-slides-beta.html#matrizes-de-dissimilaridade-e-distância-ecológica",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "3. matrizes de dissimilaridade e distância ecológica",
+    "text": "3. matrizes de dissimilaridade e distância ecológica\n\n\n\nquantificam a diferença na composição de espécies entre todos os pares de locais.\nintervalo estrito de 0 (comunidades idênticas) a 1 (nenhuma espécie compartilhada).\nbase fundamental para todas as análises multivariadas em ecologia (ordenação e agrupamento).\na escolha do índice depende do tipo de dado (presença/ausência vs. abundância)."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#índices-para-dados-de-presença-e-ausência-jaccard-e-sørensen",
+    "href": "slides/4-slides-beta.html#índices-para-dados-de-presença-e-ausência-jaccard-e-sørensen",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "4. índices para dados de presença e ausência: jaccard e sørensen",
+    "text": "4. índices para dados de presença e ausência: jaccard e sørensen\n\n\n\nbaseados no número de espécies compartilhadas (\\(a\\)) e exclusivas (\\(b, c\\)).\ndissimilaridade de jaccard: \\(D_J = (b + c) / (a + b + c)\\).\ndissimilaridade de sørensen: \\(D_S = (b + c) / (2a + b + c)\\).\nsørensen concede maior peso relativo às espécies compartilhadas."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#dissimilaridade-de-bray-curtis-para-dados-quantitativos",
+    "href": "slides/4-slides-beta.html#dissimilaridade-de-bray-curtis-para-dados-quantitativos",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "5. dissimilaridade de bray-curtis para dados quantitativos",
+    "text": "5. dissimilaridade de bray-curtis para dados quantitativos\n\n\n\nincorpora a abundância relativa ou biomassa de cada espécie.\nfórmula: \\(D_{BC} = \frac{\\sum |y_{ik} - y_{jk}|}{\\sum (y_{ik} + y_{jk})}\\).\nsensível a mudanças na dominância ecológica, mesmo quando as espécies são as mesmas.\no índice quantitativo mais utilizado na literatura ecológica internacional."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#decomposição-da-diversidade-beta-turnover-vs.-aninhamento",
+    "href": "slides/4-slides-beta.html#decomposição-da-diversidade-beta-turnover-vs.-aninhamento",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "6. decomposição da diversidade beta: turnover vs. aninhamento",
+    "text": "6. decomposição da diversidade beta: turnover vs. aninhamento\n\n\n\na dissimilaridade total pode ser gerada por dois processos biológicos distintos.\nsubstituição (turnover): troca de espécies entre locais por restrição de nicho/ambiente.\naninhamento (nestedness): comunidades mais pobres são subconjuntos estritos das comunidades mais ricas.\npartição de baselga: \\(\beta_{sor} = \beta_{sim} + \beta_{nes}\\)."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#implicações-da-partição-da-diversidade-beta-para-conservação",
+    "href": "slides/4-slides-beta.html#implicações-da-partição-da-diversidade-beta-para-conservação",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "7. implicações da partição da diversidade beta para conservação",
+    "text": "7. implicações da partição da diversidade beta para conservação\n\n\n\nse a diversidade beta for dominada por turnover:\n\nalta substituição espacial de espécies.\nestratégia: proteger múltiplos fragmentos ao longo de todo o gradiente.\n\nse for dominada por aninhamento:\n\nperda sequencial de espécies.\nestratégia: focar recursos na proteção do maior e mais rico fragmento."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#introdução-às-técnicas-de-ordenação-multidimensional",
+    "href": "slides/4-slides-beta.html#introdução-às-técnicas-de-ordenação-multidimensional",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "8. introdução às técnicas de ordenação multidimensional",
+    "text": "8. introdução às técnicas de ordenação multidimensional\n\n\n\nreduzem a complexidade de matrizes de alta dimensionalidade (muitas espécies).\nprojetam os locais em um espaço gráfico bidimensional contínuo.\nlocais representados próximos no gráfico possuem composição ecológica semelhante.\nlocais distantes possuem composição altamente dissimilar."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#escalonamento-multidimensional-não-métrico-nmds",
+    "href": "slides/4-slides-beta.html#escalonamento-multidimensional-não-métrico-nmds",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "9. escalonamento multidimensional não-métrico (NMDS)",
+    "text": "9. escalonamento multidimensional não-métrico (NMDS)\n\n\n\na técnica de ordenação mais popular e robusta para dados biológicos não-normais.\npreserva o ranqueamento das distâncias ecológicas entre pares de amostras.\nnão assume relações lineares entre abundâncias e variáveis ambientais.\nimplementado no R pela função metaMDS() do pacote vegan."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#interpretando-o-valor-de-stress-no-nmds",
+    "href": "slides/4-slides-beta.html#interpretando-o-valor-de-stress-no-nmds",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "10. interpretando o valor de stress no NMDS",
+    "text": "10. interpretando o valor de stress no NMDS\n\n\n\no stress quantifica o desacordo entre as distâncias reais e as distâncias no gráfico.\nstress \\(&lt; 0,05\\): excelente representação bidimensional.\nstress \\(&lt; 0,10\\): boa representação; conclusões muito confiáveis.\nstress \\(&lt; 0,20\\): razoável; aceitável para dados ecológicos complexos.\nstress \\(&gt; 0,20\\): representação não confiável (aumentar eixos para \\(k=3\\))."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#análise-de-coordenadas-principais-pcoa",
+    "href": "slides/4-slides-beta.html#análise-de-coordenadas-principais-pcoa",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "11. análise de coordenadas principais (PCoA)",
+    "text": "11. análise de coordenadas principais (PCoA)\n\n\n\nordenação métrica que projeta a matriz de dissimilaridade em espaço euclidiano.\npermite calcular a porcentagem exata da variância explicada por cada eixo.\nflexível: funciona com qualquer matriz de distância (bray-curtis, jaccard, gower).\nimplementado via cmdscale() ou wcmdscale() no pacote vegan."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#agrupamento-hierárquico-cluster-analysis-e-dendrogramas",
+    "href": "slides/4-slides-beta.html#agrupamento-hierárquico-cluster-analysis-e-dendrogramas",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "12. agrupamento hierárquico (cluster analysis) e dendrogramas",
+    "text": "12. agrupamento hierárquico (cluster analysis) e dendrogramas\n\n\n\nagrupa amostras em uma estrutura hierárquica em árvore (dendrograma).\nmétodos de ligação: UPGMA (média das distâncias) e ward (mínima variância).\nexcelente para identificar grupos discretos de comunidades e ecótonos.\ncomplementa as ordenações contínuas (NMDS/PCoA)."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#teste-de-hipóteses-multivariado-permanova-adonis2",
+    "href": "slides/4-slides-beta.html#teste-de-hipóteses-multivariado-permanova-adonis2",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "13. teste de hipóteses multivariado: PERMANOVA (adonis2)",
+    "text": "13. teste de hipóteses multivariado: PERMANOVA (adonis2)\n\n\n\nPermutational Multivariate Analysis of Variance (PERMANOVA).\ntesta se a composição de espécies difere entre fatores ou tratamentos.\nestatística pseudo-\\(F\\) avaliada por permutações aleatórias (\\(n = 999\\)).\nnão assume normalidade multivariada; extremamente robusto."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#verificando-premissas-homogeneidade-de-dispersão-betadisper",
+    "href": "slides/4-slides-beta.html#verificando-premissas-homogeneidade-de-dispersão-betadisper",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "14. verificando premissas: homogeneidade de dispersão (betadisper)",
+    "text": "14. verificando premissas: homogeneidade de dispersão (betadisper)\n\n\n\numa PERMANOVA significativa pode ser causada por mudança no centroide OU por variância desigual.\na função betadisper() testa se a distância média das amostras ao centroide é igual entre grupos.\nanálogo multivariado do teste de levene para homogeneidade de variâncias.\netapa obrigatória para garantir rigor nas conclusões da PERMANOVA."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#o-modelo-prático-de-lego-para-a-diversidade-beta",
+    "href": "slides/4-slides-beta.html#o-modelo-prático-de-lego-para-a-diversidade-beta",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "15. o modelo prático de LEGO para a diversidade beta",
+    "text": "15. o modelo prático de LEGO para a diversidade beta\n\n\n\nos 4 sacos de LEGO representam comunidades submetidas a diferentes forças de montagem.\nsaco A: comunidade degradada/hiperdominante.\nsaco B: comunidade nativa equilibrada.\nsaco C: comunidade artificialmente uniforme.\nsaco D: comunidade heterogênea com espécies raras."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#ordenação-por-nmds-dos-sacos-de-lego-no-r",
+    "href": "slides/4-slides-beta.html#ordenação-por-nmds-dos-sacos-de-lego-no-r",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "16. ordenação por NMDS dos sacos de LEGO no R",
+    "text": "16. ordenação por NMDS dos sacos de LEGO no R\n\n\n\naplicação de metaMDS() na matriz dos 4 sacos de LEGO.\no gráfico visualiza a posição relativa de cada saco no espaço multidimensional.\no saco A (hiperdominante) e o saco D (muitas raras) ocupam extremos opostos no NMDS.\npermite testar visualmente a dissimilaridade das comunidades amostradas."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#dendrograma-de-similaridade-dos-sacos-de-lego",
+    "href": "slides/4-slides-beta.html#dendrograma-de-similaridade-dos-sacos-de-lego",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "17. dendrograma de similaridade dos sacos de LEGO",
+    "text": "17. dendrograma de similaridade dos sacos de LEGO\n\n\n\nagrupamento hierárquico UPGMA aplicado às distâncias de bray-curtis.\nrevela a formação de clades ecológicos entre os sacos de LEGO.\najuda a identificar quais comunidades possuem composição mais afim.\nvalida os padrões observados na ordenação do NMDS."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#script-essencial-no-r-com-o-pacote-vegan",
+    "href": "slides/4-slides-beta.html#script-essencial-no-r-com-o-pacote-vegan",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "18. script essencial no R com o pacote vegan",
+    "text": "18. script essencial no R com o pacote vegan\n\n\n\nvegdist(mat, method = \"bray\"): calcula a matriz de dissimilaridade.\nmetaMDS(mat, distance = \"bray\"): executa a ordenação por NMDS.\nadonis2(mat ~ tratamento, data = env): executa a PERMANOVA.\nbetadisper(dist, tratamento): avalia a homogeneidade de dispersões."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#protocolo-de-amostragem-em-grupo-para-o-módulo-4",
+    "href": "slides/4-slides-beta.html#protocolo-de-amostragem-em-grupo-para-o-módulo-4",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "19. protocolo de amostragem em grupo para o módulo 4",
+    "text": "19. protocolo de amostragem em grupo para o módulo 4\n\n\n\ncada grupo usará a sua planilha do Módulo 1 contendo as contagens de peças.\ncompilar as planilhas de todos os grupos de sala em uma única matriz multivariada.\ncalcular a matriz de bray-curtis entre as comunidades dos diferentes grupos.\ngerar a ordenação por NMDS e o dendrograma para mapear a diversidade beta da turma."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#síntese-do-módulo-4-e-conclusões",
+    "href": "slides/4-slides-beta.html#síntese-do-módulo-4-e-conclusões",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "20. síntese do módulo 4 e conclusões",
+    "text": "20. síntese do módulo 4 e conclusões\n\n\n\na diversidade beta desvenda os padrões de substituição e estruturação no espaço.\na partição em turnover e aninhamento orienta decisões estratégicas de conservação.\na ordenação por NMDS e a PERMANOVA são ferramentas indispensáveis do ecólogo moderno.\na integração da diversidade alfa (módulos 1-3) e beta (módulo 4) completa o diagnóstico da comunidade."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#indices-para-dados-de-presença-e-ausência-jaccard-e-sørensen",
+    "href": "slides/4-slides-beta.html#indices-para-dados-de-presença-e-ausência-jaccard-e-sørensen",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "Indices para dados de presença e ausência: Jaccard e Sørensen",
+    "text": "Indices para dados de presença e ausência: Jaccard e Sørensen\n\n\n\nbaseados no número de espécies compartilhadas (\\(a\\)) e exclusivas (\\(b, c\\)).\ndissimilaridade de Jaccard: \\(Jac = (b + c) / (a + b + c)\\).\ndissimilaridade de Sørensen: \\(Sor = (b + c) / (2a + b + c)\\)."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#jaccard-e-sørensen-presaus",
+    "href": "slides/4-slides-beta.html#jaccard-e-sørensen-presaus",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "Jaccard e Sørensen (pres/aus)",
+    "text": "Jaccard e Sørensen (pres/aus)\n\n\n\nbaseados no número de espécies compartilhadas (\\(a\\)) e exclusivas (\\(b, c\\)).\ndissimilaridade de Jaccard: \\(Jac = (b + c) / (a + b + c)\\)\ndissimilaridade de Sørensen: \\(Sor = (b + c) / (2a + b + c)\\)."
   }
 ]
