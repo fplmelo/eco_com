@@ -58,7 +58,9 @@ Essas são as fotos das nossas 3 "comunidades". Colequei elas numa I.A. par acon
 
 ![](/img/img3.jpeg)
 
-Feito isso, fiz uma tabela que todos vocês devem baixar [AQUI]()
+Feito isso, fiz uma tabela que todos vocês devem baixar [AQUI](https://raw.githubusercontent.com/fplmelo/eco_com/refs/heads/main/exercises/ex1/contagem_pecas_lego.csv)
+
+Quando o arquivo abrir no seu navegador, clique na tela com a o botão direito do mouse e vá em "salvar como"e salve o arquivo na sua pasta com a extensão `.csv`
 
 
 ## Pacotes necessários
@@ -241,10 +243,7 @@ print(comparativo_rarefacao)
 
 Responda às seguintes perguntas com base nos resultados obtidos no R e na experiência do sorteio em sala:
 
-1. **Efeito da Equitabilidade na Curva de Acúmulo:** Compare o formato das curvas de rarefação do **Bandeja A** (hiperdominante) e do **Bandeja C** (uniforme). Por que o Bandeja C atinge a assíntota rapidamente com poucos indivíduos, enquanto o Bandeja A demora mais para acumular novas espécies, mesmo tendo riqueza similar?
+1. **Efeito da Equitabilidade na Curva de Rank-Abundância:** Compare o formato das curvas de rank-abndância e interprete: Qual a comunidade com mais espécies raras? Qual a comunidade com mais dominância?
 
-2. **Rank-Abundância e Dominância:** Na curva de Rank-Abundância (Whittaker Plot), o que a **inclinação (slope)** da reta representa biologicamente? Qual dos quatro Bandejas apresentou a maior inclinação e o que isso indica sobre a distribuição de recursos na comunidade?
+2. **Entropia:** Em qual das comundades deve ser mais difícil sortear dois indivíduos da mesma espécie? Porque?
 
-4. **Padronização do Esforço Amostral:** Se um pesquisador amostrasse apenas **20 indivíduos** no Bandeja A e no Bandeja D, qual seria a riqueza observada em cada um? Por que a comparação direta de riqueza sem rarefação pode levar a conclusões errôneas quando o esforço ou a abundância variam?
-
-5. **Conservação e Espécies Raras:** O **Bandeja D** apresenta muitas espécies com apenas 1 ou 2 peças (*singletons* e *doubletons*). Em um ecossistema real sob perturbação ambiental, por que comunidades com o perfil do Bandeja D são consideradas mais vulneráveis à perda acelerada de biodiversidade?
