@@ -19,10 +19,9 @@ Foto: Paisagem fragmentada na Usina Serra Grande, Ibateguara, Alagoas.
 
 ## Slides desta aula
 
-Tela cheia [CLIQUE AQUI](https://fplmelo.github.io/eco_com/slides/1_intro_com.html#/title-slide) e depois pressione 'f'
-
-<iframe class="slide-deck" src="https://fplmelo.github.io/eco_com/slides/1_intro_com.html#/title-slide" width="700px" height="500px"></iframe>
-
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+  <iframe src="/slides/1_intro_com.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen="true"></iframe>
+</div>
 
 
 # RESUMO EXPANDIDO: SÍNTESE CONCEITUAL EM ECOLOGIA DE COMUNIDADES — POR UMA TEORIA UNIFICADA DA ECOLOGIA

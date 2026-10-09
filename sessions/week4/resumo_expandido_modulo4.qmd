@@ -1,16 +1,23 @@
 ---
-title: "Resumo expandido: diversidade beta, dissimilaridade e partição da variação em comunidades"
-subtitle: "Módulo 4 - ecologia de comunidades"
+title: "Semana 4: diversidade beta, dissimilaridade e partição da variação em comunidades"
+subtitle: ""
 author: "Felipe Melo"
 date: last-modified
 format:
   html:
-    theme: cosmo
+    # theme: cosmo
     toc: true
     toc-depth: 3
     number-sections: true
     code-fold: false
 ---
+
+Slides desta aula
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+  <iframe src="/slides/4-slides-beta.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen="true"></iframe>
+</div>
+
 
 # Introdução à diversidade beta e à heterogeneidade espacial das comunidades
 
