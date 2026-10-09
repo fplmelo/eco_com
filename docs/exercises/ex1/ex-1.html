@@ -245,27 +245,28 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introdução-e-contexto-pedagógico" id="toc-introdução-e-contexto-pedagógico" class="nav-link active" data-scroll-target="#introdução-e-contexto-pedagógico"><span class="header-section-number">1</span> INTRODUÇÃO E CONTEXTO PEDAGÓGICO</a>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">1</span> Introdução</a>
   <ul class="collapse">
   <li><a href="#regra-de-definição-de-espécie-módulo-1" id="toc-regra-de-definição-de-espécie-módulo-1" class="nav-link" data-scroll-target="#regra-de-definição-de-espécie-módulo-1"><span class="header-section-number">1.0.1</span> Regra de Definição de Espécie (Módulo 1)</a></li>
   </ul></li>
-  <li><a href="#protocolo-prático-de-sala-hands-on" id="toc-protocolo-prático-de-sala-hands-on" class="nav-link" data-scroll-target="#protocolo-prático-de-sala-hands-on"><span class="header-section-number">2</span> PROTOCOLO PRÁTICO DE SALA (HANDS-ON)</a>
+  <li><a href="#protocolo" id="toc-protocolo" class="nav-link" data-scroll-target="#protocolo"><span class="header-section-number">2</span> Protocolo</a>
   <ul class="collapse">
   <li><a href="#materiais-por-grupo-4-alunos" id="toc-materiais-por-grupo-4-alunos" class="nav-link" data-scroll-target="#materiais-por-grupo-4-alunos"><span class="header-section-number">2.0.1</span> Materiais por Grupo (4 Alunos)</a></li>
   <li><a href="#passo-a-passo-do-sorteio-peça-a-peça-individual-based-sampling" id="toc-passo-a-passo-do-sorteio-peça-a-peça-individual-based-sampling" class="nav-link" data-scroll-target="#passo-a-passo-do-sorteio-peça-a-peça-individual-based-sampling"><span class="header-section-number">2.0.2</span> Passo a Passo do Sorteio Peça a Peça (Individual-based Sampling)</a></li>
   </ul></li>
-  <li><a href="#exercício-aplicado-em-r-vegan" id="toc-exercício-aplicado-em-r-vegan" class="nav-link" data-scroll-target="#exercício-aplicado-em-r-vegan"><span class="header-section-number">3</span> EXERCÍCIO APLICADO EM R (<code>vegan</code>)</a>
+  <li><a href="#exercício-em-r-para-a-aula-1-vegan" id="toc-exercício-em-r-para-a-aula-1-vegan" class="nav-link" data-scroll-target="#exercício-em-r-para-a-aula-1-vegan"><span class="header-section-number">3</span> Exercício em R para a aula 1 (<code>vegan</code>)</a>
   <ul class="collapse">
-  <li><a href="#criação-e-visualização-dos-dados-dos-4-sacos" id="toc-criação-e-visualização-dos-dados-dos-4-sacos" class="nav-link" data-scroll-target="#criação-e-visualização-dos-dados-dos-4-sacos"><span class="header-section-number">3.1</span> 1. Criação e Visualização dos Dados dos 4 Sacos</a></li>
-  <li><a href="#riqueza-observada-s-e-abundância-total-n" id="toc-riqueza-observada-s-e-abundância-total-n" class="nav-link" data-scroll-target="#riqueza-observada-s-e-abundância-total-n"><span class="header-section-number">3.2</span> 2. Riqueza Observada (<span class="math inline">\(S\)</span>) e Abundância Total (<span class="math inline">\(N\)</span>)</a></li>
-  <li><a href="#análise-detalhada-das-curvas-de-rank-abundância-rads-whittaker-plots" id="toc-análise-detalhada-das-curvas-de-rank-abundância-rads-whittaker-plots" class="nav-link" data-scroll-target="#análise-detalhada-das-curvas-de-rank-abundância-rads-whittaker-plots"><span class="header-section-number">3.3</span> 3. Análise Detalhada das Curvas de Rank-Abundância (RADs / Whittaker Plots)</a>
+  <li><a href="#pacotes-necessários" id="toc-pacotes-necessários" class="nav-link" data-scroll-target="#pacotes-necessários"><span class="header-section-number">3.1</span> Pacotes necessários</a></li>
+  <li><a href="#carregando-os-dados" id="toc-carregando-os-dados" class="nav-link" data-scroll-target="#carregando-os-dados"><span class="header-section-number">3.2</span> 1. Carregando os dados</a></li>
+  <li><a href="#preparação-dos-dados-com-tidyverse" id="toc-preparação-dos-dados-com-tidyverse" class="nav-link" data-scroll-target="#preparação-dos-dados-com-tidyverse"><span class="header-section-number">3.3</span> 3. PREPARAÇÃO DOS DADOS COM TIDYVERSE</a></li>
+  <li><a href="#passo-3.2-formato-largo-com-as-cores-como-colunas-matriz-de-comunidade" id="toc-passo-3.2-formato-largo-com-as-cores-como-colunas-matriz-de-comunidade" class="nav-link" data-scroll-target="#passo-3.2-formato-largo-com-as-cores-como-colunas-matriz-de-comunidade"><span class="header-section-number">3.4</span> Passo 3.2: formato “largo” com as cores como colunas (matriz de comunidade)</a></li>
+  <li><a href="#passo-3.3-transformar-em-matriz-numérica-com-o-nome-da-foto-nas-linhas" id="toc-passo-3.3-transformar-em-matriz-numérica-com-o-nome-da-foto-nas-linhas" class="nav-link" data-scroll-target="#passo-3.3-transformar-em-matriz-numérica-com-o-nome-da-foto-nas-linhas"><span class="header-section-number">3.5</span> Passo 3.3: transformar em matriz numérica, com o nome da foto nas linhas</a></li>
+  <li><a href="#riqueza-observada-s-e-abundância-total-n" id="toc-riqueza-observada-s-e-abundância-total-n" class="nav-link" data-scroll-target="#riqueza-observada-s-e-abundância-total-n"><span class="header-section-number">3.6</span> 4. RIQUEZA OBSERVADA (S) E ABUNDÂNCIA TOTAL (N)</a></li>
+  <li><a href="#curvas-de-rank-abundância-gráfico-de-whittaker" id="toc-curvas-de-rank-abundância-gráfico-de-whittaker" class="nav-link" data-scroll-target="#curvas-de-rank-abundância-gráfico-de-whittaker"><span class="header-section-number">3.7</span> 5. CURVAS DE RANK-ABUNDÂNCIA (GRÁFICO DE WHITTAKER)</a></li>
+  <li><a href="#curvas-de-rarefação-baseadas-em-indivíduos-individual-based-rarefaction" id="toc-curvas-de-rarefação-baseadas-em-indivíduos-individual-based-rarefaction" class="nav-link" data-scroll-target="#curvas-de-rarefação-baseadas-em-indivíduos-individual-based-rarefaction"><span class="header-section-number">3.8</span> 8. Curvas de Rarefação Baseadas em Indivíduos (<em>Individual-based Rarefaction</em>)</a>
   <ul class="collapse">
-  <li><a href="#construção-gráfica-das-rads" id="toc-construção-gráfica-das-rads" class="nav-link" data-scroll-target="#construção-gráfica-das-rads"><span class="header-section-number">3.3.1</span> Construção Gráfica das RADs</a></li>
-  </ul></li>
-  <li><a href="#curvas-de-rarefação-baseadas-em-indivíduos-individual-based-rarefaction" id="toc-curvas-de-rarefação-baseadas-em-indivíduos-individual-based-rarefaction" class="nav-link" data-scroll-target="#curvas-de-rarefação-baseadas-em-indivíduos-individual-based-rarefaction"><span class="header-section-number">3.4</span> 4. Curvas de Rarefação Baseadas em Indivíduos (<em>Individual-based Rarefaction</em>)</a>
-  <ul class="collapse">
-  <li><a href="#a-cálculo-e-gráfico-de-rarefação-rarecurve" id="toc-a-cálculo-e-gráfico-de-rarefação-rarecurve" class="nav-link" data-scroll-target="#a-cálculo-e-gráfico-de-rarefação-rarecurve"><span class="header-section-number">3.4.1</span> A) Cálculo e Gráfico de Rarefação (<code>rarecurve</code>)</a></li>
-  <li><a href="#b-riqueza-rarefeita-padronizada-n-50-e-n-20-indivíduos" id="toc-b-riqueza-rarefeita-padronizada-n-50-e-n-20-indivíduos" class="nav-link" data-scroll-target="#b-riqueza-rarefeita-padronizada-n-50-e-n-20-indivíduos"><span class="header-section-number">3.4.2</span> B) Riqueza Rarefeita Padronizada (<span class="math inline">\(N = 50\)</span> e <span class="math inline">\(N = 20\)</span> indivíduos)</a></li>
+  <li><a href="#a-cálculo-e-gráfico-de-rarefação-rarecurve" id="toc-a-cálculo-e-gráfico-de-rarefação-rarecurve" class="nav-link" data-scroll-target="#a-cálculo-e-gráfico-de-rarefação-rarecurve"><span class="header-section-number">3.8.1</span> A) Cálculo e Gráfico de Rarefação (<code>rarecurve</code>)</a></li>
+  <li><a href="#b-riqueza-rarefeita-padronizada-n-50-e-n-20-indivíduos" id="toc-b-riqueza-rarefeita-padronizada-n-50-e-n-20-indivíduos" class="nav-link" data-scroll-target="#b-riqueza-rarefeita-padronizada-n-50-e-n-20-indivíduos"><span class="header-section-number">3.8.2</span> B) Riqueza Rarefeita Padronizada (<span class="math inline">\(N = 50\)</span> e <span class="math inline">\(N = 20\)</span> indivíduos)</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#questões-de-interpretação-ecológica-e-estatística" id="toc-questões-de-interpretação-ecológica-e-estatística" class="nav-link" data-scroll-target="#questões-de-interpretação-ecológica-e-estatística"><span class="header-section-number">4</span> QUESTÕES DE INTERPRETAÇÃO ECOLÓGICA E ESTATÍSTICA</a></li>
@@ -295,9 +296,9 @@ window.Quarto = {
 </header>
 
 
-<section id="introdução-e-contexto-pedagógico" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> INTRODUÇÃO E CONTEXTO PEDAGÓGICO</h1>
-<p>Neste primeiro módulo prático, utilizaremos blocos de LEGO como um <strong>modelo análogo e tátil de uma comunidade biológica</strong>. Cada comunidade é representada por um saco opaco contendo <strong>100 peças de LEGO</strong>.</p>
+<section id="introdução" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introdução</h1>
+<p>Neste primeiro módulo prático, utilizaremos blocos de LEGO como um <strong>modelo análogo e tátil de uma comunidade biológica</strong>. Cada comunidade é representada por um Bandeja opaco contendo <strong>100 peças de LEGO</strong>.</p>
 <section id="regra-de-definição-de-espécie-módulo-1" class="level3" data-number="1.0.1">
 <h3 data-number="1.0.1" class="anchored" data-anchor-id="regra-de-definição-de-espécie-módulo-1"><span class="header-section-number">1.0.1</span> Regra de Definição de Espécie (Módulo 1)</h3>
 <ul>
@@ -308,12 +309,12 @@ window.Quarto = {
 <hr>
 </section>
 </section>
-<section id="protocolo-prático-de-sala-hands-on" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> PROTOCOLO PRÁTICO DE SALA (HANDS-ON)</h1>
+<section id="protocolo" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Protocolo</h1>
 <section id="materiais-por-grupo-4-alunos" class="level3" data-number="2.0.1">
 <h3 data-number="2.0.1" class="anchored" data-anchor-id="materiais-por-grupo-4-alunos"><span class="header-section-number">2.0.1</span> Materiais por Grupo (4 Alunos)</h3>
 <ol type="1">
-<li><strong>1 Saco Opaco</strong> contendo 100 peças de LEGO com uma estrutura de comunidade pré-configurada.</li>
+<li><strong>1 Bandeja </strong> contendo 100+ peças de LEGO com uma estrutura de comunidade pré-configurada.</li>
 <li><strong>Ficha de Campo</strong> (Planilha de Amostragem Sequencial Indivíduo a Indivíduo).</li>
 </ol>
 </section>
@@ -325,15 +326,15 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>🧩 PROTOCOLO DE SORTEIO PEÇA A PEÇA
+<span class="screen-reader-only">Note</span>🧩 Protocolo de sorteio
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><strong>MISTURA:</strong> Agite suavemente o saco opaco antes de cada sorteio.</li>
+<li><strong>MISTURA:</strong> Agite suavemente a bandeja antes de cada sorteio.</li>
 <li><strong>RETIRADA:</strong> Sem olhar, retire 1 peça por vez (1 indivíduo).</li>
 <li><strong>REGISTRO SEQUENCIAL:</strong> Anote a cor da peça na ordem exata de amostragem (Sorteio nº 1, 2, 3, …, 100).</li>
-<li><strong>SEM REPOSIÇÃO:</strong> Mantenha a peça fora do saco após o registro.</li>
+<li><strong>SEM REPOSIÇÃO:</strong> Mantenha a peça fora da bandeja após o registro.</li>
 <li><strong>TABULAÇÃO FINAL:</strong> Conte o total de peças por cor e ordene da cor mais abundante para a menos abundante.</li>
 </ol>
 </div>
@@ -345,167 +346,234 @@ window.Quarto = {
 <hr>
 </section>
 </section>
-<section id="exercício-aplicado-em-r-vegan" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> EXERCÍCIO APLICADO EM R (<code>vegan</code>)</h1>
-<p>Nesta etapa computacional, simularemos <strong>4 Sacos (Comunidades A, B, C e D)</strong> contendo 100 peças cada, porém com <strong>perfis de dominância e equitabilidade contrastantes</strong>:</p>
-<ul>
-<li><strong>Saco A (Comunidade A - Hiperdominante):</strong> Dominada por uma única cor abundante (70% das peças) e poucas espécies raras.</li>
-<li><strong>Saco B (Comunidade B - Dominância Moderada / Log-Normal):</strong> Padrão comum na natureza, com poucas espécies muito abundantes, várias intermediárias e algumas raras.</li>
-<li><strong>Saco C (Comunidade C - Alta Equitabilidade / Uniforme):</strong> Todas as espécies presentes possuem abundâncias muito similares (~10% cada).</li>
-<li><strong>Saco D (Comunidade D - Alta Riqueza com Muitas Raras / Singletons):</strong> Elevada riqueza total, com presença expressiva de espécies com apenas 1 ou 2 indivíduos (<em>singletons</em> e <em>doubletons</em>).</li>
-</ul>
+<section id="exercício-em-r-para-a-aula-1-vegan" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Exercício em R para a aula 1 (<code>vegan</code>)</h1>
+<p><img src="../../img/img1.jpeg" class="img-fluid"> <img src="../../img/img2.jpeg" class="img-fluid"></p>
+<p><img src="../../img/img3.jpeg" class="img-fluid"></p>
+<section id="pacotes-necessários" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="pacotes-necessários"><span class="header-section-number">3.1</span> Pacotes necessários</h2>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar pacotes necessários</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuração de semente para reprodutibilidade</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------------</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. INSTALAÇÃO E CARREGAMENTO DOS PACOTES</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------------</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Pacotes que vamos usar:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   tidyverse -&gt; manipulação de dados (dplyr, tidyr, readr) e gráficos (ggplot2)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   vegan     -&gt; análises de ecologia de comunidades</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>pacotes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"vegan"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Instala apenas os pacotes que ainda NÃO estão instalados</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (p <span class="cf">in</span> pacotes) {</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(p, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(p)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Carrega os pacotes (precisa fazer isso toda vez que abrir o R)</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="criação-e-visualização-dos-dados-dos-4-sacos" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="criação-e-visualização-dos-dados-dos-4-sacos"><span class="header-section-number">3.1</span> 1. Criação e Visualização dos Dados dos 4 Sacos</h2>
+</section>
+<section id="carregando-os-dados" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="carregando-os-dados"><span class="header-section-number">3.2</span> 1. Carregando os dados</h2>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando os 4 sacos (100 peças por saco) com vetores de abundância por cor</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># As colunas representam espécies (Cores) e as linhas os Sacos (Comunidades)</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>comunidades_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_A =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">70</span>, <span class="at">Amarelo =</span> <span class="dv">12</span>, <span class="at">Azul =</span> <span class="dv">8</span>, <span class="at">Verde =</span> <span class="dv">5</span>, <span class="at">Preto =</span> <span class="dv">3</span>, <span class="at">Branco =</span> <span class="dv">2</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_B =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">35</span>, <span class="at">Amarelo =</span> <span class="dv">22</span>, <span class="at">Azul =</span> <span class="dv">15</span>, <span class="at">Verde =</span> <span class="dv">10</span>, <span class="at">Preto =</span> <span class="dv">8</span>, <span class="at">Branco =</span> <span class="dv">5</span>, <span class="at">Laranja =</span> <span class="dv">3</span>, <span class="at">Roxo =</span> <span class="dv">2</span>),</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_C =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">11</span>, <span class="at">Amarelo =</span> <span class="dv">10</span>, <span class="at">Azul =</span> <span class="dv">10</span>, <span class="at">Verde =</span> <span class="dv">10</span>, <span class="at">Preto =</span> <span class="dv">10</span>, <span class="at">Branco =</span> <span class="dv">10</span>, <span class="at">Laranja =</span> <span class="dv">10</span>, <span class="at">Roxo =</span> <span class="dv">10</span>, <span class="at">Rosa =</span> <span class="dv">10</span>, <span class="at">Cinza =</span> <span class="dv">9</span>),</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_D =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">18</span>, <span class="at">Amarelo =</span> <span class="dv">12</span>, <span class="at">Azul =</span> <span class="dv">10</span>, <span class="at">Verde =</span> <span class="dv">8</span>, <span class="at">Preto =</span> <span class="dv">6</span>, <span class="at">Branco =</span> <span class="dv">5</span>, <span class="at">Laranja =</span> <span class="dv">4</span>, <span class="at">Roxo =</span> <span class="dv">4</span>, <span class="at">Rosa =</span> <span class="dv">3</span>, <span class="at">Cinza =</span> <span class="dv">3</span>, </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">Marrom =</span> <span class="dv">2</span>, <span class="at">Ciano =</span> <span class="dv">2</span>, <span class="at">Magenta =</span> <span class="dv">2</span>, <span class="at">Lima =</span> <span class="dv">2</span>, <span class="at">Oliva =</span> <span class="dv">2</span>, <span class="at">Turquesa =</span> <span class="dv">1</span>, <span class="at">Violeta =</span> <span class="dv">1</span>, <span class="at">Bege =</span> <span class="dv">1</span>, <span class="at">Ocre =</span> <span class="dv">1</span>, <span class="at">Coral =</span> <span class="dv">1</span>, <span class="at">Prata =</span> <span class="dv">1</span>, <span class="at">Ouro =</span> <span class="dv">1</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Converter lista para data frame matriz comunidade (sites x species)</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>matriz_lego <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(comunidades_list) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Comunidade =</span> <span class="fu">names</span>(comunidades_list)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Comunidade, <span class="fu">everything</span>())</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Substituir NAs por 0 (ausência da cor no saco)</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>matriz_lego[<span class="fu">is.na</span>(matriz_lego)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibir a matriz de abundâncias</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz_lego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/eco_com/exercises/ex1/contagem_pecas_lego.csv"</span>) <span class="co"># Note que os dados devem estar salvos na mesma pasta que este arquivo ou você precisa usar o caminho específico</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Olhe os dados: sempre confira se foram lidos corretamente</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dados)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 23
-  Comunidade Vermelho Amarelo  Azul Verde Preto Branco Laranja  Roxo  Rosa Cinza
-  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 Saco_A           70      12     8     5     3      2       0     0     0     0
-2 Saco_B           35      22    15    10     8      5       3     2     0     0
-3 Saco_C           11      10    10    10    10     10      10    10    10     9
-4 Saco_D           18      12    10     8     6      5       4     4     3     3
-# ℹ 12 more variables: Marrom &lt;dbl&gt;, Ciano &lt;dbl&gt;, Magenta &lt;dbl&gt;, Lima &lt;dbl&gt;,
-#   Oliva &lt;dbl&gt;, Turquesa &lt;dbl&gt;, Violeta &lt;dbl&gt;, Bege &lt;dbl&gt;, Ocre &lt;dbl&gt;,
-#   Coral &lt;dbl&gt;, Prata &lt;dbl&gt;, Ouro &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 16 × 4
+   cor          foto_1 foto_2 foto_3
+   &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1 verde_limao       3      4      3
+ 2 verde_escuro      3      7      5
+ 3 azul              5      4      3
+ 4 azul_claro        1      3      2
+ 5 roxo_escuro       2      4      5
+ 6 lilas             1      1      0
+ 7 rosa_magenta      4      3      2
+ 8 rosa_claro        1      5      5
+ 9 vermelho          5      5      6
+10 laranja           3      2      4
+11 amarelo           3      6      4
+12 marrom            1      5      6
+13 branco            4      5      3
+14 cinza_claro       2      2      1
+15 cinza_escuro      4      5      2
+16 preto             1      1      1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 16
+Columns: 4
+$ cor    &lt;chr&gt; "verde_limao", "verde_escuro", "azul", "azul_claro", "roxo_escu…
+$ foto_1 &lt;dbl&gt; 3, 3, 5, 1, 2, 1, 4, 1, 5, 3, 3, 1, 4, 2, 4, 1
+$ foto_2 &lt;dbl&gt; 4, 7, 4, 3, 4, 1, 3, 5, 5, 2, 6, 5, 5, 2, 5, 1
+$ foto_3 &lt;dbl&gt; 3, 5, 3, 2, 5, 0, 2, 5, 6, 4, 4, 6, 3, 1, 2, 1</code></pre>
 </div>
 </div>
 <hr>
 </section>
-<section id="riqueza-observada-s-e-abundância-total-n" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="riqueza-observada-s-e-abundância-total-n"><span class="header-section-number">3.2</span> 2. Riqueza Observada (<span class="math inline">\(S\)</span>) e Abundância Total (<span class="math inline">\(N\)</span>)</h2>
+<section id="preparação-dos-dados-com-tidyverse" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="preparação-dos-dados-com-tidyverse"><span class="header-section-number">3.3</span> 3. PREPARAÇÃO DOS DADOS COM TIDYVERSE</h2>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extrair apenas a matriz numérica</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mat_num <span class="ot">&lt;-</span> matriz_lego <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>Comunidade)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(mat_num) <span class="ot">&lt;-</span> matriz_lego<span class="sc">$</span>Comunidade</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Setting row names on a tibble is deprecated.</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------------</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Os pacotes de ecologia (vegan) esperam uma matriz de comunidade:</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   LINHAS  = comunidades (aqui, as fotos)</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   COLUNAS = espécies (aqui, as cores)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Nosso CSV está no formato inverso, então precisamos "girar" a tabela.</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>dados_longo <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols      =</span> <span class="sc">-</span>cor,            <span class="co"># todas as colunas, menos "cor"</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"comunidade"</span>,    <span class="co"># nomes das colunas viram a variável "comunidade"</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"abundancia"</span>     <span class="co"># os números viram a variável "abundancia"</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dados_longo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 48 × 3
+   cor          comunidade abundancia
+   &lt;chr&gt;        &lt;chr&gt;           &lt;dbl&gt;
+ 1 verde_limao  foto_1              3
+ 2 verde_limao  foto_2              4
+ 3 verde_limao  foto_3              3
+ 4 verde_escuro foto_1              3
+ 5 verde_escuro foto_2              7
+ 6 verde_escuro foto_3              5
+ 7 azul         foto_1              5
+ 8 azul         foto_2              4
+ 9 azul         foto_3              3
+10 azul_claro   foto_1              1
+# ℹ 38 more rows</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular N (Abundância Total) e S (Riqueza Observada)</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>resumo_comunidades <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Comunidade =</span> <span class="fu">rownames</span>(mat_num),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">N_Individuos =</span> <span class="fu">rowSums</span>(mat_num),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Riqueza_S =</span> <span class="fu">specnumber</span>(mat_num)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resumo_comunidades)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+</div>
+</section>
+<section id="passo-3.2-formato-largo-com-as-cores-como-colunas-matriz-de-comunidade" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="passo-3.2-formato-largo-com-as-cores-como-colunas-matriz-de-comunidade"><span class="header-section-number">3.4</span> Passo 3.2: formato “largo” com as cores como colunas (matriz de comunidade)</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>matriz_lego <span class="ot">&lt;-</span> dados_longo <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from  =</span> cor,           <span class="co"># cada cor vira uma coluna</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> abundancia</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz_lego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 17
+  comunidade verde_limao verde_escuro  azul azul_claro roxo_escuro lilas
+  &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+1 foto_1               3            3     5          1           2     1
+2 foto_2               4            7     4          3           4     1
+3 foto_3               3            5     3          2           5     0
+# ℹ 10 more variables: rosa_magenta &lt;dbl&gt;, rosa_claro &lt;dbl&gt;, vermelho &lt;dbl&gt;,
+#   laranja &lt;dbl&gt;, amarelo &lt;dbl&gt;, marrom &lt;dbl&gt;, branco &lt;dbl&gt;,
+#   cinza_claro &lt;dbl&gt;, cinza_escuro &lt;dbl&gt;, preto &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="passo-3.3-transformar-em-matriz-numérica-com-o-nome-da-foto-nas-linhas" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="passo-3.3-transformar-em-matriz-numérica-com-o-nome-da-foto-nas-linhas"><span class="header-section-number">3.5</span> Passo 3.3: transformar em matriz numérica, com o nome da foto nas linhas</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mat_num <span class="ot">&lt;-</span> matriz_lego <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="st">"comunidade"</span>)   <span class="co"># a coluna "comunidade" vira o nome das linhas</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mat_num)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       verde_limao verde_escuro azul azul_claro roxo_escuro lilas rosa_magenta
+foto_1           3            3    5          1           2     1            4
+foto_2           4            7    4          3           4     1            3
+foto_3           3            5    3          2           5     0            2
+       rosa_claro vermelho laranja amarelo marrom branco cinza_claro
+foto_1          1        5       3       3      1      4           2
+foto_2          5        5       2       6      5      5           2
+foto_3          5        6       4       4      6      3           1
+       cinza_escuro preto
+foto_1            4     1
+foto_2            5     1
+foto_3            2     1</code></pre>
+</div>
+</div>
+</section>
+<section id="riqueza-observada-s-e-abundância-total-n" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="riqueza-observada-s-e-abundância-total-n"><span class="header-section-number">3.6</span> 4. RIQUEZA OBSERVADA (S) E ABUNDÂNCIA TOTAL (N)</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># S = número de espécies (cores) presentes em cada comunidade</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># N = número total de indivíduos (peças) em cada comunidade</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>resumo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Comunidade =</span> <span class="fu">rownames</span>(mat_num),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">N_Individuos =</span> <span class="fu">rowSums</span>(mat_num),         <span class="co"># soma das peças da linha</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Riqueza_S    =</span> <span class="fu">specnumber</span>(mat_num)       <span class="co"># conta quantas cores têm abundância &gt; 0</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resumo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       Comunidade N_Individuos Riqueza_S
-Saco_A     Saco_A          100         6
-Saco_B     Saco_B          100         8
-Saco_C     Saco_C          100        10
-Saco_D     Saco_D           90        22</code></pre>
+foto_1     foto_1           43        16
+foto_2     foto_2           62        16
+foto_3     foto_3           52        15</code></pre>
 </div>
 </div>
-<hr>
 </section>
-<section id="análise-detalhada-das-curvas-de-rank-abundância-rads-whittaker-plots" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="análise-detalhada-das-curvas-de-rank-abundância-rads-whittaker-plots"><span class="header-section-number">3.3</span> 3. Análise Detalhada das Curvas de Rank-Abundância (RADs / Whittaker Plots)</h2>
-<p>As <strong>Curvas de Rank-Abundância (RADs)</strong> ou <strong>Gráficos de Whittaker</strong> ordenam as espécies da mais abundante (Rank 1) para a menos abundante (Rank <span class="math inline">\(S\)</span>), plotando a abundância relativa em escala logarítmica (<span class="math inline">\(\log_{10}\)</span>).</p>
-<section id="construção-gráfica-das-rads" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="construção-gráfica-das-rads"><span class="header-section-number">3.3.1</span> Construção Gráfica das RADs</h3>
+<section id="curvas-de-rank-abundância-gráfico-de-whittaker" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="curvas-de-rank-abundância-gráfico-de-whittaker"><span class="header-section-number">3.7</span> 5. CURVAS DE RANK-ABUNDÂNCIA (GRÁFICO DE WHITTAKER)</h2>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preparar dados para o ggplot2</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>rad_df <span class="ot">&lt;-</span> matriz_lego <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>Comunidade, <span class="at">names_to =</span> <span class="st">"Especie_Cor"</span>, <span class="at">values_to =</span> <span class="st">"Abundancia"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Abundancia <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Comunidade) <span class="sc">%&gt;%</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Abundancia)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rank =</span> <span class="fu">row_number</span>(),</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Abundancia_Relativa =</span> Abundancia <span class="sc">/</span> <span class="fu">sum</span>(Abundancia)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de Rank-Abundância</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rad_df, <span class="fu">aes</span>(<span class="at">x =</span> Rank, <span class="at">y =</span> Abundancia_Relativa, <span class="at">color =</span> Comunidade, <span class="at">group =</span> Comunidade)) <span class="sc">+</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="fl">0.1</span>)) <span class="sc">+</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Curvas de Rank-Abundância (Whittaker Plots) — Sacos de LEGO"</span>,</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Comparação dos perfis de dominância e equitabilidade em escala logarítmica"</span>,</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Rank da Espécie (da mais para a menos abundante)"</span>,</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Abundância Relativa (Escala Log10)"</span>,</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Saco / Comunidade"</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordena as espécies da mais para a menos abundante (Rank 1, 2, 3...)</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># e mostra a abundância relativa em escala logarítmica.</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>rad_df <span class="ot">&lt;-</span> dados_longo <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(abundancia <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span>                       <span class="co"># remove cores ausentes</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(comunidade) <span class="sc">%&gt;%</span>                         <span class="co"># trabalha em cada foto separadamente</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(abundancia), <span class="at">.by_group =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span>  <span class="co"># ordena da maior para a menor</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">rank =</span> <span class="fu">row_number</span>(),                           <span class="co"># posição (1 = mais abundante)</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">abundancia_relativa =</span> abundancia <span class="sc">/</span> <span class="fu">sum</span>(abundancia)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>grafico_rad <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(rad_df, <span class="fu">aes</span>(<span class="at">x =</span> rank, <span class="at">y =</span> abundancia_relativa,</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">color =</span> comunidade, <span class="at">group =</span> comunidade)) <span class="sc">+</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title    =</span> <span class="st">"Curvas de Rank-Abundância - Peças de LEGO"</span>,</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Perfis de dominância e equitabilidade (escala log10)"</span>,</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">x        =</span> <span class="st">"Rank da espécie (da mais para a menos abundante)"</span>,</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">y        =</span> <span class="st">"Abundância relativa (log10)"</span>,</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">color    =</span> <span class="st">"Comunidade"</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(grafico_rad)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ex-1_files/figure-html/grafico-rad-1.png" class="img-fluid figure-img" width="864"></p>
+<p><img src="ex-1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-</section>
-<section id="curvas-de-rarefação-baseadas-em-indivíduos-individual-based-rarefaction" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="curvas-de-rarefação-baseadas-em-indivíduos-individual-based-rarefaction"><span class="header-section-number">3.4</span> 4. Curvas de Rarefação Baseadas em Indivíduos (<em>Individual-based Rarefaction</em>)</h2>
-<p>A <strong>rarefação baseada em indivíduos</strong> padroniza o esforço amostral, permitindo responder: <em>“Qual seria a riqueza de espécies esperada se tivéssemos amostrado exatamente <span class="math inline">\(N\)</span> indivíduos em cada saco?”</em></p>
-<section id="a-cálculo-e-gráfico-de-rarefação-rarecurve" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="a-cálculo-e-gráfico-de-rarefação-rarecurve"><span class="header-section-number">3.4.1</span> A) Cálculo e Gráfico de Rarefação (<code>rarecurve</code>)</h3>
+<section id="curvas-de-rarefação-baseadas-em-indivíduos-individual-based-rarefaction" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="curvas-de-rarefação-baseadas-em-indivíduos-individual-based-rarefaction"><span class="header-section-number">3.8</span> 8. Curvas de Rarefação Baseadas em Indivíduos (<em>Individual-based Rarefaction</em>)</h2>
+<p>A <strong>rarefação baseada em indivíduos</strong> padroniza o esforço amostral, permitindo responder: <em>“Qual seria a riqueza de espécies esperada se tivéssemos amostrado exatamente <span class="math inline">\(N\)</span> indivíduos em cada Bandeja?”</em></p>
+<section id="a-cálculo-e-gráfico-de-rarefação-rarecurve" class="level3" data-number="3.8.1">
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="a-cálculo-e-gráfico-de-rarefação-rarecurve"><span class="header-section-number">3.8.1</span> A) Cálculo e Gráfico de Rarefação (<code>rarecurve</code>)</h3>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cores para o gráfico</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green3"</span>, <span class="st">"purple"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Curvas de Rarefação para os 4 Sacos</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rarecurve</span>(mat_num, <span class="at">step =</span> <span class="dv">1</span>, <span class="at">sample =</span> <span class="dv">50</span>, <span class="at">col =</span> cores, <span class="at">lwd =</span> <span class="fl">2.5</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Número de Indivíduos Amostrados (Peças de LEGO)"</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab =</span> <span class="st">"Riqueza de Espécies Esperada (E[S])"</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Curvas de Rarefação Baseadas em Indivíduos (Sacos A, B, C e D)"</span>)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">rownames</span>(mat_num), <span class="at">col =</span> cores, <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="fl">2.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cores para o gráfico</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green3"</span>, <span class="st">"purple"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Curvas de Rarefação para os 4 Bandejas</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rarecurve</span>(mat_num, <span class="at">step =</span> <span class="dv">1</span>, <span class="at">sample =</span> <span class="dv">50</span>, <span class="at">col =</span> cores, <span class="at">lwd =</span> <span class="fl">2.5</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Número de Indivíduos Amostrados (Peças de LEGO)"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab =</span> <span class="st">"Riqueza de Espécies Esperada (E[S])"</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Curvas de Rarefação Baseadas em Indivíduos (Bandejas A, B, C e D)"</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> <span class="fu">rownames</span>(mat_num), <span class="at">col =</span> cores, <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="fl">2.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -515,30 +583,26 @@ Saco_D     Saco_D           90        22</code></pre>
 </div>
 </div>
 </section>
-<section id="b-riqueza-rarefeita-padronizada-n-50-e-n-20-indivíduos" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="b-riqueza-rarefeita-padronizada-n-50-e-n-20-indivíduos"><span class="header-section-number">3.4.2</span> B) Riqueza Rarefeita Padronizada (<span class="math inline">\(N = 50\)</span> e <span class="math inline">\(N = 20\)</span> indivíduos)</h3>
+<section id="b-riqueza-rarefeita-padronizada-n-50-e-n-20-indivíduos" class="level3" data-number="3.8.2">
+<h3 data-number="3.8.2" class="anchored" data-anchor-id="b-riqueza-rarefeita-padronizada-n-50-e-n-20-indivíduos"><span class="header-section-number">3.8.2</span> B) Riqueza Rarefeita Padronizada (<span class="math inline">\(N = 50\)</span> e <span class="math inline">\(N = 20\)</span> indivíduos)</h3>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Padronizando para N = 50 e N = 20 peças</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>S_rare_50 <span class="ot">&lt;-</span> <span class="fu">rarefy</span>(mat_num, <span class="at">sample =</span> <span class="dv">50</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>S_rare_20 <span class="ot">&lt;-</span> <span class="fu">rarefy</span>(mat_num, <span class="at">sample =</span> <span class="dv">20</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>comparativo_rarefacao <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Comunidade =</span> <span class="fu">rownames</span>(mat_num),</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">S_Observado_100 =</span> <span class="fu">specnumber</span>(mat_num),</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">S_Rarefeito_50 =</span> <span class="fu">round</span>(S_rare_50, <span class="dv">2</span>),</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">S_Rarefeito_20 =</span> <span class="fu">round</span>(S_rare_20, <span class="dv">2</span>)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(comparativo_rarefacao)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Padronizando para N = 50 e N = 20 peças</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>S_rare_50 <span class="ot">&lt;-</span> <span class="fu">rarefy</span>(mat_num, <span class="at">sample =</span> <span class="dv">50</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>S_rare_20 <span class="ot">&lt;-</span> <span class="fu">rarefy</span>(mat_num, <span class="at">sample =</span> <span class="dv">20</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>comparativo_rarefacao <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Comunidade =</span> <span class="fu">rownames</span>(mat_num),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">S_Observado_100 =</span> <span class="fu">specnumber</span>(mat_num),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">S_Rarefeito_50 =</span> <span class="fu">round</span>(S_rare_50, <span class="dv">2</span>),</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">S_Rarefeito_20 =</span> <span class="fu">round</span>(S_rare_20, <span class="dv">2</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(comparativo_rarefacao)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       Comunidade S_Observado_100 S_Rarefeito_50 S_Rarefeito_20
-Saco_A     Saco_A               6           5.60           4.32
-Saco_B     Saco_B               8           7.60           6.25
-Saco_C     Saco_C              10           9.99           9.04
-Saco_D     Saco_D              22          17.65          11.17</code></pre>
+foto_1     foto_1              16          16.00          11.91
+foto_2     foto_2              16          15.53          11.73
+foto_3     foto_3              15          14.92          11.39</code></pre>
 </div>
 </div>
 <hr>
@@ -549,10 +613,10 @@ Saco_D     Saco_D              22          17.65          11.17</code></pre>
 <h1 data-number="4"><span class="header-section-number">4</span> QUESTÕES DE INTERPRETAÇÃO ECOLÓGICA E ESTATÍSTICA</h1>
 <p>Responda às seguintes perguntas com base nos resultados obtidos no R e na experiência do sorteio em sala:</p>
 <ol type="1">
-<li><p><strong>Efeito da Equitabilidade na Curva de Acúmulo:</strong> Compare o formato das curvas de rarefação do <strong>Saco A</strong> (hiperdominante) e do <strong>Saco C</strong> (uniforme). Por que o Saco C atinge a assíntota rapidamente com poucos indivíduos, enquanto o Saco A demora mais para acumular novas espécies, mesmo tendo riqueza similar?</p></li>
-<li><p><strong>Rank-Abundância e Dominância:</strong> Na curva de Rank-Abundância (Whittaker Plot), o que a <strong>inclinação (slope)</strong> da reta representa biologicamente? Qual dos quatro sacos apresentou a maior inclinação e o que isso indica sobre a distribuição de recursos na comunidade?</p></li>
-<li><p><strong>Padronização do Esforço Amostral:</strong> Se um pesquisador amostrasse apenas <strong>20 indivíduos</strong> no Saco A e no Saco D, qual seria a riqueza observada em cada um? Por que a comparação direta de riqueza sem rarefação pode levar a conclusões errôneas quando o esforço ou a abundância variam?</p></li>
-<li><p><strong>Conservação e Espécies Raras:</strong> O <strong>Saco D</strong> apresenta muitas espécies com apenas 1 ou 2 peças (<em>singletons</em> e <em>doubletons</em>). Em um ecossistema real sob perturbação ambiental, por que comunidades com o perfil do Saco D são consideradas mais vulneráveis à perda acelerada de biodiversidade?</p></li>
+<li><p><strong>Efeito da Equitabilidade na Curva de Acúmulo:</strong> Compare o formato das curvas de rarefação do <strong>Bandeja A</strong> (hiperdominante) e do <strong>Bandeja C</strong> (uniforme). Por que o Bandeja C atinge a assíntota rapidamente com poucos indivíduos, enquanto o Bandeja A demora mais para acumular novas espécies, mesmo tendo riqueza similar?</p></li>
+<li><p><strong>Rank-Abundância e Dominância:</strong> Na curva de Rank-Abundância (Whittaker Plot), o que a <strong>inclinação (slope)</strong> da reta representa biologicamente? Qual dos quatro Bandejas apresentou a maior inclinação e o que isso indica sobre a distribuição de recursos na comunidade?</p></li>
+<li><p><strong>Padronização do Esforço Amostral:</strong> Se um pesquisador amostrasse apenas <strong>20 indivíduos</strong> no Bandeja A e no Bandeja D, qual seria a riqueza observada em cada um? Por que a comparação direta de riqueza sem rarefação pode levar a conclusões errôneas quando o esforço ou a abundância variam?</p></li>
+<li><p><strong>Conservação e Espécies Raras:</strong> O <strong>Bandeja D</strong> apresenta muitas espécies com apenas 1 ou 2 peças (<em>singletons</em> e <em>doubletons</em>). Em um ecossistema real sob perturbação ambiental, por que comunidades com o perfil do Bandeja D são consideradas mais vulneráveis à perda acelerada de biodiversidade?</p></li>
 </ol>
 
 
