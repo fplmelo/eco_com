@@ -301,34 +301,4 @@ ggplot() +
 
 
 
-## Síntese e orientações para o exercício prático
-
-::: {.columns}
-::: {.column width="50%"}
-- cada grupo usará sua matriz de 100 peças de LEGO atualizada com atributos funcionais.
-- criar a matriz L no `R` com número de pinos, altura e massa de cada morfotipo.
-- rodar a função `dbFD()` do pacote `FD` para extrair CWM e índices multidimensionais.
-
-:::
-
-::: {.column width="50%"}
-```{r}
-#| echo: false
-#| fig-height: 5
-summary_df <- data.frame(
-  x_pos = 1:3,
-  Passo = paste("Passo", 1:3),
-  Status = c("Medição dos Traços", "Matrizes L e Q no R", "Cálculo de FRic/FDis"),
-  y_pos = 3:1
-)
-ggplot(summary_df, aes(x = x_pos, y = y_pos, label = Status)) +
-  geom_point(size = 6, color = "#27ae60") +
-  geom_text(hjust = -0.1, size = 4.5, fontface = "bold") +
-  scale_x_continuous(breaks = 1:3, labels = summary_df$Passo, limits = c(0.5, 5.0)) +
-  coord_cartesian(ylim = c(0, 5)) +
-  theme_minimal(base_size = 14) +
-  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank()) +
-  labs(title = "roteiro prático do módulo 3", x = "", y = "")
-```
-:::
-:::
+## FIM {.center}
