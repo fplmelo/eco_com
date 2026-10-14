@@ -45,7 +45,7 @@ Utilizaremos as funções do pacote `vegan` para extrair a riqueza observada ($S
 
 # Isolamento da matriz numérica de contagens
 mat_num <- matriz_lego %>% select(-comunidade)
-rownames(mat_num) <- matriz_lego$Comunidade
+rownames(mat_num) <- matriz_lego$comunidade
 
 # 1. Riqueza observada (S)
 S_obs <- specnumber(mat_num)
