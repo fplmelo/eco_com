@@ -33,6 +33,88 @@ Cada grupo de alunos utilizará o seu saco de 100 peças montado previamente par
 
 # Exercício aplicado no R (`vegan`)
 
+## Pacotes necessários
+
+```{r setup, message=FALSE, warning=FALSE}
+
+# ---------------------------------------------------------------------
+# 1. INSTALAÇÃO E CARREGAMENTO DOS PACOTES
+# ---------------------------------------------------------------------
+# Pacotes que vamos usar:
+#   tidyverse -> manipulação de dados (dplyr, tidyr, readr) e gráficos (ggplot2)
+#   vegan     -> análises de ecologia de comunidades
+
+pacotes <- c("tidyverse", "vegan")
+
+# Instala apenas os pacotes que ainda NÃO estão instalados
+for (p in pacotes) {
+  if (!requireNamespace(p, quietly = TRUE)) {
+    install.packages(p)
+  }
+}
+
+# Carrega os pacotes (precisa fazer isso toda vez que abrir o R)
+library(tidyverse)
+library(vegan)
+```
+
+## 1. Carregando os dados
+
+```{r dados-Bandejas}
+
+dados <- read_csv("~/eco_com/exercises/ex1/contagem_pecas_lego.csv") # Note que os dados devem estar salvos na mesma pasta que este arquivo ou você precisa usar o caminho específico
+
+# Olhe os dados: sempre confira se foram lidos corretamente
+print(dados)
+glimpse(dados)
+
+```
+
+---
+
+## 3. PREPARAÇÃO DOS DADOS COM TIDYVERSE
+
+
+```{r}
+
+# ---------------------------------------------------------------------
+# Os pacotes de ecologia (vegan) esperam uma matriz de comunidade:
+#   LINHAS  = comunidades (aqui, as fotos)
+#   COLUNAS = espécies (aqui, as cores)
+# Nosso CSV está no formato inverso, então precisamos "girar" a tabela.
+
+dados_longo <- dados %>%
+  pivot_longer(
+    cols      = -cor,            # todas as colunas, menos "cor"
+    names_to  = "comunidade",    # nomes das colunas viram a variável "comunidade"
+    values_to = "abundancia"     # os números viram a variável "abundancia"
+  )
+
+print(dados_longo)
+```
+
+## Passo 3.2: formato "largo" com as cores como colunas (matriz de comunidade)
+
+```{r}
+matriz_lego <- dados_longo %>%
+  pivot_wider(
+    names_from  = cor,           # cada cor vira uma coluna
+    values_from = abundancia
+  )
+
+print(matriz_lego)
+
+```
+
+## Passo 3.3: transformar em matriz numérica, com o nome da foto nas linhas
+
+```{r}
+mat_num <- matriz_lego %>%
+  column_to_rownames("comunidade")   # a coluna "comunidade" vira o nome das linhas
+
+print(mat_num)
+```
+
 ---
 
 ## Cálculo dos índices clássicos de diversidade
@@ -42,6 +124,9 @@ Utilizaremos as funções do pacote `vegan` para extrair a riqueza observada ($S
 ```{r}
 #| message: false
 #| warning: false
+
+library(tidyverse)
+library(vegan)
 
 # Isolamento da matriz numérica de contagens
 mat_num <- matriz_lego %>% select(-comunidade)

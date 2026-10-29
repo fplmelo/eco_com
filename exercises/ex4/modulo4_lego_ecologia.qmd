@@ -2,10 +2,10 @@
 title: "Módulo 4: Diversidade Beta, Dissimilaridade e Ordenação Multidimensional com LEGO & R"
 subtitle: "Análise prática de Bray-Curtis, NMDS e PERMANOVA"
 author: "Felipe Melo"
-date: last-mofidied
+date: last-modified
 format:
   html:
-    theme: flatly
+    # theme: flatly
     toc: true
     toc-depth: 3
     code-fold: false

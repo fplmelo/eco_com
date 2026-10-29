@@ -252,9 +252,13 @@ window.Quarto = {
   <li><a href="#demonstrativo-prático-de-sala-hands-on" id="toc-demonstrativo-prático-de-sala-hands-on" class="nav-link" data-scroll-target="#demonstrativo-prático-de-sala-hands-on"><span class="header-section-number">2</span> Demonstrativo prático de sala (Hands-on)</a></li>
   <li><a href="#exercício-aplicado-no-r-vegan" id="toc-exercício-aplicado-no-r-vegan" class="nav-link" data-scroll-target="#exercício-aplicado-no-r-vegan"><span class="header-section-number">3</span> Exercício aplicado no R (<code>vegan</code>)</a>
   <ul class="collapse">
-  <li><a href="#carregamento-de-pacotes-e-simulação-dos-sacos-de-lego" id="toc-carregamento-de-pacotes-e-simulação-dos-sacos-de-lego" class="nav-link" data-scroll-target="#carregamento-de-pacotes-e-simulação-dos-sacos-de-lego"><span class="header-section-number">3.1</span> Carregamento de pacotes e simulação dos sacos de LEGO</a></li>
-  <li><a href="#cálculo-dos-índices-clássicos-de-diversidade" id="toc-cálculo-dos-índices-clássicos-de-diversidade" class="nav-link" data-scroll-target="#cálculo-dos-índices-clássicos-de-diversidade"><span class="header-section-number">3.2</span> Cálculo dos índices clássicos de diversidade</a></li>
-  <li><a href="#visualização-gráfica-dos-índices-comparados" id="toc-visualização-gráfica-dos-índices-comparados" class="nav-link" data-scroll-target="#visualização-gráfica-dos-índices-comparados"><span class="header-section-number">3.3</span> Visualização gráfica dos índices comparados</a></li>
+  <li><a href="#pacotes-necessários" id="toc-pacotes-necessários" class="nav-link" data-scroll-target="#pacotes-necessários"><span class="header-section-number">3.1</span> Pacotes necessários</a></li>
+  <li><a href="#carregando-os-dados" id="toc-carregando-os-dados" class="nav-link" data-scroll-target="#carregando-os-dados"><span class="header-section-number">3.2</span> 1. Carregando os dados</a></li>
+  <li><a href="#preparação-dos-dados-com-tidyverse" id="toc-preparação-dos-dados-com-tidyverse" class="nav-link" data-scroll-target="#preparação-dos-dados-com-tidyverse"><span class="header-section-number">3.3</span> 3. PREPARAÇÃO DOS DADOS COM TIDYVERSE</a></li>
+  <li><a href="#passo-3.2-formato-largo-com-as-cores-como-colunas-matriz-de-comunidade" id="toc-passo-3.2-formato-largo-com-as-cores-como-colunas-matriz-de-comunidade" class="nav-link" data-scroll-target="#passo-3.2-formato-largo-com-as-cores-como-colunas-matriz-de-comunidade"><span class="header-section-number">3.4</span> Passo 3.2: formato “largo” com as cores como colunas (matriz de comunidade)</a></li>
+  <li><a href="#passo-3.3-transformar-em-matriz-numérica-com-o-nome-da-foto-nas-linhas" id="toc-passo-3.3-transformar-em-matriz-numérica-com-o-nome-da-foto-nas-linhas" class="nav-link" data-scroll-target="#passo-3.3-transformar-em-matriz-numérica-com-o-nome-da-foto-nas-linhas"><span class="header-section-number">3.5</span> Passo 3.3: transformar em matriz numérica, com o nome da foto nas linhas</a></li>
+  <li><a href="#cálculo-dos-índices-clássicos-de-diversidade" id="toc-cálculo-dos-índices-clássicos-de-diversidade" class="nav-link" data-scroll-target="#cálculo-dos-índices-clássicos-de-diversidade"><span class="header-section-number">3.6</span> Cálculo dos índices clássicos de diversidade</a></li>
+  <li><a href="#visualização-gráfica-dos-índices-comparados" id="toc-visualização-gráfica-dos-índices-comparados" class="nav-link" data-scroll-target="#visualização-gráfica-dos-índices-comparados"><span class="header-section-number">3.7</span> Visualização gráfica dos índices comparados</a></li>
   </ul></li>
   <li><a href="#instruções-para-uso-do-próprio-arquivo-.csv-no-exercício" id="toc-instruções-para-uso-do-próprio-arquivo-.csv-no-exercício" class="nav-link" data-scroll-target="#instruções-para-uso-do-próprio-arquivo-.csv-no-exercício"><span class="header-section-number">4</span> instruções para uso do próprio arquivo .csv no exercício</a></li>
   <li><a href="#perguntas-de-interpretação-ecológica" id="toc-perguntas-de-interpretação-ecológica" class="nav-link" data-scroll-target="#perguntas-de-interpretação-ecológica"><span class="header-section-number">5</span> Perguntas de interpretação ecológica</a></li>
@@ -309,92 +313,229 @@ window.Quarto = {
 </section>
 <section id="exercício-aplicado-no-r-vegan" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Exercício aplicado no R (<code>vegan</code>)</h1>
-<section id="carregamento-de-pacotes-e-simulação-dos-sacos-de-lego" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="carregamento-de-pacotes-e-simulação-dos-sacos-de-lego"><span class="header-section-number">3.1</span> Carregamento de pacotes e simulação dos sacos de LEGO</h2>
-<p>Vamos simular as contagens de 100 peças para quatro sacos de LEGO com estruturas ecológicas contrastantes: * Saco A (Hiperdominante): 1 cor dominante com 70% das peças e poucas espécies raras (<span class="math inline">\(S = 6\)</span>). * Saco B (Dominância moderada / Log-normal): padrão intermediário típico da natureza (<span class="math inline">\(S = 8\)</span>). * Saco C (Equitativo / Uniforme): 10 cores com exatamente 10 peças cada (<span class="math inline">\(S = 10\)</span>). * Saco D (Alta riqueza com muitas espécies raras): 22 cores com predomínio de espécies representadas por 1 ou 2 peças (<span class="math inline">\(S = 22\)</span>).</p>
+<section id="pacotes-necessários" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="pacotes-necessários"><span class="header-section-number">3.1</span> Pacotes necessários</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Construção da lista de contagens das 100 peças por cor para cada saco</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>comunidades_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_A =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">70</span>, <span class="at">Amarelo =</span> <span class="dv">15</span>, <span class="at">Azul =</span> <span class="dv">8</span>, <span class="at">Verde =</span> <span class="dv">4</span>, <span class="at">Branco =</span> <span class="dv">2</span>, <span class="at">Preto =</span> <span class="dv">1</span>),</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_B =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">40</span>, <span class="at">Amarelo =</span> <span class="dv">22</span>, <span class="at">Azul =</span> <span class="dv">14</span>, <span class="at">Verde =</span> <span class="dv">10</span>, <span class="at">Branco =</span> <span class="dv">6</span>, <span class="at">Preto =</span> <span class="dv">4</span>, <span class="at">Laranja =</span> <span class="dv">3</span>, <span class="at">Cinza =</span> <span class="dv">1</span>),</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_C =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">10</span>, <span class="at">Amarelo =</span> <span class="dv">10</span>, <span class="at">Azul =</span> <span class="dv">10</span>, <span class="at">Verde =</span> <span class="dv">10</span>, <span class="at">Branco =</span> <span class="dv">10</span>, <span class="at">Preto =</span> <span class="dv">10</span>, <span class="at">Laranja =</span> <span class="dv">10</span>, <span class="at">Cinza =</span> <span class="dv">10</span>, <span class="at">Roxo =</span> <span class="dv">10</span>, <span class="at">Rosa =</span> <span class="dv">10</span>),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Saco_D =</span> <span class="fu">c</span>(<span class="at">Vermelho =</span> <span class="dv">30</span>, <span class="at">Amarelo =</span> <span class="dv">18</span>, <span class="at">Azul =</span> <span class="dv">12</span>, <span class="at">Verde =</span> <span class="dv">8</span>, <span class="at">Branco =</span> <span class="dv">6</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">Preto =</span> <span class="dv">4</span>, <span class="at">Laranja =</span> <span class="dv">3</span>, <span class="at">Cinza =</span> <span class="dv">3</span>, <span class="at">Roxo =</span> <span class="dv">2</span>, <span class="at">Rosa =</span> <span class="dv">2</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">Marrom =</span> <span class="dv">2</span>, <span class="at">Ciano =</span> <span class="dv">1</span>, <span class="at">Magenta =</span> <span class="dv">1</span>, <span class="at">Lime =</span> <span class="dv">1</span>, <span class="at">Bege =</span> <span class="dv">1</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">Vinho =</span> <span class="dv">1</span>, <span class="at">Turquesa =</span> <span class="dv">1</span>, <span class="at">Ouro =</span> <span class="dv">1</span>, <span class="at">Prata =</span> <span class="dv">1</span>, <span class="at">Bronze =</span> <span class="dv">1</span>, <span class="at">Coral =</span> <span class="dv">1</span>, <span class="at">Salmao =</span> <span class="dv">1</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Conversão da lista para matriz ecológica (locais nas linhas, espécies nas colunas)</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>matriz_lego <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(comunidades_list, <span class="at">.id =</span> <span class="st">"Comunidade"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span><span class="fu">replace_na</span>(.x, <span class="dv">0</span>)))</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibição da estrutura da matriz</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz_lego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------------</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. INSTALAÇÃO E CARREGAMENTO DOS PACOTES</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------------</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Pacotes que vamos usar:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   tidyverse -&gt; manipulação de dados (dplyr, tidyr, readr) e gráficos (ggplot2)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   vegan     -&gt; análises de ecologia de comunidades</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>pacotes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"vegan"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Instala apenas os pacotes que ainda NÃO estão instalados</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (p <span class="cf">in</span> pacotes) {</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(p, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(p)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Carrega os pacotes (precisa fazer isso toda vez que abrir o R)</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="carregando-os-dados" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="carregando-os-dados"><span class="header-section-number">3.2</span> 1. Carregando os dados</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/eco_com/exercises/ex1/contagem_pecas_lego.csv"</span>) <span class="co"># Note que os dados devem estar salvos na mesma pasta que este arquivo ou você precisa usar o caminho específico</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 16 Columns: 4
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): cor
+dbl (3): foto_1, foto_2, foto_3
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Olhe os dados: sempre confira se foram lidos corretamente</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dados)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 23
-  Comunidade Vermelho Amarelo  Azul Verde Branco Preto Laranja Cinza  Roxo  Rosa
-  &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 Saco_A           70      15     8     4      2     1       0     0     0     0
-2 Saco_B           40      22    14    10      6     4       3     1     0     0
-3 Saco_C           10      10    10    10     10    10      10    10    10    10
-4 Saco_D           30      18    12     8      6     4       3     3     2     2
-# ℹ 12 more variables: Marrom &lt;dbl&gt;, Ciano &lt;dbl&gt;, Magenta &lt;dbl&gt;, Lime &lt;dbl&gt;,
-#   Bege &lt;dbl&gt;, Vinho &lt;dbl&gt;, Turquesa &lt;dbl&gt;, Ouro &lt;dbl&gt;, Prata &lt;dbl&gt;,
-#   Bronze &lt;dbl&gt;, Coral &lt;dbl&gt;, Salmao &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 16 × 4
+   cor          foto_1 foto_2 foto_3
+   &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1 verde_limao       3      4      3
+ 2 verde_escuro      3      7      5
+ 3 azul              5      4      3
+ 4 azul_claro        1      3      2
+ 5 roxo_escuro       2      4      5
+ 6 lilas             1      1      0
+ 7 rosa_magenta      4      3      2
+ 8 rosa_claro        1      5      5
+ 9 vermelho          5      5      6
+10 laranja           3      2      4
+11 amarelo           3      6      4
+12 marrom            1      5      6
+13 branco            4      5      3
+14 cinza_claro       2      2      1
+15 cinza_escuro      4      5      2
+16 preto             1      1      1</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dados)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 16
+Columns: 4
+$ cor    &lt;chr&gt; "verde_limao", "verde_escuro", "azul", "azul_claro", "roxo_escu…
+$ foto_1 &lt;dbl&gt; 3, 3, 5, 1, 2, 1, 4, 1, 5, 3, 3, 1, 4, 2, 4, 1
+$ foto_2 &lt;dbl&gt; 4, 7, 4, 3, 4, 1, 3, 5, 5, 2, 6, 5, 5, 2, 5, 1
+$ foto_3 &lt;dbl&gt; 3, 5, 3, 2, 5, 0, 2, 5, 6, 4, 4, 6, 3, 1, 2, 1</code></pre>
 </div>
 </div>
 <hr>
 </section>
-<section id="cálculo-dos-índices-clássicos-de-diversidade" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="cálculo-dos-índices-clássicos-de-diversidade"><span class="header-section-number">3.2</span> Cálculo dos índices clássicos de diversidade</h2>
+<section id="preparação-dos-dados-com-tidyverse" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="preparação-dos-dados-com-tidyverse"><span class="header-section-number">3.3</span> 3. PREPARAÇÃO DOS DADOS COM TIDYVERSE</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------------------</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Os pacotes de ecologia (vegan) esperam uma matriz de comunidade:</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   LINHAS  = comunidades (aqui, as fotos)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   COLUNAS = espécies (aqui, as cores)</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Nosso CSV está no formato inverso, então precisamos "girar" a tabela.</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>dados_longo <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols      =</span> <span class="sc">-</span>cor,            <span class="co"># todas as colunas, menos "cor"</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to  =</span> <span class="st">"comunidade"</span>,    <span class="co"># nomes das colunas viram a variável "comunidade"</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"abundancia"</span>     <span class="co"># os números viram a variável "abundancia"</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dados_longo)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 48 × 3
+   cor          comunidade abundancia
+   &lt;chr&gt;        &lt;chr&gt;           &lt;dbl&gt;
+ 1 verde_limao  foto_1              3
+ 2 verde_limao  foto_2              4
+ 3 verde_limao  foto_3              3
+ 4 verde_escuro foto_1              3
+ 5 verde_escuro foto_2              7
+ 6 verde_escuro foto_3              5
+ 7 azul         foto_1              5
+ 8 azul         foto_2              4
+ 9 azul         foto_3              3
+10 azul_claro   foto_1              1
+# ℹ 38 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="passo-3.2-formato-largo-com-as-cores-como-colunas-matriz-de-comunidade" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="passo-3.2-formato-largo-com-as-cores-como-colunas-matriz-de-comunidade"><span class="header-section-number">3.4</span> Passo 3.2: formato “largo” com as cores como colunas (matriz de comunidade)</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>matriz_lego <span class="ot">&lt;-</span> dados_longo <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from  =</span> cor,           <span class="co"># cada cor vira uma coluna</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> abundancia</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz_lego)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 17
+  comunidade verde_limao verde_escuro  azul azul_claro roxo_escuro lilas
+  &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+1 foto_1               3            3     5          1           2     1
+2 foto_2               4            7     4          3           4     1
+3 foto_3               3            5     3          2           5     0
+# ℹ 10 more variables: rosa_magenta &lt;dbl&gt;, rosa_claro &lt;dbl&gt;, vermelho &lt;dbl&gt;,
+#   laranja &lt;dbl&gt;, amarelo &lt;dbl&gt;, marrom &lt;dbl&gt;, branco &lt;dbl&gt;,
+#   cinza_claro &lt;dbl&gt;, cinza_escuro &lt;dbl&gt;, preto &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="passo-3.3-transformar-em-matriz-numérica-com-o-nome-da-foto-nas-linhas" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="passo-3.3-transformar-em-matriz-numérica-com-o-nome-da-foto-nas-linhas"><span class="header-section-number">3.5</span> Passo 3.3: transformar em matriz numérica, com o nome da foto nas linhas</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mat_num <span class="ot">&lt;-</span> matriz_lego <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="st">"comunidade"</span>)   <span class="co"># a coluna "comunidade" vira o nome das linhas</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mat_num)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>       verde_limao verde_escuro azul azul_claro roxo_escuro lilas rosa_magenta
+foto_1           3            3    5          1           2     1            4
+foto_2           4            7    4          3           4     1            3
+foto_3           3            5    3          2           5     0            2
+       rosa_claro vermelho laranja amarelo marrom branco cinza_claro
+foto_1          1        5       3       3      1      4           2
+foto_2          5        5       2       6      5      5           2
+foto_3          5        6       4       4      6      3           1
+       cinza_escuro preto
+foto_1            4     1
+foto_2            5     1
+foto_3            2     1</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="cálculo-dos-índices-clássicos-de-diversidade" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="cálculo-dos-índices-clássicos-de-diversidade"><span class="header-section-number">3.6</span> Cálculo dos índices clássicos de diversidade</h2>
 <p>Utilizaremos as funções do pacote <code>vegan</code> para extrair a riqueza observada (<span class="math inline">\(S\)</span>), o índice de Shannon-Wiener (<span class="math inline">\(H'\)</span>), a dominância de Simpson (<span class="math inline">\(D\)</span>), a diversidade de Simpson (<span class="math inline">\(1-D\)</span>), o inverso de Simpson (<span class="math inline">\(1/D\)</span>) e a equitabilidade de Pielou (<span class="math inline">\(J'\)</span>).</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Isolamento da matriz numérica de contagens</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mat_num <span class="ot">&lt;-</span> matriz_lego <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>Comunidade)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(mat_num) <span class="ot">&lt;-</span> matriz_lego<span class="sc">$</span>Comunidade</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Riqueza observada (S)</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>S_obs <span class="ot">&lt;-</span> <span class="fu">specnumber</span>(mat_num)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Índice de Shannon-Wiener (H')</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>H_shannon <span class="ot">&lt;-</span> <span class="fu">diversity</span>(mat_num, <span class="at">index =</span> <span class="st">"shannon"</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Dominância de Simpson (D)</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>D_puro <span class="ot">&lt;-</span> <span class="fu">rowSums</span>((mat_num <span class="sc">/</span> <span class="fu">rowSums</span>(mat_num))<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Diversidade de Simpson (1 - D)</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>Simp_div <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> D_puro</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Inverso de Simpson (1 / D)</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>Simp_inv <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> D_puro</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Diversidade máxima teórica de Shannon (H_max = ln(S))</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>H_max <span class="ot">&lt;-</span> <span class="fu">log</span>(S_obs)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Equitabilidade de Pielou (J' = H' / ln(S))</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>J_pielou <span class="ot">&lt;-</span> H_shannon <span class="sc">/</span> H_max</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Consolidação da tabela de resultados</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>tabela_diversidade <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">Comunidade =</span> <span class="fu">rownames</span>(mat_num),</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">N_Total =</span> <span class="fu">rowSums</span>(mat_num),</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">Riqueza_S =</span> S_obs,</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">Shannon_H =</span> <span class="fu">round</span>(H_shannon, <span class="dv">3</span>),</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">Simpson_D =</span> <span class="fu">round</span>(D_puro, <span class="dv">3</span>),</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">Simpson_1D =</span> <span class="fu">round</span>(Simp_div, <span class="dv">3</span>),</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">Simpson_Inv =</span> <span class="fu">round</span>(Simp_inv, <span class="dv">2</span>),</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pielou_J =</span> <span class="fu">round</span>(J_pielou, <span class="dv">3</span>)</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tabela_diversidade, <span class="at">caption =</span> <span class="st">"Tabela comparativa dos índices clássicos de diversidade entre os 4 sacos de LEGO"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Isolamento da matriz numérica de contagens</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>mat_num <span class="ot">&lt;-</span> matriz_lego <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>comunidade)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(mat_num) <span class="ot">&lt;-</span> matriz_lego<span class="sc">$</span>comunidade</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Riqueza observada (S)</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>S_obs <span class="ot">&lt;-</span> <span class="fu">specnumber</span>(mat_num)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Índice de Shannon-Wiener (H')</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>H_shannon <span class="ot">&lt;-</span> <span class="fu">diversity</span>(mat_num, <span class="at">index =</span> <span class="st">"shannon"</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Dominância de Simpson (D)</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>D_puro <span class="ot">&lt;-</span> <span class="fu">rowSums</span>((mat_num <span class="sc">/</span> <span class="fu">rowSums</span>(mat_num))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Diversidade de Simpson (1 - D)</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>Simp_div <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> D_puro</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Inverso de Simpson (1 / D)</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>Simp_inv <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> D_puro</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Diversidade máxima teórica de Shannon (H_max = ln(S))</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>H_max <span class="ot">&lt;-</span> <span class="fu">log</span>(S_obs)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Equitabilidade de Pielou (J' = H' / ln(S))</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>J_pielou <span class="ot">&lt;-</span> H_shannon <span class="sc">/</span> H_max</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Consolidação da tabela de resultados</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>tabela_diversidade <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">Comunidade =</span> <span class="fu">rownames</span>(mat_num),</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">N_Total =</span> <span class="fu">rowSums</span>(mat_num),</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">Riqueza_S =</span> S_obs,</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">Shannon_H =</span> <span class="fu">round</span>(H_shannon, <span class="dv">3</span>),</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">Simpson_D =</span> <span class="fu">round</span>(D_puro, <span class="dv">3</span>),</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">Simpson_1D =</span> <span class="fu">round</span>(Simp_div, <span class="dv">3</span>),</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">Simpson_Inv =</span> <span class="fu">round</span>(Simp_inv, <span class="dv">2</span>),</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pielou_J =</span> <span class="fu">round</span>(J_pielou, <span class="dv">3</span>)</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tabela_diversidade, <span class="at">caption =</span> <span class="st">"Tabela comparativa dos índices clássicos de diversidade entre os 4 sacos de LEGO"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -425,48 +566,37 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Saco_A</td>
-<td style="text-align: left;">Saco_A</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">0.989</td>
-<td style="text-align: right;">0.521</td>
-<td style="text-align: right;">0.479</td>
-<td style="text-align: right;">1.92</td>
-<td style="text-align: right;">0.552</td>
+<td style="text-align: left;">foto_1</td>
+<td style="text-align: left;">foto_1</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">2.629</td>
+<td style="text-align: right;">0.080</td>
+<td style="text-align: right;">0.920</td>
+<td style="text-align: right;">12.58</td>
+<td style="text-align: right;">0.948</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Saco_B</td>
-<td style="text-align: left;">Saco_B</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">1.654</td>
-<td style="text-align: right;">0.244</td>
-<td style="text-align: right;">0.756</td>
-<td style="text-align: right;">4.10</td>
-<td style="text-align: right;">0.795</td>
+<td style="text-align: left;">foto_2</td>
+<td style="text-align: left;">foto_2</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">2.666</td>
+<td style="text-align: right;">0.074</td>
+<td style="text-align: right;">0.926</td>
+<td style="text-align: right;">13.44</td>
+<td style="text-align: right;">0.961</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Saco_C</td>
-<td style="text-align: left;">Saco_C</td>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">2.303</td>
-<td style="text-align: right;">0.100</td>
-<td style="text-align: right;">0.900</td>
-<td style="text-align: right;">10.00</td>
-<td style="text-align: right;">1.000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Saco_D</td>
-<td style="text-align: left;">Saco_D</td>
-<td style="text-align: right;">101</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">2.362</td>
-<td style="text-align: right;">0.149</td>
-<td style="text-align: right;">0.851</td>
-<td style="text-align: right;">6.69</td>
-<td style="text-align: right;">0.764</td>
+<td style="text-align: left;">foto_3</td>
+<td style="text-align: left;">foto_3</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">2.590</td>
+<td style="text-align: right;">0.081</td>
+<td style="text-align: right;">0.919</td>
+<td style="text-align: right;">12.29</td>
+<td style="text-align: right;">0.956</td>
 </tr>
 </tbody>
 </table>
@@ -474,38 +604,38 @@ window.Quarto = {
 </div>
 <hr>
 </section>
-<section id="visualização-gráfica-dos-índices-comparados" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="visualização-gráfica-dos-índices-comparados"><span class="header-section-number">3.3</span> Visualização gráfica dos índices comparados</h2>
+<section id="visualização-gráfica-dos-índices-comparados" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="visualização-gráfica-dos-índices-comparados"><span class="header-section-number">3.7</span> Visualização gráfica dos índices comparados</h2>
 <p>Para visualizar como cada índice reage às diferentes estruturas de comunidade, construímos um gráfico comparativo utilizando o pacote <code>ggplot2</code>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorganização dos dados para formato longo (tidy)</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_grafico <span class="ot">&lt;-</span> tabela_diversidade <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"Riqueza_S"</span>, <span class="st">"Shannon_H"</span>, <span class="st">"Simpson_1D"</span>, <span class="st">"Pielou_J"</span>),</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Indice"</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Valor"</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Indice =</span> <span class="fu">factor</span>(Indice, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Riqueza_S"</span>, <span class="st">"Shannon_H"</span>, <span class="st">"Simpson_1D"</span>, <span class="st">"Pielou_J"</span>)))</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de barras facetado</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_grafico, <span class="fu">aes</span>(<span class="at">x =</span> Comunidade, <span class="at">y =</span> Valor, <span class="at">fill =</span> Comunidade)) <span class="sc">+</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Indice, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparação dos índices de diversidade entre os sacos de LEGO"</span>,</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Respostas contrastantes de riqueza, Shannon, Simpson e Pielou"</span>,</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Comunidade (Saco)"</span>,</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Valor do índice"</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorganização dos dados para formato longo (tidy)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df_grafico <span class="ot">&lt;-</span> tabela_diversidade <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"Riqueza_S"</span>, <span class="st">"Shannon_H"</span>, <span class="st">"Simpson_1D"</span>, <span class="st">"Pielou_J"</span>),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Indice"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Valor"</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Indice =</span> <span class="fu">factor</span>(Indice, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Riqueza_S"</span>, <span class="st">"Shannon_H"</span>, <span class="st">"Simpson_1D"</span>, <span class="st">"Pielou_J"</span>)))</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de barras facetado</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_grafico, <span class="fu">aes</span>(<span class="at">x =</span> Comunidade, <span class="at">y =</span> Valor, <span class="at">fill =</span> Comunidade)) <span class="sc">+</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Indice, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>) <span class="sc">+</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparação dos índices de diversidade entre os sacos de LEGO"</span>,</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Respostas contrastantes de riqueza, Shannon, Simpson e Pielou"</span>,</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Comunidade (Saco)"</span>,</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Valor do índice"</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ex2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ex2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

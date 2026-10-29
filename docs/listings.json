@@ -9,6 +9,16 @@
     ]
   },
   {
+    "listing": "/exercises/index.html",
+    "items": [
+      "/exercises/ex1/ex-1.html",
+      "/exercises/ex2/ex2.html",
+      "/exercises/ex5/diversidade_funcional_lego.html",
+      "/exercises/ex3/modulo3_lego_ecologia.html",
+      "/exercises/ex4/modulo4_lego_ecologia.html"
+    ]
+  },
+  {
     "listing": "/resources/index.html",
     "items": [
       "/resources/eco_pais.html",

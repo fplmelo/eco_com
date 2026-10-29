@@ -1,7 +1,9 @@
 ---
-title: "Exercício Diversidade funcional com LEGO"
+title: "Módulo 3.1 - Exercício Diversidade funcional com LEGO"
 subtitle: "Ecologia de Comunidades (versão sem R)"
+author: "Felipe Melo"
 lang: pt
+date: last-modified
 format:
   html:
     toc: true
