@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Exercício Diversidade funcional com LEGO</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c6e54bb89bf1fbcc5e23ea448263032b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../img/logo_branco_ufpe.png" alt="UFPE logo" class="navbar-logo light-content">
+    <img src="../../img/logo_branco_ufpe.png" alt="UFPE logo" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Início</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html"> 
+<span class="menu-text">Objetivos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../schedule.html"> 
+<span class="menu-text">Cronograma</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-intro" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">R Intro</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-r-intro">    
+        <li>
+    <a class="dropdown-item" href="../../get-started/1-install.html"><i class="bi bi-emoji-sunglasses-fill" role="img">
+</i> 
+ <span class="dropdown-text">1 - Instalar R &amp; Rstudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/2-basic-intro.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">2 - Introdução Básica ao R e Rstudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/3-syntax.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">3 - Sintaxe &amp; Estrutura de Dados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/4-functions.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">4 - Funções e Comandos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/5-data.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">5 - Dados em R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../workbook/workbook.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">6 - Seu próprio site</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../sessions/index.html"> 
+<span class="menu-text">Todas as Aulas</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../exercises/index.html"> 
+<span class="menu-text">Exercícios</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources/index.html"> 
+<span class="menu-text">Recursos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../assessment.html"> 
+<span class="menu-text">Tipo de Avaliação</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://twitter.com/quarto_pub" title="Quarto Twitter" class="quarto-navigation-tool px-1" aria-label="Quarto Twitter"><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/quarto-dev/quarto-cli" title="Quarto GitHub" class="quarto-navigation-tool px-1" aria-label="Quarto GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://quarto.org/docs/blog/index.xml" title="Quarto Blog RSS" class="quarto-navigation-tool px-1" aria-label="Quarto Blog RSS"><i class="bi bi-rss"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+  <li><a href="#objetivo" id="toc-objetivo" class="nav-link active" data-scroll-target="#objetivo"><span class="header-section-number">0.1</span> Objetivo</a></li>
+  <li><a href="#conceitos-chave" id="toc-conceitos-chave" class="nav-link" data-scroll-target="#conceitos-chave"><span class="header-section-number">0.2</span> Conceitos-chave</a></li>
+  <li><a href="#exemplo-resolvido-comunidade-fictícia-de-20-peças" id="toc-exemplo-resolvido-comunidade-fictícia-de-20-peças" class="nav-link" data-scroll-target="#exemplo-resolvido-comunidade-fictícia-de-20-peças"><span class="header-section-number">0.3</span> Exemplo resolvido (comunidade fictícia de 20 peças)</a></li>
+  <li><a href="#aplicando-a-uma-comunidade-real" id="toc-aplicando-a-uma-comunidade-real" class="nav-link" data-scroll-target="#aplicando-a-uma-comunidade-real"><span class="header-section-number">1</span> Aplicando a uma comunidade real</a>
+  <ul class="collapse">
+  <li><a href="#parte-1-montar-a-matriz-cor-forma" id="toc-parte-1-montar-a-matriz-cor-forma" class="nav-link" data-scroll-target="#parte-1-montar-a-matriz-cor-forma"><span class="header-section-number">1.1</span> Parte 1 — Montar a matriz cor × forma</a></li>
+  <li><a href="#parte-2-diversidade-taxonômica-diversidade-funcional" id="toc-parte-2-diversidade-taxonômica-diversidade-funcional" class="nav-link" data-scroll-target="#parte-2-diversidade-taxonômica-diversidade-funcional"><span class="header-section-number">1.2</span> Parte 2 — Diversidade taxonômica × diversidade funcional</a></li>
+  <li><a href="#parte-3-traço-numérico-número-de-pinos" id="toc-parte-3-traço-numérico-número-de-pinos" class="nav-link" data-scroll-target="#parte-3-traço-numérico-número-de-pinos"><span class="header-section-number">1.3</span> Parte 3 — Traço numérico: número de pinos</a></li>
+  <li><a href="#parte-4-redundância-funcional" id="toc-parte-4-redundância-funcional" class="nav-link" data-scroll-target="#parte-4-redundância-funcional"><span class="header-section-number">1.4</span> Parte 4 — Redundância funcional</a></li>
+  <li><a href="#parte-5-simulação-de-perda-de-espécies" id="toc-parte-5-simulação-de-perda-de-espécies" class="nav-link" data-scroll-target="#parte-5-simulação-de-perda-de-espécies"><span class="header-section-number">1.5</span> Parte 5 — Simulação de perda de espécies</a></li>
+  <li><a href="#parte-6-interpretação" id="toc-parte-6-interpretação" class="nav-link" data-scroll-target="#parte-6-interpretação"><span class="header-section-number">1.6</span> Parte 6 — Interpretação</a></li>
+  <li><a href="#bônus-índice-rao-q-em-miniatura" id="toc-bônus-índice-rao-q-em-miniatura" class="nav-link" data-scroll-target="#bônus-índice-rao-q-em-miniatura"><span class="header-section-number">1.7</span> Bônus: Índice Rao Q em miniatura</a></li>
+  </ul></li>
+  <li><a href="#agora-vamos-analisar-3-comunidades" id="toc-agora-vamos-analisar-3-comunidades" class="nav-link" data-scroll-target="#agora-vamos-analisar-3-comunidades"><span class="header-section-number">2</span> Agora, vamos analisar 3 comunidades</a>
+  <ul class="collapse">
+  <li><a href="#parte-7-aplicação-às-três-comunidades-fotografadas-módulo-1" id="toc-parte-7-aplicação-às-três-comunidades-fotografadas-módulo-1" class="nav-link" data-scroll-target="#parte-7-aplicação-às-três-comunidades-fotografadas-módulo-1"><span class="header-section-number">2.1</span> Parte 7 — Aplicação às três comunidades fotografadas (Módulo 1)</a>
+  <ul class="collapse">
+  <li><a href="#dados-de-abundância-peças-por-cor-em-cada-foto" id="toc-dados-de-abundância-peças-por-cor-em-cada-foto" class="nav-link" data-scroll-target="#dados-de-abundância-peças-por-cor-em-cada-foto"><span class="header-section-number">2.1.1</span> Dados de abundância (peças por cor em cada foto)</a></li>
+  <li><a href="#traços-das-espécies-cores" id="toc-traços-das-espécies-cores" class="nav-link" data-scroll-target="#traços-das-espécies-cores"><span class="header-section-number">2.1.2</span> Traços das espécies (cores)</a></li>
+  <li><a href="#diversidade-taxonômica-cores" id="toc-diversidade-taxonômica-cores" class="nav-link" data-scroll-target="#diversidade-taxonômica-cores"><span class="header-section-number">2.1.3</span> 7.1 Diversidade taxonômica (cores)</a></li>
+  <li><a href="#diversidade-funcional-categórica-grupos-funcionais" id="toc-diversidade-funcional-categórica-grupos-funcionais" class="nav-link" data-scroll-target="#diversidade-funcional-categórica-grupos-funcionais"><span class="header-section-number">2.1.4</span> 7.2 Diversidade funcional categórica (grupos funcionais)</a></li>
+  <li><a href="#traço-numérico-luminosidade" id="toc-traço-numérico-luminosidade" class="nav-link" data-scroll-target="#traço-numérico-luminosidade"><span class="header-section-number">2.1.5</span> 7.3 Traço numérico (luminosidade)</a></li>
+  <li><a href="#redundância-funcional" id="toc-redundância-funcional" class="nav-link" data-scroll-target="#redundância-funcional"><span class="header-section-number">2.1.6</span> 7.4 Redundância funcional</a></li>
+  <li><a href="#simulação-de-perda-de-espécies" id="toc-simulação-de-perda-de-espécies" class="nav-link" data-scroll-target="#simulação-de-perda-de-espécies"><span class="header-section-number">2.1.7</span> 7.5 Simulação de perda de espécies</a></li>
+  <li><a href="#interpretação" id="toc-interpretação" class="nav-link" data-scroll-target="#interpretação"><span class="header-section-number">2.1.8</span> 7.6 Interpretação</a></li>
+  </ul></li>
+  <li><a href="#entrega-e-correção-sugerida" id="toc-entrega-e-correção-sugerida" class="nav-link" data-scroll-target="#entrega-e-correção-sugerida"><span class="header-section-number">2.2</span> Entrega e correção sugerida</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Exercício Diversidade funcional com LEGO</h1>
+<p class="subtitle lead">Ecologia de Comunidades (versão sem R)</p>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="objetivo" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="objetivo"><span class="header-section-number">0.1</span> Objetivo</h2>
+<p>Na aula, a <strong>cor</strong> da peça definiu a “espécie” (diversidade taxonômica). Agora vamos usar a <strong>forma</strong> e o <strong>tamanho</strong> das peças como <strong>traços funcionais</strong> para responder: <em>o que as espécies da minha comunidade fazem, e quantas fazem a mesma coisa?</em></p>
+<p>Todos os cálculos podem ser feitos com <strong>calculadora ou Excel/Planilhas Google</strong>. Não é necessário R.</p>
+<p><strong>Material:</strong> a planilha de amostragem do seu grupo (as mesmas 100 peças usadas nos módulos anteriores, Partes 1 a 6) e os dados das três comunidades fotografadas no Exercício do Módulo 1 (Parte 7).</p>
+<p><strong>Entrega:</strong> individual ou em grupo (conforme combinado), com as tabelas preenchidas, os cálculos (print da planilha ou fotos do caderno) e as respostas da Parte 6.</p>
+</section>
+<section id="conceitos-chave" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="conceitos-chave"><span class="header-section-number">0.2</span> Conceitos-chave</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Conceito</th>
+<th>Definição curta</th>
+<th>No nosso LEGO</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Espécie</td>
+<td>Unidade taxonômica</td>
+<td>Cor da peça</td>
+</tr>
+<tr class="even">
+<td>Traço funcional</td>
+<td>Característica que influencia o desempenho/papel da espécie</td>
+<td>Forma (categórica) e número de pinos (numérico)</td>
+</tr>
+<tr class="odd">
+<td>Grupo funcional</td>
+<td>Conjunto de espécies com traços semelhantes</td>
+<td>Categoria de forma (tijolo, placa, telha, inclinada, outras)</td>
+</tr>
+<tr class="even">
+<td>Redundância funcional</td>
+<td>Várias espécies exercendo a mesma função</td>
+<td>Várias cores na mesma categoria de forma</td>
+</tr>
+<tr class="odd">
+<td>Média ponderada pela comunidade (CWM)</td>
+<td>Valor “típico” do traço, ponderado pela abundância</td>
+<td>Média de pinos por peça da comunidade</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exemplo-resolvido-comunidade-fictícia-de-20-peças" class="level2" data-number="0.3">
+<h2 data-number="0.3" class="anchored" data-anchor-id="exemplo-resolvido-comunidade-fictícia-de-20-peças"><span class="header-section-number">0.3</span> Exemplo resolvido (comunidade fictícia de 20 peças)</h2>
+<p>Use este exemplo como modelo. Confira cada conta antes de fazer a sua.</p>
+<p><strong>Tabela de contagens (cor × forma)</strong> e média de pinos por peça de cada cor:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cor (espécie)</th>
+<th>Tijolo</th>
+<th>Placa</th>
+<th>Inclinada</th>
+<th>Total (<span class="math inline">\(N_i\)</span>)</th>
+<th><span class="math inline">\(p_i\)</span></th>
+<th>Pinos (média)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Vermelho</td>
+<td>5</td>
+<td>1</td>
+<td>0</td>
+<td>6</td>
+<td>0,30</td>
+<td>4,0</td>
+</tr>
+<tr class="even">
+<td>Azul</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>6</td>
+<td>0,30</td>
+<td>3,0</td>
+</tr>
+<tr class="odd">
+<td>Amarelo</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+<td>0,20</td>
+<td>6,0</td>
+</tr>
+<tr class="even">
+<td>Verde</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>4</td>
+<td>0,20</td>
+<td>2,0</td>
+</tr>
+<tr class="odd">
+<td><strong>Total por forma</strong></td>
+<td><strong>9</strong></td>
+<td><strong>7</strong></td>
+<td><strong>4</strong></td>
+<td><strong>20</strong></td>
+<td>1,00</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(p\)</span> da forma</td>
+<td>0,45</td>
+<td>0,35</td>
+<td>0,20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fórmulas usadas</strong></p>
+<ul>
+<li>Shannon: <span class="math inline">\(H' = -\sum p_i \ln p_i\)</span></li>
+<li>Pielou: <span class="math inline">\(J = H'/\ln S\)</span></li>
+<li>Simpson (1 − D): <span class="math inline">\(1 - \sum p_i^2\)</span></li>
+<li>CWM do traço: <span class="math inline">\(\text{CWM} = \sum p_i x_i\)</span></li>
+<li>Dispersão funcional (variância ponderada): <span class="math inline">\(\sum p_i (x_i - \text{CWM})^2\)</span></li>
+</ul>
+<p><strong>Resultados do exemplo</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Medida</th>
+<th>Taxonômica (cores)</th>
+<th>Funcional (formas)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Riqueza (<span class="math inline">\(S\)</span> ou <span class="math inline">\(S_F\)</span>)</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>Shannon <span class="math inline">\(H'\)</span></td>
+<td>1,366</td>
+<td>1,049</td>
+</tr>
+<tr class="odd">
+<td>Pielou <span class="math inline">\(J\)</span></td>
+<td>0,985</td>
+<td>0,955</td>
+</tr>
+<tr class="even">
+<td>Simpson <span class="math inline">\(1-D\)</span></td>
+<td>0,740</td>
+<td>0,635</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>CWM de pinos</strong> = 0,30·4 + 0,30·3 + 0,20·6 + 0,20·2 = <strong>3,70</strong>; média simples das cores = 3,75 (a diferença mostra o efeito das cores dominantes).</li>
+<li><strong>Amplitude funcional</strong> (maior − menor média de pinos) = 6 − 2 = <strong>4</strong>.</li>
+<li><strong>Dispersão funcional</strong> = 0,027 + 0,147 + 1,058 + 0,578 = <strong>1,81</strong> (desvio-padrão = 1,35).</li>
+<li><strong>Redundância funcional:</strong> nº de cores por forma → Tijolo = 3, Placa = 3, Inclinada = 2; média = 8/3 = <strong>2,67 cores por grupo funcional</strong>.</li>
+<li><strong>Perda de espécie:</strong> removendo a cor mais abundante (Vermelho), a riqueza de cores cai de 4 para 3 (−25 %), mas as 3 formas continuam presentes (−0 % de grupos funcionais) e <span class="math inline">\(H'_F\)</span> passa de 1,049 para 1,079. A redundância “protegeu” a função.</li>
+</ul>
+</section>
+<section id="aplicando-a-uma-comunidade-real" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Aplicando a uma comunidade real</h1>
+<section id="parte-1-montar-a-matriz-cor-forma" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="parte-1-montar-a-matriz-cor-forma"><span class="header-section-number">1.1</span> Parte 1 — Montar a matriz cor × forma</h2>
+<p><img src="../../img/img1.jpeg" class="img-fluid"></p>
+<p>Na sua planilha de amostragem, cada linha é uma peça com as colunas <code>Cor</code>, <code>Forma</code> e <code>Pinos</code> (número de pinos visíveis; telhas lisas = 0). Use as categorias de forma definidas em sala.</p>
+<p>Preencha a <strong>Tabela 1</strong> (linhas = cores que apareceram; colunas = formas).</p>
+<p>Dica Excel (nomes em português; no Planilhas Google use <code>COUNTIFS</code>/<code>AVERAGEIF</code>):</p>
+<pre><code>=CONT.SES(A:A; "Vermelho"; B:B; "Tijolo")     // peças vermelhas do tipo tijolo
+=MÉDIASE(A:A; "Vermelho"; C:C)                 // média de pinos das peças vermelhas</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cor</th>
+<th>Tijolo</th>
+<th>Placa chata</th>
+<th>Inclinada</th>
+<th>Outras</th>
+<th>Total (<span class="math inline">\(N_i\)</span>)</th>
+<th><span class="math inline">\(p_i\)</span></th>
+<th>Pinos (média da cor)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Total por forma</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>100</strong></td>
+<td>1,00</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(p\)</span> da forma</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verificação:</strong> a soma dos totais por cor e a soma dos totais por forma devem dar 100.</p>
+</section>
+<section id="parte-2-diversidade-taxonômica-diversidade-funcional" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="parte-2-diversidade-taxonômica-diversidade-funcional"><span class="header-section-number">1.2</span> Parte 2 — Diversidade taxonômica × diversidade funcional</h2>
+<p>Calcule, com as proporções <span class="math inline">\(p_i\)</span> das <strong>cores</strong> e depois com as proporções das <strong>formas</strong>:</p>
+<p><strong>Tabela 2</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Medida</th>
+<th>Taxonômica (cores)</th>
+<th>Funcional (formas)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Riqueza (<span class="math inline">\(S\)</span> e <span class="math inline">\(S_F\)</span>)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Shannon <span class="math inline">\(H'\)</span></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Pielou <span class="math inline">\(J\)</span></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Simpson <span class="math inline">\(1-D\)</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Dica Excel: crie uma coluna com <code>=p*LN(p)</code>, some a coluna e troque o sinal. Para Simpson, <code>=1-SOMARPRODUTO(p;p)</code>.</p>
+<hr>
+</section>
+<section id="parte-3-traço-numérico-número-de-pinos" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="parte-3-traço-numérico-número-de-pinos"><span class="header-section-number">1.3</span> Parte 3 — Traço numérico: número de pinos</h2>
+<p><strong>Tabela 3</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Medida</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CWM de pinos <span class="math inline">\(= \sum p_i x_i\)</span> (use a coluna “Pinos (média)” da Tabela 1)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Média simples das médias das cores (sem ponderar)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Amplitude funcional (maior − menor média de pinos entre as cores)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Dispersão funcional <span class="math inline">\(= \sum p_i (x_i - \text{CWM})^2\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Dica Excel: <code>=SOMARPRODUTO(p; x)</code> para o CWM.</p>
+</section>
+<section id="parte-4-redundância-funcional" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="parte-4-redundância-funcional"><span class="header-section-number">1.4</span> Parte 4 — Redundância funcional</h2>
+<p><strong>Tabela 4</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Forma (grupo funcional)</th>
+<th>Nº de cores que ocorrem nela</th>
+<th>Tem só 1 cor? (S/N)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tijolo</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Placa</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Telha</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Inclinada</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Outras</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Média de cores por grupo funcional</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Dica Excel: <code>=CONT.SE(coluna_da_forma; "&gt;0")</code> conta quantas cores têm pelo menos uma peça naquela forma.</p>
+</section>
+<section id="parte-5-simulação-de-perda-de-espécies" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="parte-5-simulação-de-perda-de-espécies"><span class="header-section-number">1.5</span> Parte 5 — Simulação de perda de espécies</h2>
+<p>Simule dois cenários <strong>a partir da Tabela 1</strong>, apagando linhas (cores) e recalculando:</p>
+<ul>
+<li><strong>Cenário A:</strong> remover a cor <strong>mais abundante</strong>.</li>
+<li><strong>Cenário B:</strong> remover as <strong>3 cores mais raras</strong>.</li>
+</ul>
+<p><strong>Tabela 5</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Medida</th>
+<th>Original</th>
+<th>Cenário A</th>
+<th>Cenário B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Riqueza de cores (<span class="math inline">\(S\)</span>)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Nº de grupos funcionais (<span class="math inline">\(S_F\)</span>)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(H'\)</span> funcional</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>CWM de pinos</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>% de espécies perdidas</td>
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>% de grupos funcionais perdidos</td>
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Dica: nos cenários, recalcule os totais por forma e as proporções, sem as linhas removidas.</p>
+</section>
+<section id="parte-6-interpretação" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="parte-6-interpretação"><span class="header-section-number">1.6</span> Parte 6 — Interpretação</h2>
+<p>Responda em 2 a 4 linhas cada (use números das suas tabelas).</p>
+<ol type="1">
+<li>Sua comunidade é mais diversa taxonômica ou funcionalmente? Por que <span class="math inline">\(S_F\)</span> nunca pode ser maior que o número de categorias de forma definidas, e o que isso implica para comparar <span class="math inline">\(S\)</span> e <span class="math inline">\(S_F\)</span>?</li>
+<li><span class="math inline">\(H'\)</span> e <span class="math inline">\(J\)</span> funcionais foram mais altos ou mais baixos que os taxonômicos? O que isso diz sobre a dominância de algumas formas?</li>
+<li>Compare o CWM de pinos com a média simples. Qual cor “puxa” o valor típico da comunidade? O que aconteceria com o CWM se essa cor desaparecesse?</li>
+<li>Existem grupos funcionais representados por uma única cor? O que isso significa para a vulnerabilidade da função?</li>
+<li>No Cenário A e no Cenário B, a perda de espécies foi acompanhada de perda de função? Relacione com o conceito de <strong>redundância funcional</strong> e a <strong>hipótese do seguro</strong> (insurance hypothesis).</li>
+<li>Duas comunidades podem ter a mesma riqueza de espécies e funcionamentos muito diferentes. Dê um exemplo usando suas tabelas ou o exemplo resolvido.</li>
+<li>Dê um exemplo real (Caatinga, Mata Atlântica ou outro bioma brasileiro) em que a perda de uma única espécie poderia causar perda de função. Qual seria o “traço” equivalente à forma da peça?</li>
+<li>Cite uma limitação de usar apenas a forma e o número de pinos como traços. Que outros traços (cor? material? peso?) você incluiria e por quê?</li>
+</ol>
+</section>
+<section id="bônus-índice-rao-q-em-miniatura" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="bônus-índice-rao-q-em-miniatura"><span class="header-section-number">1.7</span> Bônus: Índice Rao Q em miniatura</h2>
+<p>O índice de Rao (<span class="math inline">\(Q\)</span>) combina abundância e <strong>distância funcional</strong> entre pares de espécies:</p>
+<p><span class="math display">\[Q = \sum_{i}\sum_{j} d_{ij}\, p_i\, p_j\]</span></p>
+<p>Tome <strong>três grupos funcionais</strong> da sua Tabela 1 (ex: Tijolo, Placa, Inclinada), use a média de pinos de cada grupo como traço e calcule <span class="math inline">\(d_{ij} = |x_i - x_j|\)</span> (diferença absoluta entre as médias). Some todos os pares (cada par aparece duas vezes na soma dupla, ou calcule uma vez e multiplique por 2).</p>
+<p>Exemplo: grupos A, B, C com <span class="math inline">\(p\)</span> = 0,5; 0,3; 0,2 e pinos = 4, 2, 8 → <span class="math inline">\(Q = 2\,[\,|4-2|(0,5)(0,3) + |4-8|(0,5)(0,2) + |2-8|(0,3)(0,2)\,] = 2\,[0,30 + 0,40 + 0,36] = 2,12\)</span>.</p>
+<p>Compare o seu <span class="math inline">\(Q\)</span> com a dispersão funcional da Parte 3: as duas medidas contam a mesma história?</p>
+</section>
+</section>
+<section id="agora-vamos-analisar-3-comunidades" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Agora, vamos analisar 3 comunidades</h1>
+<section id="parte-7-aplicação-às-três-comunidades-fotografadas-módulo-1" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="parte-7-aplicação-às-três-comunidades-fotografadas-módulo-1"><span class="header-section-number">2.1</span> Parte 7 — Aplicação às três comunidades fotografadas (Módulo 1)</h2>
+<p>Agora vamos repetir as análises nas <strong>três comunidades (foto_1, foto_2 e foto_3)</strong> do Exercício do Módulo 1. Aqui os dados são contagens por cor, e os traços funcionais são atribuídos <strong>por espécie (cor)</strong>, como acontece em um banco de traços real (uma tabela espécie × traço).</p>
+<section id="dados-de-abundância-peças-por-cor-em-cada-foto" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="dados-de-abundância-peças-por-cor-em-cada-foto"><span class="header-section-number">2.1.1</span> Dados de abundância (peças por cor em cada foto)</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>cor</th>
+<th>foto_1</th>
+<th>foto_2</th>
+<th>foto_3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>verde_limao</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>verde_escuro</td>
+<td>3</td>
+<td>7</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>azul</td>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>azul_claro</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>roxo_escuro</td>
+<td>2</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>lilas</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>rosa_magenta</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>rosa_claro</td>
+<td>1</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>vermelho</td>
+<td>5</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>laranja</td>
+<td>3</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>amarelo</td>
+<td>3</td>
+<td>6</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>marrom</td>
+<td>1</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>branco</td>
+<td>4</td>
+<td>5</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>cinza_claro</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>cinza_escuro</td>
+<td>4</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>preto</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>O mesmo arquivo em formato CSV (para colar no Excel/Planilhas): Ou seja, copie abaixo o texto e cole no excel ou Google Sheets. Ou, preencha as cálulas uma a uma se não conseguir colar.</p>
+<pre><code>cor,foto_1,foto_2,foto_3
+verde_limao,3,4,3
+verde_escuro,3,7,5
+azul,5,4,3
+azul_claro,1,3,2
+roxo_escuro,2,4,5
+lilas,1,1,0
+rosa_magenta,4,3,2
+rosa_claro,1,5,5
+vermelho,5,5,6
+laranja,3,2,4
+amarelo,3,6,4
+marrom,1,5,6
+branco,4,5,3
+cinza_claro,2,2,1
+cinza_escuro,4,5,2
+preto,1,1,1
+</code></pre>
+<p><strong>Verificação:</strong> confira se você obteve <span class="math inline">\(N\)</span> = 43, 62 e 52 peças e <span class="math inline">\(S\)</span> = 16, 16 e 15 cores nas fotos 1, 2 e 3 (<code>lilas</code> não ocorre na foto_3).</p>
+</section>
+<section id="traços-das-espécies-cores" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="traços-das-espécies-cores"><span class="header-section-number">2.1.2</span> Traços das espécies (cores)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>cor</th>
+<th>Grupo funcional</th>
+<th>Luminosidade (1 = muito escura, 5 = muito clara)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>verde_limao</td>
+<td>Verdes</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>verde_escuro</td>
+<td>Verdes</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>azul</td>
+<td>Azuis</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>azul_claro</td>
+<td>Azuis</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>roxo_escuro</td>
+<td>Roxo-rosa</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>lilas</td>
+<td>Roxo-rosa</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>rosa_magenta</td>
+<td>Roxo-rosa</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>rosa_claro</td>
+<td>Roxo-rosa</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td>vermelho</td>
+<td>Quentes</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>laranja</td>
+<td>Quentes</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>amarelo</td>
+<td>Quentes</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>marrom</td>
+<td>Neutros</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>branco</td>
+<td>Neutros</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>cinza_claro</td>
+<td>Neutros</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>cinza_escuro</td>
+<td>Neutros</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>preto</td>
+<td>Neutros</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Trate o <strong>grupo funcional</strong> como traço categórico (equivalente à forma da peça) e a <strong>luminosidade</strong> como traço numérico (equivalente ao número de pinos).</p>
+<p>Dicas Excel: traga os traços para a tabela de abundância com <code>=PROCV(cor; tabela_de_traços; coluna; 0)</code>; some abundâncias por grupo com <code>=SOMASE(coluna_do_grupo; "Verdes"; coluna_da_foto)</code>.</p>
+</section>
+<section id="diversidade-taxonômica-cores" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="diversidade-taxonômica-cores"><span class="header-section-number">2.1.3</span> 7.1 Diversidade taxonômica (cores)</h3>
+<p><strong>Tabela 6</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Medida</th>
+<th>foto_1</th>
+<th>foto_2</th>
+<th>foto_3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(N\)</span> (peças)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(S\)</span> (cores)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Shannon <span class="math inline">\(H'\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Pielou <span class="math inline">\(J\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Simpson <span class="math inline">\(1-D\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="diversidade-funcional-categórica-grupos-funcionais" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="diversidade-funcional-categórica-grupos-funcionais"><span class="header-section-number">2.1.4</span> 7.2 Diversidade funcional categórica (grupos funcionais)</h3>
+<p>Some as abundâncias das cores de cada grupo funcional em cada foto e calcule as medidas com as proporções dos <strong>grupos</strong>.</p>
+<p><strong>Tabela 7</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Grupo funcional</th>
+<th>foto_1</th>
+<th>foto_2</th>
+<th>foto_3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Verdes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Azuis</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Roxo-rosa</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Quentes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Neutros</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Riqueza funcional (<span class="math inline">\(S_F\)</span>)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Shannon funcional <span class="math inline">\(H'_F\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Pielou funcional <span class="math inline">\(J_F\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Simpson funcional <span class="math inline">\(1-D_F\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="traço-numérico-luminosidade" class="level3" data-number="2.1.5">
+<h3 data-number="2.1.5" class="anchored" data-anchor-id="traço-numérico-luminosidade"><span class="header-section-number">2.1.5</span> 7.3 Traço numérico (luminosidade)</h3>
+<p><strong>Tabela 8</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Medida</th>
+<th>foto_1</th>
+<th>foto_2</th>
+<th>foto_3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CWM de luminosidade <span class="math inline">\(= \sum p_i x_i\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Média simples da luminosidade das cores presentes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Amplitude funcional (maior − menor luminosidade entre as cores presentes)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Dispersão funcional <span class="math inline">\(= \sum p_i (x_i - \text{CWM})^2\)</span></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="redundância-funcional" class="level3" data-number="2.1.6">
+<h3 data-number="2.1.6" class="anchored" data-anchor-id="redundância-funcional"><span class="header-section-number">2.1.6</span> 7.4 Redundância funcional</h3>
+<p><strong>Tabela 9</strong> (número de <strong>cores presentes</strong> em cada grupo funcional)</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Grupo funcional</th>
+<th>foto_1</th>
+<th>foto_2</th>
+<th>foto_3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Verdes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Azuis</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Roxo-rosa</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Quentes</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Neutros</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>Média de cores por grupo</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="simulação-de-perda-de-espécies" class="level3" data-number="2.1.7">
+<h3 data-number="2.1.7" class="anchored" data-anchor-id="simulação-de-perda-de-espécies"><span class="header-section-number">2.1.7</span> 7.5 Simulação de perda de espécies</h3>
+<p>Recalcule as medidas depois de apagar linhas da tabela de abundância:</p>
+<ul>
+<li><strong>Cenário A:</strong> remover a cor <code>vermelho</code>.</li>
+<li><strong>Cenário B:</strong> remover <strong>todo o grupo</strong> Azuis (<code>azul</code> e <code>azul_claro</code>).</li>
+</ul>
+<p><strong>Tabela 10</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Medida</th>
+<th>Cenário</th>
+<th>foto_1</th>
+<th>foto_2</th>
+<th>foto_3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Riqueza de cores (<span class="math inline">\(S\)</span>)</td>
+<td>Original</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>A</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>B</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Grupos funcionais (<span class="math inline">\(S_F\)</span>)</td>
+<td>Original</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>A</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>B</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(H'_F\)</span></td>
+<td>Original</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>A</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>B</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>CWM de luminosidade</td>
+<td>Original</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>A</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>B</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="interpretação" class="level3" data-number="2.1.8">
+<h3 data-number="2.1.8" class="anchored" data-anchor-id="interpretação"><span class="header-section-number">2.1.8</span> 7.6 Interpretação</h3>
+<ol type="1">
+<li>Compare as três fotos pelas Tabelas 6 e 7. Qual comunidade é mais diversa taxonômica e funcionalmente? As diferenças entre fotos são grandes ou pequenas? Considere que <span class="math inline">\(N\)</span> difere entre as fotos (43, 62 e 52 peças).</li>
+<li>A diversidade funcional (<span class="math inline">\(H'_F\)</span>) tem valores mais próximos entre as fotos do que a taxonômica (<span class="math inline">\(H'\)</span>)? O que isso sugere sobre a relação entre diversidade de espécies e de funções?</li>
+<li>Qual grupo funcional domina cada foto? O que a dominância de um grupo implica para o CWM de luminosidade (Tabela 8)?</li>
+<li>Em qual foto a redundância funcional (Tabela 9) é menor? Que grupo ficaria mais vulnerável à perda de uma única cor?</li>
+<li>No Cenário A, a perda de <code>vermelho</code> reduziu <span class="math inline">\(S_F\)</span>? E no Cenário B? Explique a diferença com os conceitos de <strong>redundância funcional</strong> e <strong>hipótese do seguro</strong>.</li>
+<li>No Cenário B, o CWM de luminosidade mudou muito? Se o CWM quase não mudou, isso significa que a função foi preservada? Discuta a diferença entre o <strong>valor médio</strong> do traço e a <strong>cobertura de grupos funcionais</strong>.</li>
+<li>Proponha um traço real (Caatinga ou outro bioma) cujo valor médio permaneceria quase igual após a perda de uma espécie, enquanto um grupo funcional inteiro desapareceria.</li>
+</ol>
+</section>
+</section>
+<section id="entrega-e-correção-sugerida" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="entrega-e-correção-sugerida"><span class="header-section-number">2.2</span> Entrega e correção sugerida</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tabelas 1–5 corretas e verificadas (comunidade do grupo)</td>
+<td>30 %</td>
+</tr>
+<tr class="even">
+<td>Tabelas 6–10 corretas e verificadas (três fotos)</td>
+<td>30 %</td>
+</tr>
+<tr class="odd">
+<td>Cálculos apresentados (planilha ou caderno)</td>
+<td>15 %</td>
+</tr>
+<tr class="even">
+<td>Interpretação (Partes 6 e 7.6)</td>
+<td>25 %</td>
+</tr>
+<tr class="odd">
+<td>Bônus (Rao Q)</td>
+<td>+10 %</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2026 by <a href="https://ecoaplic.org/">felipe Melo</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/fplmelo/eco_com">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
