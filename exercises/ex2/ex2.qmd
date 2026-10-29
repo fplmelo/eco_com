@@ -33,39 +33,6 @@ Cada grupo de alunos utilizará o seu saco de 100 peças montado previamente par
 
 # Exercício aplicado no R (`vegan`)
 
-## Carregamento de pacotes e simulação dos sacos de LEGO
-
-Vamos simular as contagens de 100 peças para quatro sacos de LEGO com estruturas ecológicas contrastantes:
-* Saco A (Hiperdominante): 1 cor dominante com 70% das peças e poucas espécies raras ($S = 6$).
-* Saco B (Dominância moderada / Log-normal): padrão intermediário típico da natureza ($S = 8$).
-* Saco C (Equitativo / Uniforme): 10 cores com exatamente 10 peças cada ($S = 10$).
-* Saco D (Alta riqueza com muitas espécies raras): 22 cores com predomínio de espécies representadas por 1 ou 2 peças ($S = 22$).
-
-```{r}
-#| message: false
-#| warning: false
-library(vegan)
-library(tidyverse)
-
-# Construção da lista de contagens das 100 peças por cor para cada saco
-comunidades_list <- list(
-  Saco_A = c(Vermelho = 70, Amarelo = 15, Azul = 8, Verde = 4, Branco = 2, Preto = 1),
-  Saco_B = c(Vermelho = 40, Amarelo = 22, Azul = 14, Verde = 10, Branco = 6, Preto = 4, Laranja = 3, Cinza = 1),
-  Saco_C = c(Vermelho = 10, Amarelo = 10, Azul = 10, Verde = 10, Branco = 10, Preto = 10, Laranja = 10, Cinza = 10, Roxo = 10, Rosa = 10),
-  Saco_D = c(Vermelho = 30, Amarelo = 18, Azul = 12, Verde = 8, Branco = 6,
-             Preto = 4, Laranja = 3, Cinza = 3, Roxo = 2, Rosa = 2,
-             Marrom = 2, Ciano = 1, Magenta = 1, Lime = 1, Bege = 1,
-             Vinho = 1, Turquesa = 1, Ouro = 1, Prata = 1, Bronze = 1, Coral = 1, Salmao = 1)
-)
-
-# Conversão da lista para matriz ecológica (locais nas linhas, espécies nas colunas)
-matriz_lego <- bind_rows(comunidades_list, .id = "Comunidade") %>%
-  mutate(across(everything(), ~replace_na(.x, 0)))
-
-# Exibição da estrutura da matriz
-print(matriz_lego)
-```
-
 ---
 
 ## Cálculo dos índices clássicos de diversidade
@@ -77,8 +44,8 @@ Utilizaremos as funções do pacote `vegan` para extrair a riqueza observada ($S
 #| warning: false
 
 # Isolamento da matriz numérica de contagens
-mat_num <- matriz_lego %>% select(-Comunidade)
-rownames(mat_num) <- matriz_lego$Comunidade
+mat_num <- matriz_lego %>% select(-comunidade)
+rownames(mat_num) <- matriz_lego$comunidade
 
 # 1. Riqueza observada (S)
 S_obs <- specnumber(mat_num)

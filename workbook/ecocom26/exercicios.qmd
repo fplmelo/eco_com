@@ -1,0 +1,190 @@
+---
+title: "Ecologia de Comunidades"
+author: "Felipe"
+toc: true
+---
+
+## Quem sou eu?
+
+Felipe é professor de Ecologia
+
+## Tarefa 1 - Descrição de comunidades
+
+```{r}
+# ---------------------------------------------------------------------
+# 1. INSTALAÇÃO E CARREGAMENTO DOS PACOTES
+# ---------------------------------------------------------------------
+# Pacotes que vamos usar:
+#   tidyverse -> manipulação de dados (dplyr, tidyr, readr) e gráficos (ggplot2)
+#   vegan     -> análises de ecologia de comunidades
+
+pacotes <- c("tidyverse", "vegan")
+
+# Instala apenas os pacotes que ainda NÃO estão instalados
+for (p in pacotes) {
+  if (!requireNamespace(p, quietly = TRUE)) {
+    install.packages(p)
+  }
+}
+
+# Carrega os pacotes (precisa fazer isso toda vez que abrir o R)
+library(tidyverse)
+library(vegan)
+```
+
+
+## Passo 2 - carregar meus dados
+```{r}
+dados <- read_csv("~/eco_com/exercises/ex1/contagem_pecas_lego.csv") # Note que os dados devem estar salvos na mesma pasta que este arquivo ou você precisa usar o caminho específico
+
+glimpse(dados)
+
+```
+
+
+## PREPARAÇÃO DOS DADOS COM TIDYVERSE
+
+Agora vou namorar meus dados. vou convidá-los para tomar um sorvete
+
+```{r}
+# ---------------------------------------------------------------------
+# Os pacotes de ecologia (vegan) esperam uma matriz de comunidade:
+#   LINHAS  = comunidades (aqui, as fotos)
+#   COLUNAS = espécies (aqui, as cores)
+# Nosso CSV está no formato inverso, então precisamos "girar" a tabela.
+
+dados_longo <- dados %>%
+  pivot_longer(
+    cols      = -cor,            # todas as colunas, menos "cor"
+    names_to  = "comunidade",    # nomes das colunas viram a variável "comunidade"
+    values_to = "abundancia"     # os números viram a variável "abundancia"
+  )
+
+print(dados_longo)
+```
+
+
+## formato “largo” com as cores como colunas (matriz de comunidade)
+
+```{r}
+matriz_lego <- dados_longo %>%
+  pivot_wider(
+    names_from  = cor,           # cada cor vira uma coluna
+    values_from = abundancia
+  )
+
+print(matriz_lego)
+```
+
+## transformar em matriz numérica, com o nome da foto nas linhas
+
+```{r}
+mat_num <- matriz_lego %>%
+  column_to_rownames("comunidade")   # a coluna "comunidade" vira o nome das linhas
+
+print(mat_num)
+```
+
+## RIQUEZA OBSERVADA (S) E ABUNDÂNCIA TOTAL (N)
+
+Para saber a riqueza (s) e as abundâncias (N), vou rodar a primeira análise
+
+```{r}
+# S = número de espécies (cores) presentes em cada comunidade
+# N = número total de indivíduos (peças) em cada comunidade
+
+resumo <- data.frame(
+  Comunidade = rownames(mat_num),
+  N_Individuos = rowSums(mat_num),         # soma das peças da linha
+  Riqueza_S    = specnumber(mat_num)       # conta quantas cores têm abundância > 0
+)
+
+print(resumo)
+
+```
+
+## Curva de rank-abundância
+
+Agora vou gerar uma curva que me ajuda a interpretar e descrever o que está acontecendo com as comunidades
+
+```{r}
+# Ordena as espécies da mais para a menos abundante (Rank 1, 2, 3...)
+# e mostra a abundância relativa em escala logarítmica.
+
+rad_df <- dados_longo %>%
+  filter(abundancia > 0) %>%                       # remove cores ausentes
+  group_by(comunidade) %>%                         # trabalha em cada foto separadamente
+  arrange(desc(abundancia), .by_group = TRUE) %>%  # ordena da maior para a menor
+  mutate(
+    rank = row_number(),                           # posição (1 = mais abundante)
+    abundancia_relativa = abundancia / sum(abundancia)
+  ) %>%
+  ungroup()
+
+grafico_rad <- ggplot(rad_df, aes(x = rank, y = abundancia_relativa,
+                                  color = comunidade, group = comunidade)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 3) +
+  scale_y_log10(labels = scales::percent_format(accuracy = 0.1)) +
+  labs(
+    title    = "Curvas de Rank-Abundância - Peças de LEGO",
+    subtitle = "Perfis de dominância e equitabilidade (escala log10)",
+    x        = "Rank da espécie (da mais para a menos abundante)",
+    y        = "Abundância relativa (log10)",
+    color    = "Comunidade"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "top")
+
+print(grafico_rad)
+```
+
+
+# Exercício 2
+
+passo 1 > não siu besta e vou checar os dados
+
+```{r}
+mat_num <- matriz_lego %>% select(-comunidade)
+rownames(mat_num) <- matriz_lego$comunidade
+
+# 1. Riqueza observada (S)
+S_obs <- specnumber(mat_num)
+
+# 2. Índice de Shannon-Wiener (H')
+H_shannon <- diversity(mat_num, index = "shannon")
+
+# 3. Dominância de Simpson (D)
+D_puro <- rowSums((mat_num / rowSums(mat_num))^2)
+
+# 4. Diversidade de Simpson (1 - D)
+Simp_div <- 1 - D_puro
+
+# 5. Inverso de Simpson (1 / D)
+Simp_inv <- 1 / D_puro
+
+# 6. Diversidade máxima teórica de Shannon (H_max = ln(S))
+H_max <- log(S_obs)
+
+# 7. Equitabilidade de Pielou (J' = H' / ln(S))
+J_pielou <- H_shannon / H_max
+
+# Consolidação da tabela de resultados
+tabela_diversidade <- data.frame(
+  Comunidade = rownames(mat_num),
+  N_Total = rowSums(mat_num),
+  Riqueza_S = S_obs,
+  Shannon_H = round(H_shannon, 3),
+  Simpson_D = round(D_puro, 3),
+  Simpson_1D = round(Simp_div, 3),
+  Simpson_Inv = round(Simp_inv, 2),
+  Pielou_J = round(J_pielou, 3)
+)
+
+knitr::kable(tabela_diversidade, caption = "Tabela comparativa dos índices clássicos de diversidade entre os 4 sacos de LEGO")
+
+
+```
+
+
+
