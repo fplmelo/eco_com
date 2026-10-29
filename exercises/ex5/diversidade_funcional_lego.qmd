@@ -8,7 +8,7 @@ format:
   html:
     toc: true
     toc-depth: 3
-    number-sections: true
+    number-sections: false
     # theme: default
     code-fold: false
 execute:
@@ -25,7 +25,7 @@ Todos os cálculos podem ser feitos com **calculadora ou Excel/Planilhas Google*
 
 **Material:** a planilha de amostragem do seu grupo (as mesmas 100 peças usadas nos módulos anteriores, Partes 1 a 6) e os dados das três comunidades fotografadas no Exercício do Módulo 1 (Parte 7).
 
-**Entrega:** individual ou em grupo (conforme combinado), com as tabelas preenchidas, os cálculos (print da planilha ou fotos do caderno) e as respostas da Parte 6.
+**Entrega:** individual, com as tabelas preenchidas, os cálculos (print da planilha ou fotos do caderno) e as respostas da Parte 6 e 7.
 
 
 ## Conceitos-chave
