@@ -34,7 +34,7 @@ library(FD)
 :::
 :::
 
-## 16. construindo a filogenia morfológica de lego no r
+## Construindo a filogenia morfológica de lego no R
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -59,7 +59,7 @@ plot(phy, main = "dendrograma filogenético das peças de lego", cex = 1.1)
 
 
 
-## 17. simulando um filtro abiótico em sala com lego
+## Simulando um filtro abiótico em sala com lego
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -88,7 +88,7 @@ ggplot(filtro_df, aes(x = Estágio, y = Riqueza_Funcional, fill = Estágio)) +
 
 
 
-## 18. análises no r com pacotes FD e picante
+## Análises no r com pacotes FD e picante
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -122,7 +122,7 @@ ggplot(code_df, aes(x = x_pos, y = y_pos, label = Funções_Chave)) +
 
 
 
-## 19. interpretação integrada das três dimensões
+## Interpretação integrada das três dimensões
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -153,7 +153,7 @@ ggplot() +
 
 
 
-## 20. síntese e orientações para o exercício prático
+## Síntese e orientações para o exercício prático
 
 ::: {.columns}
 ::: {.column width="50%"}

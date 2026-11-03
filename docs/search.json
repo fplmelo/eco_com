@@ -878,36 +878,36 @@
     "objectID": "slides/4-slides-beta.html#decomposição-da-diversidade-beta-turnover-vs.-aninhamento",
     "href": "slides/4-slides-beta.html#decomposição-da-diversidade-beta-turnover-vs.-aninhamento",
     "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
-    "section": "6. decomposição da diversidade beta: turnover vs. aninhamento",
-    "text": "6. decomposição da diversidade beta: turnover vs. aninhamento\n\n\n\na dissimilaridade total pode ser gerada por dois processos biológicos distintos.\nsubstituição (turnover): troca de espécies entre locais por restrição de nicho/ambiente.\naninhamento (nestedness): comunidades mais pobres são subconjuntos estritos das comunidades mais ricas.\npartição de baselga: \\(\beta_{sor} = \beta_{sim} + \beta_{nes}\\)."
+    "section": "Decomposição da diversidade beta: turnover vs. aninhamento",
+    "text": "Decomposição da diversidade beta: turnover vs. aninhamento\n\n\n\nsubstituição (turnover): troca de espécies entre locais por restrição de nicho/ambiente.\naninhamento (nestedness): comunidades mais pobres são subconjuntos estritos das comunidades mais ricas.\nPrtição: \\(\\beta_{sor} = \\beta_{sim} + \\beta_{nes}\\)"
   },
   {
     "objectID": "slides/4-slides-beta.html#implicações-da-partição-da-diversidade-beta-para-conservação",
     "href": "slides/4-slides-beta.html#implicações-da-partição-da-diversidade-beta-para-conservação",
     "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
-    "section": "7. implicações da partição da diversidade beta para conservação",
-    "text": "7. implicações da partição da diversidade beta para conservação\n\n\n\nse a diversidade beta for dominada por turnover:\n\nalta substituição espacial de espécies.\nestratégia: proteger múltiplos fragmentos ao longo de todo o gradiente.\n\nse for dominada por aninhamento:\n\nperda sequencial de espécies.\nestratégia: focar recursos na proteção do maior e mais rico fragmento."
+    "section": "Implicações da partição da diversidade beta para conservação",
+    "text": "Implicações da partição da diversidade beta para conservação\n\n\n\nQuando dominada por turnover:\n\nalta substituição espacial de espécies.\nestratégia: proteger múltiplos fragmentos ao longo de todo o gradiente.\n\nSe dominada por aninhamento:\n\nperda sequencial de espécies.\nestratégia: focar recursos na proteção do maior e mais rico fragmento."
   },
   {
     "objectID": "slides/4-slides-beta.html#introdução-às-técnicas-de-ordenação-multidimensional",
     "href": "slides/4-slides-beta.html#introdução-às-técnicas-de-ordenação-multidimensional",
     "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
-    "section": "8. introdução às técnicas de ordenação multidimensional",
-    "text": "8. introdução às técnicas de ordenação multidimensional\n\n\n\nreduzem a complexidade de matrizes de alta dimensionalidade (muitas espécies).\nprojetam os locais em um espaço gráfico bidimensional contínuo.\nlocais representados próximos no gráfico possuem composição ecológica semelhante.\nlocais distantes possuem composição altamente dissimilar."
+    "section": "Introdução às técnicas de ordenação multidimensional",
+    "text": "Introdução às técnicas de ordenação multidimensional\n\n\n\nreduzem a complexidade de matrizes de alta dimensionalidade (muitas espécies).\nprojetam os locais em um espaço gráfico bidimensional contínuo.\nlocais representados próximos no gráfico possuem composição ecológica semelhante.\nlocais distantes possuem composição altamente dissimilar."
   },
   {
     "objectID": "slides/4-slides-beta.html#escalonamento-multidimensional-não-métrico-nmds",
     "href": "slides/4-slides-beta.html#escalonamento-multidimensional-não-métrico-nmds",
     "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
-    "section": "9. escalonamento multidimensional não-métrico (NMDS)",
-    "text": "9. escalonamento multidimensional não-métrico (NMDS)\n\n\n\na técnica de ordenação mais popular e robusta para dados biológicos não-normais.\npreserva o ranqueamento das distâncias ecológicas entre pares de amostras.\nnão assume relações lineares entre abundâncias e variáveis ambientais.\nimplementado no R pela função metaMDS() do pacote vegan."
+    "section": "Escalonamento multidimensional não-métrico (NMDS)",
+    "text": "Escalonamento multidimensional não-métrico (NMDS)\n\n\n\na técnica de ordenação mais popular e robusta para dados biológicos não-normais.\npreserva o ranqueamento das distâncias ecológicas entre pares de amostras.\nnão assume relações lineares entre abundâncias e variáveis ambientais.\nimplementado no R pela função metaMDS() do pacote vegan."
   },
   {
     "objectID": "slides/4-slides-beta.html#interpretando-o-valor-de-stress-no-nmds",
     "href": "slides/4-slides-beta.html#interpretando-o-valor-de-stress-no-nmds",
     "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
-    "section": "10. interpretando o valor de stress no NMDS",
-    "text": "10. interpretando o valor de stress no NMDS\n\n\n\no stress quantifica o desacordo entre as distâncias reais e as distâncias no gráfico.\nstress \\(&lt; 0,05\\): excelente representação bidimensional.\nstress \\(&lt; 0,10\\): boa representação; conclusões muito confiáveis.\nstress \\(&lt; 0,20\\): razoável; aceitável para dados ecológicos complexos.\nstress \\(&gt; 0,20\\): representação não confiável (aumentar eixos para \\(k=3\\))."
+    "section": "Interpretando o valor de stress no NMDS",
+    "text": "Interpretando o valor de stress no NMDS\n\n\n\no stress quantifica o desacordo entre as distâncias reais e as distâncias no gráfico.\nstress \\(&lt; 0,05\\): excelente representação bidimensional.\nstress \\(&lt; 0,10\\): boa representação; conclusões muito confiáveis.\nstress \\(&lt; 0,20\\): razoável; aceitável para dados ecológicos complexos.\nstress \\(&gt; 0,20\\): representação não confiável (aumentar eixos para \\(k=3\\))."
   },
   {
     "objectID": "slides/4-slides-beta.html#análise-de-coordenadas-principais-pcoa",
@@ -920,8 +920,8 @@
     "objectID": "slides/4-slides-beta.html#agrupamento-hierárquico-cluster-analysis-e-dendrogramas",
     "href": "slides/4-slides-beta.html#agrupamento-hierárquico-cluster-analysis-e-dendrogramas",
     "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
-    "section": "12. agrupamento hierárquico (cluster analysis) e dendrogramas",
-    "text": "12. agrupamento hierárquico (cluster analysis) e dendrogramas\n\n\n\nagrupa amostras em uma estrutura hierárquica em árvore (dendrograma).\nmétodos de ligação: UPGMA (média das distâncias) e ward (mínima variância).\nexcelente para identificar grupos discretos de comunidades e ecótonos.\ncomplementa as ordenações contínuas (NMDS/PCoA)."
+    "section": "Agrupamento hierárquico (cluster analysis) e dendrogramas",
+    "text": "Agrupamento hierárquico (cluster analysis) e dendrogramas\n\n\n\nagrupa amostras em uma estrutura hierárquica em árvore (dendrograma).\nexcelente para identificar grupos discretos de comunidades e ecótonos.\ncomplementa as ordenações contínuas (NMDS/PCoA)."
   },
   {
     "objectID": "slides/4-slides-beta.html#teste-de-hipóteses-multivariado-permanova-adonis2",
@@ -1270,36 +1270,36 @@
     "objectID": "slides/3.2-slides-filo.html#construindo-a-filogenia-morfológica-de-lego-no-r",
     "href": "slides/3.2-slides-filo.html#construindo-a-filogenia-morfológica-de-lego-no-r",
     "title": "Diversidade taxonômica, funcional e filogenética",
-    "section": "16. construindo a filogenia morfológica de lego no r",
-    "text": "16. construindo a filogenia morfológica de lego no r\n\n\n\nas peças de LEGO possuem relações de parentesco morfológico baseadas no seu processo de fabricação.\nblocos altos compartilham ancestrais morfológicos comuns; placas finas formam um clade derivado.\ncalcula-se a matriz de distância Euclidiana entre os traços das peças.\naplica-se o agrupamento hierárquico (hclust) para gerar a árvore filogenética (phylo) via pacote ape."
+    "section": "Construindo a filogenia morfológica de lego no R",
+    "text": "Construindo a filogenia morfológica de lego no R\n\n\n\nas peças de LEGO possuem relações de parentesco morfológico baseadas no seu processo de fabricação.\nblocos altos compartilham ancestrais morfológicos comuns; placas finas formam um clade derivado.\ncalcula-se a matriz de distância Euclidiana entre os traços das peças.\naplica-se o agrupamento hierárquico (hclust) para gerar a árvore filogenética (phylo) via pacote ape."
   },
   {
     "objectID": "slides/3.2-slides-filo.html#simulando-um-filtro-abiótico-em-sala-com-lego",
     "href": "slides/3.2-slides-filo.html#simulando-um-filtro-abiótico-em-sala-com-lego",
     "title": "Diversidade taxonômica, funcional e filogenética",
-    "section": "17. simulando um filtro abiótico em sala com lego",
-    "text": "17. simulando um filtro abiótico em sala com lego\n\n\n\nsimulação: um evento de inundação severa atinge a comunidade de LEGO.\nregra de filtro: apenas peças com altura \\(\\ge 1,0\\) (blocos altos) e \\(\\ge 4\\) pinos sobrevivem no substrato.\nplacas finas e peças pequenas de 1 pino são filtradas e removidas da comunidade local.\nresultado empírico: redução da riqueza funcional (FRic) e surgimento de agrupamento filogenético."
+    "section": "Simulando um filtro abiótico em sala com lego",
+    "text": "Simulando um filtro abiótico em sala com lego\n\n\n\nsimulação: um evento de inundação severa atinge a comunidade de LEGO.\nregra de filtro: apenas peças com altura \\(\\ge 1,0\\) (blocos altos) e \\(\\ge 4\\) pinos sobrevivem no substrato.\nplacas finas e peças pequenas de 1 pino são filtradas e removidas da comunidade local.\nresultado empírico: redução da riqueza funcional (FRic) e surgimento de agrupamento filogenético."
   },
   {
     "objectID": "slides/3.2-slides-filo.html#análises-no-r-com-pacotes-fd-e-picante",
     "href": "slides/3.2-slides-filo.html#análises-no-r-com-pacotes-fd-e-picante",
     "title": "Diversidade taxonômica, funcional e filogenética",
-    "section": "18. análises no r com pacotes FD e picante",
-    "text": "18. análises no r com pacotes FD e picante\n\n\n\npacote FD: função dbFD() calcula CWM, FRic, FEve, FDiv e Rao’s Q a partir das matrizes L e T.\npacote picante: função pd() calcula a diversidade filogenética de Faith (PD).\nfunções ses.mpd() e ses.mntd() do picante: executam os modelos nulos e calculam NRI e NTI.\nautomação completa da análise multidimensional em scripts reprodutíveis."
+    "section": "Análises no r com pacotes FD e picante",
+    "text": "Análises no r com pacotes FD e picante\n\n\n\npacote FD: função dbFD() calcula CWM, FRic, FEve, FDiv e Rao’s Q a partir das matrizes L e T.\npacote picante: função pd() calcula a diversidade filogenética de Faith (PD).\nfunções ses.mpd() e ses.mntd() do picante: executam os modelos nulos e calculam NRI e NTI.\nautomação completa da análise multidimensional em scripts reprodutíveis."
   },
   {
     "objectID": "slides/3.2-slides-filo.html#interpretação-integrada-das-três-dimensões",
     "href": "slides/3.2-slides-filo.html#interpretação-integrada-das-três-dimensões",
     "title": "Diversidade taxonômica, funcional e filogenética",
-    "section": "19. interpretação integrada das três dimensões",
-    "text": "19. interpretação integrada das três dimensões\n\n\n\ndiversidade taxonômica (\\(S, H'\\)): quantifica o número e equitabilidade dos nomes/táxons.\ndiversidade funcional (CWM, FRic, Rao Q): quantifica o espaço de nichos e papéis ecossistêmicos.\ndiversidade filogenética (PD, NRI): quantifica a linhagem evolutiva e o patrimônio genético acumulado.\na sobreposição das três dimensões revela os mecanismos causais da montagem de comunidades."
+    "section": "Interpretação integrada das três dimensões",
+    "text": "Interpretação integrada das três dimensões\n\n\n\ndiversidade taxonômica (\\(S, H'\\)): quantifica o número e equitabilidade dos nomes/táxons.\ndiversidade funcional (CWM, FRic, Rao Q): quantifica o espaço de nichos e papéis ecossistêmicos.\ndiversidade filogenética (PD, NRI): quantifica a linhagem evolutiva e o patrimônio genético acumulado.\na sobreposição das três dimensões revela os mecanismos causais da montagem de comunidades."
   },
   {
     "objectID": "slides/3.2-slides-filo.html#síntese-e-orientações-para-o-exercício-prático",
     "href": "slides/3.2-slides-filo.html#síntese-e-orientações-para-o-exercício-prático",
     "title": "Diversidade taxonômica, funcional e filogenética",
-    "section": "20. síntese e orientações para o exercício prático",
-    "text": "20. síntese e orientações para o exercício prático\n\n\n\ncada grupo usará sua matriz de 100 peças de LEGO atualizada com atributos funcionais.\ncriar a matriz T no R com número de pinos, altura e massa de cada morfotipo.\nrodar a função dbFD() para extrair CWM e índices multidimensionais.\ngerar o dendrograma filogenético e rodar pd() e ses.mpd() para diagnosticar se o seu saco sofreu filtro abiótico ou limitação de similaridade."
+    "section": "Síntese e orientações para o exercício prático",
+    "text": "Síntese e orientações para o exercício prático\n\n\n\ncada grupo usará sua matriz de 100 peças de LEGO atualizada com atributos funcionais.\ncriar a matriz T no R com número de pinos, altura e massa de cada morfotipo.\nrodar a função dbFD() para extrair CWM e índices multidimensionais.\ngerar o dendrograma filogenético e rodar pd() e ses.mpd() para diagnosticar se o seu saco sofreu filtro abiótico ou limitação de similaridade."
   },
   {
     "objectID": "get-started/1-install.html",
@@ -1993,5 +1993,26 @@
     "title": "Cursos de Ecologia de Paisagem",
     "section": "Códigos em R para EP",
     "text": "Códigos em R para EP\nOpen-source Tools in R for Landscape Ecology\nIntroduction to landscape ecology with R\nMétricas de paisagem no R - O curso tem o intuito de oferecer uma introdução teórica e prática sobre o cálculo de métricas de paisagem categóricas (composição e configuração), utilizando a linguagem R através do pacote landscapemetrics. Primeiramente são apresentados os principais conceitos de ecologia da paisagem, métricas de paisagem, geoprocessamento, dados geoespaciais, linguagem R e detalhes do pacote landscapmetrics."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#dissimilaridade-para-dados-quantitativos",
+    "href": "slides/4-slides-beta.html#dissimilaridade-para-dados-quantitativos",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "Dissimilaridade para dados quantitativos",
+    "text": "Dissimilaridade para dados quantitativos\n\n\n\nincorpora a abundância relativa ou biomassa de cada espécie.\nsensível a mudanças na dominância ecológica, mesmo quando as espécies são as mesmas.\nBray-Curtis é o índice quantitativo mais utilizado na literatura ecológica internacional."
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#duplos-zeros",
+    "href": "slides/4-slides-beta.html#duplos-zeros",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "Duplos zeros",
+    "text": "Duplos zeros"
+  },
+  {
+    "objectID": "slides/4-slides-beta.html#fim",
+    "href": "slides/4-slides-beta.html#fim",
+    "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
+    "section": "FIM",
+    "text": "FIM"
   }
 ]
