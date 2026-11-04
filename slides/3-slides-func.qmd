@@ -186,34 +186,6 @@ ggplot() +
 
 
 
-## 15. o modelo prático de lego no módulo 3
-
-::: {.columns}
-::: {.column width="50%"}
-- espécie = combinação única de cor e morfotipo de peça de LEGO.
-- traço funcional 1: número de pinos (representa tamanho e biomassa individual).
-- traço funcional 2: altura/tipo (bloco alto, placa fina, rampa — representa estratificação/guilda).
-- traço funcional 3: massa em gramas (fisiologia/investimento de recurso).
-:::
-
-::: {.column width="50%"}
-```{r}
-#| echo: false
-#| fig-height: 5
-lego_traits <- data.frame(
-  Peça = c("Bloco 2x4", "Placa 1x2", "Rampa 2x2", "Bloco 1x1"),
-  Pinos = c(8, 2, 7, 2),
-  Altura = c(1.0, 0.33, 0.66, 1.0)
-)
-ggplot(lego_traits, aes(x = Pinos, y = Altura, label = Peça, color = Peça)) +
-  geom_point(size = 6, show.legend = FALSE) +
-  geom_text(vjust = 1.8, size = 4, color = "black") +
-  theme_minimal(base_size = 14) +
-  labs(title = "espaço funcional das peças de lego", x = "número de pinos (biomassa)", y = "altura relativa")
-```
-:::
-:::
-
 
 
 ## Construindo a filogenia morfológica

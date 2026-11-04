@@ -208,16 +208,33 @@ Felipe Melo
 </section>
 <section id="section-5" class="slide level2">
 <h2></h2>
-</section>
-<section id="dissimilaridade-de-bray-curtis-para-dados-quantitativos" class="slide level2">
-<h2>5. dissimilaridade de bray-curtis para dados quantitativos</h2>
+
+<img data-src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*XiLRKr_Bo-VdgqVI-SvSQg.png" class="r-stretch"></section>
+<section id="duplos-zeros" class="slide level2">
+<h2>Duplos zeros</h2>
+
+<img data-src="https://www.davidzeleny.net/anadat-r/lib/exe/fetch.php/obrazky:double-zero-table.jpg" class="r-stretch"></section>
+<section id="dissimilaridade-para-dados-quantitativos" class="slide level2">
+<h2>Dissimilaridade para dados quantitativos</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
 <li>incorpora a abundância relativa ou biomassa de cada espécie.</li>
-<li>fórmula: <span class="math inline">\(D_{BC} = rac{\sum |y_{ik} - y_{jk}|}{\sum (y_{ik} + y_{jk})}\)</span>.</li>
 <li>sensível a mudanças na dominância ecológica, mesmo quando as espécies são as mesmas.</li>
-<li>o índice quantitativo mais utilizado na literatura ecológica internacional.</li>
+<li>Bray-Curtis é o índice quantitativo mais utilizado na literatura ecológica internacional.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="https://www.davidzeleny.net/anadat-r/lib/exe/fetch.php/obrazky:schema-calculating-eucl-distance.png"></p>
+</div></div>
+</section>
+<section id="decomposição-da-diversidade-beta-turnover-vs.-aninhamento" class="slide level2">
+<h2>Decomposição da diversidade beta: turnover vs.&nbsp;aninhamento</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>substituição</strong> (<em>turnover</em>): troca de espécies entre locais por restrição de nicho/ambiente.</li>
+<li><strong>aninhamento</strong> (<em>nestedness</em>): comunidades mais pobres são subconjuntos estritos das comunidades mais ricas.</li>
+<li>Prtição: <span class="math inline">\(\beta_{sor} = \beta_{sim} + \beta_{nes}\)</span></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -231,58 +248,28 @@ Felipe Melo
 </div>
 </div></div>
 </section>
-<section id="decomposição-da-diversidade-beta-turnover-vs.-aninhamento" class="slide level2">
-<h2>6. decomposição da diversidade beta: turnover vs.&nbsp;aninhamento</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>a dissimilaridade total pode ser gerada por dois processos biológicos distintos.</li>
-<li>substituição (<em>turnover</em>): troca de espécies entre locais por restrição de nicho/ambiente.</li>
-<li>aninhamento (<em>nestedness</em>): comunidades mais pobres são subconjuntos estritos das comunidades mais ricas.</li>
-<li>partição de baselga: <span class="math inline">\(eta_{sor} = eta_{sim} + eta_{nes}\)</span>.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
 <section id="implicações-da-partição-da-diversidade-beta-para-conservação" class="slide level2">
-<h2>7. implicações da partição da diversidade beta para conservação</h2>
+<h2>Implicações da partição da diversidade beta para conservação</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>se a diversidade beta for dominada por turnover:
+<li>Quando dominada por turnover:
 <ul>
 <li>alta substituição espacial de espécies.</li>
 <li>estratégia: proteger múltiplos fragmentos ao longo de todo o gradiente.</li>
 </ul></li>
-<li>se for dominada por aninhamento:
+<li>Se dominada por aninhamento:
 <ul>
 <li>perda sequencial de espécies.</li>
 <li>estratégia: focar recursos na proteção do maior e mais rico fragmento.</li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/0/09/SLOSS_graphic.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail_unscaled"></p>
 </div></div>
 </section>
 <section id="introdução-às-técnicas-de-ordenação-multidimensional" class="slide level2">
-<h2>8. introdução às técnicas de ordenação multidimensional</h2>
+<h2>Introdução às técnicas de ordenação multidimensional</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
@@ -296,7 +283,7 @@ Felipe Melo
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -304,7 +291,7 @@ Felipe Melo
 </div></div>
 </section>
 <section id="escalonamento-multidimensional-não-métrico-nmds" class="slide level2">
-<h2>9. escalonamento multidimensional não-métrico (NMDS)</h2>
+<h2>Escalonamento multidimensional não-métrico (NMDS)</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
@@ -318,7 +305,7 @@ Felipe Melo
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -326,7 +313,7 @@ Felipe Melo
 </div></div>
 </section>
 <section id="interpretando-o-valor-de-stress-no-nmds" class="slide level2">
-<h2>10. interpretando o valor de stress no NMDS</h2>
+<h2>Interpretando o valor de stress no NMDS</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
@@ -341,29 +328,7 @@ Felipe Melo
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="análise-de-coordenadas-principais-pcoa" class="slide level2">
-<h2>11. análise de coordenadas principais (PCoA)</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>ordenação métrica que projeta a matriz de dissimilaridade em espaço euclidiano.</li>
-<li>permite calcular a porcentagem exata da variância explicada por cada eixo.</li>
-<li>flexível: funciona com qualquer matriz de distância (bray-curtis, jaccard, gower).</li>
-<li>implementado via <code>cmdscale()</code> ou <code>wcmdscale()</code> no pacote <code>vegan</code>.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -371,12 +336,11 @@ Felipe Melo
 </div></div>
 </section>
 <section id="agrupamento-hierárquico-cluster-analysis-e-dendrogramas" class="slide level2">
-<h2>12. agrupamento hierárquico (cluster analysis) e dendrogramas</h2>
+<h2>Agrupamento hierárquico (cluster analysis) e dendrogramas</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
 <li>agrupa amostras em uma estrutura hierárquica em árvore (dendrograma).</li>
-<li>métodos de ligação: UPGMA (média das distâncias) e ward (mínima variância).</li>
 <li>excelente para identificar grupos discretos de comunidades e ecótonos.</li>
 <li>complementa as ordenações contínuas (NMDS/PCoA).</li>
 </ul>
@@ -385,189 +349,15 @@ Felipe Melo
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="teste-de-hipóteses-multivariado-permanova-adonis2" class="slide level2">
-<h2>13. teste de hipóteses multivariado: PERMANOVA (adonis2)</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>Permutational Multivariate Analysis of Variance (PERMANOVA).</li>
-<li>testa se a composição de espécies difere entre fatores ou tratamentos.</li>
-<li>estatística pseudo-<span class="math inline">\(F\)</span> avaliada por permutações aleatórias (<span class="math inline">\(n = 999\)</span>).</li>
-<li>não assume normalidade multivariada; extremamente robusto.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="verificando-premissas-homogeneidade-de-dispersão-betadisper" class="slide level2">
-<h2>14. verificando premissas: homogeneidade de dispersão (betadisper)</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>uma PERMANOVA significativa pode ser causada por mudança no centroide OU por variância desigual.</li>
-<li>a função <code>betadisper()</code> testa se a distância média das amostras ao centroide é igual entre grupos.</li>
-<li>análogo multivariado do teste de levene para homogeneidade de variâncias.</li>
-<li>etapa obrigatória para garantir rigor nas conclusões da PERMANOVA.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="o-modelo-prático-de-lego-para-a-diversidade-beta" class="slide level2">
-<h2>15. o modelo prático de LEGO para a diversidade beta</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>os 4 sacos de LEGO representam comunidades submetidas a diferentes forças de montagem.</li>
-<li>saco A: comunidade degradada/hiperdominante.</li>
-<li>saco B: comunidade nativa equilibrada.</li>
-<li>saco C: comunidade artificialmente uniforme.</li>
-<li>saco D: comunidade heterogênea com espécies raras.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="ordenação-por-nmds-dos-sacos-de-lego-no-r" class="slide level2">
-<h2>16. ordenação por NMDS dos sacos de LEGO no R</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>aplicação de <code>metaMDS()</code> na matriz dos 4 sacos de LEGO.</li>
-<li>o gráfico visualiza a posição relativa de cada saco no espaço multidimensional.</li>
-<li>o saco A (hiperdominante) e o saco D (muitas raras) ocupam extremos opostos no NMDS.</li>
-<li>permite testar visualmente a dissimilaridade das comunidades amostradas.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="dendrograma-de-similaridade-dos-sacos-de-lego" class="slide level2">
-<h2>17. dendrograma de similaridade dos sacos de LEGO</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>agrupamento hierárquico UPGMA aplicado às distâncias de bray-curtis.</li>
-<li>revela a formação de clades ecológicos entre os sacos de LEGO.</li>
-<li>ajuda a identificar quais comunidades possuem composição mais afim.</li>
-<li>valida os padrões observados na ordenação do NMDS.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="script-essencial-no-r-com-o-pacote-vegan" class="slide level2">
-<h2>18. script essencial no R com o pacote vegan</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li><code>vegdist(mat, method = "bray")</code>: calcula a matriz de dissimilaridade.</li>
-<li><code>metaMDS(mat, distance = "bray")</code>: executa a ordenação por NMDS.</li>
-<li><code>adonis2(mat ~ tratamento, data = env)</code>: executa a PERMANOVA.</li>
-<li><code>betadisper(dist, tratamento)</code>: avalia a homogeneidade de dispersões.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="protocolo-de-amostragem-em-grupo-para-o-módulo-4" class="slide level2">
-<h2>19. protocolo de amostragem em grupo para o módulo 4</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>cada grupo usará a sua planilha do Módulo 1 contendo as contagens de peças.</li>
-<li>compilar as planilhas de todos os grupos de sala em uma única matriz multivariada.</li>
-<li>calcular a matriz de bray-curtis entre as comunidades dos diferentes grupos.</li>
-<li>gerar a ordenação por NMDS e o dendrograma para mapear a diversidade beta da turma.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="síntese-do-módulo-4-e-conclusões" class="slide level2">
-<h2>20. síntese do módulo 4 e conclusões</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>a diversidade beta desvenda os padrões de substituição e estruturação no espaço.</li>
-<li>a partição em turnover e aninhamento orienta decisões estratégicas de conservação.</li>
-<li>a ordenação por NMDS e a PERMANOVA são ferramentas indispensáveis do ecólogo moderno.</li>
-<li>a integração da diversidade alfa (módulos 1-3) e beta (módulo 4) completa o diagnóstico da comunidade.</li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="4-slides-beta_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
+<section id="fim" class="slide level2 center">
+<h2>FIM</h2>
 
 
 </section>
