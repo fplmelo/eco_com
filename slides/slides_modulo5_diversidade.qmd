@@ -1,0 +1,460 @@
+---
+title: "Módulo 5: Diversidade verdadeira e números de hill"
+subtitle: "Melhorando os índices"
+author: "disciplina de ecologia de comunidades"
+date: "2026-10-06"
+format:
+  revealjs:
+    slide-number: true
+    transition: fade
+    width: 1280
+    height: 720
+---
+
+## A limitação dos índices clássicos de entropia
+
+::: {.columns}
+::: {.column width="50%"}
+- shannon ($H'$) e simpson ($1-D$) não medem a diversidade em unidades de espécies.
+- shannon mede a entropia em nats/bits; simpson mede a probabilidade de intersubjetividade.
+- ambos possuem comportamento não-linear e assintótico.
+- não respeitam o princípio de duplicação
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 8
+library(ggplot2)
+df1 <- data.frame(
+  Espécies = c(10, 20),
+  Shannon_H = c(log(10), log(20)),
+  Simpson_Div = c(1 - 1/10, 1 - 1/20)
+)
+ggplot(df1, aes(x = factor(Espécies), y = Shannon_H, fill = factor(Espécies))) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  theme_minimal(base_size = 14) +
+  scale_fill_manual(values = c("#3498db", "#2ecc71")) +
+  labs(x = "número de espécies (S)", y = "índice de shannon (H')")+
+  theme(
+  axis.title = element_text(size = 28),               # Aumenta o título dos dois eixos (X e Y)
+  axis.text = element_text(size = 28)                  # Aumenta o texto dos eixos (números/categorias)
+)
+```
+:::
+:::
+
+
+## O que é diversidade verdadeira e o princípio de duplicação
+
+::: {.columns}
+::: {.column width="50%"}
+- Converte qualquer índice em número efetivo de espécies.
+- Representa o número de espécies igualmente abundantes
+- Satisfaz o princípio de duplicação
+- Restaura a intuição biológica nas comparações entre comunidades.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 8
+df2 <- data.frame(
+  Comunidade = c("Original (S=10)", "Dobrada (S=20)"),
+  Diversidade_Verdadeira = c(10, 20)
+)
+ggplot(df2, aes(x = Comunidade, y = Diversidade_Verdadeira, fill = Comunidade)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  theme_minimal(base_size = 14) +
+  scale_fill_manual(values = c("#9b59b6", "#e67e22")) +
+  labs(title = "resposta linear da diversidade verdadeira",
+       x = "", y = expression(paste("número efetivo (", ""^q, "D)")) 
+  )+
+  theme(
+  axis.title = element_text(size = 28),               # Aumenta o título dos dois eixos (X e Y)
+  axis.text = element_text(size = 28)                  # Aumenta o texto dos eixos (números/categorias)
+)
+```
+:::
+:::
+
+
+
+## A equação unificada dos números de Hill
+
+::: {.columns}
+::: {.column width="50%"}
+- proposta por Mark Hill (1973) e formalizada por lou jost (2006).
+- fórmula paramétrica geral: $^qD = \left( \sum_{i=1}^S p_i^q \right)^{\frac{1}{1-q}}$.
+- $p_i$: proporção de indivíduos da espécie $i$.
+- $q$: parâmetro de ordem que controla a sensibilidade às abundâncias relativas.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 8
+df3 <- data.frame(
+  Ordem_q = c("q = 0", "q = 1", "q = 2"),
+  Foco = c("Riqueza pura", "Espécies comuns", "Espécies dominantes")
+)
+ggplot(df3, aes(x = Ordem_q, y = c(3, 2, 1), fill = Ordem_q)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  theme_minimal(base_size = 14) +
+  scale_fill_brewer(palette = "Set2") +
+  labs(title = "ordens de diversidade de hill",
+       x = "parâmetro de ordem q", y = "nível de ponderação da abundância")+
+  theme(
+  axis.title = element_text(size = 28),               # Aumenta o título dos dois eixos (X e Y)
+  axis.text = element_text(size = 28)                  # Aumenta o texto dos eixos (números/categorias)
+)
+```
+:::
+:::
+
+
+## Número de Hill de ordem zero (q = 0): riqueza de espécies
+
+::: {.columns}
+::: {.column width="50%"}
+- para $q = 0$, o expoente anula o efeito da abundância ($p_i^0 = 1$).
+- fórmula: $^0D = \sum_{i=1}^S 1 = S$.
+- corresponde à riqueza bruta observada na amostragem.
+- atribui o mesmo peso a espécies raríssimas e hiperdominantes.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 8
+df4 <- data.frame(
+  Espécie = paste("Esp", 1:5),
+  Abundância = c(80, 10, 5, 3, 2),
+  Peso_q0 = c(1, 1, 1, 1, 1)
+)
+ggplot(df4, aes(x = Espécie, y = Peso_q0, fill = Espécie)) +
+  geom_col(show.legend = FALSE) +
+  theme_minimal(base_size = 14) +
+  scale_fill_viridis_d(option = "cividis") +
+  labs(title = "peso igual para todas as espécies em q=0",
+       x = "espécies na comunidade", y = expression(paste("peso no índice (", ""^q, "D)")))+
+  theme(
+  axis.title = element_text(size = 28),               # Aumenta o título dos dois eixos (X e Y)
+  axis.text = element_text(size = 28)                  # Aumenta o texto dos eixos (números/categorias)
+)
+```
+:::
+:::
+
+
+## Número de hill de ordem "um" (q = 1): espécies típicas
+
+::: {.columns}
+::: {.column width="50%"}
+- limite quando $q \to 1$: exponencial do índice de shannon-wiener.
+- fórmula: $^1D = \exp\left(-\sum p_i \ln p_i\right)$.
+- pondera cada espécie exatamente pela sua abundância relativa.
+- representa o número de espécies comuns ou típicas na comunidade.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 8
+df5 <- data.frame(
+  Métrica = c("Shannon H'", "Diversidade ^1D"),
+  Valor = c(1.61, exp(1.61))
+)
+ggplot(df5, aes(x = Métrica, y = Valor, fill = Métrica)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  theme_minimal(base_size = 14) +
+  scale_fill_manual(values = c("#34495e", "#1abc9c")) +
+  labs(title = "conversão de shannon H' para ^1D = exp(H')",
+       x = "", y = "valor numérico")+
+  theme(
+  axis.title = element_text(size = 28),               # Aumenta o título dos dois eixos (X e Y)
+  axis.text = element_text(size = 28)                  # Aumenta o texto dos eixos (números/categorias)
+)
+```
+:::
+:::
+
+
+
+## Número de Hill de ordem dois (q = 2): espécies dominantes
+
+::: {.columns}
+::: {.column width="50%"}
+- para $q = 2$, pondera as abundâncias de forma quadrática ($p_i^2$).
+- fórmula: $^2D = \frac{1}{\sum p_i^2} = \frac{1}{D}$ (inverso de simpson).
+- reduz drasticamente o impacto de espécies raras (singletons).
+- representa o número de espécies altamente dominantes no local.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 8
+df6 <- data.frame(
+  Métrica = c("Simpson D", "Inverso ^2D"),
+  Valor = c(0.25, 1/0.25)
+)
+ggplot(df6, aes(x = Métrica, y = Valor, fill = Métrica)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  theme_minimal(base_size = 14) +
+  scale_fill_manual(values = c("#e74c3c", "#2980b9")) +
+  labs(title = "conversão de simpson D para ^2D = 1/D",
+       x = "", y = "valor numérico")+
+  theme(
+  axis.title = element_text(size = 28),               # Aumenta o título dos dois eixos (X e Y)
+  axis.text = element_text(size = 28)                  # Aumenta o texto dos eixos (números/categorias)
+)
+```
+:::
+:::
+
+---
+
+## Conversão direta de Shannon e Simpson para números de hill
+
+::: {.columns}
+::: {.column width="50%"}
+- riqueza ($S$) $\to ^0D = S$.
+- shannon ($H'$) $\to ^1D = \exp(H')$.
+- simpson ($D$) $\to ^2D = 1/D$.
+- todos os três índices unificados na mesma escala linear de espécies.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 8
+conv_df <- data.frame(
+  Ordem = c("q = 0", "q = 1", "q = 2"),
+  Efetivas = c(10, 5.2, 3.1)
+)
+ggplot(conv_df, aes(x = Ordem, y = Efetivas, fill = Ordem)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  theme_minimal(base_size = 14) +
+  scale_fill_brewer(palette = "Blues") +
+  labs(title = "declínio das espécies efetivas com a ordem q",
+       x = "parâmetro de ordem q", y = "número efetivo de espécies")+
+  theme(
+  axis.title = element_text(size = 28),               # Aumenta o título dos dois eixos (X e Y)
+  axis.text = element_text(size = 28)                  # Aumenta o texto dos eixos (números/categorias)
+)
+```
+:::
+:::
+
+---
+
+## O perfil contínuo de diversidade de hill
+
+::: {.columns}
+::: {.column width="50%"}
+- curva contínua calculando $^qD$ para $q \in [0, 3]$.
+- resume toda a estrutura de abundância da comunidade em um único gráfico.
+- elimina a necessidade de escolher arbitrariamente um único índice.
+- permite comparar o comportamento de múltiplas comunidades.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 8
+q_seq <- seq(0, 2, by = 0.1)
+prof1 <- 10 / (1 + 0.3 * q_seq)
+prof_df <- data.frame(q = q_seq, D = prof1)
+ggplot(prof_df, aes(x = q, y = D)) +
+  geom_line(color = "#8e44ad", size = 1.3) +
+  theme_minimal(base_size = 14) +
+  labs(title = "perfil contínuo de diversidade de hill",
+       x = "parâmetro de ordem (q)", y = "diversidade verdadeira (^qD)")+
+  theme(
+  axis.title = element_text(size = 28),               # Aumenta o título dos dois eixos (X e Y)
+  axis.text = element_text(size = 28)                  # Aumenta o texto dos eixos (números/categorias)
+)
+```
+:::
+:::
+
+---
+
+## A inclinação do perfil como métrica de equabilidade
+
+::: {.columns}
+::: {.column width="50%"}
+- perfil horizontal: equitabilidade perfeita ($^0D = ^1D = ^2D$).
+- perfil suave: comunidade moderadamente uniforme.
+- perfil íngreme (queda acentuada): alta dominância de poucas espécies.
+- substitui com vantagens o índice de equitabilidade de pielou ($J'$).
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 8
+q_v <- seq(0, 3, by = 0.1)
+df9 <- data.frame(
+  q = rep(q_v, 2),
+  D = c(rep(10, length(q_v)), 10 / (1 + 0.8 * q_v)),
+  Comunidade = rep(c("Uniforme", "Hiperdominante"), each = length(q_v))
+)
+ggplot(df9, aes(x = q, y = D, color = Comunidade)) +
+  geom_line(size = 1.2) +
+  theme_minimal(base_size = 14) +
+  scale_color_manual(values = c("#e74c3c", "#27ae60")) +
+  labs(title = "inclinação do perfil vs. equitabilidade",
+       x = "ordem (q)", y = "diversidade verdadeira (^qD)")+
+  theme(
+  axis.title = element_text(size = 28),               # Aumenta o título dos dois eixos (X e Y)
+  axis.text = element_text(size = 28)                  # Aumenta o texto dos eixos (números/categorias)
+)
+```
+:::
+:::
+
+---
+
+## Comparando duas comunidades contrastantes
+
+::: {.columns}
+::: {.column width="50%"}
+- comunidade A: 10 espécies, 1 hiperdominante (70% das peças).
+- comunidade B: 10 espécies, distribuição perfeitamente uniforme.
+- ambas possuem a mesma riqueza ($^0D = 10$).
+- números de hill revelam a profunda diferença na diversidade efetiva.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 9
+df10 <- data.frame(
+  Ordem = rep(c("q=0", "q=1", "q=2"), 2),
+  Diversidade = c(10, 2.5, 1.8, 10, 10, 10),
+  Comunidade = rep(c("Com A (Dominante)", "Com B (Uniforme)"), each = 3)
+)
+ggplot(df10, aes(x = Ordem, y = Diversidade, group = Comunidade, color=Comunidade)) +
+  geom_point(size=5)+geom_line(linewidth = 2)+
+  theme_minimal(base_size = 14) +
+  scale_fill_manual(values = c("#e67e22", "#2980b9")) +
+  labs(title = "",
+       x = "ordem q", y = "espécies efetivas")+
+  theme(
+  axis.title = element_text(size = 28),               # Aumenta o título dos dois eixos (X e Y)
+  axis.text = element_text(size = 28)                  # Aumenta o texto dos eixos (números/categorias)
+)
+```
+:::
+:::
+
+
+
+## A contradição entre Shannon e Simpson
+
+::: {.columns}
+::: {.column width="50%"}
+- índices brutos costumam ranquear comunidades de forma conflitante.
+- comunidades com muitas raras inflacionam shannon mas mantêm simpson baixo.
+- os números de hill indicam qual ordem está sendo avaliada.
+- ordens $q=0, 1, 2$ fornecem um diagnóstico integrado e coerente.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 8
+df11 <- data.frame(
+  Comunidade = c("COm A (Uniforme)", "Com B (Muitas Raras)"),
+  q0 = c(10, 22),
+  q1 = c(10, 11.4),
+  q2 = c(10, 6.8)
+)
+df11_l <- tidyr::pivot_longer(df11, cols = c(q0, q1, q2), names_to = "Ordem", values_to = "D")
+ggplot(df11_l, aes(x = Ordem, y = D, fill = Comunidade)) +
+  geom_col(position = "dodge") +
+  theme_minimal(base_size = 14) +
+  scale_fill_manual(values = c("#1abc9c", "#9b59b6")) +
+  labs(title = "",
+       x = "ordem de hill", y = "espécies efetivas (^qD)")+
+  theme(
+  axis.title = element_text(size = 28),               # Aumenta o título dos dois eixos (X e Y)
+  axis.text = element_text(size = 28)                  # Aumenta o texto dos eixos (números/categorias)
+)
+```
+:::
+:::
+
+---
+
+## Partição multiplicativa da diversidade alfa, beta e gama
+
+::: {.columns}
+::: {.column width="50%"}
+- proposta de whittaker (1960): $^\gamma D = ^\alpha D \times ^\beta D$.
+- rigorosamente válida apenas quando a diversidade é medida em números de hill.
+- $^\alpha D$: diversidade efetiva média por local.
+- $^\gamma D$: diversidade efetiva total da região.
+- $^\beta D = ^\gamma D / ^\alpha D$: turnover em número de comunidades efetivas.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 9
+df12 <- data.frame(
+  Nível = c("Alfa (Local)", "Gama (Regional)", "Beta (Turnover)"),
+  Valor = c(4.0, 12.0, 3.0)
+)
+ggplot(df12, aes(x = Nível, y = Valor, fill = Nível)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  theme_minimal(base_size = 14) +
+  scale_fill_brewer(palette = "YlOrRd") +
+  labs(title = "decomposição multiplicativa de hill",
+       x = "componente de biodiversidade", y = "valor numérico efetivo")+
+  theme(
+  axis.title = element_text(size = 28),               # Aumenta o título dos dois eixos (X e Y)
+  axis.text = element_text(size = 28)                  # Aumenta o texto dos eixos (números/categorias)
+)
+```
+:::
+:::
+
+---
+
+## Interpretação biológica da diversidade beta de hill
+
+::: {.columns}
+::: {.column width="50%"}
+- $^\beta D = 1,0$: todas as comunidades são perfeitamente idênticas.
+- $^\beta D = N$: todas as $N$ comunidades são totalmente distintas (sem espécies compartilhadas).
+- métrica independente da riqueza alfa ($^\alpha D$).
+- facilidade de comunicação para estratégias de conservação de paisagens.
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| fig-height: 9
+df13 <- data.frame(
+  Cenário = c("Sobreposição \n Total", "Turnover \n Moderado", "Separação \n Completa"),
+  Beta_D = c(1.0, 2.4, 4.0)
+)
+ggplot(df13, aes(x = Cenário, y = Beta_D, fill = Cenário)) +
+  geom_col(width = 0.5, show.legend = FALSE) +
+  theme_minimal(base_size = 14) +
+  scale_fill_manual(values = c("#27ae60", "#f39c12", "#c0392b")) +
+  labs(title = "variação do beta de hill",
+       x = "", y = "número de comunidades efetivas (^beta D)")+
+  theme(
+  axis.title = element_text(size = 28),               # Aumenta o título dos dois eixos (X e Y)
+  axis.text = element_text(size = 28)                  # Aumenta o texto dos eixos (números/categorias)
+)
+```
+:::
+:::
+
+
+## FIM{.center}

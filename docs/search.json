@@ -361,7 +361,7 @@
     "href": "sessions/index.html",
     "title": "Conteúdo",
     "section": "",
-    "text": "Semana 01: Origens e Conceitos de Escala\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 02: Medidas clássicas de diversidade local em comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 3: Diversidade taxonômica, funcional e filogenética em ecologia de comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\nOct 29, 2026\n\n\n\n\n\n\n\n\n\n\n\nSemana 4: diversidade beta, dissimilaridade e partição da variação em comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\nOct 9, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Semana 01: Origens e Conceitos de Escala\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 02: Medidas clássicas de diversidade local em comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\n\n\n\n\n\n\n\n\n\nSemana 3: Diversidade taxonômica, funcional e filogenética em ecologia de comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\nNov 9, 2026\n\n\n\n\n\n\n\n\n\n\n\nSemana 4: diversidade beta, dissimilaridade e partição da variação em comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\nNov 3, 2026\n\n\n\n\n\n\n\n\n\n\n\nSemana 5: diversidade verdadeira e números de Hill em ecologia de comunidades\n\n\n\n\n\n\nFelipe Melo\n\n\nNov 9, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "sessions/week4/resumo_expandido_modulo4.html",
@@ -2014,5 +2014,180 @@
     "title": "Módulo 4: diversidade beta, dissimilaridade e partição da variação em comunidades",
     "section": "FIM",
     "text": "FIM"
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#a-limitação-dos-índices-clássicos-de-entropia",
+    "href": "slides/slides_modulo5_diversidade.html#a-limitação-dos-índices-clássicos-de-entropia",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "A limitação dos índices clássicos de entropia",
+    "text": "A limitação dos índices clássicos de entropia\n\n\n\nshannon (\\(H'\\)) e simpson (\\(1-D\\)) não medem a diversidade em unidades de espécies.\nshannon mede a entropia em nats/bits; simpson mede a probabilidade de intersubjetividade.\nambos possuem comportamento não-linear e assintótico.\nnão respeitam o princípio de duplicação"
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#o-que-é-diversidade-verdadeira-e-o-princípio-de-duplicação",
+    "href": "slides/slides_modulo5_diversidade.html#o-que-é-diversidade-verdadeira-e-o-princípio-de-duplicação",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "O que é diversidade verdadeira e o princípio de duplicação",
+    "text": "O que é diversidade verdadeira e o princípio de duplicação\n\n\n\nConverte qualquer índice em número efetivo de espécies.\nRepresenta o número de espécies igualmente abundantes\nSatisfaz o princípio de duplicação\nRestaura a intuição biológica nas comparações entre comunidades."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#a-equação-unificada-dos-números-de-hill",
+    "href": "slides/slides_modulo5_diversidade.html#a-equação-unificada-dos-números-de-hill",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "A equação unificada dos números de Hill",
+    "text": "A equação unificada dos números de Hill\n\n\n\nproposta por Mark Hill (1973) e formalizada por lou jost (2006).\nfórmula paramétrica geral: \\(^qD = \\left( \\sum_{i=1}^S p_i^q \\right)^{\\frac{1}{1-q}}\\).\n\\(p_i\\): proporção de indivíduos da espécie \\(i\\).\n\\(q\\): parâmetro de ordem que controla a sensibilidade às abundâncias relativas."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#número-de-hill-de-ordem-zero-q-0-riqueza-de-espécies",
+    "href": "slides/slides_modulo5_diversidade.html#número-de-hill-de-ordem-zero-q-0-riqueza-de-espécies",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "Número de Hill de ordem zero (q = 0): riqueza de espécies",
+    "text": "Número de Hill de ordem zero (q = 0): riqueza de espécies\n\n\n\npara \\(q = 0\\), o expoente anula o efeito da abundância (\\(p_i^0 = 1\\)).\nfórmula: \\(^0D = \\sum_{i=1}^S 1 = S\\).\ncorresponde à riqueza bruta observada na amostragem.\natribui o mesmo peso a espécies raríssimas e hiperdominantes."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#número-de-hill-de-ordem-um-q-1-espécies-típicas",
+    "href": "slides/slides_modulo5_diversidade.html#número-de-hill-de-ordem-um-q-1-espécies-típicas",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "Número de hill de ordem “um” (q = 1): espécies típicas",
+    "text": "Número de hill de ordem “um” (q = 1): espécies típicas\n\n\n\nlimite quando \\(q \\to 1\\): exponencial do índice de shannon-wiener.\nfórmula: \\(^1D = \\exp\\left(-\\sum p_i \\ln p_i\\right)\\).\npondera cada espécie exatamente pela sua abundância relativa.\nrepresenta o número de espécies comuns ou típicas na comunidade."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#número-de-hill-de-ordem-dois-q-2-espécies-dominantes",
+    "href": "slides/slides_modulo5_diversidade.html#número-de-hill-de-ordem-dois-q-2-espécies-dominantes",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "Número de Hill de ordem dois (q = 2): espécies dominantes",
+    "text": "Número de Hill de ordem dois (q = 2): espécies dominantes\n\n\n\npara \\(q = 2\\), pondera as abundâncias de forma quadrática (\\(p_i^2\\)).\nfórmula: \\(^2D = \\frac{1}{\\sum p_i^2} = \\frac{1}{D}\\) (inverso de simpson).\nreduz drasticamente o impacto de espécies raras (singletons).\nrepresenta o número de espécies altamente dominantes no local."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#conversão-direta-de-shannon-e-simpson-para-números-de-hill",
+    "href": "slides/slides_modulo5_diversidade.html#conversão-direta-de-shannon-e-simpson-para-números-de-hill",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "Conversão direta de Shannon e Simpson para números de hill",
+    "text": "Conversão direta de Shannon e Simpson para números de hill\n\n\n\nriqueza (\\(S\\)) \\(\\to ^0D = S\\).\nshannon (\\(H'\\)) \\(\\to ^1D = \\exp(H')\\).\nsimpson (\\(D\\)) \\(\\to ^2D = 1/D\\).\ntodos os três índices unificados na mesma escala linear de espécies."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#o-perfil-contínuo-de-diversidade-de-hill",
+    "href": "slides/slides_modulo5_diversidade.html#o-perfil-contínuo-de-diversidade-de-hill",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "O perfil contínuo de diversidade de hill",
+    "text": "O perfil contínuo de diversidade de hill\n\n\n\ncurva contínua calculando \\(^qD\\) para \\(q \\in [0, 3]\\).\nresume toda a estrutura de abundância da comunidade em um único gráfico.\nelimina a necessidade de escolher arbitrariamente um único índice.\npermite comparar o comportamento de múltiplas comunidades."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#a-inclinação-do-perfil-como-métrica-de-equitabilidade",
+    "href": "slides/slides_modulo5_diversidade.html#a-inclinação-do-perfil-como-métrica-de-equitabilidade",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "9. a inclinação do perfil como métrica de equitabilidade",
+    "text": "9. a inclinação do perfil como métrica de equitabilidade\n\n\n\nperfil horizontal: equitabilidade perfeita (\\(^0D = ^1D = ^2D\\)).\nperfil suave: comunidade moderadamente uniforme.\nperfil íngreme (queda acentuada): alta dominância de poucas espécies.\nsubstitui com vantagens o índice de equitabilidade de pielou (\\(J'\\))."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#exemplo-prático-comparando-duas-comunidades-contrastantes",
+    "href": "slides/slides_modulo5_diversidade.html#exemplo-prático-comparando-duas-comunidades-contrastantes",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "10. exemplo prático: comparando duas comunidades contrastantes",
+    "text": "10. exemplo prático: comparando duas comunidades contrastantes\n\n\n\ncomunidade A: 10 espécies, 1 hiperdominante (70% das peças).\ncomunidade B: 10 espécies, distribuição perfeitamente uniforme.\nambas possuem a mesma riqueza (\\(^0D = 10\\)).\nnúmeros de hill revelam a profunda diferença na diversidade efetiva."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#a-resolução-da-aparente-contradição-entre-shannon-e-simpson",
+    "href": "slides/slides_modulo5_diversidade.html#a-resolução-da-aparente-contradição-entre-shannon-e-simpson",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "11. a resolução da aparente contradição entre Shannon e Simpson",
+    "text": "11. a resolução da aparente contradição entre Shannon e Simpson\n\n\n\níndices brutos costumam ranquear comunidades de forma conflitante.\ncomunidades com muitas raras inflacionam shannon mas mantêm simpson baixo.\nos números de hill resolvem a contradição ao deixar claro qual fração da abundância está sendo avaliada.\nordens \\(q=0, 1, 2\\) fornecem um diagnóstico integrado e coerente."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#partição-multiplicativa-da-diversidade-alfa-beta-e-gama",
+    "href": "slides/slides_modulo5_diversidade.html#partição-multiplicativa-da-diversidade-alfa-beta-e-gama",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "Partição multiplicativa da diversidade alfa, beta e gama",
+    "text": "Partição multiplicativa da diversidade alfa, beta e gama\n\n\n\nproposta de whittaker (1960): \\(^\\gamma D = ^\\alpha D \\times ^\\beta D\\).\nrigorosamente válida apenas quando a diversidade é medida em números de hill.\n\\(^\\alpha D\\): diversidade efetiva média por local.\n\\(^\\gamma D\\): diversidade efetiva total da região.\n\\(^\\beta D = ^\\gamma D / ^\\alpha D\\): turnover em número de comunidades efetivas."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#interpretação-biológica-da-diversidade-beta-de-hill",
+    "href": "slides/slides_modulo5_diversidade.html#interpretação-biológica-da-diversidade-beta-de-hill",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "Interpretação biológica da diversidade beta de hill",
+    "text": "Interpretação biológica da diversidade beta de hill\n\n\n\n\\(^\\beta D = 1,0\\): todas as comunidades são perfeitamente idênticas.\n\\(^\\beta D = N\\): todas as \\(N\\) comunidades são totalmente distintas (sem espécies compartilhadas).\nmétrica independente da riqueza alfa (\\(^\\alpha D\\)).\nfacilidade de comunicação para estratégias de conservação de paisagens."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#amostragem-e-padronização-rarefação-baseada-em-cobertura",
+    "href": "slides/slides_modulo5_diversidade.html#amostragem-e-padronização-rarefação-baseada-em-cobertura",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "14. amostragem e padronização: rarefação baseada em cobertura",
+    "text": "14. amostragem e padronização: rarefação baseada em cobertura\n\n\n\npadronização tradicional por tamanho de amostra pode distorcer a diversidade em comunidades hiperdiversas.\nchao et al. (2014): rarefação e extrapolação baseadas em cobertura amostral (sample coverage).\ncompara a diversidade quando todos os locais atingem a mesma integridade da amostragem (ex.: 95% de cobertura).\nintegrada nativamente com os números de hill."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#o-ecossistema-de-pacotes-em-r-vegan-e-inext",
+    "href": "slides/slides_modulo5_diversidade.html#o-ecossistema-de-pacotes-em-r-vegan-e-inext",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "15. o ecossistema de pacotes em r: vegan e iNEXT",
+    "text": "15. o ecossistema de pacotes em r: vegan e iNEXT\n\n\n\nvegan: funções diversity(mat, index=\"shannon\") e diversity(mat, index=\"simpson\").\nconversão simples no R: exp(diversity()) e 1/diversity(..., index=\"simpson\").\niNEXT: função principal iNEXT(mat, q=c(0,1,2)) para rarefação e extrapolação.\ngráficos automatizados com ggiNEXT()."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#aplicando-a-diversidade-verdadeira-no-modelo-de-lego",
+    "href": "slides/slides_modulo5_diversidade.html#aplicando-a-diversidade-verdadeira-no-modelo-de-lego",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "16. aplicando a diversidade verdadeira no modelo de lego",
+    "text": "16. aplicando a diversidade verdadeira no modelo de lego\n\n\n\nsaco A (hiperdominante): queda brusca de \\(^0D\\) para \\(^2D\\).\nsaco B (log-normal): declive moderado característico de comunidades naturais.\nsaco C (uniforme): perfil plano (\\(^0D = ^1D = ^2D = 10\\)).\nsaco D (muitas raras): grande divergência entre \\(^0D = 22\\) e \\(^2D = 6,8\\)."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#script-no-r-calculando-os-números-de-hill-nos-sacos-de-lego",
+    "href": "slides/slides_modulo5_diversidade.html#script-no-r-calculando-os-números-de-hill-nos-sacos-de-lego",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "17. script no r: calculando os números de hill nos sacos de lego",
+    "text": "17. script no r: calculando os números de hill nos sacos de lego\n\n\n\nconstrução da matriz de dados de contagem.\nextração rápida de \\(^0D\\), \\(^1D\\) e \\(^2D\\).\ncompilação da tabela de síntese com data.frame().\nvisualização do comportamento de dominância e raridade."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#gerando-os-perfis-de-diversidade-no-ggplot2",
+    "href": "slides/slides_modulo5_diversidade.html#gerando-os-perfis-de-diversidade-no-ggplot2",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "18. gerando os perfis de diversidade no ggplot2",
+    "text": "18. gerando os perfis de diversidade no ggplot2\n\n\n\npivotagem dos dados para formato longo (tidy data) com pivot_longer().\nplotagem de \\(^qD\\) no eixo Y contra \\(q\\) no eixo X.\npersonalização com cores por comunidade.\nfacilidade de comunicação visual dos resultados da turma."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#diagnóstico-conservacionista-com-números-efetivos",
+    "href": "slides/slides_modulo5_diversidade.html#diagnóstico-conservacionista-com-números-efetivos",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "19. diagnóstico conservacionista com números efetivos",
+    "text": "19. diagnóstico conservacionista com números efetivos\n\n\n\nsubstituição de jargões abstratos de entropia por relatórios claros em números de espécies.\navaliação direta do impacto de perturbações e espécies invasoras.\nsuporte para valoração e pagamento por serviços ecossistêmicos.\npadrão ouro na publicação de trabalhos científicos em ecologia moderna."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#síntese-do-módulo-5-e-orientações-para-a-prática",
+    "href": "slides/slides_modulo5_diversidade.html#síntese-do-módulo-5-e-orientações-para-a-prática",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "20. síntese do módulo 5 e orientações para a prática",
+    "text": "20. síntese do módulo 5 e orientações para a prática\n\n\n\ncada grupo pegará os dados do seu saco de LEGO (ou planilha .csv).\ncalculará \\(^0D\\), \\(^1D\\) e \\(^2D\\) utilizando o pacote vegan.\ngerará o perfil continuado de diversidade no ggplot2.\nresponderá às 5 perguntas de interpretação ecológica sobre diversidade verdadeira."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#a-inclinação-do-perfil-como-métrica-de-equabilidade",
+    "href": "slides/slides_modulo5_diversidade.html#a-inclinação-do-perfil-como-métrica-de-equabilidade",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "A inclinação do perfil como métrica de equabilidade",
+    "text": "A inclinação do perfil como métrica de equabilidade\n\n\n\nperfil horizontal: equitabilidade perfeita (\\(^0D = ^1D = ^2D\\)).\nperfil suave: comunidade moderadamente uniforme.\nperfil íngreme (queda acentuada): alta dominância de poucas espécies.\nsubstitui com vantagens o índice de equitabilidade de pielou (\\(J'\\))."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#comparando-duas-comunidades-contrastantes",
+    "href": "slides/slides_modulo5_diversidade.html#comparando-duas-comunidades-contrastantes",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "Comparando duas comunidades contrastantes",
+    "text": "Comparando duas comunidades contrastantes\n\n\n\ncomunidade A: 10 espécies, 1 hiperdominante (70% das peças).\ncomunidade B: 10 espécies, distribuição perfeitamente uniforme.\nambas possuem a mesma riqueza (\\(^0D = 10\\)).\nnúmeros de hill revelam a profunda diferença na diversidade efetiva."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#a-contradição-entre-shannon-e-simpson",
+    "href": "slides/slides_modulo5_diversidade.html#a-contradição-entre-shannon-e-simpson",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "A contradição entre Shannon e Simpson",
+    "text": "A contradição entre Shannon e Simpson\n\n\n\níndices brutos costumam ranquear comunidades de forma conflitante.\ncomunidades com muitas raras inflacionam shannon mas mantêm simpson baixo.\nos números de hill indicam qual ordem está sendo avaliada.\nordens \\(q=0, 1, 2\\) fornecem um diagnóstico integrado e coerente."
+  },
+  {
+    "objectID": "slides/slides_modulo5_diversidade.html#fim",
+    "href": "slides/slides_modulo5_diversidade.html#fim",
+    "title": "Módulo 5: Diversidade verdadeira e números de hill",
+    "section": "FIM",
+    "text": "FIM"
+  },
+  {
+    "objectID": "sessions/week5/resumo_expandido_modulo5.html",
+    "href": "sessions/week5/resumo_expandido_modulo5.html",
+    "title": "Semana 5: diversidade verdadeira e números de Hill em ecologia de comunidades",
+    "section": "",
+    "text": "Slides desta aula\n\n\n\n\nO problema da não-linearidade e da unidade dos índices clássicos\nA mensuração da biodiversidade alfa (\\(\\alpha\\)) em nível local é um dos pilares da ecologia quantitativa. por décadas, os ecólogos têm recorrido a índices sintéticos como o índice de shannon-wiener (\\(H'\\)) e o índice de simpson (\\(D\\) ou \\(1-D\\)) para sintetizar o número de espécies (riqueza) e a distribuição de suas abundâncias relativas (equitabilidade) em um único valor numérico [1]. contudo, apesar de sua ampla utilização na literatura científica desde meados do século XX, esses índices clássicos apresentam limitações estatísticas e conceituais profundas que frequentemente levam a interpretações ecológicas equivocadas.\nA principal limitação dos índices clássicos é que eles não medem a diversidade diretamente em unidades de espécies. o índice de shannon mede a entropia ou a incerteza da teoria da informação em unidades de nats ou bits, enquanto o índice de simpson mede a probabilidade de que dois indivíduos sorteados ao acaso pertençam à mesma espécie [35]. como consequência dessa natureza matemática, ambos os índices exibem um comportamento não-linear em relação às alterações na composição da comunidade.\nPara ilustrar esse problema fundamental, considere o princípio de duplicação (doubling property). imagine uma comunidade florestal perfeitamente uniforme composta por 10 espécies de árvores, onde cada espécie possui exatamente a mesma abundância relativa (\\(p_i = 0,10\\)). se dividirmos essa floresta hipotética ao meio e introduzirmos no segundo fragmento outras 10 espécies inteiramente novas, com as mesmas abundâncias relativas, a intuição biológica dita que a diversidade da nova comunidade dobrou. no entanto, os índices estatísticos não refletem essa duplicação direta:\n\na riqueza de espécies (\\(S\\)) dobra de 10 para 20.\no índice de shannon (\\(H'\\)) aumenta de \\(\\ln(10) \\approx 2,302\\) para \\(\\ln(20) \\approx 2,995\\), um incremento de apenas 30%.\na diversidade de simpson (\\(1-D\\)) passa de \\(0,900\\) para \\(0,950\\), um aumento residual de apenas 5,5%.\n\n\nComo \\(H'\\) cresce de forma logarítmica e \\(1-D\\) é assintótico próximo de 1,0, nenhum desses índices permite quantificar a magnitude percentual de ganho ou perda de biodiversidade entre diferentes ecossistemas. uma comunidade com \\(H' = 3,0\\) não é duas vezes mais diversa do que uma comunidade com \\(H' = 1,5\\). essa não-linearidade compromete graves análises de valoração ambiental, estudos de serviços ecossistêmicos e a formulação de políticas públicas de conservação.\n\n\n\n\nA unificação matemática por Mark Hill e Lou Jost\nPara resolver o impasse das unidades não intuitivas e restaurar a linearidade na mensuração da biodiversidade, o ecólogo e estatístico mark hill demonstrou em 1973 que os índices clássicos de diversidade pertencem a uma mesma família de equações paramétricas baseada em médias ponderadas de abundâncias relativas. posteriormente, o físico e ecólogo lou jost (2006) formalizou essa unificação, estabelecendo o conceito de diversidade verdadeira (true diversity) ou números de hill (\\(^qD\\)).\nA diversidade verdadeira converte qualquer índice de entropia ou probabilidade em um número efetivo de espécies (effective number of species). o número efetivo de espécies corresponde ao número de espécies igualmente abundantes (perfeitamente equitativas) que seria necessário para produzir o mesmo valor numérico do índice estatístico observado.\na fórmula geral dos números de hill para uma comunidade contendo \\(S\\) espécies é dada pela seguinte expressão matemática:\n\\[^qD = \\left( \\sum_{i=1}^{S} p_i^q \\right)^{\\frac{1}{1-q}}\\]\nonde: * \\(S\\) é a riqueza total de espécies observada na comunidade.\n\n\\(p_i\\) é a proporção de indivíduos pertencentes à \\(i\\)-ésima espécie (\\(p_i = n_i / N\\)).\n\\(q\\) é o parâmetro de ordem da diversidade, um número real não negativo (\\(q \\ge 0\\)) que atua como uma “trava de sintonia” para determinar o grau de sensibilidade do índice em relação às espécies raras ou abundantes.\n\nQuando a fórmula dos números de hill é aplicada, o resultado é expresso estritamente em unidades de espécies, satisfazendo rigorosamente o princípio de duplicação: se a diversidade de um ecossistema dobra, o valor de \\(^qD\\) é exatamente multiplicado por 2.\n\n\n\nA família de números de Hill e a ordem \\(q\\)\no parâmetro \\(q\\) permite explorar a estrutura da comunidade em três pontos-chave ou ordens principais (\\(q = 0, q = 1, q = 2\\)), refletindo a transição gradual do foco das espécies raras para as espécies dominantes.\n\n\n\n\n\n\n\n\n\n\nOrdem (\\(q\\))\nDenominação\nExpressão matemática de conversão\nSensibilidade às abundâncias relativas\nInterpretação ecológica\n\n\n\n\n\\(q = 0\\)\nRiqueza de espécies\n\\(^0D = S\\)\nTotalmente insensível (todas as espécies têm peso igual a 1)\nNúmero total de espécies observadas no local\n\n\n\\(q = 1\\)\nEspécies típicas / freqüentes\n\\(^1D = \\exp(H') = \\exp\\left(-\\sum p_i \\ln p_i\\right)\\)\nPonderação proporcional exata às abundâncias relativas\nNúmero de espécies abundantes/comuns na comunidade\n\n\n\\(q = 2\\)\nEspécies dominantes\n\\(^2D = \\frac{1}{D} = \\frac{1}{\\sum p_i^2}\\)\nPonderação desproporcional para espécies muito abundantes\nNúmero de espécies altamente dominantes\n\n\n\n\nNúmero de Hill de ordem zero (\\(q = 0\\))\npara \\(q = 0\\), o expoente \\(q\\) anula o efeito das abundâncias relativas (\\(p_i^0 = 1\\) para todo \\(p_i &gt; 0\\)). a equação simplifica-se para:\n\\[^0D = \\sum_{i=1}^{S} 1 = S\\]\na diversidade de ordem zero (\\(^0D\\)) é simplesmente a riqueza observada de espécies. ela atribui o mesmo peso tanto a uma espécie hiperdominante representada por 90% dos indivíduos quanto a uma espécie rara representada por apenas um indivíduo amostrado (singleton).\n\n\nNúmero de Hill de ordem um (\\(q = 1\\))\nquando \\(q \\to 1\\), o termo \\(1 / (1-q)\\) na fórmula geral torna-se indefinido. contudo, aplicando o limite matemático de l’hôpital quando \\(q\\) se aproxima de 1, a equação converte-se exatamente na exponencial da entropia de shannon-wiener (\\(H'\\)):\n\\[^1D = \\lim_{q \\to 1} ^qD = \\exp\\left(-\\sum_{i=1}^{S} p_i \\ln(p_i)\\right) = \\exp(H')\\]\na diversidade verdadeira de ordem um (\\(^1D\\)) pesa cada espécie em proporção exata à sua abundância na comunidade. ela pode ser interpretada biologicamente como o número de espécies “típicas” ou “frequentes” no ecossistema. se uma comunidade possui \\(H' = 2,302\\), sua diversidade verdadeira é \\(^1D = \\exp(2,302) = 10,0\\) espécies efetivas.\n\n\nNúmero de Hill de ordem dois (\\(q = 2\\))\npara \\(q = 2\\), a fórmula pondera as abundâncias de forma quadrática (\\(p_i^2\\)), reduzindo a contribuição das espécies raras a valores negligenciáveis. a equação reduz-se ao inverso do índice de dominância de simpson (\\(D\\)):\n\\[^2D = \\frac{1}{\\sum_{i=1}^{S} p_i^2} = \\frac{1}{D}\\]\na diversidade verdadeira de ordem dois (\\(^2D\\)) mede o número de espécies “muito abundantes” ou “dominantes” na comunidade. se o índice de dominância de simpson de um local for \\(D = 0,25\\), sua diversidade de ordem dois será \\(^2D = 1 / 0,25 = 4,0\\) espécies efetivas dominantes.\n\n\n\n\nPerfil continuado de diversidade de hill\nem vez de analisar \\(q = 0, q = 1, q = 2\\) isoladamente, lou jost e anne chao demonstraram que é possível calcular \\(^qD\\) para um espectro contínuo de valores de \\(q\\) (por exemplo, de \\(q = 0\\) até \\(q = 3\\)), gerando o chamado perfil de diversidade de hill (hill diversity profile).\n\na geometria e a inclinação da curva do perfil de diversidade de hill fornecem uma caracterização visual completa da estrutura de abundância da comunidade:\n\ncurva estritamente horizontal (\\(^0D = ^1D = ^2D = S\\)): indica uma comunidade com equitabilidade perfeita (\\(J' = 1,0\\)), onde todas as espécies possuem exatamente o mesmo número de indivíduos.\ncurva com declive suave: indica uma comunidade moderadamente equitativa, com pouca dominância.\ncurva com declive acentuado (queda brusca de \\(q=0\\) para \\(q=2\\)): reflete uma comunidade com alta hiperdominância de poucas espécies e grande quantidade de espécies raras.\n\nportanto, a variação relativa entre \\(^0D\\), \\(^1D\\) e \\(^2D\\) permite isolar o efeito da equitabilidade sem a necessidade de calcular índices acessórios adicionais como o \\(J'\\) de pielou.\n\n\n\nExemplo numérico resolvido passo a passo\npara consolidar o entendimento da conversão de índices brutos em números efetivos de espécies, considere três comunidades hipotéticas (saco a, saco b e saco c), cada uma amostrada com exatamente 100 indivíduos (\\(N = 100\\)):\n\ncomunidade a (hiperdominante): 4 espécies. \\(n_1 = 85, n_2 = 10, n_3 = 4, n_4 = 1\\).\ncomunidade b (desigual moderada): 4 espécies. \\(n_1 = 50, n_2 = 30, n_3 = 15, n_4 = 5\\).\ncomunidade c (perfeitamente uniforme): 4 espécies. \\(n_1 = 25, n_2 = 25, n_3 = 25, n_4 = 25\\).\n\n\npasso 1: cálculo das proporções relativas (\\(p_i\\))\n\ncomunidade a: \\(p_1 = 0,85; p_2 = 0,10; p_3 = 0,04; p_4 = 0,01\\).\ncomunidade b: \\(p_1 = 0,50; p_2 = 0,30; p_3 = 0,15; p_4 = 0,05\\).\ncomunidade c: \\(p_1 = 0,25; p_2 = 0,25; p_3 = 0,25; p_4 = 0,25\\).\n\n\n\npasso 2: cálculo dos índices estatísticos clássicos\n\nshannon (\\(H'\\)):\n\n\\(H'_A = -[0,85\\ln(0,85) + 0,10\\ln(0,10) + 0,04\\ln(0,04) + 0,01\\ln(0,01)] = 0,544\\).\n\\(H'_B = -[0,50\\ln(0,50) + 0,30\\ln(0,30) + 0,15\\ln(0,15) + 0,05\\ln(0,05)] = 1,145\\).\n\\(H'_C = -4 \\times [0,25\\ln(0,25)] = \\ln(4) = 1,386\\).\n\ndominância de simpson (\\(D = \\sum p_i^2\\)):\n\n\\(D_A = 0,85^2 + 0,10^2 + 0,04^2 + 0,01^2 = 0,7225 + 0,0100 + 0,0016 + 0,0001 = 0,734\\).\n\\(D_B = 0,50^2 + 0,30^2 + 0,15^2 + 0,05^2 = 0,2500 + 0,0900 + 0,0225 + 0,0025 = 0,365\\).\n\\(D_C = 4 \\times (0,25^2) = 4 \\times 0,0625 = 0,250\\).\n\n\n\n\npasso 3: conversão para números de hill (\\(^qD\\))\n\n\n\n\n\n\n\n\n\n\n\nComunidade\nRiqueza (\\(^0D = S\\))\nShannon (\\(H'\\))\nDiversidade de Shannon (\\(^1D = \\exp(H')\\))\nSimpson (\\(D\\))\nInverso de Simpson (\\(^2D = 1/D\\))\n\n\n\n\nComunidade A\n4\n0,544\n1,72 espécies\n0,734\n1,36 espécies\n\n\nComunidade B\n4\n1,145\n3,14 espécies\n0,365\n2,74 espécies\n\n\nComunidade C\n4\n1,386\n4,00 espécies\n0,250\n4,00 espécies\n\n\n\n\n\nInterpretação ecológica dos números de hill obtidos\n\ncomunidade a: embora possua 4 espécies físicas (\\(^0D = 4\\)), a forte dominância da espécie 1 (85%) faz com que ela funcione biologicamente como se contivesse apenas 1,72 espécies equivalentes comuns (\\(^1D\\)) e 1,36 espécies equivalentes dominantes (\\(^2D\\)).\ncomunidade b: com uma distribuição moderadamente desigual, seus 4 táxons correspondem a 3,14 espécies efetivas comuns e 2,74 espécies efetivas dominantes.\ncomunidade c: como a distribuição é perfeitamente uniforme, todas as três ordens de hill coincidem exatamente (\\(^0D = ^1D = ^2D = 4,00\\)).\n\n\n\n\n\nDecomposição multiplicativa da diversidade gama em alfa e beta\nOutra vantagem crucial dos números de hill é a resolução da partição espacial da biodiversidade regional (diversidade gama, \\(^\\gamma D\\)). whittaker (1960) propôs originalmente que a diversidade gama é o produto da diversidade local (alfa, \\(^\\alpha D\\)) pela renovação de espécies entre locais (beta, \\(^\\beta D\\)):\n\\[^\\gamma D = ^\\alpha D \\times ^\\beta D \\implies ^\\beta D = \\frac{^\\gamma D}{^\\alpha D}\\]\nQuando aplicada aos índices brutos de shannon ou simpson, essa relação multiplicativa falha matematicamente porque os índices não são lineares. contudo, Jost (2006) provou que quando \\(^\\alpha D\\), \\(^\\beta D\\) e \\(^\\gamma D\\) são expressos em números de hill, a decomposição multiplicativa de whittaker é rigorosamente válida e consistente para qualquer ordem \\(q\\) [133, 146].\nnesta abordagem:\n\n\\(^\\alpha D\\) (alfa verdadeira): número efetivo médio de espécies por comunidade local.\n\\(^\\gamma D\\) (gama verdadeira): número efetivo total de espécies no conjunto regional de comunidades.\n\\(^\\beta D\\) (beta verdadeira): número efetivo de comunidades completamente distintas na região.\n\nO valor de \\(^\\beta D\\) varia entre \\(1,0\\) (quando todas as comunidades possuem exatamente a mesma composição e abundância relativa de espécies) e \\(N\\) (quando todas as \\(N\\) comunidades são inteiramente distintas e não compartilham nenhuma espécie).\n\n\n\nAplicação prática no r com pacotes vegan e inext\nno ambiente r, o cálculo dos números de hill e a construção dos perfis de diversidade podem ser realizados com os pacotes vegan e iNEXT [2, 131].\n\nscript r para cálculo dos números de hill e perfis\n# carregamento dos pacotes necessários\nlibrary(vegan)\nlibrary(tidyverse)\nlibrary(iNEXT)\n\n# 1. matriz de abundâncias simuladas dos sacos de lego\nlego_mat &lt;- matrix(c(\n  70, 15,  8,  4,  2,  1,  0,  0,  0,  0,  # Saco A (Hiperdominante)\n  40, 22, 14, 10,  6,  4,  3,  1,  0,  0,  # Saco B (Log-normal)\n  10, 10, 10, 10, 10, 10, 10, 10, 10, 10,  # Saco C (Uniforme)\n  30, 18, 12,  8,  6,  4,  3,  3,  2,  2   # Saco D (Muitas raras)\n), nrow = 4, byrow = TRUE)\n\nrownames(lego_mat) &lt;- c(\"Saco_A\", \"Saco_B\", \"Saco_C\", \"Saco_D\")\ncolnames(lego_mat) &lt;- paste0(\"Cor_\", 1:10)\n\n# 2. cálculo automatizado das três ordens de Hill (q=0, q=1, q=2)\ncalc_hill &lt;- function(mat) {\n  q0 &lt;- rowSums(mat &gt; 0)                                   # q=0: Riqueza (S)\n  H  &lt;- diversity(mat, index = \"shannon\")\n  q1 &lt;- exp(H)                                              # q=1: exp(Shannon)\n  D  &lt;- rowSums((mat / rowSums(mat))^2)\n  q2 &lt;- 1 / D                                               # q=2: Inv. Simpson\n  \n  data.frame(\n    Comunidade = rownames(mat),\n    q0_Riqueza = q0,\n    q1_Exponencial_Shannon = round(q1, 2),\n    q2_Inverso_Simpson = round(q2, 2)\n  )\n}\n\ntabela_hill &lt;- calc_hill(lego_mat)\nprint(tabela_hill)\n\n# 3. rarefação e perfil continuo via pacote iNEXT\ninext_out &lt;- iNEXT(t(lego_mat), q = c(0, 1, 2), datatype = \"abundance\")\ng_profile &lt;- ggiNEXT(inext_out, type = 1) + \n  theme_minimal() + \n  labs(title = \"rarefação e extrapolação de hill (q=0, q=1, q=2)\",\n       x = \"tamanho da amostra (número de peças)\", y = \"diversidade verdadeira (^qD)\")\n\nprint(g_profile)\n\n\n\n\nImplicações para conservação e monitoramento ambiental\nA adoção dos números de hill no monitoramento ambiental e nos estudos de impacto ambiental (EIA/RIMA) representa um avanço metodológico fundamental:\n\ncomunicação clara com tomadores de decisão: relatórios técnicos podem afirmar diretamente que “a restauração florestal aumentou a diversidade verdadeira do sítio de 3,2 para 8,5 espécies efetivas”, em vez de relatar variações abstratas de entropia de \\(H' = 1,16\\) para \\(H' = 2,14\\).\ncomparabilidade entre biomas: permite comparar a diversidade de florestas tropicais, savanas e sistemas aquáticos na mesma escala métrica linear.\ndetecção precoce de perda de biodiversidade: quedas acentuadas na diversidade de ordem dois (\\(^2D\\)) indicam a proliferação de espécies invasoras hiperdominantes antes mesmo que ocorra a extinção local de espécies raras (\\(^0D\\)).\n\n\n\n\nReferências bibliográficas\n\nBegon, M.; Townsend, C. R.; Harper, J. L. Ecologia: de Indivíduos a Ecossistemas. 4ª ed. Porto Alegre: Artmed, 2007.\nChao, A.; Gotelli, N. J.; Hsieh, T. C.; Sander, E. L.; Ma, K. H.; Colwell, R. K.; Jost, L. Rarefaction and extrapolation with Hill numbers: a framework for sampling and estimation in species diversity studies. Ecological Monographs, v. 84, n. 1, p. 45-67, 2014.\nDa Silva, F. R.; Gonçalves-Souza, T.; Paterno, G. B.; Provete, D. B.; Vancine, M. H. Análises Ecológicas no R. Recife: Nupeea, 2022.\nHill, M. O. Diversity and evenness: a unifying notation and its consequences. Ecology, v. 54, n. 2, p. 427-432, 1973.\nJost, L. Entropy and diversity. Oikos, v. 113, n. 2, p. 363-375, 2006.\nRicklefs, R. E.; Relyea, R. A Economia da Natureza. 7ª ed. Rio de Janeiro: Guanabara Koogan, 2016.\nWhittaker, R. H. Vegetation of the Great Smoky Mountains. Ecological Monographs, v. 26, n. 1, p. 1-80, 1956."
   }
 ]
