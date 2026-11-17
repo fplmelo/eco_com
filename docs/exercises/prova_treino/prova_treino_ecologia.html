@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Felipe Melo">
+<meta name="dcterms.date" content="2026-11-17">
+
+<title>Prova treino de ecologia de comunidades</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c6e54bb89bf1fbcc5e23ea448263032b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../img/logo_branco_ufpe.png" alt="UFPE logo" class="navbar-logo light-content">
+    <img src="../../img/logo_branco_ufpe.png" alt="UFPE logo" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Início</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html"> 
+<span class="menu-text">Objetivos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../schedule.html"> 
+<span class="menu-text">Cronograma</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-intro" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">R Intro</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-r-intro">    
+        <li>
+    <a class="dropdown-item" href="../../get-started/1-install.html"><i class="bi bi-emoji-sunglasses-fill" role="img">
+</i> 
+ <span class="dropdown-text">1 - Instalar R &amp; Rstudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/2-basic-intro.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">2 - Introdução Básica ao R e Rstudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/3-syntax.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">3 - Sintaxe &amp; Estrutura de Dados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/4-functions.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">4 - Funções e Comandos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-started/5-data.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">5 - Dados em R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../workbook/workbook.html"><i class="bi bi-tools" role="img">
+</i> 
+ <span class="dropdown-text">6 - Seu próprio site</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../sessions/index.html"> 
+<span class="menu-text">Todas as Aulas</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../exercises/index.html"> 
+<span class="menu-text">Exercícios</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../resources/index.html"> 
+<span class="menu-text">Recursos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../assessment.html"> 
+<span class="menu-text">Tipo de Avaliação</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://twitter.com/quarto_pub" title="Quarto Twitter" class="quarto-navigation-tool px-1" aria-label="Quarto Twitter"><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/quarto-dev/quarto-cli" title="Quarto GitHub" class="quarto-navigation-tool px-1" aria-label="Quarto GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://quarto.org/docs/blog/index.xml" title="Quarto Blog RSS" class="quarto-navigation-tool px-1" aria-label="Quarto Blog RSS"><i class="bi bi-rss"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#apresentação-da-prova-treino" id="toc-apresentação-da-prova-treino" class="nav-link active" data-scroll-target="#apresentação-da-prova-treino"><span class="header-section-number">1</span> Apresentação da prova treino</a></li>
+  <li><a href="#bloco-de-questões-para-resolução-em-sala" id="toc-bloco-de-questões-para-resolução-em-sala" class="nav-link" data-scroll-target="#bloco-de-questões-para-resolução-em-sala"><span class="header-section-number">2</span> Bloco de questões para resolução em sala</a>
+  <ul class="collapse">
+  <li><a href="#questão-1-descrição-de-comunidades-e-curvas-de-abundância-relativa-sads" id="toc-questão-1-descrição-de-comunidades-e-curvas-de-abundância-relativa-sads" class="nav-link" data-scroll-target="#questão-1-descrição-de-comunidades-e-curvas-de-abundância-relativa-sads"><span class="header-section-number">2.1</span> Questão 1: Descrição de comunidades e curvas de abundância relativa (sads)</a></li>
+  <li><a href="#questão-2-índices-clássicos-de-diversidade-e-equitabilidade" id="toc-questão-2-índices-clássicos-de-diversidade-e-equitabilidade" class="nav-link" data-scroll-target="#questão-2-índices-clássicos-de-diversidade-e-equitabilidade"><span class="header-section-number">2.2</span> Questão 2: Índices clássicos de diversidade e equitabilidade</a></li>
+  <li><a href="#questão-3-números-de-hill-e-diversidade-verdadeira-qd" id="toc-questão-3-números-de-hill-e-diversidade-verdadeira-qd" class="nav-link" data-scroll-target="#questão-3-números-de-hill-e-diversidade-verdadeira-qd"><span class="header-section-number">2.3</span> Questão 3: Números de hill e diversidade verdadeira (<span class="math inline">\(^qD\)</span>)</a></li>
+  <li><a href="#questão-4-partição-da-diversidade-alpha-beta-gamma-e-dissimilaridade" id="toc-questão-4-partição-da-diversidade-alpha-beta-gamma-e-dissimilaridade" class="nav-link" data-scroll-target="#questão-4-partição-da-diversidade-alpha-beta-gamma-e-dissimilaridade"><span class="header-section-number">2.4</span> Questão 4: Partição da diversidade (<span class="math inline">\(\alpha, \beta, \gamma\)</span>) e dissimilaridade</a></li>
+  <li><a href="#questão-5-diversidade-funcional-traços-e-regras-de-montagem" id="toc-questão-5-diversidade-funcional-traços-e-regras-de-montagem" class="nav-link" data-scroll-target="#questão-5-diversidade-funcional-traços-e-regras-de-montagem"><span class="header-section-number">2.5</span> Questão 5: Diversidade funcional, traços e regras de montagem</a></li>
+  </ul></li>
+  <li><a href="#gabarito-comentado" id="toc-gabarito-comentado" class="nav-link" data-scroll-target="#gabarito-comentado"><span class="header-section-number">3</span> Gabarito Comentado</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Prova treino de ecologia de comunidades</h1>
+<p class="subtitle lead">Exercício preparatório de aplicação e interpretação conceitual</p>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Felipe Melo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 17, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="apresentação-da-prova-treino" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Apresentação da prova treino</h1>
+<p>este exercício foi elaborado para ser resolvido em sala de aula com o acompanhamento do professor. o objetivo é consolidar o aprendizado dos módulos 1 a 5, integrando cálculos manuais simples (passíveis de execução com calculadora de celular), aplicação de conceitos e interpretação ecológica rigorosa.</p>
+<p>A prova aborda cinco eixos fundamentais:</p>
+<ol type="1">
+<li>descrição de comunidades e curvas de abundância relativa (sads/rads)</li>
+<li>índices clássicos de diversidade (<span class="math inline">\(\alpha\)</span>) e equitabilidade</li>
+<li>números de hill e diversidade verdadeira (<span class="math inline">\(^qD\)</span>)</li>
+<li>partição espacial da biodiversidade (<span class="math inline">\(\alpha, \beta, \gamma\)</span>) e dissimilaridade</li>
+<li>diversidade funcional, traços biológicos e regras de montagem</li>
+</ol>
+<hr>
+</section>
+<section id="bloco-de-questões-para-resolução-em-sala" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Bloco de questões para resolução em sala</h1>
+<section id="questão-1-descrição-de-comunidades-e-curvas-de-abundância-relativa-sads" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="questão-1-descrição-de-comunidades-e-curvas-de-abundância-relativa-sads"><span class="header-section-number">2.1</span> Questão 1: Descrição de comunidades e curvas de abundância relativa (sads)</h2>
+<p>Em um estudo de bioindicação com insetos aquáticos em duas microbacias hidrográficas, foram amostrados 100 indivíduos em cada local, com uma riqueza total observada de 4 espécies. A distribuição das abundâncias observadas foi a seguinte:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 35%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Espécie</th>
+<th style="text-align: center;">Riacho preservado (Comunidade A)</th>
+<th style="text-align: center;">Riacho alterado por efluente (Comunidade B)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Espécie 1</strong></td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">55</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Espécie 2</strong></td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Espécie 3</strong></td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Espécie 4</strong></td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total de indivíduos</strong></td>
+<td style="text-align: center;"><strong>100</strong></td>
+<td style="text-align: center;"><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Com base nesses dados:</p>
+<ol type="a">
+<li>Calcule a abundância relativa de cada espécie em ambas as comunidades.<br>
+</li>
+<li>Desenhe a curva de rank-abundância para as duas comunidades</li>
+<li>Explique por que a riqueza pura de espécies é incapaz de detectar o impacto da contaminação orgânica no riacho b.</li>
+</ol>
+<hr>
+</section>
+<section id="questão-2-índices-clássicos-de-diversidade-e-equitabilidade" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="questão-2-índices-clássicos-de-diversidade-e-equitabilidade"><span class="header-section-number">2.2</span> Questão 2: Índices clássicos de diversidade e equitabilidade</h2>
+<p>Utilizando os dados das <strong>Comunidade A e B</strong> (riacho saudável e alterado) da questão 1, realize os cálculos solicitados a seguir.</p>
+<ol type="a">
+<li>Calcule o índice de shannon-wiener (<span class="math inline">\(H' = - \sum p_i \ln(p_i)\)</span>).<br>
+</li>
+<li>Calcule a dominância de simpson ( <span class="math inline">\(D = \sum p_i^2\)</span>), a diversidade de simpson (<span class="math inline">\(1 - D\)</span>) e o inverso de simpson ( <span class="math inline">\(1/ D\)</span>).</li>
+<li>Agora recalcule tudo, retiranto a espécie 1 de todas as amostras.</li>
+<li>Por que o índice de Simpson (<span class="math inline">\(1 - D\)</span>) se comporta de maneira tão diferente do índice de Shannon (<span class="math inline">\(H' = - \sum p_i \ln(p_i)\)</span>) quando eliminamos a “espécie 1”? O que essa diferença revela sobre a sensibilidade de cada índice?</li>
+</ol>
+<hr>
+</section>
+<section id="questão-3-números-de-hill-e-diversidade-verdadeira-qd" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="questão-3-números-de-hill-e-diversidade-verdadeira-qd"><span class="header-section-number">2.3</span> Questão 3: Números de hill e diversidade verdadeira (<span class="math inline">\(^qD\)</span>)</h2>
+<p>Um ecólogo analisou os mesmos dados das microbacias acima usando os números Hill ou “diversidade verdadeira” e conseguiu fazer uma interpretação muito mais completa do que estava acontecendo com as comundades das bacias hidrográficas. Refaça seu caminho de cálculos e cria sua própria interpretação.</p>
+<ol type="a">
+<li><p>Converta os índices clássicos nas três primeiras ordens de diversidade verdadeira de hill (<span class="math inline">\(^qD\)</span>) para ambas as florestas:</p>
+<ul>
+<li>q = 0 -&gt; riqueza efetiva= <span class="math inline">\(^0D = S\)</span>)</li>
+<li>q = 1 -&gt; espécies comuns: <span class="math inline">\(^1D = \exp(H')\)</span>)</li>
+<li>q = 2 -&gt; espécies dominantes: <span class="math inline">\(^2D = 1 / D\)</span>)</li>
+</ul></li>
+<li><p>interprete os resultados do <strong>Comunidade B</strong>: o que significa dizer que o local possui 4 espécies observadas (<span class="math inline">\(^0D = 4\)</span>), mas apenas X espécies efetivamente típicas (<span class="math inline">\(^1D = 3\)</span>) e Y espécies dominantes (<span class="math inline">\(^2D = 2\)</span>)?<br>
+</p></li>
+<li><p>qual é a vantagem teórica de expressar a biodiversidade em “números de espécies efetivas” (números de hill) em vez de unidades abstratas de entropia ou probabilidade ao comunicar resultados para tomadores de decisão em conservação?</p></li>
+</ol>
+<hr>
+</section>
+<section id="questão-4-partição-da-diversidade-alpha-beta-gamma-e-dissimilaridade" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="questão-4-partição-da-diversidade-alpha-beta-gamma-e-dissimilaridade"><span class="header-section-number">2.4</span> Questão 4: Partição da diversidade (<span class="math inline">\(\alpha, \beta, \gamma\)</span>) e dissimilaridade</h2>
+<p>Agora, em uma amostragem de 3 lagoas de restinga (<span class="math inline">\(\text{lagoa 1}, \text{lagoa 2}, \text{lagoa 3}\)</span>), os pesquisadores registraram a presença (1) ou ausência (0) de 5 espécies de peixes:</p>
+<ul>
+<li><strong>lagoa 1:</strong> espécies a, b, c</li>
+<li><strong>lagoa 2:</strong> espécies a, b, f</li>
+<li><strong>lagoa 3:</strong> espécies d, e</li>
+</ul>
+<ol type="a">
+<li><p>Calcule a riqueza alfa média (<span class="math inline">\(\bar{\alpha}\)</span>) e a riqueza gama regional (<span class="math inline">\(\gamma\)</span>, número total de espécies distintas registradas na paisagem).</p></li>
+<li><p>Utilizando a partição multiplicativa de whittaker (<span class="math inline">\(\beta = \gamma / \bar{\alpha}\)</span>), calcule a diversidade beta da paisagem e interprete o seu significado ecológico.</p></li>
+<li><p>calcule o índice de similaridade de jaccard (<span class="math inline">\(Jac = \frac{a}{a + b + c}\)</span>) entre:</p>
+<ul>
+<li>lagoa 1 e lagoa 2</li>
+<li>lagoa 1 e lagoa 3</li>
+</ul></li>
+</ol>
+<p><em>Lembre-se que <span class="math inline">\(a\)</span> é o número de espécies compartilhadas, <span class="math inline">\(b\)</span> é o número de espécies exclusivas do primeiro local e <span class="math inline">\(c\)</span> é o número de espécies exclusivas do segundo local.</em></p>
+<ol start="4" type="a">
+<li>a diferença de composição entre a lagoa 1 e a lagoa 3 é fruto de substituição de espécies (<em>turnover</em>) ou de aninhamento (<em>nestedness</em>)? justificativa ecológica.</li>
+</ol>
+<hr>
+</section>
+<section id="questão-5-diversidade-funcional-traços-e-regras-de-montagem" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="questão-5-diversidade-funcional-traços-e-regras-de-montagem"><span class="header-section-number">2.5</span> Questão 5: Diversidade funcional, traços e regras de montagem</h2>
+<p>Em uma região semiárida, duas parcelas de vegetação (parcela <em>x</em> e parcela <em>y</em>) possuem a mesma riqueza de plantas (3 espécies), mas diferem nos valores de traços funcionais de altura da planta (cm) e profundidade de enraizamento (m):</p>
+<ul>
+<li><strong>parcela x (área sob seca severa contínua):</strong>
+<ul>
+<li>espécie 1: altura = 10 cm, raiz = 3,0 m</li>
+<li>espécie 2: altura = 12 cm, raiz = 2,2 m</li>
+<li>espécie 3: altura = 8 cm, raiz = 1,9 m</li>
+</ul></li>
+<li><strong>parcela y (área com microhabitats heterogêneos):</strong>
+<ul>
+<li>espécie 1: altura = 15 cm, raiz = 2,0 m</li>
+<li>espécie 4: altura = 25 cm, raiz = 0,5 m</li>
+<li>espécie 5: altura = 35 cm, raiz = 1,0 m</li>
+</ul></li>
+</ul>
+<ol type="a">
+<li>Observando a amplitude dos valores dos traços em cada parcela, qual delas apresenta a maior riqueza funcional (volume do envelope convexo ocupado no espaço de traços)? Faça um gráfico para representá-las, como este de abaixo:</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="prova_treino_ecologia_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li><p>Qual das parcelas indica a atuação de um <strong>filtro abiótico severo</strong> (gerando convergência funcional) e qual indica a atuação de <strong>limitação de similaridade / competição por recursos</strong> (gerando divergência funcional)?</p></li>
+<li><p>se um gestor ambiental avaliasse apenas a riqueza taxonômica (3 espécies), por que ele cometeria um erro ao assumir que a parcela x e a parcela y possuem a mesma vulnerabilidade a mudanças climáticas?</p></li>
+</ol>
+<hr>
+<hr>
+</section>
+</section>
+<section id="gabarito-comentado" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Gabarito Comentado</h1>
+<div class="callout callout-style-default callout-note callout-titled" title="Clique aqui para visualizar o Gabarito Comentado">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Clique aqui para visualizar o Gabarito Comentado
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<section id="questão-1-descrição-de-comunidades-e-curvas-de-abundância-relativa-sads-1" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="questão-1-descrição-de-comunidades-e-curvas-de-abundância-relativa-sads-1"><span class="header-section-number">3.1</span> Questão 1: Descrição de comunidades e curvas de abundância relativa (SADs)</h2>
+<p><strong>a) Abundância relativa (<span class="math inline">\(p_i = n_i / N\)</span>):</strong></p>
+<p>Como <span class="math inline">\(N = 100\)</span> em ambas as comunidades:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Espécie</th>
+<th style="text-align: center;">Comunidade A (<span class="math inline">\(p_i\)</span>)</th>
+<th style="text-align: center;">Comunidade B (<span class="math inline">\(p_i\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Espécie 1</strong></td>
+<td style="text-align: center;"><span class="math inline">\(0,25\)</span> (<span class="math inline">\(25\%\)</span>)</td>
+<td style="text-align: center;"><span class="math inline">\(0,55\)</span> (<span class="math inline">\(55\%\)</span>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Espécie 2</strong></td>
+<td style="text-align: center;"><span class="math inline">\(0,25\)</span> (<span class="math inline">\(25\%\)</span>)</td>
+<td style="text-align: center;"><span class="math inline">\(0,25\)</span> (<span class="math inline">\(25\%\)</span>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Espécie 3</strong></td>
+<td style="text-align: center;"><span class="math inline">\(0,25\)</span> (<span class="math inline">\(25\%\)</span>)</td>
+<td style="text-align: center;"><span class="math inline">\(0,15\)</span> (<span class="math inline">\(15\%\)</span>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Espécie 4</strong></td>
+<td style="text-align: center;"><span class="math inline">\(0,25\)</span> (<span class="math inline">\(25\%\)</span>)</td>
+<td style="text-align: center;"><span class="math inline">\(0,05\)</span> (<span class="math inline">\(5\%\)</span>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>b) Curva de rank-abundância (Whittaker):</strong> * <strong>Comunidade A:</strong> Forma uma linha perfeitamente horizontal (inclinação zero) no patamar de <span class="math inline">\(p_i = 0,25\)</span> do rank 1 ao 4, refletindo equitabilidade máxima. * <strong>Comunidade B:</strong> Apresenta uma curva íngreme e decrescente, partindo de <span class="math inline">\(0,55\)</span> (rank 1) e caindo até <span class="math inline">\(0,05\)</span> (rank 4), refletindo forte dominância e baixa equitabilidade.</p>
+<p><strong>c) Limitação da riqueza pura de espécies:</strong> A riqueza (<span class="math inline">\(S = 4\)</span>) atribui exatamente o mesmo peso a uma espécie representada por <span class="math inline">\(55\)</span> indivíduos e a uma espécie representada por apenas <span class="math inline">\(5\)</span> indivíduos. Como nenhuma espécie foi localmente extinta ainda na Comunidade B, a riqueza não detecta a reorganização drástica das abundâncias (perda de espécies sensíveis e explosão populacional de espécies oportunistas/tolerantes ao efluente orgânico).</p>
+<hr>
+</section>
+<section id="questão-2-índices-clássicos-de-diversidade-e-equitabilidade-1" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="questão-2-índices-clássicos-de-diversidade-e-equitabilidade-1"><span class="header-section-number">3.2</span> Questão 2: Índices clássicos de diversidade e equitabilidade</h2>
+<p><strong>a) Índice de Shannon-Wiener (<span class="math inline">\(H' = -\sum p_i \ln p_i\)</span>):</strong> * <strong>Comunidade A:</strong> <span class="math display">\[H'_A = -4 \times (0,25 \times \ln 0,25) = -(-1,386) = \mathbf{1,386}\]</span> * <strong>Comunidade B:</strong> <span class="math display">\[H'_B = -[0,55\ln(0,55) + 0,25\ln(0,25) + 0,15\ln(0,15) + 0,05\ln(0,05)]\]</span> <span class="math display">\[H'_B = -[-0,3288 - 0,3466 - 0,2846 - 0,1498] = \mathbf{1,110}\]</span></p>
+<p><strong>b) Índices de Simpson (<span class="math inline">\(D\)</span>, <span class="math inline">\(1-D\)</span> e <span class="math inline">\(1/D\)</span>):</strong> * <strong>Comunidade A:</strong> * Dominância: <span class="math inline">\(D_A = 0,25^2 + 0,25^2 + 0,25^2 + 0,25^2 = \mathbf{0,250}\)</span> * Diversidade de Simpson: <span class="math inline">\(1 - D_A = 1 - 0,250 = \mathbf{0,750}\)</span> * Inverso de Simpson: <span class="math inline">\(1 / D_A = 1 / 0,250 = \mathbf{4,00}\)</span> * <strong>Comunidade B:</strong> * Dominância: <span class="math inline">\(D_B = 0,55^2 + 0,25^2 + 0,15^2 + 0,05^2 = 0,3025 + 0,0625 + 0,0225 + 0,0025 = \mathbf{0,390}\)</span> * Diversidade de Simpson: <span class="math inline">\(1 - D_B = 1 - 0,390 = \mathbf{0,610}\)</span> * Inverso de Simpson: <span class="math inline">\(1 / D_B = 1 / 0,390 \approx \mathbf{2,56}\)</span></p>
+<p><strong>c) Recálculo removendo a Espécie 1 (recalculando <span class="math inline">\(p_i\)</span> sobre o novo total):</strong></p>
+<ul>
+<li><strong>Comunidade A sem Espécie 1 (<span class="math inline">\(N = 75\)</span>; <span class="math inline">\(p_2 = p_3 = p_4 = 25/75 = 0,333\)</span>):</strong>
+<ul>
+<li><span class="math inline">\(H' = -3 \times (0,333 \times \ln 0,333) = \mathbf{1,099}\)</span></li>
+<li><span class="math inline">\(D = 3 \times (0,333^2) = \mathbf{0,333}\)</span></li>
+<li><span class="math inline">\(1 - D = \mathbf{0,667}\)</span></li>
+<li><span class="math inline">\(1 / D = \mathbf{3,00}\)</span></li>
+</ul></li>
+<li><strong>Comunidade B sem Espécie 1 (<span class="math inline">\(N = 45\)</span>; <span class="math inline">\(p_2 = 25/45 = 0,556\)</span>, <span class="math inline">\(p_3 = 15/45 = 0,333\)</span>, <span class="math inline">\(p_4 = 5/45 = 0,111\)</span>):</strong>
+<ul>
+<li><span class="math inline">\(H' = -[0,556\ln(0,556) + 0,333\ln(0,333) + 0,111\ln(0,111)] = \mathbf{0,937}\)</span></li>
+<li><span class="math inline">\(D = 0,556^2 + 0,333^2 + 0,111^2 = 0,3086 + 0,1111 + 0,0123 = \mathbf{0,432}\)</span></li>
+<li><span class="math inline">\(1 - D = 1 - 0,432 = \mathbf{0,568}\)</span></li>
+<li><span class="math inline">\(1 / D = 1 / 0,432 \approx \mathbf{2,31}\)</span></li>
+</ul></li>
+</ul>
+<p><strong>d) Diferença de comportamento e sensibilidade entre Shannon (<span class="math inline">\(H'\)</span>) e Simpson (<span class="math inline">\(1 - D\)</span>):</strong> Na Comunidade B, a remoção da Espécie 1 (que representava <span class="math inline">\(55\%\)</span> da amostra) provocou uma queda proporcionalmente maior em <span class="math inline">\(H'\)</span> (de <span class="math inline">\(1,110\)</span> para <span class="math inline">\(0,937\)</span>, queda de <span class="math inline">\(15,6\%\)</span>) do que em <span class="math inline">\(1 - D\)</span> (de <span class="math inline">\(0,610\)</span> para <span class="math inline">\(0,568\)</span>, queda de <span class="math inline">\(6,9\%\)</span>). Isso ocorre porque <strong>Simpson (<span class="math inline">\(1 - D\)</span>)</strong> é fortemente ponderado pelas espécies dominantes (devido ao termo quadrático <span class="math inline">\(p_i^2\)</span>): ao remover a antiga dominante, a Espécie 2 assume imediatamente o papel de nova dominante (<span class="math inline">\(p_2 = 0,556\)</span>), mantendo o valor de <span class="math inline">\(D\)</span> elevado e amortecendo a variação de <span class="math inline">\(1 - D\)</span>. Já <strong>Shannon (<span class="math inline">\(H'\)</span>)</strong> pondera cada espécie proporcionalmente à sua abundância e é mais sensível à perda de riqueza e às espécies de abundância intermediária/rara.</p>
+<hr>
+</section>
+<section id="questão-3-números-de-hill-e-diversidade-verdadeira-qd-1" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="questão-3-números-de-hill-e-diversidade-verdadeira-qd-1"><span class="header-section-number">3.3</span> Questão 3: Números de Hill e diversidade verdadeira (<span class="math inline">\(^qD\)</span>)</h2>
+<p><strong>a) Conversão para números de Hill (<span class="math inline">\(^qD\)</span>):</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 35%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Ordem (<span class="math inline">\(q\)</span>)</th>
+<th style="text-align: center;">Comunidade A (Preservada)</th>
+<th style="text-align: center;">Comunidade B (Alterada)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="math inline">\(q = 0\)</span> (<span class="math inline">\(^0D = S\)</span>)</strong></td>
+<td style="text-align: center;"><strong><span class="math inline">\(4,00\)</span></strong></td>
+<td style="text-align: center;"><strong><span class="math inline">\(4,00\)</span></strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="math inline">\(q = 1\)</span> (<span class="math inline">\(^1D = e^{H'}\)</span>)</strong></td>
+<td style="text-align: center;"><span class="math inline">\(e^{1,386} = \mathbf{4,00}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(e^{1,110} \approx \mathbf{3,03}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="math inline">\(q = 2\)</span> (<span class="math inline">\(^2D = 1/D\)</span>)</strong></td>
+<td style="text-align: center;"><strong><span class="math inline">\(4,00\)</span></strong></td>
+<td style="text-align: center;"><strong><span class="math inline">\(2,56\)</span></strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>b) Interpretação ecológica da Comunidade B:</strong> Embora o riacho alterado ainda abrigue <span class="math inline">\(4\)</span> espécies (<span class="math inline">\(^0D = 4\)</span>), a distribuição desigual de abundâncias faz com que ele apresente a diversidade equivalente a uma comunidade ideal com apenas <strong><span class="math inline">\(\approx 3\)</span> espécies igualmente abundantes</strong> considerando espécies típicas (<span class="math inline">\(^1D \approx 3,03\)</span>), e apenas <strong><span class="math inline">\(\approx 2,6\)</span> espécies</strong> quando o foco recai sobre as espécies dominantes (<span class="math inline">\(^2D \approx 2,56\)</span>). Isso mostra perda efetiva de diversidade funcional/estrutural mesmo sem extinção local.</p>
+<p><strong>c) Vantagem na comunicação para tomadores de decisão:</strong> Índices clássicos como <span class="math inline">\(H'\)</span> (medido em <em>nats</em> ou <em>bits</em> de informação) ou <span class="math inline">\(1-D\)</span> (probabilidade de encontro interespecífico) não são lineares: dobrar a diversidade de uma comunidade não dobra o valor de <span class="math inline">\(H'\)</span> nem de <span class="math inline">\(1-D\)</span>. Os números de Hill expressam a biodiversidade na mesma unidade intuitiva da riqueza (<strong>número efetivo de espécies</strong>) e obedecem ao <strong>princípio da duplicação</strong> (se duas comunidades igualmente diversas e sem espécies em comum são unidas, a diversidade resultante dobra), facilitando comparações diretas de perda ou ganho de biodiversidade em políticas públicas.</p>
+<hr>
+</section>
+<section id="questão-4-partição-da-diversidade-alpha-beta-gamma-e-dissimilaridade-1" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="questão-4-partição-da-diversidade-alpha-beta-gamma-e-dissimilaridade-1"><span class="header-section-number">3.4</span> Questão 4: Partição da diversidade (<span class="math inline">\(\alpha, \beta, \gamma\)</span>) e dissimilaridade</h2>
+<p><strong>a) Riqueza alfa média (<span class="math inline">\(\bar{\alpha}\)</span>) e gama (<span class="math inline">\(\gamma\)</span>):</strong> * Riquezas locais: <span class="math inline">\(\alpha_1 = 3\)</span> (<span class="math inline">\(\{a, b, c\}\)</span>), <span class="math inline">\(\alpha_2 = 3\)</span> (<span class="math inline">\(\{a, b, f\}\)</span>), <span class="math inline">\(\alpha_3 = 2\)</span> (<span class="math inline">\(\{d, e\}\)</span>). * <strong>Alfa média:</strong> <span class="math inline">\(\bar{\alpha} = \frac{3 + 3 + 2}{3} = \frac{8}{3} \approx \mathbf{2,67\text{ espécies}}\)</span> * <strong>Gama regional:</strong> <span class="math inline">\(\gamma = |\{a, b, c, d, e, f\}| = \mathbf{6\text{ espécies}}\)</span></p>
+<p><strong>b) Partição multiplicativa de Whittaker (<span class="math inline">\(\beta = \gamma / \bar{\alpha}\)</span>):</strong> <span class="math display">\[\beta = \frac{6}{2,67} = \mathbf{2,25}\]</span> <strong>Interpretação:</strong> A paisagem regional possui <span class="math inline">\(2,25\)</span> vezes mais espécies do que a média de uma lagoa individual (equivalente a dizer que há aproximadamente <span class="math inline">\(2,25\)</span> comunidades composicionalmente distintas no conjunto das <span class="math inline">\(3\)</span> lagoas).</p>
+<p><strong>c) Similaridade de Jaccard (<span class="math inline">\(Jac = \frac{a}{a + b + c}\)</span>):</strong> * <strong>Lagoa 1 vs.&nbsp;Lagoa 2:</strong> compartilhadas <span class="math inline">\(a = 2\)</span> (<span class="math inline">\(\{a, b\}\)</span>), exclusivas da Lagoa 1 <span class="math inline">\(b = 1\)</span> (<span class="math inline">\(\{c\}\)</span>), exclusivas da Lagoa 2 <span class="math inline">\(c = 1\)</span> (<span class="math inline">\(\{f\}\)</span>). <span class="math display">\[Jac_{1,2} = \frac{2}{2 + 1 + 1} = \frac{2}{4} = \mathbf{0,50}\text{ (ou }50\%\text{)}\]</span> * <strong>Lagoa 1 vs.&nbsp;Lagoa 3:</strong> compartilhadas <span class="math inline">\(a = 0\)</span>, exclusivas da Lagoa 1 <span class="math inline">\(b = 3\)</span> (<span class="math inline">\(\{a, b, c\}\)</span>), exclusivas da Lagoa 3 <span class="math inline">\(c = 2\)</span> (<span class="math inline">\(\{d, e\}\)</span>). <span class="math display">\[Jac_{1,3} = \frac{0}{0 + 3 + 2} = \mathbf{0,00}\text{ (ou }0\%\text{)}\]</span></p>
+<p><strong>d) Substituição (<em>turnover</em>) vs.&nbsp;Aninhamento (<em>nestedness</em>):</strong> A diferença entre a Lagoa 1 (<span class="math inline">\(\{a, b, c\}\)</span>) e a Lagoa 3 (<span class="math inline">\(\{d, e\}\)</span>) é <strong>100% fruto de substituição de espécies (<em>turnover</em>)</strong>, pois nenhuma espécie é compartilhada entre elas (a Lagoa 3 não é um subconjunto empobrecido da Lagoa 1, mas sim composta por espécies totalmente diferentes). Ecologicamente, isso indica forte filtragem ambiental diferencial entre lagoas (ex.: gradientes de salinidade, profundidade ou conectividade) ou barreiras à dispersão que favorecem conjuntos distintos de espécies em cada corpo d’água.</p>
+<hr>
+</section>
+<section id="questão-5-diversidade-funcional-traços-e-regras-de-montagem-1" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="questão-5-diversidade-funcional-traços-e-regras-de-montagem-1"><span class="header-section-number">3.5</span> Questão 5: Diversidade funcional, traços e regras de montagem</h2>
+<p><strong>a) Maior riqueza funcional (volume/área do envelope convexo):</strong> A <strong>Parcela Y (microhabitats heterogêneos)</strong> apresenta maior riqueza funcional, pois suas espécies ocupam uma amplitude muito maior tanto em altura (<span class="math inline">\(15\)</span> a <span class="math inline">\(35\text{ cm}\)</span>, ou <span class="math inline">\(10\)</span> a <span class="math inline">\(35\text{ cm}\)</span> no gráfico) quanto em profundidade de raiz (<span class="math inline">\(0,5\)</span> a <span class="math inline">\(2,0\text{ m}\)</span>), formando um polígono convexo de área muito superior ao da Parcela X (onde todas as espécies ficam restritas a <span class="math inline">\(8\text{--}12\text{ cm}\)</span> de altura e <span class="math inline">\(1,9\text{--}3,0\text{ m}\)</span> de raiz).</p>
+<p><strong>b) Regras de montagem ecológica:</strong> * <strong>Filtro abiótico severo (convergência funcional):</strong> <strong>Parcela X</strong>. A seca severa contínua seleciona apenas espécies capazes de tolerar o estresse hídrico extremo — plantas de porte baixo (menor perda transpiratória) e raízes muito profundas (acesso ao lençol freático), fazendo com que os traços converjam para um único ótimo adaptativo. * <strong>Limitação de similaridade / diferenciação de nicho (divergência funcional):</strong> <strong>Parcela Y</strong>. A heterogeneidade de microhabitats e a competição por água e luz favorecem espécies com estratégias contrastantes (raízes superficiais vs.&nbsp;profundas; portes variados), reduzindo a sobreposição de nicho e promovendo divergência funcional.</p>
+<p><strong>c) Vulnerabilidade às mudanças climáticas e limitação da riqueza taxonômica:</strong> Embora ambas possuam <span class="math inline">\(3\)</span> espécies, a <strong>Parcela X apresenta baixíssima diversidade e redundância de estratégias funcionais</strong>: todas as suas espécies dependem do mesmo síndrome adaptativo (enraizamento profundo). Caso uma mudança climática altere o regime hidrológico de modo a rebaixar drasticamente o lençol freático ou favorecer eventos de chuvas curtas e superficiais, todas as espécies da Parcela X podem colapsar simultaneamente. Já a <strong>Parcela Y</strong>, por abrigar estratégias múltiplas (exploração de camadas superficiais e profundas do solo), possui maior <strong>efeito seguro (<em>insurance effect</em>)</strong> e resiliência ecossistêmica.</p>
+</section>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Content <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> 2026 by <a href="https://ecoaplic.org/">felipe Melo</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-label="creative-commons"></i> <i class="fa-brands fa-creative-commons-by" aria-label="creative-commons-by"></i> <i class="fa-brands fa-creative-commons-nc" aria-label="creative-commons-nc"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/fplmelo/eco_com">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
