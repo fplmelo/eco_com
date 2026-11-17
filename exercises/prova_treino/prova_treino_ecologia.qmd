@@ -69,7 +69,7 @@ a) Converta os índices clássicos nas três primeiras ordens de diversidade ver
    * q  = 2 -> espécies dominantes: $^2D = 1 / D$)
    
    
-b) interprete os resultados do **Comunidade B**: o que significa dizer que o local possui 4 espécies observadas ($^0D = 4$), mas apenas X espécies efetivamente típicas ($^1D = 3$) e Y espécies dominantes ($^2D = 2$)?  
+b) interprete os resultados do **Comunidade B**: o que significa dizer que o local possui 4 espécies observadas ($^0D = 4$), mas um número menor de espécies efetivamente comuns ($^1D$) e outro ainda menor de espécies dominantes ($^2D$)?  
 c) qual é a vantagem teórica de expressar a biodiversidade em "números de espécies efetivas" (números de hill) em vez de unidades abstratas de entropia ou probabilidade ao comunicar resultados para tomadores de decisão em conservação?
 
 ---
