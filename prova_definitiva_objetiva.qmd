@@ -1,0 +1,579 @@
+---
+title: "prova definitiva de ecologia de comunidades"
+subtitle: "avaliação objetiva de conhecimento e interpretação de conceitos"
+author: "disciplina de ecologia de comunidades"
+date: "2026-11-17"
+format:
+  html:
+    theme: flatly
+    toc: true
+    toc-depth: 2
+    number-sections: true
+---
+
+::: {.callout-note icon=false}
+# orientações gerais para a prova
+1. a prova contém **10 questões objetivas** de múltipla escolha (letras **a** a **e**).
+2. leia atentamente os estudos de caso, tabelas e gráficos fornecidos em cada questão.
+3. **cálculos manuais:** algumas questões exigem cálculos numéricos simples que podem ser realizados diretamente na **calculadora básica do celular**. os valores de suporte necessários são fornecidos no enunciado.
+4. assinale a única alternativa correta em cada questão.
+:::
+
+---
+
+# bloco de questões objetivas
+
+## questão 1: curvas de abundância relativa (rads) e bioindicação em reservatório
+
+em um programa de biomonitoramento aquático, ecólogos amostraram a comunidade de macroinvertebrados bentônicos em dois pontos de um reservatório: o **ponto a** (área de nascente preservada) e o **ponto b** (área próxima ao lançamento de efluente urbano). em ambos os pontos foram coletados exatamente **100 indivíduos** e registrada uma riqueza de **5 espécies** ($S = 5$).
+
+a tabela a seguir apresenta as contagens de abundância absoluta ($n_i$) obtidas:
+
+| ponto de amostragem | espécie 1 | espécie 2 | espécie 3 | espécie 4 | espécie 5 | total ($N$) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **ponto a (preservado)** | 22 | 21 | 20 | 19 | 18 | **100** |
+| **ponto b (eutrofizado)** | 84 | 4 | 4 | 4 | 4 | **100** |
+
+o gráfico a seguir ilustra as curvas de distribuição de abundância relativa (rads) obtidas para os dois pontos:
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Carregar pacotes necessários
+library(tidyverse)
+
+# 1. Inserir os dados da tabela
+dados <- tibble(
+  ponto = c("Ponto A (Preservado)", "Ponto B (Eutrofizado)"),
+  `Espécie 1` = c(22, 84),
+  `Espécie 2` = c(21, 4),
+  `Espécie 3` = c(20, 4),
+  `Espécie 4` = c(19, 4),
+  `Espécie 5` = c(18, 4)
+)
+
+# 2. Transformar para formato longo e calcular Rank e Abundância Relativa
+dados_rank <- dados %>%
+  pivot_longer(
+    cols = starts_with("Espécie"),
+    names_to = "especie",
+    values_to = "abundancia"
+  ) %>%
+  group_by(ponto) %>%
+  # Ordenar da maior para a menor abundância dentro de cada ponto
+  arrange(desc(abundancia), .by_group = TRUE) %>%
+  mutate(
+    abundancia_relativa = abundancia / sum(abundancia),
+    rank = row_number()
+  ) %>%
+  ungroup()
+
+# 3. Gerar o gráfico de Rank-Abundância (Escala Log10 no eixo Y - Padrão Ecológico)
+ggplot(dados_rank, aes(x = rank, y = abundancia_relativa, color = ponto, group = ponto)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 3.5) +
+  scale_y_log10(
+    breaks = c(0.01, 0.05, 0.1, 0.2, 0.5, 1.0),
+    labels = scales::percent_format(accuracy = 1)
+  ) +
+  scale_x_continuous(breaks = 1:5) +
+  scale_color_manual(values = c("Ponto A (Preservado)" = "#2E8B57", 
+                                "Ponto B (Eutrofizado)" = "#D95F02")) +
+  labs(
+    title = "Curva de Rank-Abundância",
+    subtitle = "Comparação de equitabilidade entre ambiente preservado e eutrofizado",
+    x = "Rank de Abundância das Espécies",
+    y = "Abundância Relativa (escala log10)",
+    color = "Ponto de Amostragem"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    legend.position = "top",
+    panel.grid.minor = element_blank(),
+    plot.title = element_text(face = "bold")
+  )
+```
+
+
+Com base na análise dos dados da tabela e do gráfico, assinale a alternativa **correta**:
+
+a) o **ponto a** apresenta um modelo de série geométrica devido à alta dominância da espécie 1, enquanto o **ponto b** ajusta-se ao modelo log-normal com equitabilidade perfeita.  
+b) como ambas as comunidades possuem a mesma riqueza observada ($S = 5$), pode-se concluir que o lançamento de efluente no ponto b não causou nenhum impacto na estrutura da comunidade bentônica.  
+c) a abundância relativa da espécie 1 no **ponto b** é de $84\%$ ($p_1 = 0,84$), gerando um declínio íngreme característico do modelo de série geométrica e demonstrando que a riqueza pura ($S = 5$) é incapaz de revelar a severa degradação ecológica provocada pelo efluente.  
+d) a curva do **ponto a** indica que a comunidade está sob forte estresse ambiental, pois curvas horizontais ocorrem exclusivamente em ecossistemas altamente degradados.  
+e) a proporção relativa de indivíduos ($p_i$) no ponto b não pode ser calculada sem antes aplicar uma transformação logarítmica de base 10 às abundâncias brutas.
+
+---
+
+## Questão 2: contaminação de solos e pré-empção de nicho
+
+Durante a restauração ecológica de uma área degradada por mineração, duas parcelas foram monitoradas: a **parcela 1** (solo corrigido com matéria orgânica) e a **parcela 2** (solo sem correção, contendo alta concentração de metais pesados). a observação das curvas rads (figura 1) revelou uma transição do padrão log-normal (suave) para o padrão de série geométrica (íngreme) na parcela 2.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# Carregar pacotes necessários
+library(tidyverse)
+
+# 1. Definir semente para reprodutibilidade dos dados simulados
+set.seed(42)
+
+# 2. Simular Parcela 1: Padrão Log-Normal (Solo corrigido - maior riqueza e curva suave)
+# 20 espécies com abundâncias seguindo uma distribuição log-normal
+abund_p1 <- round(rlnorm(n = 20, meanlog = 2.8, sdlog = 0.8))
+abund_p1 <- abund_p1[abund_p1 > 0] # garantir valores maiores que zero
+
+parcela_1 <- tibble(
+  parcela = "Parcela 1 (Solo Corrigido - Padrão Log-Normal)",
+  abundancia = sort(abund_p1, decreasing = TRUE)
+) %>%
+  mutate(
+    rank = row_number(),
+    abundancia_relativa = abundancia / sum(abundancia)
+  )
+
+# 3. Simular Parcela 2: Série Geométrica (Solo com metais pesados - baixa riqueza e curva íngreme)
+# Modelo de Motomura: n_i = N * k * (1 - k)^(i - 1), com alta dominância (k = 0.55)
+k <- 0.55
+n_especies_p2 <- 8
+abund_p2 <- round(500 * k * (1 - k)^(0:(n_especies_p2 - 1)))
+abund_p2 <- abund_p2[abund_p2 > 0]
+
+parcela_2 <- tibble(
+  parcela = "Parcela 2 (Metais Pesados - Série Geométrica)",
+  abundancia = sort(abund_p2, decreasing = TRUE)
+) %>%
+  mutate(
+    rank = row_number(),
+    abundancia_relativa = abundancia / sum(abundancia)
+  )
+
+# 4. Unir os dois conjuntos de dados
+dados_rad <- bind_rows(parcela_1, parcela_2)
+
+# 5. Gerar o gráfico RAD (Rank-Abundance Distribution) em ggplot2
+ggplot(dados_rad, aes(x = rank, y = abundancia_relativa, color = parcela, shape = parcela)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 3) +
+  # Escala log10 no eixo Y é essencial para visualizar a Série Geométrica como uma reta íngreme
+  scale_y_log10(
+    breaks = c(0.001, 0.01, 0.05, 0.1, 0.25, 0.5, 1),
+    labels = scales::percent_format(accuracy = 0.1)
+  ) +
+  scale_x_continuous(breaks = seq(1, 20, by = 2)) +
+  scale_color_manual(values = c(
+    "Parcela 1 (Solo Corrigido - Padrão Log-Normal)" = "#1B9E77",
+    "Parcela 2 (Metais Pesados - Série Geométrica)" = "#D95F02"
+  )) +
+  labs(
+    title = "Figura 1. Curvas de Rank-Abundância (RADs) na Restauração Pós-Mineração",
+    subtitle = "Transição de comunidade estruturada (log-normal) para estressada (série geométrica)",
+    x = "Rank de Abundância das Espécies",
+    y = "Abundância Relativa (escala log10)",
+    color = NULL,
+    shape = NULL
+  ) +
+  theme_classic(base_size = 12) +
+  theme(
+    legend.position = c(0.68, 0.85),
+    legend.background = element_rect(fill = "white", color = "gray80"),
+    plot.title = element_text(face = "bold", size = 13),
+    panel.grid.major.y = element_line(color = "gray92", linetype = "dashed")
+  )
+```
+
+
+Assinale a alternativa que explica **corretamente** o mecanismo ecológico por trás dessa alteração na inclinação da curva:
+
+a) a presença de metais pesados aumenta a partição estocástica de nichos entre todas as espécies, promovendo um aumento na equitabilidade.  
+b) o modelo de série geométrica surge porque a competição interespecífica na parcela 2 foi totalmente eliminada pela adição de metais pesados.  
+c) a comunidade estruturada reflete uma fraca atuação dos metais pesados fazendo com que as espécies que possuam taxas idênticas de nascimento e morte compitam entre si, gerando diferenças pequenas nas dominâncias.  
+d) a contaminação do solo atua como um filtro abiótico severo, permitindo que uma única espécie pioneira tolerante monopolize os recursos iniciais, gerando alta dominância e reduzindo a equitabilidade da comunidade.  
+e) a inclinação da curva de abundância relativa depende exclusivamente da área da parcela amostrada, sendo independente da abundância das espécies presentes.
+
+---
+
+## questão 3: índices clássicos de diversidade ($\alpha$) e sensibilidade à dominância
+
+um ecólogo comparou a diversidade $\alpha$ de duas parcelas florestais (parcela x e parcela y), ambas com riqueza de 5 espécies ($S = 5$) e abundância total de 100 indivíduos ($N = 100$):
+
+- **parcela x (floresta primária):** 20 indivíduos de cada uma das 5 espécies ($p_i = 0,20$ para todas as espécies).
+
+- **parcela y (floresta secundária):** 80 indivíduos da espécie 1 ($p_1 = 0,80$) e 5 indivíduos de cada uma das espécies 2, 3, 4 e 5 ($p_2 = p_3 = p_4 = p_5 = 0,05$).
+
+
+Ao calcular a dominância de simpson ($D = \sum p_i^2$) e a Diversidade de simpson ($1 - D$) para a **parcela y**, assinale a alternativa que apresenta os valores corretos e a interpretação ecológica adequada:
+
+a) a diversidade de simpson na parcela y é $1 - D = 0,650$, indicando que a parcela y é mais diversa e equitativa do que a parcela x.  
+b) a dominância na parcela y é $D = 0,650$, resultando em uma diversidade de simpson de $1 - D = 0,350$, o que reflete uma queda drástica em relação à parcela x ($1 - D = 0,800$) devido ao peso quadrático conferido à espécie hiperdominante.  
+c) a dominância de simpson na parcela y é $D = 0,200$, pois o índice de simpson ignora a abundância das espécies hiperdominantes.  
+d) a diversidade de simpson resulta em $1 - D = 0,000$ para qualquer comunidade que apresente espécies raras em sua composição.  
+e) a equitabilidade da parcela y é exatamente igual a 1,00, pois a equitabilidade depende apenas da riqueza total observada.
+
+---
+
+## questão 4: sensibilidade de shannon e simpson à perda de espécies dominantes e raras
+
+um ecólogo monitorou duas comunidades aquáticas com a mesma riqueza ($S = 5$ espécies) e abundância relativa total ($100\%$), ilustradas nas curvas de rank-abundância (figura 2):
+
+- **comunidade 1 (dominada):** a espécie 1 concentra $90\%$ dos indivíduos ($p_1 = 0,90$), enquanto as espécies 2, 3, 4 e 5 possuem $2,5\%$ cada ($p_2 = p_3 = p_4 = p_5 = 0,025$).
+- **comunidade 2 (equitativa):** todas as 5 espécies possuem exatamente $20\%$ dos indivíduos ($p_1 = p_2 = p_3 = p_4 = p_5 = 0,20$).
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+
+# 1. Definir os dados das duas comunidades
+dados_comunidades <- tibble(
+  comunidade = rep(c("Comunidade 1 (Dominada: p1 = 90%)", 
+                     "Comunidade 2 (Equitativa: pi = 20%)"), each = 5),
+  rank = rep(1:5, times = 2),
+  especie = rep(paste("Espécie", 1:5), times = 2),
+  abundancia_relativa = c(0.90, 0.025, 0.025, 0.025, 0.025,
+                          0.20, 0.20,  0.20,  0.20,  0.20)
+)
+
+# 2. Plotar as curvas de Rank-Abundância em escala log10
+ggplot(dados_comunidades, aes(x = rank, y = abundancia_relativa, color = comunidade, shape = comunidade)) +
+  geom_line(linewidth = 1.3) +
+  geom_point(size = 3.5) +
+  geom_text(aes(label = scales::percent(abundancia_relativa, accuracy = 0.1)), 
+            vjust = -1.1, size = 3.3, show.legend = FALSE) +
+  scale_y_log10(
+    limits = c(0.015, 1.5),
+    breaks = c(0.025, 0.05, 0.10, 0.20, 0.50, 0.90),
+    labels = scales::percent_format(accuracy = 0.1)
+  ) +
+  scale_x_continuous(breaks = 1:5) +
+  scale_color_manual(values = c(
+    "Comunidade 1 (Dominada: p1 = 90%)" = "#D95F02",
+    "Comunidade 2 (Equitativa: pi = 20%)" = "#1B9E77"
+  )) +
+  labs(
+    title = "Figura 2. Curvas de Rank-Abundância antes das perturbações (S = 5)",
+    subtitle = "Comparação entre comunidade hiperdominada e comunidade perfeitamente equitativa",
+    x = "Rank de Abundância das Espécies",
+    y = "Abundância Relativa (escala log10)",
+    color = NULL,
+    shape = NULL
+  ) +
+  theme_classic(base_size = 12) +
+  theme(
+    legend.position = "top",
+    plot.title = element_text(face = "bold", size = 12.5),
+    panel.grid.major.y = element_line(color = "gray92", linetype = "dashed")
+  )
+```
+
+para testar o comportamento matemático dos índices de **shannon ($H' = -\sum p_i \ln p_i$)** e de **diversidade de simpson ($1 - D = 1 - \sum p_i^2$)**, o pesquisador simulou dois cenários de extinção local (recalculando as novas proporções $p_i$ sobre os indivíduos sobreviventes):
+1. **cenário a:** perda da espécie mais abundante (espécie 1).
+2. **cenário b:** perda das duas espécies mais raras (espécies 4 e 5).
+
+*valores de suporte para cálculo:* $\ln(3) = 1,099$; $\ln(4) = 1,386$; $\ln(5) = 1,609$; na comunidade 1 intacta, $H' = 0,464$ e $1 - D = 0,188$; no cenário b da comunidade 1, $H' = 0,242$ e $1 - D = 0,102$.
+
+com base nos cálculos para os dois cenários e na sensibilidade matemática de cada índice, assinale a alternativa **correta**:
+
+a) na **comunidade 2 (equitativa)**, a perda das duas espécies mais raras (cenário b) reduz a diversidade de simpson de $0,800$ para $0,100$, demonstrando que o índice de simpson é mais sensível à perda de espécies raras do que à perda de espécies dominantes.  
+b) na **comunidade 1 (dominada)**, a perda das duas espécies mais raras (cenário b) provoca uma queda drástica na diversidade de simpson (de $0,188$ para $0,010$), enquanto o índice de shannon ($H'$) permanece praticamente inalterado em $0,460$.  
+c) em ambas as comunidades, a perda da espécie mais abundante (cenário a) reduz o índice de shannon ($H'$) para exatamente $0,000$, pois o cálculo de entropia depende exclusivamente da espécie de rank 1.  
+d) na **comunidade 2 (equitativa)**, a perda da espécie 1 (cenário a) eleva a diversidade de simpson de $0,800$ para $0,950$, pois a remoção de qualquer espécie aumenta a equitabilidade do sistema.  
+e) na **comunidade 1 (dominada)**, a perda da espécie mais abundante (cenário a) faz a diversidade de simpson saltar de $0,188$ para $0,750$ (aumento de $300\%$), enquanto a perda das duas espécies mais raras (cenário b) quase não altera o simpson ($0,102$), mas reduz o índice de shannon ($H'$) quase pela metade (de $0,464$ para $0,242$), comprovando que simpson responde fortemente às espécies dominantes ($p_i^2$) e shannon é mais sensível às espécies raras ($\ln p_i$).
+
+
+---
+
+## questão 5: Média ponderada da comunidade (cwm) e filtro abiótico
+
+Em um estudo ao longo de um gradiente altitudinal em uma montanha tropical, pesquisadores mensuraram o traço funcional de **área foliar específica ($SLA$, em $mm^2/mg$)** em três espécies dominantes de plantas: espécie a ($SLA = 35$), espécie b ($SLA = 30$) e espécie c ($SLA = 25$).
+
+> A área específica foliar (SLA) é uma relaçao entre área de folha pela massa... altos valores de SLA são folhas mais baratas, com pouca área por unidade de massa. Folhas mais caras metabolicamente são mais deffendidas e possuem menos área por unidades de massa, são menos eficientes na fotossíntese mas costumam ser mais longevas.
+
+as abundâncias relativas observadas em dois pontos do gradiente foram:
+- **baixa altitude (ambiente úmido e sombreado):** espécie a = $50\%$ ($p_A = 0,50$), espécie b = $30\%$ ($p_B = 0,30$), espécie c = $20\%$ ($p_C = 0,20$).
+- **topo de montanha (ambiente frio, com ventos e seca fisiológica):** espécie a = $5\%$ ($p_A = 0,05$), espécie b = $15\%$ ($p_B = 0,15$), espécie c = $80\%$ ($p_C = 0,80$).
+
+Agora, sabendo que a média ponderada da comunidade é calculada por $\text{CWM} = \sum p_i \times t_i$, assinale a alternativa que apresenta o valor correto da CWM no **topo de montanha** e a sua interpretação ecológica:
+
+a) $\text{CWM}_{\text{Topo}} = 26,25\text{ }mm^2/mg$, demonstrando uma redução em relação à baixa altitude ($\text{CWM}_{\text{Baixa}} = 31,50\text{ }mm^2/mg$) provocada pela seleção ambiental de folhas mais espessas e coriáceas (menor SLA) para suportar o frio e o vento.  
+b) $\text{CWM}_{\text{Topo}} = 35,00\text{ }mm^2/mg$, indicando que o topo da montanha seleciona plantas com maior área foliar para maximizar a fotossíntese.  
+c) $\text{CWM}_{\text{Topo}} = 30,00\text{ }mm^2/mg$, pois a CWM é calculada tirando a média aritmética simples dos traços, sem considerar a abundância das espécies.  
+d) a redução da CWM no topo de montanha indica um aumento na competição interespecífica por luz entre as plantas de pequeno porte.  
+e) a CWM não varia ao longo do gradiente altitudinal porque os valores dos traços das espécies são fixos e imutáveis.
+
+---
+
+## questão 6: espaço bi-dimensional de traços e riqueza funcional ($FRic$)
+
+o gráfico a seguir representa o espaço bi-dimensional de traços funcionais (área foliar específica - SLA vs. altura máxima da planta) para duas parcelas de vegetação (parcela 1 e parcela 2), acompanhado do pool regional de espécies (pontos cinzas):
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 8.5
+#| fig-height: 5.5
+
+library(tidyverse)
+
+set.seed(123)
+
+# 1. Definir espécies da Parcela 1 (Filtro Abiótico: polígono pequeno, baixo SLA e baixa altura)
+p1_pts <- tibble(
+  sla = c(10.5, 11.8, 13.8, 14.5, 12.2, 13.0),
+  altura = c(3.2, 5.8, 6.2, 3.8, 4.5, 4.9),
+  grupo = "Parcela 1"
+)
+
+# 2. Definir espécies da Parcela 2 (Limitação de Similaridade: polígono amplo e divergente)
+p2_pts <- tibble(
+  sla = c(13.2, 15.0, 38.5, 40.2, 26.5, 22.0, 31.0),
+  altura = c(4.8, 24.5, 25.5, 6.5, 15.5, 11.0, 19.0),
+  grupo = "Parcela 2"
+)
+
+# 3. Gerar o restante do Pool Regional (totalizando S_pool = 45 espécies)
+n_pool_extra <- 45 - nrow(p1_pts) - nrow(p2_pts)
+pool_extra <- tibble(
+  sla = runif(n_pool_extra, min = 9.5, max = 40.5),
+  altura = runif(n_pool_extra, min = 1.5, max = 25.0),
+  grupo = "Pool Regional de Espécies (S_pool = 45)"
+)
+
+# Unir todas as espécies (o pool regional contém todas as 45 espécies)
+todas_especies <- bind_rows(
+  pool_extra,
+  p1_pts %>% mutate(grupo = "Pool Regional de Espécies (S_pool = 45)"),
+  p2_pts %>% mutate(grupo = "Pool Regional de Espécies (S_pool = 45)")
+)
+
+# 4. Calcular os vértices exatos dos envelopes convexos (Convex Hulls)
+parcelas_pts <- bind_rows(p1_pts, p2_pts)
+
+hulls <- parcelas_pts %>%
+  group_by(grupo) %>%
+  slice(chull(sla, altura)) %>%
+  ungroup()
+
+# 5. Definir ordem dos fatores (devem ser idênticos aos nomes usados em values)
+niveis_legenda <- c(
+  "Pool Regional de Espécies (S_pool = 45)",
+  "Parcela 1",
+  "Parcela 2"
+)
+
+todas_especies$grupo <- factor(todas_especies$grupo, levels = niveis_legenda)
+parcelas_pts$grupo <- factor(parcelas_pts$grupo, levels = niveis_legenda)
+hulls$grupo <- factor(hulls$grupo, levels = niveis_legenda)
+
+# 6. Gerar o gráfico em ggplot2
+ggplot() +
+  # Camada 1: Pontos de fundo do Pool Regional (45 espécies)
+  geom_point(
+    data = todas_especies,
+    aes(x = sla, y = altura, color = grupo, fill = grupo),
+    size = 3, alpha = 0.55, shape = 21, stroke = 0.6
+  ) +
+  # Camada 2: Polígonos dos envelopes convexos (FRic)
+  geom_polygon(
+    data = hulls,
+    aes(x = sla, y = altura, fill = grupo, color = grupo),
+    alpha = 0.25, linewidth = 1.2
+  ) +
+  # Camada 3: Pontos das espécies pertencentes às Parcelas 1 e 2
+  geom_point(
+    data = parcelas_pts,
+    aes(x = sla, y = altura, color = grupo, fill = grupo),
+    size = 3.8, shape = 21, stroke = 1.2
+  ) +
+  # Escalas manuais para unificar pontos e polígonos na mesma legenda
+  scale_color_manual(
+    name = NULL,
+    values = c(
+      "Pool Regional de Espécies (S_pool = 45)" = "#999999",
+      "Parcela 1" = "#D73027",
+      "Parcela 2" = "#0000FF"
+    ),
+    labels = c(
+      expression(paste("Pool Regional de Espécies (", S[pool], " = 45)")),
+      "Parcela 1",
+      "Parcela 2"
+    )
+  ) +
+  scale_fill_manual(
+    name = NULL,
+    values = c(
+      "Pool Regional de Espécies (S_pool = 45)" = "#CCCCCC",
+      "Parcela 1" = "#F46D43",
+      "Parcela 2" = "#74ADD1"
+    ),
+    labels = c(
+      expression(paste("Pool Regional de Espécies (", S[pool], " = 45)")),
+      "Parcela 1",
+      "Parcela 2"
+    )
+  ) +
+  scale_x_continuous(limits = c(8.5, 42), breaks = seq(10, 40, by = 5)) +
+  scale_y_continuous(limits = c(0, 27.5), breaks = seq(0, 25, by = 5)) +
+  labs(
+    title = expression(bold(paste("Espaço Bi-dimensional de Traços e Envelope Convexo (", bolditalic(FRic), ")"))),
+    x = expression(bold(paste("Área Foliar Específica - SLA (", mm^2/mg, ")"))),
+    y = expression(bold(paste("Altura Máxima da Planta (", italic(m), ")")))
+  ) +
+  theme_bw(base_size = 12) +
+  theme(
+    legend.position = c(0.02, 0.98),
+    legend.justification = c("left", "top"),
+    legend.background = element_rect(fill = alpha("white", 0.92), color = "gray75", linewidth = 0.4),
+    legend.text = element_text(size = 10.5),
+    legend.key.height = unit(0.55, "cm"),
+    plot.title = element_text(hjust = 0.5, size = 13.5, margin = margin(b = 10)),
+    panel.grid.major = element_line(color = "gray88", linetype = "dashed"),
+    panel.grid.minor = element_blank()
+  )
+```
+
+
+com base na estrutura dos envelopes convexos ($FRic$) ilustrados no gráfico, assinale a alternativa **correta**:
+
+a) a parcela 1 possui maior riqueza funcional do que a parcela 2 porque suas espécies estão concentradas no centro do espaço de traços.  
+b) a **parcela 1** apresenta baixa riqueza funcional (pequeno envelope convexo) devido à atuação de um filtro abiótico severo que gerou convergência funcional, enquanto a **parcela 2** apresenta alta riqueza funcional (amplo envelope convexo) impulsionada pela limitação de similaridade e divergência de traços.  
+c) o tamanho do envelope convexo ($FRic$) depende exclusivamente do número de indivíduos coletados, sendo independente da variação dos traços entre as espécies.  
+d) a convergência funcional observada na parcela 1 aumenta a resiliência do ecossistema a secas extremas, pois todas as espécies possuem os mesmos limites de tolerância.  
+e) a limitação de similaridade na parcela 2 força todas as espécies a apresentarem exatamente os mesmos valores de altura e SLA.
+
+---
+
+## questão 7: partição espacial da biodiversidade ($\alpha, \beta, \gamma$)
+
+em um levantamento da ictiofauna em 4 lagoas de restinga isoladas, biólogos registraram a presença (1) ou ausência (0) de 8 espécies de peixes:
+
+- **lagoa 1:** espécies 1 e 2 (riqueza local $\alpha_1 = 2$).
+- **lagoa 2:** espécies 3 e 4 (riqueza local $\alpha_2 = 2$).
+- **lagoa 3:** espécies 5 e 6 (riqueza local $\alpha_3 = 2$).
+- **lagoa 4:** espécies 7 e 8 (riqueza local $\alpha_4 = 2$).
+
+sabendo que a riqueza alfa média é $\bar{\alpha} = 2,0$ espécies/lagoa e que a riqueza gama regional é $\gamma = 8$ espécies no total da paisagem, aplique a partição multiplicativa de whittaker ($\beta = \gamma / \bar{\alpha}$) e assinale a alternativa **correta**:
+
+a) a diversidade beta é $\beta = 1,0$, demonstrando que todas as lagoas possuem composições idênticas de espécies.  
+b) o valor de $\beta = 4,0$ indica que a variação espacial na composição é explicada por aninhamento (*nestedness*), onde as lagoas menores são subconjuntos das maiores.  
+c) a riqueza gama regional ($\gamma$) é obtida somando-se diretamente os valores de $\alpha$ ($2+2+2+2 = 8$), independentemente de haver ou não compartilhamento de espécies entre os locais.  
+d) a diversidade beta da paisagem é $\beta = 4,0$, indicando que a diversidade regional é 4 vezes maior do que a diversidade média de uma lagoa individual devido à substituição completa de espécies ($100\%$ de *turnover* sem espécies compartilhadas).  
+e) a diversidade beta multiplicativa é nula ($\beta = 0$) sempre que a riqueza local ($\alpha$) for constante entre todas as amostras.
+
+---
+
+## questão 8: mecanismos de diversidade beta — *turnover* vs. *nestedness*
+
+o gráfico em *heatmap* a seguir compara dois padrões espaciais de ocorrência de espécies (linhas: lagoas/fragmentos 1 a 6; colunas: espécies 1 a 6):
+
+![figura 4: matrizes de ocorrência comparando substituição (*turnover*) e aninhamento (*nestedness*).](fig4_beta_objetiva.png){width=90%}
+
+anotando a estrutura das matrizes no gráfico e sua aplicação ao planejamento de reservas de conservação (debate SLOSS), assinale a alternativa **correta**:
+
+a) o esquema a representa aninhamento e o esquema b representa substituição de espécies.  
+b) em um cenário de aninhamento puro (esquema b), a melhor estratégia de conservação é proteger apenas os pequenos fragmentos mais empobrecidos.  
+c) o **esquema a** representa substituição pura (*turnover*), exigindo a criação de múltiplas reservas em diferentes lagoas para proteger a biodiversidade regional; o **esquema b** representa aninhamento puro (*nestedness*), onde a proteção da lagoa mais rica (lagoa 1) é suficiente para conservar quase todas as espécies.  
+d) a substituição de espécies (esquema a) ocorre exclusivamente quando o habitat sofre uma perda gradual de área sem alteração de fatores ambientais.  
+e) ambos os esquemas possuem o mesmo valor de diversidade beta e exigem exatamente o mesmo desenho de rede de unidades de conservação.
+
+---
+
+## questão 9: números de hill e diversidade verdadeira ($^qD$)
+
+em uma avaliação de impacto ambiental em dois trechos de um rio, um pesquisador obteve os seguintes dados de biodiversidade taxonômica:
+
+- **trecho a (preservado):** $S = 10$; $H' = 2,303$; $D = 0,100$.
+- **trecho b (impactado por dragagem):** $S = 10$; $H' = 1,099$; $D = 0,500$.
+
+*valores de suporte:*
+- $\exp(2,303) = 10,0$
+- $\exp(1,099) = 3,0$
+- $1 / 0,100 = 10,0$
+- $1 / 0,500 = 2,0$
+
+convertendo os índices nas três primeiras ordens de diversidade verdadeira de hill ($^qD$), assinale a alternativa **correta**:
+
+a) no trecho b, a diversidade verdadeira de ordem 1 é $^1D = 1,099$ espécies efetivas, demonstrando que os números de hill mantêm as unidades abstratas de nats.  
+b) o trecho b é ecologicamente mais diverso do que o trecho a em todas as ordens de hill porque possui menor dominância.  
+c) os números de hill ($^qD$) aumentam conforme a ordem $q$ aumenta, atingindo seu valor máximo em $q = 2$.  
+d) a conversão de $H'$ em $^1D = \exp(H')$ viola o princípio da duplicação proposto por lou jost.  
+e) no **trecho b**, embora a riqueza observada seja $^0D = 10$ espécies, a comunidade possui apenas $^1D = 3$ espécies efetivamente típicas e apenas $^2D = 2$ espécies efetivamente dominantes, revelando o severo desequilíbrio na estrutura de abundâncias gerado pela dragagem.
+
+---
+
+## questão 10: perfis contínuos de diversidade verdadeira e uso do solo
+
+o gráfico a seguir apresenta os perfis contínuos de diversidade verdadeira ($^qD$ em função da ordem $q \in [0, 2]$) para três sistemas de uso do solo: agrofloresta diversificada, pastagem regenerada e monocultura de cana-de-açúcar:
+
+![figura 5: perfis contínuos de diversidade verdadeira (números de hill).](fig5_hill_objetiva.png){width=85%}
+
+com base na inclinação das curvas nos perfis de hill, assinale a alternativa **correta**:
+
+a) a **agrofloresta** apresenta uma curva quase horizontal devido à alta equitabilidade entre suas espécies, enquanto a **monocultura de cana** apresenta um declínio íngreme de $q=0$ a $q=2$ provocado pela hiperdominância de 1 única espécie cultivada, tornando a inclinação do perfil uma métrica visual direta de equitabilidade.  
+b) a monocultura de cana apresenta a curva mais plana entre os três sistemas, demonstrando alta equitabilidade funcional.  
+c) a diversidade verdadeira de ordem $q = 2$ avalia exclusivamente as espécies raras e ameaçadas de extinção.  
+d) o perfil da pastagem regenerada sobrepõe-se perfeitamente ao perfil da agrofloresta em todas as ordens de $q$.  
+e) a inclinação do perfil de hill é independente da distribuição de abundâncias relativas da comunidade.
+
+---
+
+# gabarito comentado e guia de correção para o professor
+
+esta seção apresenta a chave de respostas e as justificativas ecológicas detalhadas para apoio do professor.
+
+## chave de respostas
+
+| questão | alternativa correta | tema central avaliado |
+| :---: | :---: | :--- |
+| **1** | **C** | curvas rads, modelo de série geométrica e falha da riqueza pura ($S$) |
+| **2** | **D** | pré-empção de nicho, solos contaminados e dominância |
+| **3** | **B** | cálculo de simpson ($D$ e $1-D$), equitabilidade e peso quadrático |
+| **4** | **E** | sensibilidade não-linear de simpson vs. shannon e pielou |
+| **5** | **A** | cálculo de CWM de SLA, gradiente altitudinal e filtro abiótico |
+| **6** | **B** | espaço de traços, riqueza funcional ($FRic$), convergência vs. divergência |
+| **7** | **D** | partição multiplicativa de whittaker ($\beta = \gamma / \bar{\alpha}$) e *turnover* |
+| **8** | **C** | matrizes de ocorrência, *turnover* vs. *nestedness* e debate SLOSS |
+| **9** | **E** | conversão em números de hill ($^0D, ^1D, ^2D$) e espécies efetivas |
+| **10** | **A** | perfis contínuos de hill, inclinação da curva e equitabilidade |
+
+---
+
+## justificativas detalhadas
+
+### questão 1 — resposta correta: C
+- **justificativa:** no ponto b, a espécie 1 representa $84/100 = 0,84$ ($84\%$) da abundância total. essa hiperdominância gera o declínio íngreme característico da série geométrica. o fato de ambos os pontos apresentarem $S = 5$ demonstra que a riqueza pura ignora a equitabilidade e não detecta o impacto do efluente.
+
+### questão 2 — resposta correta: D
+- **justificativa:** a contaminação por metais pesados seleciona espécies altamente tolerantes. a primeira colonizadora captura a maior parte dos recursos (pré-empção de nicho), alterando o perfil da curva de abundância de log-normal (equitativo) para série geométrica (dominado).
+
+### questão 3 — resposta correta: B
+- **justificativa:** para a parcela y: $D = 0,80^2 + 4 \times (0,05^2) = 0,640 + 0,010 = 0,650$. a diversidade de simpson é $1 - D = 1 - 0,650 = 0,350$. na parcela x (equitativa), $D = 5 \times (0,20^2) = 0,200 \implies 1 - D = 0,800$. o peso quadrático faz o simpson cair drasticamente com a dominância.
+
+### questão 4 — resposta correta: E
+- **justificativa:** a fórmula de simpson eleva as proporções ao quadrado ($p_i^2$), fazendo com que aumentos na dominância ($p_1$) reduzam $1-D$ de forma quadrática/abrupta. shannon utiliza $\ln(p_i)$, mantendo uma resposta logarítmica mais suave e retendo sensibilidade às espécies raras.
+
+### questão 5 — resposta correta: A
+- **justificativa:** no topo de montanha: $\text{CWM} = (0,05 \times 35) + (0,15 \times 30) + (0,80 \times 25) = 1,75 + 4,50 + 20,00 = 26,25\text{ }mm^2/mg$. a queda em relação à baixa altitude ($31,50$) reflete o filtro abiótico (vento/frio) selecionando plantas com menor SLA (folhas mais espessas).
+
+### questão 6 — resposta correta: B
+- **justificativa:** a parcela 1 possui um envelope convexo pequeno ($FRic$ baixo) porque as espécies foram filtradas para valores semelhantes de traços (convergência). a parcela 2 possui amplo envelope ($FRic$ alto) porque a limitação de similaridade forçou a diferenciação de nichos (divergência).
+
+### questão 7 — resposta correta: D
+- **justificativa:** a diversidade beta multiplicativa é $\beta = \gamma / \bar{\alpha} = 8 / 2,0 = 4,0$. como não há nenhuma espécie compartilhada entre as 4 lagoas, a diversidade regional é 4 vezes a média local, configurando $100\%$ de *turnover* (substituição).
+
+### questão 8 — resposta correta: C
+- **justificativa:** o esquema a (matriz em blocos) indica substituição pura (*turnover*), exigindo a proteção de múltiplos locais para conservar todas as espécies. o esquema b (matriz triangular) indica aninhamento (*nestedness*), onde o local mais rico contém o subconjunto de todas as espécies das lagoas menores.
+
+### questão 9 — resposta correta: E
+- **justificativa:** no trecho b: $^0D = S = 10$; $^1D = \exp(1,099) = 3$ espécies efetivamente típicas; $^2D = 1 / 0,500 = 2$ espécies efetivamente dominantes. os números de hill convertem entropia em contagens intuitivas de espécies efetivas.
+
+### questão 10 — resposta correta: A
+- **justificativa:** a inclinação do perfil de hill reflete a equitabilidade. uma comunidade uniforme (agrofloresta) mantém valores de $^qD$ muito próximos de $q=0$ a $q=2$ (curva plana). uma comunidade dominada (monocultura) apresenta queda íngreme porque $^2D$ penaliza a hiperdominância.
