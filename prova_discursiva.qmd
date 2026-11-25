@@ -1,0 +1,198 @@
+---
+title: "Prova Discursiva — Ecologia de Comunidades"
+subtitle: "Diversidade taxonômica, funcional e espacial em florestas secas sob diferentes estados de conservação"
+lang: pt-BR
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    fontsize: 10pt
+    geometry: "margin=1.8cm"
+    colorlinks: false
+execute:
+  echo: false
+  warning: false
+---
+
+**Nome:** \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ **Data:** \_\_\_/\_\_\_/\_\_\_\_\_\_
+
+**Instruções.** Prova individual, com consulta apenas à folha de fórmulas fornecida e uso de calculadora. Use **duas casas decimais**, salvo indicação em contrário. Os gráficos são feitos à mão nos gabaritos em branco, com eixos já rotulados mas você deve acrescentar a legenda. Respostas interpretativas devem ter no máximo 5 linhas. Valor total: **10,0 pontos**.
+
+**Tabela de fórmulas:** 
+
+| Grupo | Medida | Fórmula | Observação |
+|:--|:--|:--|:--|
+| Descrição | Proporção | $p_i = n_i/N$ | $n_i$ = indivíduos da espécie $i$; $N$ = total |
+| Índices clássicos | Shannon | $H' = -\sum p_i \ln p_i$ | Logaritmo natural |
+| | Dominância de Simpson | $D = \sum p_i^2$ | |
+| | Diversidade de Simpson | $1-D$ | |
+| | Equitabilidade de Pielou | $J = H'/\ln S$ | Varia de 0 a 1 |
+| Números de Hill | Ordem 0 | ${}^{0}D = S$ | Riqueza |
+| | Ordem 1 | ${}^{1}D = e^{H'}$ | Espécies efetivas (Shannon) |
+| | Ordem 2 | ${}^{2}D = 1/D$ | Espécies efetivas (Simpson) |
+| Alfa, beta e gama | Alfa média | $\bar{\alpha} = \frac{1}{k}\sum S_j$ | $k$ = nº de unidades locais |
+| | Beta multiplicativa | $\beta_W = \gamma/\bar{\alpha}$ | Whittaker |
+| | Beta aditiva | $\beta_{add} = \gamma - \bar{\alpha}$ | |
+| | Dissimilaridade de Sørensen | $\beta_{sor} = 1 - \frac{2c}{S_1 + S_2}$ | $c$ = espécies compartilhadas $S$ = espécies nos sitios $S_1$ e $S_2$|
+| Funcional | Média ponderada da comunidade | $\text{CWM} = \sum p_i \, t_i$ | $t_i$ = valor do traço da espécie $i$ |
+
+---
+
+<!-- {{< pagebreak >}} -->
+
+## O cenário
+
+Um projeto de monitoramento avaliou a vegetação lenhosa de uma **floresta tropical sazonalmente seca (Caatinga)** em três situações de conservação, todas sobre o mesmo tipo de solo e a mesma faixa de precipitação:
+
+- **P — Preservada:** unidade de conservação sem uso há mais de 40 anos.
+- **R — Regeneração:** área de corte raso abandonada há cerca de 25 anos.
+- **D — Degradada:** área sob pastejo caprino crônico e retirada seletiva de lenha.
+
+Em cada situação foram amostrados exatamente **100 indivíduos** com circunferência à altura do peito $\geq$ 10 cm (amostragem por número fixo de indivíduos). O pool regional tem 10 espécies. Os dados são hipotéticos.
+
+{{< pagebreak >}}
+
+**Tabela 1.** Abundância (nº de indivíduos) das espécies por situação e traços funcionais médios.
+
+| # | Espécie | P | R | D | SLA (mm²/mg) | Altura máx. (m) |
+|:-:|:--------|:-:|:-:|:-:|:-:|:-:|
+| 1 | *Cenostigma pyramidale* | 18 | 30 | 0 | 12 | 10 |
+| 2 | *Mimosa tenuiflora* | 6 | 25 | 60 | 20 | 6 |
+| 3 | *Commiphora leptophloeos* | 12 | 0 | 0 | 28 | 12 |
+| 4 | *Myracrodruon urundeuva* | 14 | 3 | 0 | 15 | 18 |
+| 5 | *Anadenanthera colubrina* | 15 | 12 | 0 | 16 | 20 |
+| 6 | *Cnidoscolus quercifolius* | 5 | 8 | 8 | 10 | 5 |
+| 7 | *Aspidosperma pyrifolium* | 12 | 10 | 4 | 11 | 9 |
+| 8 | *Handroanthus impetiginosus* | 8 | 0 | 0 | 22 | 16 |
+| 9 | *Spondias tuberosa* | 6 | 0 | 0 | 30 | 7 |
+| 10 | *Croton blanchetianus* | 4 | 12 | 28 | 19 | 4 |
+| | **Total** | 100 | 100 | 100 | | |
+
+---
+
+## Questão 1 — Descrição das comunidades *(1,5 pt)*
+
+**a)** (0,75) Complete a tabela-resumo a partir da Tabela 1.
+
+| | P | R | D |
+|:--|:-:|:-:|:-:|
+| Riqueza observada ($S$) | | | |
+| Abundância total ($N$) | | | |
+| Espécie dominante e sua proporção ($p_{max}$) | | | |
+
+**b)** (0,50) Quantas espécies ocorrem nas três situações? Quantas são exclusivas de P? Liste-as pelo número.
+
+**c)** (0,25) A abundância total é idêntica nas três situações. Explique por que isso é uma vantagem para comparar a riqueza entre elas.
+
+---
+
+## Questão 2 — Curvas de rank-abundância *(2,0 pt)*
+
+**a)** (0,50) Calcule $p_i$ para cada espécie presente e organize-as em ordem decrescente por situação.
+
+| Rank | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|:--|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| $p_i$ em P | | | | | | | | | | |
+| $p_i$ em R | | | | | | | | | | |
+| $p_i$ em D | | | | | | | | | | |
+
+**b)** (0,75) Desenhe as **três curvas** no gabarito abaixo (use símbolos ou traços diferentes e legenda). Ranks sem espécie não são plotados.
+
+```{r}
+#| fig-height: 3.2
+#| fig-width: 6
+par(mar = c(4, 4, 1, 1))
+plot(NA, xlim = c(1, 10), ylim = c(0, 0.6), xaxt = "n",
+     xlab = "Rank de abundância das espécies",
+     ylab = "Abundância relativa (p_i)")
+axis(1, at = 1:10)
+grid(nx = 9, ny = 6, col = "grey80", lty = 2)
+box()
+```
+
+**c)** (0,75) Compare as curvas quanto à **inclinação**, à **extensão** (nº de ranks) e à **dominância**. Que mecanismo ecológico associado ao estado de conservação explicaria o formato da curva de D? A riqueza observada sozinha (Questão 1) captura essa informação? Justifique.
+
+---
+
+## Questão 3 — Índices clássicos e números de Hill *(2,5 pt)*
+
+Os índices de P e R já foram calculados. **Calcule os de D** (mostre o desenvolvimento).
+
+| | $S$ | $H'$ | $D$ | $1-D$ | $J$ |
+|:--|:-:|:-:|:-:|:-:|:-:|
+| P | 10 | 2,196 | 0,121 | 0,879 | 0,954 |
+| R | 7 | 1,754 | 0,199 | 0,801 | 0,901 |
+| D | 4 | | | | |
+
+**a)** (0,75) Calcule $H'$, $D$, $1-D$ e $J$ para a situação D.
+
+**b)** (0,75) Converta os índices das três situações em números de Hill e complete a tabela.
+
+| | ${}^{0}D$ | ${}^{1}D$ | ${}^{2}D$ |
+|:--|:-:|:-:|:-:|
+| P | | | |
+| R | | | |
+| D | | | |
+
+**c)** (0,50) Desenhe o **perfil de diversidade** (${}^{q}D$ em função de $q$) das três situações no gabarito, uma linha por situação.
+
+```{r}
+#| fig-height: 3.0
+#| fig-width: 5
+par(mar = c(4, 4, 1, 1))
+plot(NA, xlim = c(0, 2), ylim = c(0, 10), xaxt = "n",
+     xlab = "Ordem de diversidade (q)",
+     ylab = "Número efetivo de espécies")
+axis(1, at = 0:2, labels = c("q = 0", "q = 1", "q = 2"))
+grid(nx = 2, ny = 10, col = "grey80", lty = 2)
+box()
+```
+
+**d)** (0,50) Um colega afirma: *"a degradação reduziu a diversidade em apenas 37%, pois o índice de Simpson ($1-D$) caiu de 0,879 para 0,554"*. Avalie a afirmação calculando a variação percentual de ${}^{2}D$ entre P e D e explique por que números de Hill permitem comparações proporcionais e o índice de Simpson não.
+
+---
+
+## Questão 4 — Diversidade alfa, beta e gama *(2,0 pt)*
+
+Trate as três situações como **três unidades locais** de uma mesma paisagem ($k = 3$) e use dados de presença/ausência.
+
+**a)** (0,75) Calcule $\bar{\alpha}$, $\gamma$, $\beta_W$ (multiplicativa) e $\beta_{add}$ (aditiva) para riqueza de espécies. Interprete o valor de $\beta_W$ em termos de "número efetivo de comunidades distintas".
+
+**b)** (0,50) Calcule a dissimilaridade de Sørensen entre **P e D**.
+
+**c)** (0,50) Examine a composição de espécies de D, R e P (Tabela 1). A diversidade beta observada reflete **substituição de espécies** (*turnover*) ou **aninhamento** (*nestedness*)? Justifique com os dados.
+
+**d)** (0,25) Se apenas uma das áreas pudesse ser protegida para conservar o maior número de espécies da paisagem, qual seria? A resposta mudaria se o objetivo fosse proteger a estrutura de abundâncias? Justifique brevemente.
+
+---
+
+## Questão 5 — Diversidade funcional como complemento *(2,0 pt)*
+
+Use os traços da Tabela 1 (SLA e altura máxima). Os valores de **CWM** de P e R já foram calculados:
+
+| | CWM de SLA (mm²/mg) | CWM de altura (m) |
+|:--|:-:|:-:|
+| P | 17,36 | 12,31 |
+| R | 15,15 | 9,22 |
+| D | | |
+
+**a)** (0,50) Calcule os CWM de **D** para SLA e altura.
+
+**b)** (0,75) No gabarito de espaço de traços, plote as 10 espécies do pool (pontos cinza ou vazados) e **destaque** com símbolos distintos as espécies presentes em P, R e D. Trace o **envelope convexo** de cada situação.
+
+```{r}
+#| fig-height: 3.4
+#| fig-width: 6
+par(mar = c(4, 4, 1, 1))
+plot(NA, xlim = c(5, 35), ylim = c(0, 22),
+     xlab = expression("Área foliar específica - SLA (" * mm^2 / mg * ")"),
+     ylab = "Altura máxima (m)")
+grid(nx = 6, ny = 11, col = "grey80", lty = 2)
+box()
+```
+
+**c)** (0,75) Compare a perda **taxonômica** (variação de $S$) com a perda **funcional** (tamanho dos envelopes). Elas foram proporcionais? Que tipo de espécie foi perdida primeiro e o que o contraste entre os CWM de SLA e de altura revela sobre o que a diversidade taxonômica, sozinha, deixaria de informar a um gestor que planeja a **restauração** de D?
+
+---
+
+**Boa prova!**

@@ -1,0 +1,95 @@
+---
+author: "Prova 2 - Ecologia de Comunidades"
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    fontsize: 10pt
+    geometry: "margin=1.8cm"
+    colorlinks: false
+execute:
+  echo: false
+  warning: false
+---
+
+**Nome do(a) Aluno(a):** \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_  **Data:** \_\_\_\_/\_\_\_\_/\_\_\_\_\_\_\_\_
+
+
+## Instruções Gerais
+1. Leia atentamente o estudo de caso abaixo antes de iniciar a resolução.
+2. Todas as questões devem ser respondidas de forma **discursiva**, apresentando o passo a passo dos cálculos, os gráficos solicitados (desenhados com eixos devidamente identificados e em escala coerente) e a interpretação ecológica correspondente.
+3. É permitido o uso de **calculadora básica de celular**.
+
+
+---
+
+## Cenário Hipotético: Monitoramento da Comunidade Arbórea na Bacia do Una
+
+Uma equipe de ecólogos realizou o levantamento fitossociológico da comunidade arbórea em três fragmentos de Floresta Estacional Semidecidual localizados na bacia do Rio Una em Pernambuco, submetidos a diferentes históricos e regimes de conservação:
+
+1. **Local A (Reserva Biológica):** fragmento de floresta primária protegida, sem histórico recente de corte seletivo ou fogo.
+
+2. **Local B (Área de Manejo Sustentável):** floresta secundária em estágio avançado de regeneração natural (35 anos após abandono de pastagem).
+
+3. **Local C (Fragmento Periurbano Degradado):** remanescente pequeno e isolado, sujeito a incêndios recorrentes, corte seletivo e invasão biológica.
+
+Em cada uma das três localidades, foram amostrados exatamente **$N = 100$ indivíduos arbóreos** (com $\text{DAP} \ge 5\text{ cm}$). A tabela abaixo apresenta a abundância absoluta ($n_i$) das espécies registradas e dois atributos funcionais medidos para cada espécie: **altura máxima média ($\text{m}$)** e **densidade da madeira ($\text{g/cm}^3$)**.
+
+| Espécie | Grupo Ecológico | Altura Máx. ($\text{m}$) | Densidade da Madeira ($\text{g/cm}^3$) | Local A (Preservado) | Local B (Regeneração) | Local C (Degradado) |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **Espécie 1** | Pioneira nativa | 10 | 0,35 | 15 | 40 | 15 |
+| **Espécie 2** | Secundária inicial | 14 | 0,45 | 25 | 30 | 5 |
+| **Espécie 3** | Sub-bosque / Climácica | 12 | 0,55 | 25 | 15 | 0 |
+| **Espécie 4** | Dossel / Climácica | 28 | 0,75 | 20 | 10 | 0 |
+| **Espécie 5** | Emergente / Climácica | 35 | 0,85 | 15 | 5 | 0 |
+| **Espécie 6** | Exótica invasora | 8 | 0,30 | 0 | 0 | 80 |
+| **Total ($N$)** | — | — | — | **100** | **100** | **100** |
+
+
+
+---
+
+### Questão 1 — Descrição de Comunidades (Riqueza e Abundância) 
+
+Com base na tabela de espécies por localidade:
+
+a) Descreva comparativamente os três locais quanto à **riqueza de espécies ($S$)** e à **estrutura de abundâncias relativas ($p_i = n_i / N$)**.  
+b) Explique por que a comparação baseada apenas na riqueza de espécies ($S$) não é suficiente para distinguir o estado de conservação entre o **Local A** e o **Local B**.
+
+---
+
+### Questão 2 — Gráficos de Rank-Abundância (Curvas de Whittaker)
+
+a) Utilizando os valores de abundância relativa ($p_i$) calculados na Questão 1, **desenhe um gráfico** com as curvas de **rank-abundância** para os Locais A, B e C (eixo $x$: **rank da espécie** da mais abundante para a menos abundante; eixo $y$: **abundância relativa** $p_i$).  
+b) Interprete ecologicamente o formato e a inclinação de cada uma das três curvas desenhadas, relacionando-os aos conceitos de **equitabilidade** e **dominância** em cada regime de conservação.
+
+---
+
+### Questão 3 — Índices Clássicos de Diversidade e Números de Hill
+
+a) Para cada uma das três localidades (A, B e C), calcule:
+   1. O índice de diversidade de **Shannon-Wiener** ($H' = -\sum_{i=1}^{S} p_i \ln p_i$).
+   2. A dominância de **Simpson** ($D = \sum_{i=1}^{S} p_i^2$) e a diversidade de Simpson ($1 - D$).
+b) Transforme os resultados obtidos nos **Números de Hill** (diversidade verdadeira) de ordem $q = 0$ ($^0D = S$), $q = 1$ ($^1D = e^{H'}$) e $q = 2$ ($^2D = 1/D$) para os três locais.  
+c) Compare os valores de $^0D$, $^1D$ e $^2D$ entre os três locais e discuta qual é a vantagem interpretativa de expressar a biodiversidade em **número efetivo de espécies** em comparação aos índices clássicos ($H'$ e $1-D$) ao redigir um relatório técnico para gestores ambientais.
+
+---
+
+### Questão 4 — Dimensões Espaciais da Diversidade ($\alpha$, $\beta$ e $\gamma$)
+
+Considerando o conjunto dos três fragmentos como uma única paisagem regional:
+
+a) Calcule a **diversidade alfa média ($\bar{\alpha}$)** e a **diversidade gama ($\gamma$)** da bacia do Rio Verde.  
+b) Calcule a **diversidade beta ($\beta$)** utilizando tanto a **partição multiplicativa de Whittaker** ($\beta_W = \gamma / \bar{\alpha}$) quanto a **partição aditiva de Lande** ($\beta_L = \gamma - \bar{\alpha}$), explicando o significado de cada resultado.  
+c) Calcule o **índice de similaridade de Jaccard** ($J = \frac{a}{a + b + c}$, onde $a$ são as espécies compartilhadas e $b$ e $c$ são as exclusivas de cada local) entre:
+   * Local A e Local B;
+   * Local A e Local C.  
+Com base nesses valores, discuta por que índices baseados apenas em presença/ausência (como Jaccard) podem mascarar diferenças ecológicas importantes entre áreas preservadas e em regeneração.
+
+---
+
+### Questão 5 — Diversidade Funcional Suplementando a Diversidade Taxonômica
+
+a) Construa um **gráfico simples de espaço de traços funcionais** (eixo $x$: Densidade da Madeira em $\text{g/cm}^3$; eixo $y$: Altura Máxima em $\text{m}$) posicionando as 6 espécies. Trace, de forma aproximada, o polígono (envelope convexo) que representa a **riqueza funcional** ocupada pelas espécies presentes no **Local A** em contraste com o polígono ocupado pelas espécies do **Local C**.  
+b) Utilizando os dados de abundância relativa e de atributos da tabela, calcule a **Média Ponderada da Comunidade ($\text{CWM} = \sum p_i \cdot t_i$)** para a **Altura Máxima** nos Locais A, B e C.  
+c) Explique como a análise funcional (CWM e envelope convexo) suplementa a análise taxonômica ao revelar impactos sobre funções ecossistêmicas (como estocagem de carbono e estratificação da floresta) que não ficariam evidentes apenas pela contagem de espécies nos três locais.

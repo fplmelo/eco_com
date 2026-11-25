@@ -1,7 +1,7 @@
 ---
 title: "Prova 2 - Ecologia de Comunidades"
-author: "Disciplina de Ecologia de Comunidades"
-date: ""
+# author: "Disciplina de Ecologia de Comunidades"
+# date: ""
 format: 
   pdf:
     documentclass: article
@@ -19,7 +19,29 @@ format:
       text: |
         \usepackage{booktabs}
         \usepackage{graphicx}
+        \usepackage{etoolbox}
         \raggedbottom
+        
+        % --- COMPACTAÇÃO DOS CALLOUTS ---
+        \AtBeginEnvironment{tcolorbox}{%
+          \linespread{0.92}\selectfont%
+          \setlength{\parskip}{2pt}%
+          \setlength{\topsep}{2pt}%
+          \setlength{\itemsep}{1pt}%
+        }
+        \AtBeginDocument{%
+          \tcbset{
+            top=3pt,
+            bottom=3pt,
+            left=5pt,
+            right=5pt,
+            before skip=4pt,
+            after skip=4pt,
+            fontupper=\small
+          }%
+        }
+        % --------------------------------
+
         \newsavebox{\tmpbox}
         \gdef\endfirsthead{}\gdef\endhead{}\gdef\endfoot{}\gdef\endlastfoot{}
         \let\origbottomrule\bottomrule
@@ -37,19 +59,19 @@ format:
 ---
 # SEU NOME:
 
-::: {.callout-note icon=false}
-# Orientações gerais para a prova
-1. a prova contém **10 questões objetivas** (letras **a** a **e**). Apenas uma opção é correta.
-2.Leia atentamente os estudos de caso, tabelas e gráficos fornecidos em cada questão.
-3. **Cálculos manuais:** algumas questões exigem cálculos numéricos simples que podem ser realizados diretamente na **calculadora básica do celular**. 
-4. Assinale a única alternativa correta em cada questão.
-:::
+<!-- ::: {.callout-note icon=false} -->
+<!-- # Orientações gerais para a prova -->
+<!-- 1. a prova contém **10 questões objetivas** (letras **a** a **e**). Apenas uma opção é correta. -->
+<!-- 2.Leia atentamente os estudos de caso, tabelas e gráficos fornecidos em cada questão. -->
+<!-- 3. **Cálculos manuais:** algumas questões exigem cálculos numéricos simples que podem ser realizados diretamente na **calculadora básica do celular**.  -->
+<!-- 4. Assinale a única alternativa correta em cada questão. -->
+<!-- ::: -->
 
 ## Questão 1: Descrição de comunidades por curvas de rank-abundância
 
-Em um programa de biomonitoramento aquático, ecólogos amostraram a comunidade de macroinvertebrados bentônicos em dois pontos de um reservatório: o **ponto a** (área de nascente preservada) e o **ponto b** (área próxima ao lançamento de efluente urbano). em ambos os pontos foram coletados exatamente **100 indivíduos** e registrada uma riqueza de **5 espécies** ($S = 5$).
+Em um programa de biomonitoramento aquático, ecólogos amostraram a comunidade de macroinvertebrados bentônicos em dois pontos de um reservatório: o **ponto a** (área de nascente preservada) e o **ponto b** (área próxima ao lançamento de efluente urbano). em ambos os pontos foram coletados exatamente **5 espécies** ($S = 5$).
 
-a tabela a seguir apresenta as contagens de abundância absoluta ($n_i$) obtidas:
+A tabela a seguir apresenta as contagens de abundância absoluta de cada espécie ($n_i$) obtidas:
 
 | Ponto | Espécie 1 | Espécie 2 | Espécie 3 | Espécie 4 | Espécie 5 |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -122,12 +144,13 @@ ggplot(dados_rank, aes(x = rank, y = abundancia_relativa, color = ponto, group =
 
 Com base na análise dos dados da tabela e do gráfico, assinale a alternativa **correta**:
 
-a) O **ponto a** apresenta alta dominância da "espécie 1", enquanto noo **ponto b** a dominância da "espécie 1" é menor.  
+a) O **Ponto A** apresenta alta dominância da "espécie 1", enquanto no **Ponto B** a dominância da "espécie 1" é ainda maior.  
 b) Como ambas as comunidades possuem a mesma riqueza observada ($S = 5$), pode-se concluir que o lançamento de efluente no ponto b não causou um impacto significativo na estrutura da comunidade bentônica.  
 c) Houve mudanças tanto no grau de dominância quanto no ranqueamento das espécies entre os pontos, sugerindo mudanças importantes na estrutura da comunidadee do **ponto b** devido ao recebimento de efluentes.   
 d) A curva do **ponto a** indica que a comunidade está sob forte estresse ambiental, pois curvas mais horizontais ocorrem exclusivamente em ecossistemas altamente degradados.  
 e) A proporção relativa de indivíduos ($p_i$) no ponto b não pode ser calculada sem antes aplicar uma transformação logarítmica às abundâncias brutas.
 :::
+
 
 ## Questão 2: Contaminação de solos e estruturação de comunidades
 
@@ -439,15 +462,23 @@ e) A limitação de similaridade na parcela 2 força todas as espécies a aprese
 :::
 
 
-
 ## Questão 7: Partição espacial da biodiversidade ($\alpha, \beta, \gamma$)
 
 Em um levantamento da ictiofauna em 4 lagoas de restinga isoladas, biólogos registraram a presença (1) ou ausência (0) de 8 espécies de peixes:
 
-- **lagoa 1:** espécies 1 e 2 
-- **lagoa 2:** espécies 2 e 3 
-- **lagoa 3:** espécies 4 e 5 
-- **lagoa 4:** espécies 5 e 6 
+<!-- - **lagoa 1:** espécies 1 e 2  -->
+<!-- - **lagoa 2:** espécies 2 e 3  -->
+<!-- - **lagoa 3:** espécies 4 e 5  -->
+<!-- - **lagoa 4:** espécies 5 e 6  -->
+
+| Espécie | Lagoa 1 | Lagoa 2 | Lagoa 3 | Lagoa 4 |
+| :--- | :---: | :---: | :---: | :---: |
+| **Espécie 1** | 1 | 0 | 0 | 0 |
+| **Espécie 2** | 1 | 1 | 0 | 0 |
+| **Espécie 3** | 0 | 1 | 0 | 0 |
+| **Espécie 4** | 0 | 0 | 1 | 0 |
+| **Espécie 5** | 0 | 0 | 1 | 1 |
+| **Espécie 6** | 0 | 0 | 0 | 1 |
 
 :::{.callout-important icon=false}
 # Responda
@@ -465,7 +496,7 @@ e) A diversidade regional é $\gamma = 8$, a diversidade beta multiplicativa é 
 
 ## Questão 8: Mecanismos de diversidade beta
 
-O gráfico em a seguir compara dois padrões espaciais de ocorrência de espécies (linhas: localidades 1 a 6; colunas: espécies 1 a 6):
+O gráfico a seguir compara dois padrões espaciais de ocorrência de espécies (linhas: localidades 1 a 6; colunas: espécies 1 a 6):
 
 ```{r}
 #| echo: false
@@ -554,14 +585,14 @@ criar_heatmap <- function(dados, cor_preenchimento, titulo, mostrar_eixo_y = TRU
 pA <- criar_heatmap(
   dados = df_A,
   cor_preenchimento = "#0072B2", # Azul
-  titulo = "Esquema A: Substituição\n(Turnover)",
+  titulo = "Esquema A",
   mostrar_eixo_y = TRUE
 )
 
 pB <- criar_heatmap(
   dados = df_B,
   cor_preenchimento = "#D55E00", # Laranja/Ferrugem
-  titulo = "Esquema B: Aninhamento\n(Nestedness)",
+  titulo = "Esquema B",
   mostrar_eixo_y = FALSE
 )
 
@@ -585,8 +616,8 @@ Tomando em conta a estrutura das matrizes no gráfico e sua aplicação ao plane
 a) O "esquema a" representa aninhamento e o "esquema b" representa substituição de espécies. Portanto, no "esquema b" é preciso transformar em áreas protegidas um menor número e localidades com fins de conservar todas as espécies   
 b) Em um cenário de aninhamento, a melhor estratégia de conservação é proteger os pequenos fragmentos mais empobrecidos.  
 c) A "esquema a" exige a criação de múltiplas reservas em diferentes lagoas para proteger a biodiversidade regional. Já no esquema b a proteção da um menor número de localidades é suficiente para conservar todas as espécies.  
-d) A substituição de espécies (esquema a) ocorre exclusivamente quando o habitat sofre uma perda gradual de área sem alteração de fatores ambientais.  
-e) Ambos os esquemas possuem o mesmo valor de diversidade beta e exigem exatamente o mesmo desenho de rede de unidades de conservação, não importando a natureza do mecanismo de explicação da diversidade bet.
+d) A substituição de espécies ocorre exclusivamente quando o habitat sofre uma perda gradual de área sem alteração de fatores ambientais.  
+e) Ambos os esquemas possuem o mesmo valor de diversidade beta e podem ter o mesmo desenho de rede de unidades de conservação, não importando a natureza do mecanismo de explicação da diversidade beta ($\beta$).
 :::
 
 
@@ -610,7 +641,7 @@ $$^qD = \left( \sum_{i=1}^{S} p_i^q \right)^{\frac{1}{1-q}}$$
 
 Convertendo os índices nas três primeiras ordens de diversidade verdadeira de Hill ($q=0; q=1; q=2$), assinale a alternativa **correta**. 
 
->Lembre-se que a conversão fácil pode ser dada por: $^0D=S$; $^1D=exp(H')$ e $^2D=1/D$
+**Lembre-se que a conversão fácil pode ser dada por: $^0D=S$; $^1D=exp(H')$ e $^2D=1/D$**
 
 a) No trecho b, a diversidade verdadeira de ordem 1 é $^1D = 1,099$ espécies efetivas, demonstrando que os números de Hill mantêm as unidades abstratas de nats.  
 b) O trecho "b" é ecologicamente mais diverso do que o trecho "a" em todas as ordens de hill porque possui menor dominância.  

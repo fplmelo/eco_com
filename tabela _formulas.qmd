@@ -1,0 +1,31 @@
+---
+title: "Tabela de fórmulas"
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    fontsize: 10pt
+    geometry: "margin=1.8cm"
+    colorlinks: false
+execute:
+  echo: false
+  warning: false
+---
+
+**Tabela de fórmulas:** 
+
+| Grupo | Medida | Fórmula | Observação |
+|:--|:--|:--|:--|
+| Descrição | Proporção | $p_i = n_i/N$ | $n_i$ = indivíduos da espécie $i$; $N$ = total |
+| Índices clássicos | Shannon | $H' = -\sum p_i \ln p_i$ | Logaritmo natural |
+| | Dominância de Simpson | $D = \sum p_i^2$ | |
+| | Diversidade de Simpson | $1-D$ | |
+| | Equitabilidade de Pielou | $J = H'/\ln S$ | Varia de 0 a 1 |
+| Números de Hill | Ordem 0 | ${}^{0}D = S$ | Riqueza |
+| | Ordem 1 | ${}^{1}D = e^{H'}$ | Espécies efetivas (Shannon) |
+| | Ordem 2 | ${}^{2}D = 1/D$ | Espécies efetivas (Simpson) |
+| Alfa, beta e gama | Alfa média | $\bar{\alpha} = \frac{1}{k}\sum S_j$ | $k$ = nº de unidades locais |
+| | Beta multiplicativa | $\beta_W = \gamma/\bar{\alpha}$ | Whittaker |
+| | Beta aditiva | $\beta_{add} = \gamma - \bar{\alpha}$ | |
+| | Dissimilaridade de Jaccard | $J = \frac{ac}{a+b+c}$ | $c$ = espécies compartilhadas $a$ = espécies nos sitios $a$ e $b$|
+| Funcional | Média ponderada da comunidade | $\text{CWM} = \sum p_i \, t_i$ | $t_i$ = valor do traço da espécie $i$ |
